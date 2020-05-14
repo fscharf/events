@@ -1,0 +1,7 @@
+﻿.navbar, footer {
+    display: none;
+}
+
+body {
+    background: linear-gradient(to right, #a587e4, var(--main-color));
+}

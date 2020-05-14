@@ -1,0 +1,9 @@
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\bin\Debug\Business.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\bin\Debug\Business.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\bin\Debug\Database.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\bin\Debug\Database.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\obj\Debug\Business.csprojAssemblyReference.cache
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\obj\Debug\Business.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Business\obj\Debug\Business.pdb
