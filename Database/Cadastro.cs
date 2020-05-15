@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 namespace Database
 {
     public class Cadastro
-    {
+    {   
+        // Busca a string de conexão com banco de dados
         private string sqlConnect()
         {
             return ConfigurationManager.AppSettings["sqlConnect"];
         }
 
+        // Cria um método para tabela existente
         public DataTable Lista()
         {
             using (SqlConnection connection = new SqlConnection(sqlConnect()))
@@ -33,6 +35,7 @@ namespace Database
             }
         }
 
+        // Efetua o cadastro nas colunas da tabela existente
         public void Salvar(int id, string nome, string cpf, string email, string senha)
         {
             using (SqlConnection connection = new SqlConnection(sqlConnect()))

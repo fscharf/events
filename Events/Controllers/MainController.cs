@@ -15,11 +15,13 @@ namespace Events.Controllers
         {
             return View();
         }
+
         public ActionResult Login()
         {
             return View();
         }
 
+        // Ao efetuar submit compara dados registrados no database e valida a sessão
         [HttpPost]
         public void Authorize(Events.Models.cadastro cadastroModel)
         {
@@ -43,6 +45,7 @@ namespace Events.Controllers
             }
         }
 
+        // Encerra a sessão
         public void Logout()
         {
             Session.Abandon();

@@ -15,6 +15,7 @@ namespace Events.Controllers
             return View();
         }
 
+        // Ao efetuar submit, cria um novo cadastro e inicia sessão
         [HttpPost]
         public void Criar()
         {

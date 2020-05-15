@@ -18,6 +18,8 @@ namespace Business
 
         public List<Cadastro> Lista()
         {
+
+            // Cria variáveis para converter os dados para a tabela existente
             var lista = new List<Cadastro>();
             var cadastroDatabase = new Database.Cadastro();
             foreach (DataRow row in cadastroDatabase.Lista().Rows)
@@ -36,6 +38,7 @@ namespace Business
             return lista;
         } 
 
+        // Salva as respectivas colunas na tabela existente
         public void Salvar()
         {
             new Database.Cadastro().Salvar(this.id, this.nome, this.cpf, this.email, this.senha);
