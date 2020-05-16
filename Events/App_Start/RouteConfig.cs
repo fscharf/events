@@ -34,19 +34,19 @@ namespace Events
             routes.MapRoute(
                 "cadastro",
                 "cadastro",
-                new { controller = "Cadastros", action = "Cadastro" }
+                new { controller = "Register", action = "PreRegister" }
             );
 
             routes.MapRoute(
                 "cadastro_criar",
                 "cadastro/criar",
-                new { controller = "Cadastros", action = "Criar" }
+                new { controller = "Cadastros", action = "Create" }
             );
 
             routes.MapRoute(
                 "eventos",
                 "eventos",
-                new { controller = "Eventos", action = "Index" }
+                new { controller = "Events", action = "Index" }
             );
             
             routes.MapRoute(
@@ -58,7 +58,7 @@ namespace Events
             routes.MapRoute(
                 "eventos_nomedoevento",
                 "eventos/nomedoevento",
-                new { controller = "Eventos", action = "Evento" }
+                new { controller = "Events", action = "Event" }
             );
 
             routes.MapRoute(

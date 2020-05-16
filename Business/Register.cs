@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Business
 {
-    public class Cadastro
+    public class Register
     {
         public int id { get; set; }
         public string nome { get; set; }
@@ -16,15 +16,15 @@ namespace Business
         public string email { get; set; }
         public string senha { get; set; }
 
-        public List<Cadastro> Lista()
+        public List<Register> List()
         {
 
             // Cria variáveis para converter os dados para a tabela existente
-            var lista = new List<Cadastro>();
-            var cadastroDatabase = new Database.Cadastro();
-            foreach (DataRow row in cadastroDatabase.Lista().Rows)
+            var list = new List<Register>();
+            var cadastroDatabase = new Database.Register();
+            foreach (DataRow row in cadastroDatabase.List().Rows)
             {
-                var cadastro = new Cadastro();
+                var cadastro = new Register();
 
                 cadastro.id = Convert.ToInt32(row["id_cadastro"]);
                 cadastro.nome = row["nome"].ToString();
@@ -32,16 +32,16 @@ namespace Business
                 cadastro.email = row["email"].ToString();
                 cadastro.senha = row["senha"].ToString();
 
-                lista.Add(cadastro);
+                list.Add(cadastro);
             }
 
-            return lista;
+            return list;
         } 
 
         // Salva as respectivas colunas na tabela existente
-        public void Salvar()
+        public void Save()
         {
-            new Database.Cadastro().Salvar(this.id, this.nome, this.cpf, this.email, this.senha);
+            new Database.Register().Save(this.id, this.nome, this.cpf, this.email, this.senha);
         }
     }
 }

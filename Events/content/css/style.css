@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Cabin';
-    src: url('../../fonts/cabin-rg.ttf');
+    src: url('../../Fonts/cabin-rg.ttf');
 }
 
 @font-face {
     font-family: "Nature Beauty";
-    src: url('../../fonts/nature-beauty-rg.ttf');
+    src: url('../../Fonts/nature-beauty-rg.ttf');
 }
 
 :root {

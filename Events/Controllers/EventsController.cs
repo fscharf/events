@@ -7,14 +7,14 @@ using System.Web.Mvc;
 
 namespace Events.Controllers
 {
-    public class EventosController : Controller
+    public class EventsController : Controller
     {
         // GET: Dashboard
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Evento()
+        public ActionResult Event()
         {
             return View();
         }

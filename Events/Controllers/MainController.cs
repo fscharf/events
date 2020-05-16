@@ -35,7 +35,7 @@ namespace Events.Controllers
                 }
                 else
                 {
-                    Session["id"] = cadastroDetails.id_cadastro;
+                    Session["id"] = cadastroDetails.id;
                     Session["nome"] = cadastroDetails.nome;
                     Session["email"] = cadastroDetails.email;
                     Session["senha"] = cadastroDetails.senha;

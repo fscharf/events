@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Escolha o tipo de cadastro";
+    Layout = "~/Views/Layout/_EventsLayout.cshtml";
+}
+
+@if (Session["id"] != null)
+{
+    Response.Redirect("/");
+}
+
+@Styles.Render("~/custom/css")
+
+<div class="container my-5">
+    <div class="row mb-3">
+        <div class="col-lg text-center">
+            <a href="/" class="main-font text-light display-4">Events</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 mx-auto">
+            <div class="container rounded bg-white shadow-sm p-5">
+                <h2 class="text-center mb-3">@ViewBag.Title</h2>
+                <a class="btn btn-primary btn-block p-3 mb-2" href="cadastro/aluno">Aluno</a>
+                <a class="btn btn-dark btn-block p-3" href="cadastro/visitante">Visitante</a>
+            </div>
+        </div>
+    </div>
+</div>

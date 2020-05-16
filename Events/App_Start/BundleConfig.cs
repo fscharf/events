@@ -17,18 +17,18 @@ namespace Events
                       "~/node_modules/bootstrap/dist/js/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/js").Include(
-                      "~/js/scripts.js",
-                      "~/js/jquery.maskedinput.js"));
+                      "~/Content/js/scripts.js",
+                      "~/Content/js/jquery.maskedinput.js"));
 
             bundles.Add(new StyleBundle("~/fontawesome/css").Include(
                       "~/node_modules/@fortawesome/fontawesome-free/css/all.css"));
 
             bundles.Add(new StyleBundle("~/content/css").Include(
                       "~/node_modules/bootstrap/compiler/bootstrap.css",
-                      "~/content/css/style.css"));
+                      "~/Content/css/style.css"));
 
             bundles.Add(new StyleBundle("~/custom/css").Include(
-                      "~/content/css/forms.css"));
+                      "~/Content/css/forms.css"));
         }
     }
 }

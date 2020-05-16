@@ -7,24 +7,39 @@ using System.Web.Mvc;
 
 namespace Events.Controllers
 {
-    public class CadastrosController : Controller
+    public class RegisterController : Controller
     {
+        public ActionResult PreRegister()
+        {
+            return View();
+        }
 
-        public ActionResult Cadastro()
+        public ActionResult Student()
+        {
+            return View();
+        }
+
+        public ActionResult Guest()
+        {
+            return View();
+        }
+        
+        // Deletar após criar as 3 views acima
+        public ActionResult Register()
         {
             return View();
         }
 
         // Ao efetuar submit, cria um novo cadastro e inicia sessão
         [HttpPost]
-        public void Criar()
+        public void Create()
         {
-            var cadastro = new Cadastro();
+            var cadastro = new Register();
             cadastro.nome = Request["nome"];
             cadastro.cpf = Request["cpf"];
             cadastro.email = Request["email"];
             cadastro.senha = Request["senha"];
-            cadastro.Salvar();
+            cadastro.Save();
 
             Session["id"] = cadastro.id;
             Session["nome"] = cadastro.nome;

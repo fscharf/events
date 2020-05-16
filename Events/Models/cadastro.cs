@@ -15,7 +15,7 @@ namespace Events.Models
 
     public partial class cadastro
     {
-        public int id_cadastro { get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
         public string email { get; set; }
