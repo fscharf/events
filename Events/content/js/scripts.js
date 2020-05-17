@@ -32,7 +32,6 @@ $(".nav-toggler").click(function () {
     $(".navbar-collapse").toggle("fast");
 });
 
-
 // pegamos o valor no localStorage
 const nightModeStorage = localStorage.getItem('gmtNightMode')
 const nightMode = document.querySelector('#night-mode')

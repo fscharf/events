@@ -9,10 +9,22 @@ using System.Threading.Tasks;
 
 namespace Database
 {
+    /****************************************************
+    //                          IMPORTANTE
+    //      =============================================
+    //      Tabelas ALUNO, VISITANTE não possuem FK
+    //      nas tabelas ACESSO e USUARIO, causando uma divergência
+    //      na lógica do C#.
+    //      Ou seja, código-fonte possui referência ao novo database
+    //      EVENTOFIEB porém NÃO está funcionando!
+    //      Necessário revisão do database.
+    //      =============================================
+    *****************************************************/
+
     public class Register
-    {   
+    {
         // Busca a string de conexão com banco de dados
-        private string sqlConnect()
+        private string SqlConnect()
         {
             return ConfigurationManager.AppSettings["sqlConnect"];
         }
@@ -20,7 +32,7 @@ namespace Database
         // Cria um método para tabela existente
         public DataTable List()
         {
-            using (SqlConnection connection = new SqlConnection(sqlConnect()))
+            using (SqlConnection connection = new SqlConnection(SqlConnect()))
             {
                 string queryString = "select * from cadastro";
                 SqlCommand command = new SqlCommand(queryString, connection);
@@ -38,7 +50,7 @@ namespace Database
         // Efetua o cadastro nas colunas da tabela existente
         public void Save(int id, string nome, string cpf, string email, string senha)
         {
-            using (SqlConnection connection = new SqlConnection(sqlConnect()))
+            using (SqlConnection connection = new SqlConnection(SqlConnect()))
             {
                 string queryString = "insert into cadastro (nome, cpf, email, senha) values ('" + nome + "', '" + cpf + "', '" + email + "', '" + senha + "')";
 

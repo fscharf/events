@@ -8,6 +8,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Business
 {
+    /****************************************************
+    //                          IMPORTANTE
+    //      =============================================
+    //      Tabelas ALUNO, VISITANTE não possuem FK
+    //      nas tabelas ACESSO e USUARIO, causando uma divergência
+    //      na lógica do C#.
+    //      Ou seja, código-fonte possui referência ao novo database
+    //      EVENTOFIEB porém NÃO está funcionando!
+    //      Necessário revisão do database.
+    //      =============================================
+    *****************************************************/
+
     public class Register
     {
         public int id { get; set; }
@@ -21,22 +33,22 @@ namespace Business
 
             // Cria variáveis para converter os dados para a tabela existente
             var list = new List<Register>();
-            var cadastroDatabase = new Database.Register();
-            foreach (DataRow row in cadastroDatabase.List().Rows)
+            var registerDb = new Database.Register();
+            foreach (DataRow row in registerDb.List().Rows)
             {
-                var cadastro = new Register();
+                var register = new Register();
 
-                cadastro.id = Convert.ToInt32(row["id_cadastro"]);
-                cadastro.nome = row["nome"].ToString();
-                cadastro.cpf = row["cpf"].ToString();
-                cadastro.email = row["email"].ToString();
-                cadastro.senha = row["senha"].ToString();
+                register.id = Convert.ToInt32(row["id_cadastro"]);
+                register.nome = row["nome"].ToString();
+                register.cpf = row["cpf"].ToString();
+                register.email = row["email"].ToString();
+                register.senha = row["senha"].ToString();
 
-                list.Add(cadastro);
+                list.Add(register);
             }
 
             return list;
-        } 
+        }
 
         // Salva as respectivas colunas na tabela existente
         public void Save()

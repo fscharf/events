@@ -34,18 +34,18 @@ namespace Events.Controllers
         [HttpPost]
         public void Create()
         {
-            var cadastro = new Register();
-            cadastro.nome = Request["nome"];
-            cadastro.cpf = Request["cpf"];
-            cadastro.email = Request["email"];
-            cadastro.senha = Request["senha"];
-            cadastro.Save();
+            var register = new Register();
+            register.nome = Request["nome"];
+            register.cpf = Request["cpf"];
+            register.email = Request["email"];
+            register.senha = Request["senha"];
+            register.Save();
 
-            Session["id"] = cadastro.id;
-            Session["nome"] = cadastro.nome;
-            Session["cpf"] = cadastro.cpf;
-            Session["email"] = cadastro.email;
-            Session["senha"] = cadastro.senha;
+            Session["id"] = register.id;
+            Session["nome"] = register.nome;
+            Session["cpf"] = register.cpf;
+            Session["email"] = register.email;
+            Session["senha"] = register.senha;
 
             Response.Redirect("/");
         }
