@@ -23,7 +23,7 @@ namespace Events.Controllers
 
         // Ao efetuar submit compara dados registrados no database e valida a sessão
         [HttpPost]
-        public void Authorize(Events.Models.cadastro registerModel)
+        public void Authorize(cadastro registerModel)
         {
             using (eventsEntities db = new eventsEntities())
             {
@@ -48,6 +48,7 @@ namespace Events.Controllers
         // Encerra a sessão
         public void Logout()
         {
+            int userId = (int)Session["id"];
             Session.Abandon();
             Response.Redirect("/");
         }

@@ -38,6 +38,12 @@ namespace Events
             );
 
             routes.MapRoute(
+                "cadastro_aluno",
+                "cadastro/aluno",
+                new { controller = "Register", action = "Student" }
+            );
+
+            routes.MapRoute(
                 "cadastro_criar",
                 "cadastro/criar",
                 new { controller = "Cadastros", action = "Create" }

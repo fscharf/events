@@ -1,9 +1,12 @@
 ﻿// custom bootstrap patterns
-$('.form-control').addClass('bg-light border-0');
 $('.card').addClass('bg-white border-0');
 
 $(".card").hover(function () {
     $(this).toggleClass("text-primary shadow-lg");
+});
+
+$("#favToggler").click(function () {
+    $(this).toggleClass("text-danger");
 });
 
 // spinner button

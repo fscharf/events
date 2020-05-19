@@ -38,7 +38,7 @@ namespace Business
             {
                 var register = new Register();
 
-                register.id = Convert.ToInt32(row["id_cadastro"]);
+                register.id = Convert.ToInt32(row["id"]);
                 register.nome = row["nome"].ToString();
                 register.cpf = row["cpf"].ToString();
                 register.email = row["email"].ToString();

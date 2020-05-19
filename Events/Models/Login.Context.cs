@@ -25,6 +25,6 @@ namespace Events.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<cadastro> cadastro { get; set; }
+        public DbSet<cadastro> cadastro { get; set; }
     }
 }

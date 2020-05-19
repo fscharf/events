@@ -1,7 +1,5 @@
-﻿@model Events.Models.cadastro
-
-@{
-    ViewBag.Title = "Faça seu cadastro";
+﻿@{
+    ViewBag.Title = "Cadastre-se no Events";
     Layout = "~/Views/Layout/_EventsLayout.cshtml";
 }
 
@@ -22,44 +20,69 @@
         <div class="col-lg-5 mx-auto">
             <div class="container rounded bg-white shadow-sm p-5">
                 <form action="/cadastro/criar" class="needs-validation" method="post" novalidate>
-                    <!--tipos de cadastro-->
-                    <h2 class="text-center mb-3">
-                        @ViewBag.Title
-                    </h2>
-                    <!--/tipos de cadastro-->
+                    <div class="text-center mb-3">
+                        <h2>@ViewBag.Title</h2>
+                        <small class="text-primary">#SouAluno</small>
+                    </div>
+                    
                     <!-- nome -->
                     <div class="form-group">
                         <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome completo"
                                minlength="3" maxlength="50" pattern="[a-zA-Záãâéêíîóôõú\s]+$" required>
                         <div class="invalid-feedback">Digite um nome válido.</div>
                     </div>
-                    <!-- cpf -->
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF"
-                               minlength="11" maxlength="11" pattern="[0-9]+$" required>
-                        <div class="invalid-feedback">Digite um CPF válido.</div>
-                    </div>
+
                     <!-- email -->
                     <div class="form-group">
                         <input class="form-control" type="email" name="email" id="email" placeholder="E-mail"
                                required>
                         <div class="invalid-feedback">Digite um e-mail válido.</div>
                     </div>
+
+                    <!-- cpf -->
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF"
+                               minlength="11" maxlength="11" pattern="[0-9]+$" required>
+                        <div class="invalid-feedback">Digite um CPF válido.</div>
+                    </div>
+
+                    <!-- rg -->
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="rg" id="rg" placeholder="RG"
+                               minlength="9" maxlength="9" pattern="[0-9]+$" required>
+                        <div class="invalid-feedback">Digite um RG válido.</div>
+                    </div>
+
+                    <!-- disciplina -->
+                    <div class="form-group">
+                        <select class="form-control" id="disciplina" required>
+                            <option selected>Disciplina</option>
+                            <option value="1">Edificações</option>
+                            <option value="2">Eletroeletrônica</option>
+                            <option value="3">Informática</option>
+                            <option value="4">Manut. e Sup. em Informática</option>
+                            <option value="5">Telecomunicações</option>
+                        </select>
+                        <div class="invalid-feedback">Selecione uma disciplina.</div>
+                    </div>
+
                     <!-- senha -->
                     <div class="form-group">
                         <input class="form-control" type="password" name="senha" id="senha" placeholder="Senha"
-                               minlength="8" maxlength="20" required>
+                               minlength="6" maxlength="20" required>
                         <small class="text-muted">
-                            Escolha entre 8-20 caracteres.
+                            Escolha entre 6-20 caracteres.
                         </small>
                         <div class="invalid-feedback">Digite uma senha válida.</div>
                     </div>
+
                     <!-- confirma senha -->
                     <div class="form-group">
                         <input class="form-control" type="password" name="confirmaSenha" id="confirmaSenha"
                                placeholder="Confirme a senha" minlength="8" maxlength="20" required>
                         <div class="invalid-feedback">Senhas não conferem.</div>
                     </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">Criar Conta</button>
                         <small class="text-muted">
@@ -71,7 +94,6 @@
         </div>
     </div>
 </div>
-
 
 @*password match validate*@
 <script>
@@ -109,4 +131,3 @@
         }, false);
     })();
 </script>
-

@@ -2351,6 +2351,7 @@
     <Content Include="Views\Events\Event.cshtml" />
     <Content Include="Views\Settings\Settings.cshtml" />
     <Content Include="Views\Register\PreRegister.cshtml" />
+    <Content Include="Views\Register\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

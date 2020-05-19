@@ -1,24 +1,35 @@
 ﻿
 @{
-    ViewBag.Title = "Lorem ipsum";
+    ViewBag.Title = "Feira de tecnologia";
     Layout = "~/Views/Layout/_EventsLayout.cshtml";
 }
 
-<div class="container-fluid bg-white shadow-sm py-5 mb-5">
+<img class="img-fluid crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="@ViewBag.Title" />
+
+<div class="container-fluid bg-white py-5 mb-3">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mb-4">
-                <img class="img-fluid crop-img-size rounded shadow-sm" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="@ViewBag.Title" />
-            </div>
             <div class="col-lg-8 mb-2 mb-sm-4">
                 <h2 class="font-weight-bold mb-2">
                     @ViewBag.Title
                 </h2>
-                <small class="text-muted">DESCRIÇÃO DO EVENTO</small>
+
+                <span class="fas fa-calendar-alt text-primary mr-2"></span>
+                <span class="text-muted">20/09/2020</span>
+
+                <span class="fas fa-clock text-primary mx-2"></span>
+                <span class="text-muted">20:00</span>
+
+                <span class="fas fa-map-marker-alt text-primary mx-2"></span>
+                <span class="text-muted">Rua João Silva, 16</span>
+
+                <div class="mb-4"></div>
+
+                <p class="text-muted">DESCRIÇÃO DO EVENTO</p>
                 <hr />
-                <div class="text-muted bg-light rounded p-4">
+                <p class="text-muted">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
+                </p>
                 <hr />
 
                 <!-- categoria -->
@@ -28,52 +39,21 @@
                 </span>
             </div>
             <div class="col-lg-4">
-                <div class="container bg-light rounded p-5">
 
-                    <!-- botões de navegação -->
-                    <a href="/eventos" class="card-link" title="Voltar">
-                        <i class="fas fa-arrow-left fa-lg"></i>
-                    </a>
-                    <a href="#favorito" class="card-link" title="Marcar como favorito">
-                        <i class="fas fa-heart fa-lg"></i>
-                    </a>
-                    <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
-                        <i class="fas fa-share fa-lg"></i>
-                    </a>
-                    <hr />
-
-                    <!-- data -->
-                    <span class="fas fa-calendar-alt fa-lg text-primary mr-3" title="Data"></span>
-                    <span class="text-muted">
-                        20/09/2020
-                    </span>
-                    <hr />
-
-                    <!-- horário -->
-                    <span class="fas fa-clock fa-lg text-primary mr-3" title="Horário"></span>
-                    <span class="text-muted">
-                        20:00
-                    </span>
-                    <hr />
-
-                    <!-- local -->
-                    <span class="fas fa-map-marker-alt fa-lg text-primary mr-3" title="Local"></span>
-                    <span class="text-muted">
-                        Rua João Silva, 16
-                    </span>
-                    <hr />
-
-                    <!-- status -->
-                    <span class="fas fa-check-circle fa-lg text-primary mr-3" title="Status"></span>
-                    <span class="text-muted">
-                        Disponível
-                    </span>
-                    <hr />
-
-                    <a href="#" class="btn btn-primary btn-block">
-                        Participar
-                    </a>
-                </div>
+                <!-- botões de navegação -->
+                <a href="/eventos" class="card-link" title="Voltar">
+                    <i class="fas fa-arrow-left fa-lg"></i>
+                </a>
+                <a href="#favorito" id="favToggler" class="card-link" title="Marcar como favorito">
+                    <i class="fas fa-heart fa-lg"></i>
+                </a>
+                <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
+                    <i class="fas fa-share fa-lg"></i>
+                </a>
+                <hr />
+                <a href="#" class="btn btn-primary btn-block">
+                    Participar
+                </a>
             </div>
         </div>
 

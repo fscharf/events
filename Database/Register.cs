@@ -56,7 +56,7 @@ namespace Database
 
                 if (id != 0)
                 {
-                    queryString = "update cadastro set nome = '" + nome + "', '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id_cadastro = " + id;
+                    queryString = "update cadastro set nome = '" + nome + "', '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = " + id;
                 }
 
                 SqlCommand command = new SqlCommand(queryString, connection);

@@ -36,7 +36,7 @@ body {
 }
 
 .form-control:focus {
-    border-bottom: 2px solid var(--main-color) !important;
+    border-bottom: 3px solid var(--main-color) !important;
 }
 
 .bg-search {
