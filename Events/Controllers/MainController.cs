@@ -15,42 +15,5 @@ namespace Events.Controllers
         {
             return View();
         }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        // Ao efetuar submit compara dados registrados no database e valida a sessão
-        [HttpPost]
-        public void Authorize(cadastro registerModel)
-        {
-            using (eventsEntities db = new eventsEntities())
-            {
-                var registerDetails = db.cadastro.Where(x => x.email == registerModel.email && x.senha == registerModel.senha).FirstOrDefault();
-                if (registerDetails == null)
-                {
-                    TempData["Error"] = "Usuário ou senha inválidos.";
-                    Response.Redirect("/entrar");
-                }
-                else
-                {
-                    Session["id"] = registerDetails.id;
-                    Session["nome"] = registerDetails.nome;
-                    Session["email"] = registerDetails.email;
-                    Session["senha"] = registerDetails.senha;
-
-                    Response.Redirect("/");
-                }
-            }
-        }
-
-        // Encerra a sessão
-        public void Logout()
-        {
-            int userId = (int)Session["id"];
-            Session.Abandon();
-            Response.Redirect("/");
-        }
     }
 }

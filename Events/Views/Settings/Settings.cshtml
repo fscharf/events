@@ -3,7 +3,7 @@
     Layout = "~/Views/Layout/_EventsLayout.cshtml";
 }
 
-@if (Session["id"] == null)
+@if (Session["Id"] == null)
 {
     Response.Redirect("/");
 }
@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row mb-4">
             <div class="col-lg">
-                <h2>Olá, <strong>@Session["nome"]</strong></h2>
+                <h2>Olá, <strong>@Session["Name"]</strong></h2>
             </div>
         </div>
 
@@ -35,19 +35,11 @@
                         <form>
                             <div class="form-group">
                                 <label>Nome Completo</label>
-                                <input class="form-control" type="text" readonly value="@Session["nome"]">
+                                <input class="form-control" type="text" readonly value="@Session["Name"]">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="text" readonly value="@Session["email"]">
-                            </div>
-                            <hr />
-                            <div class="form-group">
-                                <label>Senha</label>
-                                <input class="form-control" type="password" readonly value="@Session["senha"]">
-                            </div>
-                            <div class="form-group">
-                                <input type="button" class="btn btn-primary" value="Alterar senha" />
+                                <input class="form-control" type="text" readonly value="@Session["Email"]">
                             </div>
                         </form>
                     </div>

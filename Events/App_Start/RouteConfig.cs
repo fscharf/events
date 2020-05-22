@@ -16,19 +16,19 @@ namespace Events
             routes.MapRoute(
                 "entrar",
                 "entrar",
-                new { controller = "Main", action = "Login" }
+                new { controller = "Login", action = "Login" }
             );
 
             routes.MapRoute(
                 "autenticar",
                 "autenticar",
-                new { controller = "Main", action = "Authorize" }
+                new { controller = "Login", action = "Auth" }
             );
 
             routes.MapRoute(
                 "sair",
                 "sair",
-                new { controller = "Main", action = "Logout" }
+                new { controller = "Login", action = "Logout" }
             );
 
             routes.MapRoute(

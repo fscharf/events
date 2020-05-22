@@ -135,29 +135,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\cadastro.cs">
-      <DependentUpon>Login.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Login.Context.cs">
+    <Compile Include="Models\LoginDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login.Context.tt</DependentUpon>
+      <DependentUpon>LoginDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Login.cs">
+    <Compile Include="Models\LoginDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login.tt</DependentUpon>
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Login.Designer.cs">
+    <Compile Include="Models\LoginDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Login.edmx</DependentUpon>
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -271,15 +272,15 @@
     <Content Include="Content\img\undraw\undraw_sign_in_e6hj.svg" />
     <Content Include="Content\img\undraw\undraw_social_friends_nsbv.svg" />
     <Content Include="Content\img\undraw\undraw_traveling_t8y2.svg" />
-    <Content Include="Models\Login.Context.tt">
+    <Content Include="Models\LoginDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Login.edmx</DependentUpon>
-      <LastGenOutput>Login.Context.cs</LastGenOutput>
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+      <LastGenOutput>LoginDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Login.tt">
+    <Content Include="Models\LoginDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Login.edmx</DependentUpon>
-      <LastGenOutput>Login.cs</LastGenOutput>
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+      <LastGenOutput>LoginDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.css" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.min.css" />
@@ -2347,7 +2348,7 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Layout\_EventsLayout.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\Main\Login.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Events\Event.cshtml" />
     <Content Include="Views\Settings\Settings.cshtml" />
     <Content Include="Views\Register\PreRegister.cshtml" />
@@ -2361,15 +2362,15 @@
     <Content Include="node_modules\bootstrap\compiler\bootstrap-grid.css.map" />
     <Content Include="node_modules\bootstrap\compiler\bootstrap-reboot.css.map" />
     <Content Include="node_modules\bootstrap\compiler\bootstrap.css.map" />
-    <EntityDeploy Include="Models\Login.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Login.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Login.edmx.diagram">
-      <DependentUpon>Login.edmx</DependentUpon>
-    </Content>
     <Content Include="Fonts\cabin-rg.ttf" />
     <Content Include="Fonts\product-sans-rg.ttf" />
+    <EntityDeploy Include="Models\LoginDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LoginDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LoginDataModel.edmx.diagram">
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

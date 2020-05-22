@@ -9,9 +9,13 @@ $("#favToggler").click(function () {
     $(this).toggleClass("text-danger");
 });
 
+$(".bg-search").focus(function () {
+    $(this).remove("bg-search");
+});
+
 // spinner button
 $('.btn-preload').click(function () {
-    $(this).html('<span class="spinner-border" role="status" aria-hidden="true"></span>').addClass('disabled');
+    $(this).html('<small class="spinner-border" role="status" aria-hidden="true"></small>').addClass('disabled');
 });
 
 // compartilhar evento

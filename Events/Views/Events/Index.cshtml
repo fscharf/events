@@ -1,9 +1,8 @@
 ﻿@{
     ViewBag.Title = "Todos eventos";
     Layout = "~/Views/Layout/_EventsLayout.cshtml";
-}
-
-    <div class="container-fluid bg-white py-5 mb-5">
+}  
+    <div class="container-fluid bg-white py-5 mb-3">
         <div class="container">
 
             <div class="row mb-2">
@@ -22,18 +21,15 @@
                 </div>
             </form>
 
-            <div class="row mb-2">
-                <div class="col-lg-3 mb-2 my-sm-auto">
-                    <p class="text-muted mb-0">Organizar por</p>
-                </div>
-                <div class="col-lg-3 mb-2 mb-sm-0">
+            <div class="row mb-4">
+                <div class="col-lg-2 mb-2 mb-sm-0">
                     <select class="form-control">
                         <option selected>Data</option>
                         <option value="1">Mais recentes</option>
                         <option value="2">Mais antigos</option>
                     </select>
                 </div>
-                <div class="col-lg-3 mb-2 mb-sm-0">
+                <div class="col-lg-2 mb-2 mb-sm-0">
                     <select class="form-control">
                         <option selected>Status</option>
                         <option value="1">Disponível</option>
@@ -41,7 +37,7 @@
                         <option value="2">Encerrado</option>
                     </select>
                 </div>
-                <div class="col-lg-3 mb-2 mb-sm-0">
+                <div class="col-lg-2 mb-2 mb-sm-0">
                     <select class="form-control">
                         <option selected>Alfabético</option>
                         <option value="1">A-Z</option>
@@ -50,9 +46,7 @@
                 </div>
             </div>
 
-            <hr />
-
-            <div class="row mb-4">
+            <div class="row mb-3">
 
                 <!-- section 02 item 01 -->
                 <div class="col-lg-4 mb-2 mb-sm-0">
