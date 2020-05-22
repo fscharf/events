@@ -3,12 +3,15 @@ using System.Web.Optimization;
 
 namespace Events
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/scripts/jquery").Include(
                       "~/node_modules/jquery/dist/jquery.js"));
+
+            bundles.Add(new ScriptBundle("~/scripts/jqueryval").Include(
+                      "~/node_modules/jquery-validation/dist/jquery.validate.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/popper.js").Include(
                       "~/node_modules/popper.js/dist/umd/popper.js"));

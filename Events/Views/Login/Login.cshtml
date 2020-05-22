@@ -21,23 +21,17 @@
     <div class="row">
         <div class="col-lg-5 mx-auto">
             <div class="container rounded bg-white shadow-sm p-5">
-                <form action="/autenticar" method="post">
+                <form action="/autenticar" method="post" class="needs-validation" novalidate>
                     <h2 class="text-center mb-3">
                         @ViewBag.Title
                     </h2>
                     <!-- email -->
                     <div class="form-group">
-                        @Html.EditorFor(m => m.LoginEmail, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Seu e-mail" } })
-                        <span class="text-danger">
-                            @Html.ValidationMessageFor(m => m.LoginEmail)
-                        </span>
+                        @Html.EditorFor(m => m.LoginEmail, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Email", required = "required" } })
                     </div>
                     <!-- senha -->
                     <div class="form-group">
-                        @Html.EditorFor(m => m.PasswordHash, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Sua senha", minlength = "6", maxlength = "20" } })
-                        <span class="text-danger">
-                            @Html.ValidationMessageFor(m => m.PasswordHash)
-                        </span>
+                        @Html.EditorFor(m => m.PasswordHash, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Senha", minlength = "6", maxlength = "20", required = "required" } })
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block btn-preload mb-2">Entrar</button>

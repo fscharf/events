@@ -11,18 +11,21 @@ namespace Events.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class User
     {
         public int UserID { get; set; }
 
-        [Required(ErrorMessage = "Por favor, preencha este campo.")]
+        [Required(ErrorMessage = "Preencha este campo.")]
         public string LoginEmail { get; set; }
-
-        [Required(ErrorMessage = "Por favor, preencha este campo.")]
+        [Required(ErrorMessage = "Preencha este campo.")]
         public string PasswordHash { get; set; }
-
+        [Compare("PasswordHash")]
+        [Required(ErrorMessage = "Preencha este campo.")]
+        public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "Preencha este campo.")]
         public string LoginName { get; set; }
     }
 }

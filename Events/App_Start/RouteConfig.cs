@@ -34,19 +34,13 @@ namespace Events
             routes.MapRoute(
                 "cadastro",
                 "cadastro",
-                new { controller = "Register", action = "PreRegister" }
-            );
-
-            routes.MapRoute(
-                "cadastro_aluno",
-                "cadastro/aluno",
-                new { controller = "Register", action = "Student" }
+                new { controller = "Register", action = "Register" }
             );
 
             routes.MapRoute(
                 "cadastro_criar",
                 "cadastro/criar",
-                new { controller = "Cadastros", action = "Create" }
+                new { controller = "Register", action = "Create" }
             );
 
             routes.MapRoute(

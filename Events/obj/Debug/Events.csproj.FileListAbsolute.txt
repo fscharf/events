@@ -51,7 +51,6 @@ C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Antlr3.Runtime.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Business.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Newtonsoft.Json.dll
@@ -63,7 +62,6 @@ C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Razor.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebGrease.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Business.pdb
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Helpers.xml
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Mvc.xml
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Optimization.xml
@@ -80,8 +78,6 @@ C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Event
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.pdb
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebActivatorEx.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Database.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Database.pdb
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.SqlServer.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.xml

@@ -1,6 +1,7 @@
-﻿using Business;
+﻿using Events.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,45 +10,41 @@ namespace Events.Controllers
 {
     public class RegisterController : Controller
     {
-        public ActionResult PreRegister()
+        [HttpGet]
+        public ActionResult Register(int id = 0)
         {
-            return View();
+            User userModel = new User();
+            return View(userModel);
         }
 
-        public ActionResult Student()
-        {
-            return View();
-        }
-
-        public ActionResult Guest()
-        {
-            return View();
-        }
-        
-        // Deletar após criar as 3 views acima
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        // Ao efetuar submit, cria um novo cadastro e inicia sessão
         [HttpPost]
-        public void Create()
+        public void Create(User userModel)
         {
-            var register = new Register();
-            register.nome = Request["nome"];
-            register.cpf = Request["cpf"];
-            register.email = Request["email"];
-            register.senha = Request["senha"];
-            register.Save();
+            using (LoginDbEntities dbModel = new LoginDbEntities())
+            {
+                try
+                {
+                    if (dbModel.Users.Any(x => x.LoginEmail != userModel.LoginEmail))
+                    {
+                        dbModel.Users.Add(userModel);
+                        dbModel.SaveChanges();
 
-            Session["id"] = register.id;
-            Session["nome"] = register.nome;
-            Session["cpf"] = register.cpf;
-            Session["email"] = register.email;
-            Session["senha"] = register.senha;
+                        Session["Id"] = userModel.UserID;
+                        Session["Name"] = userModel.LoginName;
+                        Session["Email"] = userModel.LoginEmail;
 
-            Response.Redirect("/");
+                        ModelState.Clear();
+                        TempData["Success"] = "Cadastro realizado com sucesso.";
+                        new User();
+                        Response.Redirect("/");
+                    }
+                }
+                catch (Exception e)
+                {
+                    TempData["ErrorEmail"] = "E-mail já cadastrado.";
+                    Response.Redirect("/cadastro");
+                }
+            }
         }
     }
 }
