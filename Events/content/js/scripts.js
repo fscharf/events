@@ -9,10 +9,6 @@ $("#favToggler").click(function () {
     $(this).toggleClass("text-danger");
 });
 
-$(".bg-search").focus(function () {
-    $(this).remove("bg-search");
-});
-
 // spinner button
 $('.btn-preload').click(function () {
     $(this).html('<small class="spinner-border" role="status" aria-hidden="true"></small>').addClass('disabled');
@@ -25,7 +21,7 @@ $('#shareLinkBtn').click(function () {
     $('#shareLink').select();
     var ok = document.execCommand('copy');
     if (ok) {
-        $('#shareLinkAlert').show();
+        $('#shareLinkAlert').show(500);
     }
 });
 

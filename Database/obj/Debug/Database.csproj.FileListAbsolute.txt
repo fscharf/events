@@ -1,6 +1,0 @@
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\bin\Debug\Database.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\bin\Debug\Database.pdb
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\obj\Debug\Database.csprojAssemblyReference.cache
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\obj\Debug\Database.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Database\obj\Debug\Database.pdb
