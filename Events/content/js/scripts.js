@@ -11,7 +11,7 @@ $("#favToggler").click(function () {
 
 // spinner button
 $('.btn-preload').click(function () {
-    $(this).html('<small class="spinner-border" role="status" aria-hidden="true"></small>').addClass('disabled');
+    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>').addClass('disabled');
 });
 
 // compartilhar evento
@@ -21,13 +21,20 @@ $('#shareLinkBtn').click(function () {
     $('#shareLink').select();
     var ok = document.execCommand('copy');
     if (ok) {
-        $('#shareLinkAlert').show(500);
+        $("#shareLinkAlert").show().delay(6000).slideUp(200, function () {
+            $(this).addClass('close');
+        });
     }
 });
 
 // acionar todos tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
+})
+
+// acionar todos popovers
+$(function () {
+    $('[data-toggle="popover"]').popover()
 })
 
 // mostrar/ocultar navbar (paliativo pois navbar-toggler não funciona)
