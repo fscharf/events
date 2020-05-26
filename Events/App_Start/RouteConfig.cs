@@ -50,9 +50,9 @@ namespace Events
             );
             
             routes.MapRoute(
-                "configurar",
-                "configurar",
-                new { controller = "Settings", action = "Settings" }
+                "perfil",
+                "perfil",
+                new { controller = "Session", action = "Profile" }
             );
 
             routes.MapRoute(

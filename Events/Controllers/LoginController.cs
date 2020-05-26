@@ -28,9 +28,10 @@ namespace Events.Controllers
                 }
                 else
                 {
-                    Session["Id"] = userModel.UserID;
-                    Session["Email"] = userModel.LoginEmail;
-                    Session["Name"] = userModel.LoginName;
+                    Session["userID"] = userModel.UserID;
+                    Session["userName"] = userModel.LoginName;
+                    Session["userEmail"] = userModel.LoginEmail;
+                    Session["userPass"] = userModel.PasswordHash;
                     Response.Redirect("/");
                 }
             }
@@ -38,7 +39,6 @@ namespace Events.Controllers
 
         public void Logout()
         {
-            int userId = (int)Session["Id"];
             Session.Abandon();
             Response.Redirect("/");
         }

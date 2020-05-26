@@ -24,12 +24,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="mainNavbar">
         <div class="container">
             <a class="main-font text-primary h1" href="/">Events</a>
-            <button class="btn btn-default d-block d-lg-none nav-toggler" type="button">
-                <i class="fas fa-bars fa-lg text-muted"></i>
+            <button class="btn btn-white d-block d-lg-none nav-toggler" type="button">
+                <i class="fas fa-stream fa-lg text-muted fa-2x"></i>
             </button>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    @if (Session["Id"] == null)
+                    @if (Session["userID"] == null)
                     {
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="/cadastro">Cadastro</a>
@@ -41,30 +41,29 @@
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="#eventos">
-                                <i class="fas fa-calendar mr-2"></i>Eventos
+                            <a class="nav-link" href="#eventos" title="Eventos">
+                                <i class="fas fa-calendar fa-lg"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#favoritos">
-                                <i class="fas fa-heart mr-2"></i>Favoritos
+                            <a class="nav-link" href="#favoritos" title="Favoritos">
+                                <i class="fas fa-heart fa-lg"></i>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link text-primary dropdown-toggle" data-toggle="dropdown">
-                                <i class="fas fa-user-circle mr-2"></i>@Session["Name"]
+                            <a href="#" class="nav-link" data-toggle="dropdown" title="Conta">
+                                <i class="fas fa-user-circle fa-lg"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm">
-                                <div class="text-center p-2">
-                                    <div class="dropdown-item-text">@Session["Name"]</div>
-                                    <div class="dropdown-header">@Session["Email"]</div>
+                            <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow-sm">
+                                <div class="text-center p-3">
+                                    <div class="dropdown-item-text">@Session["userName"]</div>
+                                    <div class="dropdown-header">@Session["userEmail"]</div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/configurar">
-                                    <i class="fas fa-user-circle mr-2"></i>Minha conta
+                                <a class="dropdown-item profile" href="#profileModal" data-toggle="modal">
+                                    <i class="fas fa-user-circle mr-2"></i>Conta
                                 </a>
                                 <div class="dropdown-divider"></div>
-
                                 <a class="dropdown-item disabled" href="#">
                                     <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
                                 </a>
@@ -137,11 +136,14 @@
         </div>
     </footer>
 
+    @Html.Partial("_Profile")
+
     @Scripts.Render("~/scripts/jquery")
     @Scripts.Render("~/scripts/popper.js")
     @Scripts.Render("~/scripts/bootstrap")
     @Scripts.Render("~/scripts/js")
     @RenderSection("scripts", required: false)
+
 </body>
 
 </html>

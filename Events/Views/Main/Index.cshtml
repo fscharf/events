@@ -1,9 +1,9 @@
 ﻿@{
-    Layout = "~/Views/Layout/_EventsLayout.cshtml";
+    Layout = "~/Views/Shared/_EventsLayout.cshtml";
 }
 
 <!-- header public -->
-@if (Session["Id"] == null)
+@if (Session["userID"] == null)
 {
     <div class="container-fluid bg-main-gradient py-5 mb-3">
         <div class="container">
@@ -23,21 +23,22 @@
     </div>
 }
 
-@if (TempData["Success"] != null)
-{
-    <div class="form-group">
-        <div class="alert alert-success alert-dismissible show" role="alert">
-            @TempData["Success"]
-            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-}
 
 <!-- section 01 public -->
 <div class="container-fluid bg-white py-5 mb-3">
     <div class="container">
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="form-group">
+                <div class="alert alert-success alert-dismissible show p-3" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        }
 
         <!-- section 01 header -->
         <div class="row mb-4">

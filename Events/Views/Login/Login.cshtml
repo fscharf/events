@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "Entrar no Events";
-    Layout = "~/Views/Layout/_EventsLayout.cshtml";
+    Layout = "~/Views/Shared/_EventsLayout.cshtml";
 }
 
-@if (Session["id"] != null)
+@if (Session["userID"] != null)
 {
     Response.Redirect("/");
 }

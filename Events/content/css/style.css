@@ -66,6 +66,13 @@ body {
     .container, .navbar .dropdown-menu {
         width: 100%;
     }
+
+    .sidebar {
+        width: 220px;
+        height: 100vh;
+        display: none;
+        box-shadow: 2px 2px 4px rgba(1,1,1,0.8);
+    }
 }
 
 /* custom bootstrap patterns */
@@ -81,6 +88,10 @@ a:hover {
 .night-mode .bg-white {
     background: #353535 !important;
     color: #ffffff;
+}
+
+.night-mode .bg-white a, .night-mode .bg-light a {
+    color: #d9d9d9;
 }
 
 .night-mode .bg-light {

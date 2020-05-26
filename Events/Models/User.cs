@@ -17,15 +17,10 @@ namespace Events.Models
     public partial class User
     {
         public int UserID { get; set; }
-
-        [Required(ErrorMessage = "Preencha este campo.")]
+        public string LoginName { get; set; }
         public string LoginEmail { get; set; }
-        [Required(ErrorMessage = "Preencha este campo.")]
         public string PasswordHash { get; set; }
         [Compare("PasswordHash")]
-        [Required(ErrorMessage = "Preencha este campo.")]
         public string ConfirmPassword { get; set; }
-        [Required(ErrorMessage = "Preencha este campo.")]
-        public string LoginName { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Feira de tecnologia";
-    Layout = "~/Views/Layout/_EventsLayout.cshtml";
+    Layout = "~/Views/Shared/_EventsLayout.cshtml";
 }
 
 
@@ -77,10 +77,11 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <p>Clique e divulgue o link para seus amigos!</p>
+                    <button class="close float-right" data-dismiss="modal">&times;</button>
+                    <p>Copie e divulgue o link para seus amigos!</p>
                 </div>
                 <div class="form-group">
-                    <input id="shareLink" class="form-control" type="text" value="https://events.com.br/eventos/nomedoevento" />
+                    <input id="shareLink" class="form-control" type="text" value="@Request.CurrentExecutionFilePath" />
                 </div>
                 <div class="form-group">
                     <div id="shareLinkAlert" class="alert alert-success">Link copiado para área de transferência.</div>

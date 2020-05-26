@@ -29,9 +29,10 @@ namespace Events.Controllers
                         dbModel.Users.Add(userModel);
                         dbModel.SaveChanges();
 
-                        Session["Id"] = userModel.UserID;
-                        Session["Name"] = userModel.LoginName;
-                        Session["Email"] = userModel.LoginEmail;
+                        Session["userID"] = userModel.UserID;
+                        Session["userName"] = userModel.LoginName;
+                        Session["userEmail"] = userModel.LoginEmail;
+                        Session["userPass"] = userModel.PasswordHash;
 
                         ModelState.Clear();
                         TempData["Success"] = "Cadastro realizado com sucesso.";

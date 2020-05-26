@@ -138,7 +138,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2474,11 +2473,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Views\Layout\_EventsLayout.cshtml" />
+    <Content Include="Views\Shared\_EventsLayout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Events\Event.cshtml" />
-    <Content Include="Views\Settings\Settings.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Shared\_Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
