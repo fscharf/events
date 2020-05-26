@@ -11,7 +11,7 @@ namespace Events.Controllers
     public class RegisterController : Controller
     {
         [HttpGet]
-        public ActionResult Register(int id = 0)
+        public ActionResult Register()
         {
             User userModel = new User();
             return View(userModel);
@@ -40,7 +40,7 @@ namespace Events.Controllers
                         Response.Redirect("/");
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     TempData["ErrorEmail"] = "E-mail já cadastrado.";
                     Response.Redirect("/cadastro");

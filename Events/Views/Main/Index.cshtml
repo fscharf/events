@@ -14,7 +14,7 @@
                 <div class="col-lg-6 my-auto">
                     <h1 class="font-weight-bold">Conecte-se ao Events</h1>
                     <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
-                    <a class="btn btn-light btn-lg mt-3" href="/cadastro">
+                    <a class="btn btn-primary rounded-pill btn-lg mt-3" href="/cadastro">
                         Começar agora<i class="fas fa-arrow-right ml-3"></i>
                     </a>
                 </div>
@@ -23,32 +23,29 @@
     </div>
 }
 
-
-<!-- section 01 public -->
+<!-- section 01 public carousel -->
 <div class="container-fluid bg-white py-5 mb-3">
     <div class="container">
 
         @if (TempData["Success"] != null)
         {
-            <div class="form-group">
-                <div class="alert alert-success alert-dismissible show p-3" role="alert">
-                    @TempData["Success"]
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+            <div class="alert alert-success alert-dismissible show p-3" role="alert">
+                @TempData["Success"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         }
 
         <!-- section 01 header -->
-        <div class="row mb-4">
+        <div class="row mb-3">
             <div class="col-lg-6">
                 <h2 class="font-weight-bold text-primary">
                     Eventos em destaque
                 </h2>
             </div>
             <div class="col-lg-6 text-left text-sm-right">
-                <div class="btn-group">
+                <div class="btn-group btn-group-sm">
                     <a class="btn btn-outline-primary" href="#mainCarousel" role="button" data-slide="prev">
                         <span class="fas fa-chevron-left" aria-hidden="true"></span>
                     </a>
@@ -60,7 +57,7 @@
         </div>
 
         <!-- section 01 content -->
-        <div id="mainCarousel" class="carousel slide mb-4" data-ride="carousel">
+        <div id="mainCarousel" class="carousel slide mb-3" data-ride="carousel">
             <div class="carousel-inner">
 
                 <!-- section 01 - item 01 -->
@@ -82,8 +79,8 @@
                             <div class="text-muted">
                                 <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
                             </div>
-                            <a class="btn btn-primary btn-lg mt-3" href="/eventos/nomedoevento">
-                                Mais detalhes<i class="fas fa-arrow-right ml-3"></i>
+                            <a class="btn btn-primary rounded-pill btn-lg mt-3" href="/eventos/titulo-evento">
+                                Participar<i class="fas fa-arrow-right ml-3"></i>
                             </a>
                         </div>
                     </div>
@@ -108,8 +105,8 @@
                                 <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
                             </div>
 
-                            <a class="btn btn-primary btn-lg mt-3" href="/eventos/nomedoevento">
-                                Mais detalhes<i class="fas fa-arrow-right ml-3"></i>
+                            <a class="btn btn-primary rounded-pill btn-lg mt-3" href="#">
+                                Participar<i class="fas fa-arrow-right ml-3"></i>
                             </a>
                         </div>
                     </div>
@@ -118,14 +115,12 @@
             </div>
         </div>
     </div>
-
 </div>
 
-<!-- section 02 public -->
+<!-- section 02 public cards -->
 <div class="container-fluid bg-white py-5 mb-3">
     <div class="container">
-
-        <div class="row mb-2">
+        <div class="row mb-3">
             <div class="col-lg">
                 <h2 class="font-weight-bold text-primary">
                     Eventos públicos
@@ -133,17 +128,8 @@
             </div>
         </div>
 
-        <!-- section 02 searchbar -->
-        <form method="post">
-            <div class="form-row mb-4">
-                <div class="form-group col-lg">
-                    <input class="form-control form-control-lg bg-search" type="search" placeholder="Procurar eventos">
-                </div>
-            </div>
-        </form>
-
-        <!-- section 02 content -->
-        <div class="row mb-4">
+        <!-- section 02 -->
+        <div class="row mb-3">
 
             <!-- section 02 item 01 -->
             <div class="col-lg-4 mb-2 mb-sm-0">
@@ -158,11 +144,10 @@
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <hr />
-                        <div class="text-muted">
+                        <p class="card-text text-muted">
                             <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </div>
-                        <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                        </p>
+                        <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                     </div>
                 </div>
             </div>
@@ -180,11 +165,10 @@
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <hr />
-                        <div class="text-muted">
+                        <p class="card-text text-muted">
                             <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </div>
-                        <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                        </p>
+                        <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                     </div>
                 </div>
             </div>
@@ -202,22 +186,18 @@
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <hr />
-                        <div class="text-muted">
+                        <p class="card-text text-muted">
                             <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </div>
-                        <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                        </p>
+                        <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <!-- section 02 redirect btn -->
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-lg text-center text-sm-right">
                 <a href="/eventos">
-                    Explorar todos <i class="fas fa-chevron-right"></i>
+                    Explorar eventos<i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Inscrição realizada com sucesso";
+    Layout = "~/Views/Shared/_EventsLayout.cshtml";
+}
+
+@if (Session["userID"] == null)
+{
+    Response.Redirect("/entrar");
+}
+
+<div class="container-fluid bg-white py-5 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-3 mb-sm-0">
+                <img class="img-fluid" src="~/Content/img/undraw/undraw_High_five_u364.svg" alt="ilustração" />
+            </div>
+            <div class="col-lg-6 text-center">
+                <h1 class="font-weight-bold">Parabéns!</h1>
+                <h3 class="font-weight-bold">Sua inscrição foi realizada com sucesso</h3>
+                <p class="text-muted mb-4">Aposto que vai ser o melhor evento da sua vida!</p>
+
+                <h4 class="text-muted mb-0">Código de inscrição: #123456789</h4>
+                <img src='https://chart.googleapis.com/chart?cht=qr&chl=123456789&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'>
+                <a href='https://br.qr-code-generator.com/' border='0' style='cursor:default' rel='nofollow'></a>
+                <br />
+                <small class="text-muted">* Apresente o código de inscrição ou QR Code para validar sua presença quando estiver no evento.</small>
+                <br />
+                <a href="/">Voltar ao início</a> &middot;
+                <a href="#">Imprimir</a> &middot;
+                <a href="#">Detalhes da inscrição</a>
+            </div>
+        </div>
+    </div>
+</div>
+

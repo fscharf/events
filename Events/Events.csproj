@@ -2478,6 +2478,8 @@
     <Content Include="Views\Events\Event.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
+    <Content Include="Views\Events\_AuthInEvent.cshtml" />
+    <Content Include="Views\Events\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

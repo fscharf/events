@@ -8,7 +8,6 @@
     src: url('../../Fonts/nature-beauty-rg.ttf');
 }
 
-
 :root {
     --main-color: #6930ee;
     --main-dark: #252525;
@@ -40,20 +39,14 @@ body {
     border-bottom: 3px solid var(--main-color) !important;
 }
 
-.bg-search {
-    background: url(../img/icons/search.png) no-repeat;
-    background-size: 20px;
-    background-position: 98% 50%;
+.custom-search::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    right: 16px;
+    background: url(../img/icons/close.svg) no-repeat;
 }
-
-    .bg-search::-webkit-search-cancel-button {
-        -webkit-appearance: none;
-        position: relative;
-        width: 16px;
-        height: 16px;
-        right: 30px;
-        background: url(../img/icons/close.svg) no-repeat;
-    }
 
 .crop-img-size {
     object-fit: cover;
@@ -90,9 +83,9 @@ a:hover {
     color: #ffffff;
 }
 
-.night-mode .bg-white a, .night-mode .bg-light a {
-    color: #d9d9d9;
-}
+    .night-mode .bg-white a, .night-mode .bg-light a {
+        color: #d9d9d9;
+    }
 
 .night-mode .bg-light {
     background: #454545 !important;

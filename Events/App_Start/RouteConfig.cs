@@ -48,16 +48,16 @@ namespace Events
                 "eventos",
                 new { controller = "Events", action = "Index" }
             );
-            
+
             routes.MapRoute(
-                "perfil",
-                "perfil",
-                new { controller = "Session", action = "Profile" }
+                "eventos_inscricao",
+                "eventos/inscricao",
+                new { controller = "Events", action = "Confirm" }
             );
 
             routes.MapRoute(
-                "eventos_nomedoevento",
-                "eventos/nomedoevento",
+                "eventos_tituloevento",
+                "eventos/titulo-evento",
                 new { controller = "Events", action = "Event" }
             );
 

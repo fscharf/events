@@ -14,37 +14,62 @@
             </div>
 
             <form method="post">
-                <div class="form-row mb-2">
-                    <div class="form-group col-lg">
-                        <input class="form-control form-control-lg bg-search" type="search" placeholder="Procurar eventos">
+                <div class="form-row mb-3">
+                    <div class="form-group col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <a class="btn btn-primary custom-search" href="#">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                            <input class="form-control" type="search" placeholder="Procurar eventos">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-2 mb-2 mb-sm-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <select class="form-control">
+                                <option selected>Data</option>
+                                <option value="1">Mais recentes</option>
+                                <option value="2">Mais antigos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-2 mb-2 mb-sm-0">                     
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-sort-amount-up-alt"></i>
+                                </div>
+                            </div>
+                            <select class="form-control">
+                                <option selected>Status</option>
+                                <option value="1">Disponível</option>
+                                <option value="2">Em andamento</option>
+                                <option value="2">Encerrado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-2 mb-2 mb-sm-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-sort-alpha-up"></i>
+                                </div>
+                            </div>
+                            <select class="form-control">
+                                <option selected>Alfabético</option>
+                                <option value="1">A-Z</option>
+                                <option value="2">Z-A</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
-
-            <div class="row mb-4">
-                <div class="col-lg-2 mb-2 mb-sm-0">
-                    <select class="form-control">
-                        <option selected>Data</option>
-                        <option value="1">Mais recentes</option>
-                        <option value="2">Mais antigos</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 mb-2 mb-sm-0">
-                    <select class="form-control">
-                        <option selected>Status</option>
-                        <option value="1">Disponível</option>
-                        <option value="2">Em andamento</option>
-                        <option value="2">Encerrado</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 mb-2 mb-sm-0">
-                    <select class="form-control">
-                        <option selected>Alfabético</option>
-                        <option value="1">A-Z</option>
-                        <option value="2">Z-A</option>
-                    </select>
-                </div>
-            </div>
 
             <div class="row mb-3">
 
@@ -61,11 +86,10 @@
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <hr />
-                            <div class="text-muted">
+                            <p class="card-text text-muted">
                                 <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </div>
-                            <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                            </p>
+                            <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
@@ -83,11 +107,10 @@
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <hr />
-                            <div class="text-muted">
+                            <p class="card-text text-muted">
                                 <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </div>
-                            <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                            </p>
+                            <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
@@ -105,15 +128,23 @@
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <hr />
-                            <div class="text-muted">
+                            <p class="card-text text-muted">
                                 <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </div>
-                            <a href="/eventos/nomedoevento" class="stretched-link"></a>
+                            </p>
+                            <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="row mb-3">
+                <div class="col-lg text-right">
+                    <div class="btn-group">
+                        <a class="btn btn-outline-primary active" href="#page1">1</a>
+                        <a class="btn btn-outline-primary" href="#page2">2</a>
+                        <a class="btn btn-outline-primary" href="#page3">3</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

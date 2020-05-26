@@ -13,9 +13,16 @@ namespace Events.Controllers
         {
             return View();
         }
+
         public ActionResult Event()
         {
             return View();
         }
+
+        public ActionResult Confirm()
+        {
+            return View();
+        }
+
     }
 }
