@@ -27,11 +27,11 @@
                     </h2>
                     <!-- email -->
                     <div class="form-group">
-                        @Html.EditorFor(m => m.LoginEmail, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Email", required = "required" } })
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Email", required = "required" } })
                     </div>
                     <!-- senha -->
                     <div class="form-group">
-                        @Html.EditorFor(m => m.PasswordHash, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Senha", minlength = "6", maxlength = "20", required = "required" } })
+                        @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Senha", minlength = "6", maxlength = "20", required = "required" } })
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block btn-preload mb-2">Entrar</button>
@@ -43,7 +43,7 @@
                     @if (TempData["Error"] != null)
                     {
                         <div class="form-group">
-                            <div class="alert alert-danger alert-dismissible show" role="alert">
+                            <div class="alert alert-danger alert-dismissible show alert-auto-hide" role="alert">
                                 @TempData["Error"]
                                 <button type="button" class="close" data-dismiss="alert" aria-label="close">
                                     <span aria-hidden="true">&times;</span>

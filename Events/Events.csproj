@@ -141,23 +141,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoginDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LoginDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoginDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LoginDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>LoginDataModel.tt</DependentUpon>
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -271,15 +271,15 @@
     <Content Include="Content\img\undraw\undraw_sign_in_e6hj.svg" />
     <Content Include="Content\img\undraw\undraw_social_friends_nsbv.svg" />
     <Content Include="Content\img\undraw\undraw_traveling_t8y2.svg" />
-    <Content Include="Models\LoginDataModel.Context.tt">
+    <Content Include="Models\UserDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-      <LastGenOutput>LoginDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LoginDataModel.tt">
+    <Content Include="Models\UserDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-      <LastGenOutput>LoginDataModel.cs</LastGenOutput>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.css" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.min.css" />
@@ -2476,10 +2476,10 @@
     <Content Include="Views\Shared\_EventsLayout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Events\Event.cshtml" />
-    <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Events\_AuthInEvent.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2491,17 +2491,17 @@
     <Content Include="node_modules\bootstrap\compiler\bootstrap.css.map" />
     <Content Include="Fonts\cabin-rg.ttf" />
     <Content Include="Fonts\product-sans-rg.ttf" />
-    <EntityDeploy Include="Models\LoginDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LoginDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\LoginDataModel.edmx.diagram">
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-    </Content>
     <Content Include="node_modules\jquery-validation\changelog.md" />
     <Content Include="node_modules\jquery-validation\LICENSE.md" />
     <Content Include="node_modules\jquery-validation\package.json" />
     <Content Include="node_modules\jquery-validation\README.md" />
+    <EntityDeploy Include="Models\UserDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserDataModel.edmx.diagram">
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -9,30 +9,29 @@ namespace Events.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public void Auth(User userModel)
+        public ActionResult Auth(User userModel)
         {
-            using (LoginDbEntities db = new LoginDbEntities())
+            using (UsersEntities db = new UsersEntities())
             {
-                var userInfo = db.Users.Where(x => x.LoginEmail == userModel.LoginEmail && x.PasswordHash == userModel.PasswordHash).FirstOrDefault();
+                var userInfo = db.Users.Where(x => x.Email == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
                 if (userInfo == null)
                 {
-                    TempData["Error"] = "Usuário ou senha inválidos.";
-                    Response.Redirect("/entrar");
+                    TempData["Error"] = "Email ou senha inválidos.";
+                    return View("Login");
                 }
                 else
                 {
-                    Session["userID"] = userModel.UserID;
-                    Session["userName"] = userModel.LoginName;
-                    Session["userEmail"] = userModel.LoginEmail;
-                    Session["userPass"] = userModel.PasswordHash;
-                    Response.Redirect("/");
+                    Session["userID"] = userModel.ID;
+                    Session["userName"] = userModel.Name;
+                    Session["userEmail"] = userModel.Email;
+                    Session["userPass"] = userModel.Password;
+                    return RedirectToAction("Index", "Main");
                 }
             }
         }

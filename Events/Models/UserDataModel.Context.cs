@@ -13,10 +13,10 @@ namespace Events.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LoginDbEntities : DbContext
+    public partial class UsersEntities : DbContext
     {
-        public LoginDbEntities()
-            : base("name=LoginDbEntities")
+        public UsersEntities()
+            : base("name=UsersEntities")
         {
         }
     

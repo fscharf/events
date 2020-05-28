@@ -18,34 +18,29 @@ namespace Events.Controllers
         }
 
         [HttpPost]
-        public void Create(User userModel)
+        public ActionResult Create(User userModel)
         {
-            using (LoginDbEntities dbModel = new LoginDbEntities())
+            using (UsersEntities db = new UsersEntities())
             {
-                try
+                if (db.Users.Any(x => x.Email == userModel.Email))
                 {
-                    if (dbModel.Users.Any(x => x.LoginEmail != userModel.LoginEmail))
-                    {
-                        dbModel.Users.Add(userModel);
-                        dbModel.SaveChanges();
-
-                        Session["userID"] = userModel.UserID;
-                        Session["userName"] = userModel.LoginName;
-                        Session["userEmail"] = userModel.LoginEmail;
-                        Session["userPass"] = userModel.PasswordHash;
-
-                        ModelState.Clear();
-                        TempData["Success"] = "Cadastro realizado com sucesso.";
-                        new User();
-                        Response.Redirect("/");
-                    }
+                    TempData["Error"] = "Email já cadastrado.";
+                    return View("Register", userModel);
                 }
-                catch (Exception)
+                else
                 {
-                    TempData["ErrorEmail"] = "E-mail já cadastrado.";
-                    Response.Redirect("/cadastro");
+                    db.Users.Add(userModel);
+                    db.SaveChanges();
+
+                    Session["userID"] = userModel.ID;
+                    Session["userName"] = userModel.Name;
+                    Session["userEmail"] = userModel.Email;
+                    Session["userPass"] = userModel.Password;
                 }
             }
+            ModelState.Clear();
+            TempData["Success"] = "Cadastro realizado com sucesso.";
+            return RedirectToAction("Index", "Main", new User());
         }
     }
 }

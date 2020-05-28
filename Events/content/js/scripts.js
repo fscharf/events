@@ -9,9 +9,14 @@ $("#favToggler").click(function () {
     $(this).toggleClass("text-danger");
 });
 
+// autohide alerts
+$(".alert-auto-hide").show().delay(8000).slideUp(200, function () {
+    $(this).addClass('close');
+});
+
 // spinner button
 $('.btn-preload').click(function () {
-    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>').addClass('disabled');
+    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Carregando...').addClass('disabled');
 });
 
 // compartilhar evento
