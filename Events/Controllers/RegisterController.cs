@@ -17,6 +17,7 @@ namespace Events.Controllers
             return View(userModel);
         }
 
+        // Cria um cadastro no Database através do Model e inicia sessão
         [HttpPost]
         public ActionResult Create(User userModel)
         {

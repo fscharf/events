@@ -14,6 +14,7 @@ namespace Events.Controllers
             return View();
         }
 
+        // Busca informações do Model para autenticar usuário e inicia sessão
         [HttpPost]
         public ActionResult Auth(User userModel)
         {
@@ -36,6 +37,7 @@ namespace Events.Controllers
             }
         }
 
+        // Encerra sessão do usuário autenticado
         public void Logout()
         {
             Session.Abandon();
