@@ -8,7 +8,7 @@ namespace Events.Controllers
 {
     public class EventsController : Controller
     {
-        // GET: Dashboard
+        // exemplo git
         public ActionResult Index()
         {
             return View();
