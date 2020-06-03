@@ -33,10 +33,11 @@ namespace Events.Controllers
                     db.Users.Add(userModel);
                     db.SaveChanges();
 
-                    Session["userID"] = userModel.ID;
-                    Session["userName"] = userModel.Name;
-                    Session["userEmail"] = userModel.Email;
-                    Session["userPass"] = userModel.Password;
+                    Session["UserID"] = userModel.ID;
+                    Session["Name"] = userModel.Name;
+                    Session["Email"] = userModel.Email;
+                    Session["Password"] = userModel.Password;
+                    Session["IsAdmin"] = userModel.IsAdmin;
                 }
             }
             ModelState.Clear();

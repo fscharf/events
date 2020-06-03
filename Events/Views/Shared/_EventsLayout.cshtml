@@ -29,7 +29,7 @@
             </button>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    @if (Session["userID"] == null)
+                    @if (Session["UserID"] == null)
                     {
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="/cadastro">Cadastro</a>
@@ -56,8 +56,8 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow-sm" style="width:220px;">
                                 <div class="text-center p-3">
-                                    <div class="dropdown-item-text">@Session["userName"]</div>
-                                    <div class="dropdown-header">@Session["userEmail"]</div>
+                                    <div class="dropdown-item-text">@Session["Name"]</div>
+                                    <div class="dropdown-header">@Session["Email"]</div>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item profile" href="#profileModal" data-toggle="modal">
