@@ -8,13 +8,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg">
-                    <h1>Olá @Session["Name"]</h1>
+                    <h1 class="font-weight-bold">Olá, @Session["Name"]</h1>
                     <h4 class="text-muted">O que deseja fazer agora?</h4>
-                    <a class="btn btn-primary btn-lg" href="#">Criar Eventos</a>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-lg">
+                    <a class="btn btn-primary" href="#">
+                        <i class="fas fa-calendar-plus mr-2"></i>Criar Evento
+                    </a>
+                    <a class="btn btn-dark" href="#">
+                        <i class="fas fa-calendar-check mr-2"></i>Listar Eventos
+                    </a>
+                    <a class="btn btn-dark" href="#">
+                        <i class="fas fa-user-edit mr-2"></i>Editar Cadastros
+                    </a>
                 </div>
             </div>
         </div>
-
     </div>
 }
 
@@ -39,19 +51,32 @@
     </div>
 }
 
-<!-- section 01 public carousel -->
-<div class="container-fluid bg-white py-5 mb-3">
-    <div class="container">
-
-        @if (TempData["Success"] != null)
-        {
-            <div class="alert alert-success alert-dismissible show p-3" role="alert">
-                @TempData["Success"]
-                <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+@if (TempData["Success"] != null)
+{
+    <div class="container-fluid bg-white py-5 mb-3">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-lg text-center">
+                    <h1 class="font-weight-bold">Bem-vindo, @Session["Name"]</h1>
+                    <h4 class="text-muted">@TempData["Success"]</h4>
+                    <a class="btn btn-primary btn-lg rounded-pill" href="/eventos">
+                        Explorar eventos<i class="fas fa-angle-double-right ml-2"></i>
+                    </a>
+                </div>
             </div>
-        }
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <img class="img-fluid" src="~/Content/img/undraw/undraw_i_can_fly_7egl.svg" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container-fluid bg-white py-5 mb-3">
+
+    <!-- section 01 public carousel -->
+    <div class="container">
 
         <!-- section 01 header -->
         <div class="row mb-3">

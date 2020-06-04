@@ -41,13 +41,11 @@
                     else
                     {
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown" title="Conta">
-                                <i class="far fa-user-circle fa-lg"></i><span class="d-inline-block d-sm-none ml-2">Conta</span>
-                            </a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" title="Opções da conta">@Session["Name"]</a>
                             <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow-sm" style="width:220px;">
-                                <div class="text-center p-3">
+                                <div class="text-center p-2">
                                     <div class="dropdown-item-text">@Session["Name"]</div>
-                                    <div class="dropdown-header">@Session["Email"]</div>
+                                    <small class="text-muted">@Session["Email"]</small>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item profile" href="#profileModal" data-toggle="modal">
