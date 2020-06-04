@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: "Nature Beauty";
+    font-family: 'Nature Beauty';
     src: url('../../Fonts/nature-beauty-rg.ttf');
 }
 
@@ -15,7 +15,7 @@
 }
 
 * {
-    font-family: 'Cabin';
+    font-family: 'Cabin', sans-serif;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 }
 
 .main-font {
-    font-family: "Nature Beauty";
+    font-family: 'Nature Beauty';
     text-transform: lowercase;
 }
 

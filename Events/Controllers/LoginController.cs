@@ -29,11 +29,11 @@ namespace Events.Controllers
                 }
                 else
                 {
-                    Session["UserID"] = userModel.ID;
-                    Session["Name"] = userModel.Name;
-                    Session["Email"] = userModel.Email;
-                    Session["Password"] = userModel.Password;
-                    Session["IsAdmin"] = userModel.IsAdmin;
+                    Session["UserID"] = userInfo.ID;
+                    Session["Name"] = userInfo.Name;
+                    Session["Email"] = userInfo.Email;
+                    Session["Password"] = userInfo.Password;
+                    Session["IsAdmin"] = userInfo.IsAdmin;
                     return RedirectToAction("Index", "Main");
                 }
             }

@@ -2,6 +2,22 @@
     Layout = "~/Views/Shared/_EventsLayout.cshtml";
 }
 
+@if (Session["IsAdmin"] != null)
+{
+    <div class="container-fluid bg-white py-5 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1>Olá @Session["Name"]</h1>
+                    <h4 class="text-muted">O que deseja fazer agora?</h4>
+                    <a class="btn btn-primary btn-lg" href="#">Criar Eventos</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
 <!-- header public -->
 @if (Session["UserID"] == null)
 {
