@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -2480,6 +2481,8 @@
     <Content Include="Views\Events\_AuthInEvent.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Admin\_NewEvent.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

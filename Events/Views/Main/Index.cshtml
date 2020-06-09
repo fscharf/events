@@ -4,30 +4,7 @@
 
 @if (Session["IsAdmin"] != null)
 {
-    <div class="container-fluid bg-white py-5 mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg">
-                    <h1 class="font-weight-bold">Olá, @Session["Name"]</h1>
-                    <h4 class="text-muted">O que deseja fazer agora?</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-lg">
-                    <a class="btn btn-primary" href="#">
-                        <i class="fas fa-calendar-plus mr-2"></i>Criar Evento
-                    </a>
-                    <a class="btn btn-dark" href="#">
-                        <i class="fas fa-calendar-check mr-2"></i>Listar Eventos
-                    </a>
-                    <a class="btn btn-dark" href="#">
-                        <i class="fas fa-user-edit mr-2"></i>Editar Cadastros
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    Response.Redirect("/admin");
 }
 
 <!-- header public -->
@@ -241,3 +218,4 @@
         </div>
     </div>
 </div>
+
