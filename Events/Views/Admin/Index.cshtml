@@ -8,29 +8,54 @@
     Response.Redirect("/");
 }
 
-<div class="container-fluid bg-white py-5 mb-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg">
-                <h1 class="font-weight-bold">Olá, @Session["Name"]</h1>
-                <h4 class="text-muted">O que deseja fazer agora?</h4>
+    <div class="container-fluid bg-white py-5 mb-3">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-lg">
+                    <h1 class="font-weight-bold">Olá, @Session["Name"]</h1>
+                    <h4 class="text-muted">O que deseja fazer agora?</h4>
+                </div>
             </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-lg">
-                <a class="btn btn-primary" href="#newEvent" data-toggle="modal">
-                    <i class="fas fa-calendar-plus mr-2"></i>Criar Evento
-                </a>
-                <a class="btn btn-dark" href="#">
-                    <i class="fas fa-calendar-check mr-2"></i>Listar Eventos
-                </a>
-                <a class="btn btn-dark" href="#">
-                    <i class="fas fa-user-edit mr-2"></i>Editar Cadastros
-                </a>
+            <hr />
+            <div class="row mb-5">
+                <div class="col-lg">
+                    <a class="btn btn-primary" href="#newEvent" data-toggle="modal">
+                        <i class="fas fa-calendar-plus mr-2"></i>Criar Evento
+                    </a>
+                    <a class="btn btn-dark" href="#">
+                        <i class="fas fa-calendar-check mr-2"></i>Listar Eventos
+                    </a>
+                    <a class="btn btn-dark" href="#">
+                        <i class="fas fa-user-edit mr-2"></i>Editar Cadastros
+                    </a>
+                </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <h2 class="font-weight-bold">Usuários</h2>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome Completo</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Administrador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">@Session["UserID"]</th>
+                                    <th scope="row">@Session["Name"]</th>
+                                    <th scope="row">@Session["Email"]</th>
+                                    <th scope="row">@Session["IsAdmin"]</th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
 
 @Html.Partial("_NewEvent")

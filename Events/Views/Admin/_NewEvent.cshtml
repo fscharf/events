@@ -1,7 +1,9 @@
-﻿<div id="newEvent" class="modal fade" role="dialog" tabindex="-1">
+﻿@model Events.Models.Event
+
+<div id="newEvent" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
                 <button type="button" data-dismiss="modal" class="btn btn-light close">&times;</button>
             </div>
             <div class="modal-body">
@@ -14,7 +16,40 @@
                                     <i class="fas fa-pen-alt"></i>
                                 </div>
                             </div>
-                            <input class="form-control" type="text" placeholder="Título do evento" />
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Título do evento", minlength = "3", maxlength = "80", required = "required" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Descrição completa", cols = "500", required = "required" })
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", placeholder = "Título do evento", required = "required", type = "date" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Hour, new { htmlAttributes = new { @class = "form-control", placeholder = "Horário", required = "required", type = "time" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Local, new { htmlAttributes = new { @class = "form-control", placeholder = "Endereço completo", required = "required", minlength = "2", maxlength = "150" } })
                         </div>
                     </div>
                     <div class="form-group">
@@ -24,23 +59,12 @@
                                     <i class="fas fa-image"></i>
                                 </div>
                             </div>
-                            <input class="form-control" type="file" />
+                            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", placeholder = "Selecione uma imagem", required = "required", type = "file" } })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Conteúdo" cols="400"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                            </div>
-                            <input class="form-control" type="date" />
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Criar</a>
+                    <input class="btn btn-dark" type="button" value="Fechar" data-dismiss="modal">
+                    <input class="btn btn-secondary" type="reset" value="Limpar">
+                    <input type="submit" value="Criar Evento" class="btn btn-primary">
                 </form>
             </div>
         </div>
