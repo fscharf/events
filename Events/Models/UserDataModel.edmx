@@ -13,9 +13,10 @@
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Hour" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Local" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Local" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Description" Type="text" Nullable="false" />
-          <Property Name="Image" Type="varbinary" MaxLength="1" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -78,9 +79,10 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hour" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Local" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Local" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="1" FixedLength="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="UsersModel.FK_UserID" FromRole="Event" ToRole="User" />
         </EntityType>
         <Association Name="FK_UserID">
@@ -116,6 +118,7 @@
             <EntityTypeMapping TypeName="UsersModel.Event">
               <MappingFragment StoreEntitySet="Event">
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Local" ColumnName="Local" />
                 <ScalarProperty Name="Hour" ColumnName="Hour" />

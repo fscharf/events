@@ -11,8 +11,6 @@ namespace Events.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Web;
     
     public partial class Event
     {
@@ -22,10 +20,9 @@ namespace Events.Models
         public System.TimeSpan Hour { get; set; }
         public string Local { get; set; }
         public string Description { get; set; }
-        public byte[] Image { get; set; }
-        // Irei finalizar depois
-        public HttpPostedFileBase ImageFile { get; set; }
-        
+        public int Capacity { get; set; }
+        public string Image { get; set; }
+    
         public virtual User User { get; set; }
     }
 }
