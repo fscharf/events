@@ -176,6 +176,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\alertifyjs\alertify.css" />
+    <Content Include="Content\alertifyjs\alertify.min.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.css" />
+    <Content Include="Content\alertifyjs\themes\default.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\css\forms.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="favicon.ico" />
@@ -2477,6 +2493,8 @@
     <Content Include="node_modules\popper.js\README.md" />
     <Content Include="Content\js\jquery.maskedinput.js" />
     <Content Include="Content\js\scripts.js" />
+    <Content Include="Scripts\alertify.js" />
+    <Content Include="Scripts\alertify.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2495,8 +2513,8 @@
     <Content Include="Views\Events\Confirm.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Admin\_NewEvent.cshtml" />
-    <Content Include="Views\Admin\TestIndex.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

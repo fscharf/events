@@ -21,54 +21,78 @@
         <hr />
         <div class="row mb-5">
             <div class="col-lg">
-                <a class="btn btn-primary" href="#newEvent" data-toggle="modal">
-                    <i class="fas fa-calendar-plus mr-2"></i>Criar Evento
+                <a class="btn btn-dark btn-lg" href="#newEvent" data-toggle="modal">
+                    <i class="fas fa-calendar-plus mr-2"></i>Novo Evento
                 </a>
-                <a class="btn btn-dark" href="#">
-                    <i class="fas fa-calendar-check mr-2"></i>Listar Eventos
+                <a href="/admin/add" class="btn btn-dark btn-lg">
+                    <i class="fas fa-user-plus mr-2"></i>Novo Cadastro
                 </a>
-                <a class="btn btn-dark" href="#">
-                    <i class="fas fa-user-edit mr-2"></i>Editar Cadastros
+                <a class="btn btn-dark btn-lg" href="#">
+                    <i class="fas fa-calendar-check mr-2"></i>Gerenciar Eventos
                 </a>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h2 class="font-weight-bold">Usuários</h2>
+                <h2 class="font-weight-bold">Cadastros</h2>
 
-                <p>
-                    @Html.ActionLink("Criar Usuário", "Create New")
-                </p>
-                <table class="table">
+
+                <table class="table table-striped">
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IsAdmin)
-                        </th>
-                        <th></th>
+                        <th>Código</th>
+                        <th>Nome completo</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Administrador?</th>
+                        <th>Funções</th>
                     </tr>
 
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Email)
+                                @Html.DisplayFor(modelItem => item.ID)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.IsAdmin)
+                                @Html.DisplayFor(modelItem => item.Email)
                             </td>
                             <td>
-                                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-                                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
-                                @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
+                                @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(modelItem => item.IsAdmin.Value, new { disabled = "disabled" })
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="@Url.Action("Add", "Admin", new { id = item.ID })">
+                                    <i class="fas fa-pen-alt mr-2"></i>Editar
+                                </a>
+                                <a class="btn btn-danger" data-toggle="modal" href="#alertConfirm">
+                                    <i class="fas fa-trash-alt mr-2"></i>Excluir
+                                </a>
+
+                                <!--alerta de confirmação-->
+                                <div id="alertConfirm" class="modal fade" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                Aviso!
+                                                <button type="button" data-dismiss="modal" class="btn btn-light close">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Tem certeza que deseja prosseguir?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" data-dismiss="modal" class="btn btn-primary">Cancelar</a>
+                                                <a class="btn btn-dark" href="@Url.Action("Delete", "Admin", new { id = item.ID })">
+                                                    <i class="fas fa-trash-alt mr-2"></i>Excluir
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
@@ -78,3 +102,15 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(function () {
+            var successMsg = '@TempData["Success"]'
+            if (successMsg != '')
+                alertify.success(successMsg);
+        });
+    </script>
+}
+
+

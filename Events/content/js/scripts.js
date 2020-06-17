@@ -16,7 +16,7 @@ $(".alert-auto-hide").show().delay(8000).slideUp(200, function () {
 
 // spinner button
 $('.btn-preload').click(function () {
-    $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Carregando...').addClass('disabled');
+    $(this).html('<span class="spinner-border" role="status" aria-hidden="true"></span>').addClass('disabled');
 });
 
 // compartilhar evento

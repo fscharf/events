@@ -15,6 +15,7 @@
     <link href="~/Content/img/events-logo.png" rel="icon" />
 
     @Styles.Render("~/content/css")
+    @Styles.Render("~/alertify/css")
     @Styles.Render("~/fontawesome/css")
 </head>
 
@@ -57,7 +58,7 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/sair">
-                                    <i class="fas fa-sign-out-alt mr-3"></i>Sair
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Sair
                                 </a>
                             </div>
                         </li>
@@ -130,6 +131,7 @@
     @Scripts.Render("~/scripts/popper.js")
     @Scripts.Render("~/scripts/bootstrap")
     @Scripts.Render("~/scripts/js")
+    @Scripts.Render("~/alertify/js")
     @RenderSection("scripts", required: false)
 
 </body>

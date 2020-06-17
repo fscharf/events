@@ -10,9 +10,6 @@ namespace Events
             bundles.Add(new ScriptBundle("~/scripts/jquery").Include(
                       "~/node_modules/jquery/dist/jquery.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/jqueryval").Include(
-                      "~/node_modules/jquery-validation/dist/jquery.validate.js"));
-
             bundles.Add(new ScriptBundle("~/scripts/popper.js").Include(
                       "~/node_modules/popper.js/dist/umd/popper.js"));
 
@@ -23,6 +20,9 @@ namespace Events
                       "~/Content/js/scripts.js",
                       "~/Content/js/jquery.maskedinput.js"));
 
+            bundles.Add(new StyleBundle("~/alertify/js").Include(
+                     "~/Scripts/alertify.min.js"));
+
             bundles.Add(new StyleBundle("~/fontawesome/css").Include(
                       "~/node_modules/@fortawesome/fontawesome-free/css/all.css"));
 
@@ -30,8 +30,15 @@ namespace Events
                       "~/node_modules/bootstrap/compiler/bootstrap.css",
                       "~/Content/css/style.css"));
 
-            bundles.Add(new StyleBundle("~/custom/css").Include(
+            bundles.Add(new StyleBundle("~/content/css").Include(
+                      "~/node_modules/bootstrap/compiler/bootstrap.css",
+                      "~/Content/css/style.css"));
+
+            bundles.Add(new StyleBundle("~/forms/css").Include(
                       "~/Content/css/forms.css"));
+
+            bundles.Add(new StyleBundle("~/alertify/css").Include(
+                      "~/Content/alertifyjs/alertify.min.css"));
         }
     }
 }

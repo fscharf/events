@@ -50,6 +50,12 @@ namespace Events
             );
 
             routes.MapRoute(
+               "admin_add",
+               "admin/add",
+               new { controller = "Admin", action = "Add" }
+           );
+
+            routes.MapRoute(
                 "eventos",
                 "eventos",
                 new { controller = "Events", action = "Index" }
