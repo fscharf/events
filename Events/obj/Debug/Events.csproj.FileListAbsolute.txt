@@ -166,3 +166,9 @@ C:\Git\Local\Events\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cach
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.dll
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.xml

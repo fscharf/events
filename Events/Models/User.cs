@@ -11,6 +11,8 @@ namespace Events.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
+
 
     public partial class User
     {

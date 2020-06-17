@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Painel Administrativo";
+﻿@model IEnumerable<Events.Models.User>
+
+@{
+    ViewBag.Title = "Painel Geral";
     Layout = "~/Views/Shared/_EventsLayout.cshtml";
 }
 
@@ -33,25 +35,46 @@
         <div class="row">
             <div class="col">
                 <h2 class="font-weight-bold">Usuários</h2>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nome Completo</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">Administrador</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            </tr>
-                        </tbody>
-                    </table>
 
+                <p>
+                    @Html.ActionLink("Criar Usuário", "Create New")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsAdmin)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsAdmin)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
             </div>
         </div>
-
     </div>
 </div>
-
-@Html.Partial("_NewEvent")
