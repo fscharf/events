@@ -21,7 +21,7 @@
         <hr />
         <div class="row mb-5">
             <div class="col-lg">
-                <a class="btn btn-dark btn-lg" href="#newEvent" data-toggle="modal">
+                <a class="btn btn-dark btn-lg" href="@Url.Action("NewEvent", "Admin")">
                     <i class="fas fa-calendar-plus mr-2"></i>Novo Evento
                 </a>
                 <a href="/admin/add" class="btn btn-dark btn-lg">
@@ -69,30 +69,9 @@
                                 <a class="btn btn-primary" href="@Url.Action("Add", "Admin", new { id = item.ID })">
                                     <i class="fas fa-pen-alt mr-2"></i>Editar
                                 </a>
-                                <a class="btn btn-danger" data-toggle="modal" href="#alertConfirm">
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "Admin", new { id = item.ID })">
                                     <i class="fas fa-trash-alt mr-2"></i>Excluir
                                 </a>
-
-                                <!--alerta de confirmação-->
-                                <div id="alertConfirm" class="modal fade" role="dialog" tabindex="-1">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                Aviso!
-                                                <button type="button" data-dismiss="modal" class="btn btn-light close">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Tem certeza que deseja prosseguir?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" data-dismiss="modal" class="btn btn-primary">Cancelar</a>
-                                                <a class="btn btn-dark" href="@Url.Action("Delete", "Admin", new { id = item.ID })">
-                                                    <i class="fas fa-trash-alt mr-2"></i>Excluir
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </td>
                         </tr>
                     }

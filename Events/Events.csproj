@@ -2512,7 +2512,7 @@
     <Content Include="Views\Events\_AuthInEvent.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\Admin\_NewEvent.cshtml" />
+    <Content Include="Views\Admin\NewEvent.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Add.cshtml" />
   </ItemGroup>

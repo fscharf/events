@@ -1,12 +1,21 @@
 ﻿@model Events.Models.Event
 
-<div id="newEvent" class="modal fade" role="dialog" tabindex="-1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button type="button" data-dismiss="modal" class="btn btn-light close">&times;</button>
-            </div>
-            <div class="modal-body">
+@{
+    ViewBag.Title = "Novo Evento";
+    Layout = "~/Views/Shared/_EventsLayout.cshtml";
+}
+
+@if (Session["IsAdmin"] == null)
+{
+    Response.Redirect("/");
+}
+
+@Styles.Render("~/forms/css")
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-5 mx-auto">
+            <div class="bg-white shadow-sm rounded p-5">
                 <h4 class="font-weight-bold text-center mb-3">Cadastro de Evento</h4>
                 <form method="post">
                     <div class="form-group">

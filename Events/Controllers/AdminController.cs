@@ -54,5 +54,10 @@ namespace Events.Controllers
             TempData["Success"] = "Cadastro excluído com sucesso.";
             return RedirectToAction("Index");
         }
+
+        public ActionResult NewEvent()
+        {
+            return View();
+        }
     }
 }
