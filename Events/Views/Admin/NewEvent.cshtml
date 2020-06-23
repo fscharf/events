@@ -71,8 +71,10 @@
                             @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", placeholder = "Selecione uma imagem", required = "required", type = "file" } })
                         </div>
                     </div>
-                    <input class="btn btn-dark" type="button" value="Fechar" data-dismiss="modal">
-                    <input class="btn btn-secondary" type="reset" value="Limpar">
+                    <a href="/admin" class="btn btn-dark">
+                        <i class="fas fa-arrow-left mr-2"></i>Voltar
+                    </a>
+                    <input class="btn btn-dark" type="reset" value="Limpar">
                     <input type="submit" value="Criar Evento" class="btn btn-primary">
                 </form>
             </div>
