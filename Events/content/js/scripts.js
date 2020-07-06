@@ -2,7 +2,7 @@
 $('.card').addClass('bg-white border-0');
 
 $(".card").hover(function () {
-    $(this).toggleClass("text-primary shadow-lg");
+    $(this).toggleClass("text-primary shadow");
 });
 
 $("#favToggler").click(function () {
