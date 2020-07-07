@@ -41,7 +41,7 @@ body {
 }
 
 .form-control:focus {
-    border-bottom: 3px solid var(--main-color) !important;
+    border-bottom: 2px solid var(--main-color) !important;
 }
 
 .custom-search::-webkit-search-cancel-button {
@@ -57,7 +57,11 @@ body {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    height: 220px;
+    height: 300px;
+}
+
+.rounded-xl {
+    border-radius: .75rem;
 }
 
 @media screen and (max-width: 768px) and (max-width: 1200px) {

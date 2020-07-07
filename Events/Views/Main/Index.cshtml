@@ -1,25 +1,25 @@
-﻿@{
-    Layout = "~/Views/Shared/_EventsLayout.cshtml";
-}
-
-@if (Session["IsAdmin"] != null)
+﻿@if (Session["IsAdmin"] != null)
 {
     Response.Redirect("/admin");
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- header public -->
 @if (Session["UserID"] == null)
 {
-    <div class="container-fluid bg-main-gradient rounded-lg py-5 mb-3">
+    <div class="container-fluid bg-main-gradient py-5 mb-3">
         <div class="container">
-            <div class="row text-light">
+            <div class="row text-light text-center text-sm-left">
                 <div class="col-lg-6">
                     <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
                 </div>
                 <div class="col-lg-6 my-auto">
-                    <h1 class="font-weight-bold">Conecte-se ao Events</h1>
+                    <h2 class="font-weight-bold">Conecte-se ao Events</h2>
                     <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
-                    <a class="btn btn-primary rounded-pill btn-lg mt-3" href="/cadastro">
+                    <a class="btn btn-primary btn-lg mt-3" href="/cadastro">
                         Começar agora<i class="fas fa-arrow-right ml-3"></i>
                     </a>
                 </div>
@@ -30,13 +30,13 @@
 
 @if (TempData["Success"] != null)
 {
-    <div class="container-fluid bg-white rounded-lg py-5 mb-3">
+    <div class="container-fluid bg-white py-5 mb-3">
         <div class="container">
             <div class="row mb-3">
                 <div class="col-lg text-center">
-                    <h1 class="font-weight-bold">Bem-vindo, @Session["Name"]</h1>
+                    <h2 class="font-weight-bold">Bem-vindo, @Session["Name"]</h2>
                     <h4 class="text-muted">@TempData["Success"]</h4>
-                    <a class="btn btn-primary btn-lg rounded-pill" href="/eventos">
+                    <a class="btn btn-primary btn-lg" href="/eventos">
                         Explorar eventos<i class="fas fa-angle-double-right ml-2"></i>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
     </div>
 }
 
-<div class="container-fluid bg-white rounded-lg py-5 mb-3">
+<div class="container-fluid bg-white py-5 mb-3">
 
     <!-- section 01 public carousel -->
     <div class="container">
@@ -58,19 +58,17 @@
         <!-- section 01 header -->
         <div class="row mb-3">
             <div class="col-lg-6">
-                <h2 class="font-weight-bold text-primary">
+                <h2 class="font-weight-bold text-primary text-center text-sm-left">
                     Eventos em destaque
                 </h2>
             </div>
-            <div class="col-lg-6 text-left text-sm-right">
-                <div class="btn-group btn-group-sm">
-                    <a class="btn btn-outline-primary" href="#mainCarousel" role="button" data-slide="prev">
-                        <span class="fas fa-chevron-left" aria-hidden="true"></span>
-                    </a>
-                    <a class="btn btn-outline-primary" href="#mainCarousel" role="button" data-slide="next">
-                        <span class="fas fa-chevron-right" aria-hidden="true"></span>
-                    </a>
-                </div>
+            <div class="col-lg-6 text-center text-sm-right">
+                <a class="card-link" href="#mainCarousel" role="button" data-slide="prev">
+                    <span class="fas fa-chevron-left" aria-hidden="true"></span>
+                </a>
+                <a class="card-link" href="#mainCarousel" role="button" data-slide="next">
+                    <span class="fas fa-chevron-right" aria-hidden="true"></span>
+                </a>
             </div>
         </div>
 
@@ -80,25 +78,23 @@
 
                 <!-- section 01 - item 01 -->
                 <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-lg-7 mb-2 mb-sm-0">
-                            <img class="img-fluid crop-img-size rounded" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="" />
+                    <div class="row mb-3">
+                        <div class="col-lg-6">
+                            <img class="img-fluid crop-img-size rounded-lg" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="" />
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="text-muted mb-2">
-                                <i class="far fa-calendar mr-2"></i>22/09/20
-                                <i class="far fa-clock mx-2"></i>20:00
+                                <i class="fas fa-calendar mr-2" title="Data" data-toggle="tooltip"></i>22/09/20
+                                <i class="fas fa-clock mx-2" title="Horário" data-toggle="tooltip"></i>20:00
+                                <i class="fas fa-map-marker-alt mx-2" title="Local" data-toggle="tooltip"></i>Rua João Silva, 23
                             </div>
-                            <h4 class="font-weight-bold">Lorem ipsum</h4>
-                            <p class="text-muted text-truncate">
+                            <h3 class="font-weight-bold">Lorem ipsum dolor</h3>
+                            <h5 class="text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-
-                            <div class="text-muted">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </div>
-                            <a class="btn btn-primary rounded-pill btn-block mt-3" href="#">Participar</a>
-
+                            </h5>
+                            <a class="btn btn-primary btn-lg mt-3" href="/eventos/titulo-evento">
+                                Participar<i class="fas fa-arrow-right ml-3"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -106,23 +102,22 @@
                 <!-- section 01 - item 02 -->
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-lg-7 mb-2 mb-sm-0">
+                        <div class="col-lg-6">
                             <img class="img-fluid crop-img-size rounded" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="" />
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="text-muted mb-2">
-                                <i class="far fa-calendar mr-2"></i>22/09/20
-                                <i class="far fa-clock mx-2"></i>20:00
+                                <i class="fas fa-calendar mr-2" title="Data" data-toggle="tooltip"></i>22/09/20
+                                <i class="fas fa-clock mx-2" title="Horário" data-toggle="tooltip"></i>20:00
+                                <i class="fas fa-map-marker-alt mx-2" title="Local" data-toggle="tooltip"></i>Rua João Silva, 23
                             </div>
-                            <h4 class="font-weight-bold">Lorem ipsum</h4>
-                            <p class="text-muted text-truncate">
+                            <h3 class="font-weight-bold">Lorem ipsum dolor</h3>
+                            <h5 class="text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                            <div class="text-muted">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </div>
-
-                            <a class="btn btn-primary rounded-pill btn-block mt-3" href="#">Participar</a>
+                            </h5>
+                            <a class="btn btn-primary btn-lg mt-3" href="/eventos/titulo-evento">
+                                Participar<i class="fas fa-arrow-right ml-3"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -149,20 +144,17 @@
             <!-- section 02 item 01 -->
             <div class="col-lg-4 mb-2 mb-sm-0">
                 <div class="card">
-                    <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
-                    <div class="card-body">
+                    <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
+                    <div class="card-body text-center">
                         <div class="text-muted mb-3">
-                            <i class="far fa-calendar mr-2"></i>22/09/20
-                            <i class="far fa-clock mx-2"></i>20:00
+                            <i class="fas fa-calendar mr-2"></i>22/09/20
+                            <i class="fas fa-clock mx-2"></i>20:00
                         </div>
-                        <h5 class="card-title font-weight-bold">Título do evento</h5>
+                        <h4 class="card-title font-weight-bold">Título do evento</h4>
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <p class="card-text text-muted">
-                            <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </p>
-                        <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
+                        <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
                     </div>
                 </div>
             </div>
@@ -170,45 +162,38 @@
             <!-- section 02 item 02 -->
             <div class="col-lg-4 mb-2 mb-sm-0">
                 <div class="card">
-                    <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="Reunião" />
-                    <div class="card-body">
+                    <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="Reunião" />
+                    <div class="card-body text-center">
                         <div class="text-muted mb-3">
-                            <i class="far fa-calendar mr-2"></i>22/09/20
-                            <i class="far fa-clock mx-2"></i>20:00
+                            <i class="fas fa-calendar mr-2"></i>22/09/20
+                            <i class="fas fa-clock mx-2"></i>20:00
                         </div>
-                        <h5 class="card-title font-weight-bold">Título do evento</h5>
+                        <h4 class="card-title font-weight-bold">Título do evento</h4>
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <p class="card-text text-muted">
-                            <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </p>
-                        <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
-                    </div>
-                </div>
+                        <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
+                    </div>                </div>
             </div>
 
             <!-- section 02 item 03 -->
             <div class="col-lg-4 mb-2 mb-sm-0">
                 <div class="card">
-                    <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" alt="Reunião" />
-                    <div class="card-body">
+                    <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" alt="Reunião" />
+                    <div class="card-body text-center">
                         <div class="text-muted mb-3">
-                            <i class="far fa-calendar mr-2"></i>22/09/20
-                            <i class="far fa-clock mx-2"></i>20:00
+                            <i class="fas fa-calendar mr-2"></i>22/09/20
+                            <i class="fas fa-clock mx-2"></i>20:00
                         </div>
-                        <h5 class="card-title font-weight-bold">Título do evento</h5>
+                        <h4 class="card-title font-weight-bold">Título do evento</h4>
                         <p class="card-text text-muted text-truncate">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
-                        <p class="card-text text-muted">
-                            <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                        </p>
-                        <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
-                    </div>
-                </div>
+                        <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
+                    </div>                </div>
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-lg text-center text-sm-right">
                 <a href="/eventos">

@@ -1,6 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Todos eventos";
-    Layout = "~/Views/Shared/_EventsLayout.cshtml";
+    ViewBag.Title = "Eventos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }  
     <div class="container-fluid bg-white py-5 mb-3">
         <div class="container">
@@ -32,14 +32,10 @@
                                     <i class="fas fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <select class="form-control">
-                                <option selected>Data</option>
-                                <option value="1">Mais recentes</option>
-                                <option value="2">Mais antigos</option>
-                            </select>
+                            <input type="date" class="form-control" />
                         </div>
                     </div>
-                    <div class="form-group col-lg-2 mb-2 mb-sm-0">                     
+                    <div class="form-group col-lg-2 mb-2 mb-sm-0">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -76,20 +72,17 @@
                 <!-- section 02 item 01 -->
                 <div class="col-lg-4 mb-2 mb-sm-0">
                     <div class="card">
-                        <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
-                        <div class="card-body">
+                        <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
+                        <div class="card-body text-center">
                             <div class="text-muted mb-3">
-                                <i class="far fa-calendar mr-2"></i>22/09/20
-                                <i class="far fa-clock mx-2"></i>20:00
+                                <i class="fas fa-calendar mr-2"></i>22/09/20
+                                <i class="fas fa-clock mx-2"></i>20:00
                             </div>
-                            <h5 class="card-title font-weight-bold">Título do evento</h5>
+                            <h4 class="card-title font-weight-bold">Título do evento</h4>
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </p>
-                            <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
+                            <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
@@ -97,20 +90,17 @@
                 <!-- section 02 item 02 -->
                 <div class="col-lg-4 mb-2 mb-sm-0">
                     <div class="card">
-                        <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="Reunião" />
-                        <div class="card-body">
+                        <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="Reunião" />
+                        <div class="card-body text-center">
                             <div class="text-muted mb-3">
-                                <i class="far fa-calendar mr-2"></i>22/09/20
-                                <i class="far fa-clock mx-2"></i>20:00
+                                <i class="fas fa-calendar mr-2"></i>22/09/20
+                                <i class="fas fa-clock mx-2"></i>20:00
                             </div>
-                            <h5 class="card-title font-weight-bold">Título do evento</h5>
+                            <h4 class="card-title font-weight-bold">Título do evento</h4>
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </p>
-                            <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
+                            <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
@@ -118,20 +108,17 @@
                 <!-- section 02 item 03 -->
                 <div class="col-lg-4 mb-2 mb-sm-0">
                     <div class="card">
-                        <img class="card-img-top img-fluid rounded-top crop-img-size" src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" alt="Reunião" />
-                        <div class="card-body">
+                        <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" alt="Reunião" />
+                        <div class="card-body text-center">
                             <div class="text-muted mb-3">
-                                <i class="far fa-calendar mr-2"></i>22/09/20
-                                <i class="far fa-clock mx-2"></i>20:00
+                                <i class="fas fa-calendar mr-2"></i>22/09/20
+                                <i class="fas fa-clock mx-2"></i>20:00
                             </div>
-                            <h5 class="card-title font-weight-bold">Título do evento</h5>
+                            <h4 class="card-title font-weight-bold">Título do evento</h4>
                             <p class="card-text text-muted text-truncate">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt mr-2"></i>Rua João Silva, 23
-                            </p>
-                            <a href="#" class="stretched-link btn btn-primary rounded-pill btn-block">Participar</a>
+                            <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
                         </div>
                     </div>
                 </div>
