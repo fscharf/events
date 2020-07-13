@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: 'Nature Beauty';
-    src: url('../../Fonts/nature-beauty-rg.ttf');
+    src: url('../../Fonts/nature-beauty.ttf');
 }
 
 :root {
@@ -44,14 +44,18 @@ body {
     border-bottom: 2px solid var(--main-color) !important;
 }
 
-.custom-search::-webkit-search-cancel-button {
+input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     position: relative;
     width: 16px;
     height: 16px;
-    right: 16px;
     background: url(../img/icons/close.svg) no-repeat;
 }
+
+    input[type="search"]::-webkit-search-cancel-button:hover {
+        cursor: pointer;
+    }
+
 
 .crop-img-size {
     object-fit: cover;

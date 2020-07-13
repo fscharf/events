@@ -30,12 +30,8 @@ namespace Events
                       "~/node_modules/bootstrap/compiler/bootstrap.css",
                       "~/Content/css/style.css"));
 
-            bundles.Add(new StyleBundle("~/content/css").Include(
-                      "~/node_modules/bootstrap/compiler/bootstrap.css",
-                      "~/Content/css/style.css"));
-
             bundles.Add(new StyleBundle("~/forms/css").Include(
-                      "~/Content/css/forms.css"));
+                      "~/Content/css/custom-forms.css"));
 
             bundles.Add(new StyleBundle("~/alertify/css").Include(
                       "~/Content/alertifyjs/alertify.min.css"));
