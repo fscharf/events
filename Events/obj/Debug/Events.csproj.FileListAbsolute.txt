@@ -152,3 +152,4 @@ C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Syst
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Memory.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
