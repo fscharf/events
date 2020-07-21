@@ -17,24 +17,23 @@ namespace Events
                       "~/node_modules/bootstrap/dist/js/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/js").Include(
-                      "~/Content/js/scripts.js",
-                      "~/Content/js/jquery.maskedinput.js"));
+                      "~/content/js/scripts.js",
+                      "~/content/js/jquery.maskedinput.js"));
 
             bundles.Add(new StyleBundle("~/alertify/js").Include(
-                     "~/Scripts/alertify.min.js"));
+                     "~/scripts/alertify.min.js"));
 
             bundles.Add(new StyleBundle("~/fontawesome/css").Include(
                       "~/node_modules/@fortawesome/fontawesome-free/css/all.css"));
 
             bundles.Add(new StyleBundle("~/content/css").Include(
-                      "~/node_modules/bootstrap/compiler/bootstrap.css",
-                      "~/Content/css/style.css"));
+                      "~/content/css/style.min.css"));
 
             bundles.Add(new StyleBundle("~/forms/css").Include(
-                      "~/Content/css/custom-forms.css"));
+                      "~/content/css/custom-forms.css"));
 
             bundles.Add(new StyleBundle("~/alertify/css").Include(
-                      "~/Content/alertifyjs/alertify.min.css"));
+                      "~/content/alertifyjs/alertify.min.css"));
         }
     }
 }
