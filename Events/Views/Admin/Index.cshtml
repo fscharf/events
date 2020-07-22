@@ -7,27 +7,27 @@
 
 @if (Session["IsAdmin"] == null)
 {
-    Response.Redirect("/");
+    Response.Redirect("/entrar");
 }
 
 <div class="container-fluid bg-white py-5 mb-3">
     <div class="container">
         <div class="row mb-3">
             <div class="col-lg">
-                <h1 class="font-weight-bold">Olá, @Session["Name"]</h1>
+                <h2 class="font-weight-bold">Olá, @Session["Name"]</h2>
                 <h4 class="text-muted">O que deseja fazer agora?</h4>
             </div>
         </div>
         <hr />
         <div class="row mb-5">
             <div class="col-lg">
-                <a class="btn btn-dark btn-lg" href="@Url.Action("NewEvent", "Admin")">
+                <a class="btn btn-dark btn-lg disabled" href="#">
                     <i class="fas fa-calendar-plus mr-2"></i>Novo Evento
                 </a>
-                <a href="/admin/add" class="btn btn-dark btn-lg">
+                <a href="@Url.Action("Create", "Admin")" class="btn btn-dark btn-lg">
                     <i class="fas fa-user-plus mr-2"></i>Novo Cadastro
                 </a>
-                <a class="btn btn-dark btn-lg" href="#">
+                <a class="btn btn-dark btn-lg disabled" href="#">
                     <i class="fas fa-calendar-check mr-2"></i>Gerenciar Eventos
                 </a>
             </div>
@@ -66,11 +66,11 @@
                                 @Html.DisplayFor(modelItem => item.IsAdmin)
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="@Url.Action("Add", "Admin", new { id = item.ID })">
+                                <a class="btn btn-primary" href="@Url.Action("Edit", "Admin", new { id = item.ID })">
                                     <i class="fas fa-pen-alt mr-2"></i>Editar
                                 </a>
                                 <a class="btn btn-danger" href="@Url.Action("Delete", "Admin", new { id = item.ID })">
-                                    <i class="fas fa-trash-alt mr-2"></i>Excluir
+                                    <i class="fas fa-trash-alt mr-2"></i>Apagar
                                 </a>
                             </td>
                         </tr>
@@ -86,10 +86,13 @@
     <script>
         $(function () {
             var successMsg = '@TempData["Success"]'
-            if (successMsg != '')
+            var errorMsg = '@TempData["Error"]'
+            if (successMsg != '') {
                 alertify.success(successMsg);
+            }
+            else if (errorMsg != '') {
+                alertify.error(errorMsg);
+            }
         });
     </script>
 }
-
-

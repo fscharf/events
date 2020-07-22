@@ -1,63 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using Events.Models;
-using Microsoft.Ajax.Utilities;
 
 namespace Events.Controllers
 {
     public class AdminController : Controller
     {
+        // GET: Admin
         public ActionResult Index()
         {
-            IEnumerable<User> userList;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Users").Result;
-            userList = response.Content.ReadAsAsync<IEnumerable<User>>().Result;
-            return View(userList);
-        }
-
-        public ActionResult Add(int id = 0)
-        {
-            if (id == 0)
+            using (UsersEntities userModel = new UsersEntities())
             {
-                return View(new User());
-            }
-            else
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Users/" + id.ToString()).Result;
-                return View(response.Content.ReadAsAsync<User>().Result);
+                return View(userModel.Users.ToList());
             }
         }
 
-        [HttpPost]
-        public ActionResult Add(User user)
-        {
-            if (user.ID == 0)
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", user).Result;
-                TempData["Success"] = "Cadastro criado com sucesso!";
-            }
-            else
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Users/" + user.ID, user).Result;
-                TempData["Success"] = "Cadastro atualizado com sucesso.";
-            }
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Delete(int id)
-        {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Users/" + id.ToString()).Result;
-            TempData["Success"] = "Cadastro excluído com sucesso.";
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult NewEvent()
+        // GET: Admin/Create
+        public ActionResult Create()
         {
             return View();
+        }
+
+        // POST: Admin/Create
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            try
+            {
+                using (UsersEntities userModel = new UsersEntities())
+                {
+                    userModel.Users.Add(user);
+                    userModel.SaveChanges();
+                }
+                TempData["Success"] = "Cadastro criado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+                return View();
+            }
+        }
+
+        // GET: Admin/Edit/5
+        public ActionResult Edit(int id)
+        {
+            using (UsersEntities userModel = new UsersEntities())
+            {
+                return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
+            }
+        }
+
+        // POST: Admin/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, User user)
+        {
+            try
+            {
+                using (UsersEntities userModel = new UsersEntities())
+                {
+                    userModel.Entry(user).State = EntityState.Modified;
+                    userModel.SaveChanges();
+                }
+                TempData["Success"] = "Cadastro alterado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+                return View();
+            }
+        }
+
+        // GET: Admin/Delete/5
+        public ActionResult Delete(int id)
+        {
+            using (UsersEntities userModel = new UsersEntities())
+            {
+                return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
+            }
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, User user)
+        {
+            try
+            {
+                using (UsersEntities userModel = new UsersEntities())
+                {
+                    User user = userModel.Users.Where(x => x.ID == id).FirstOrDefault();
+                    userModel.Users.Remove(user);
+                    userModel.SaveChanges();
+                }
+                TempData["Success"] = "Cadastro excluído com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+                return View();
+            }
         }
     }
 }
