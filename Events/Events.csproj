@@ -141,7 +141,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\_AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -149,7 +148,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Models\Event.cs">
       <DependentUpon>UserDataModel.tt</DependentUpon>
     </Compile>
@@ -2292,9 +2290,6 @@
     <Content Include="Views\Events\_AuthInEvent.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\_Admin\NewEvent.cshtml" />
-    <Content Include="Views\_Admin\Index.cshtml" />
-    <Content Include="Views\_Admin\Add.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />

@@ -87,7 +87,7 @@ namespace Events.Controllers
 
         // POST: Admin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, User user)
+        public ActionResult Delete(int id, FormatException exception)
         {
             try
             {
