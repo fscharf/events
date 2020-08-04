@@ -90,6 +90,30 @@
     @Scripts.Render("~/scripts/bootstrap")
     @Scripts.Render("~/scripts/js")
     @Scripts.Render("~/alertify/js")
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCC2b-hAIFrKA2C3tvIaJxPoX4ztjv3iM0",
+            authDomain: "events-b795e.firebaseapp.com",
+            databaseURL: "https://events-b795e.firebaseio.com",
+            projectId: "events-b795e",
+            storageBucket: "events-b795e.appspot.com",
+            messagingSenderId: "1011844991404",
+            appId: "1:1011844991404:web:6d048f3529d3bec3dd5209",
+            measurementId: "G-GGRK5PK86W"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
     @RenderSection("scripts", required: false)
 
 </body>
