@@ -12,23 +12,20 @@
     {
         <title>Events</title>
     }
-    <link href="~/Content/img/icons/events-logo.png" rel="icon" />
+    <link href="~/content/img/icons/events-logo.png" rel="icon" />
 
-    @Styles.Render("~/content/css")
-    @Styles.Render("~/alertify/css")
-    @Styles.Render("~/fontawesome/css")
+    @Styles.Render("~/styles/css")
 </head>
 
-<body class="bg-light">
+<body>
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-white" id="mainNavbar">
+    <nav class="navbar navbar-expand-lg bg-white mb-4" id="mainNavbar">
         <div class="container">
-            <a class="main-font text-primary h1" href="/">Events</a>
-            <button class="btn btn-white d-block d-lg-none nav-toggler" type="button">
-                <i class="fas fa-stream fa-lg text-muted"></i>
+            <a class="main-font text-primary" href="/">Events</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
+                <i class="fas fa-bars fa-lg text-primary"></i>
             </button>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse mt-3 mt-sm-0" id="navCollapse">
                 <ul class="navbar-nav ml-auto">
                     @if (Session["UserID"] == null)
                     {
@@ -42,9 +39,15 @@
                     else
                     {
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" title="Opções da conta">@Session["Name"]</a>
-                            <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow-sm" style="width:220px;">
+                            <a href="#"
+                               class="nav-link dropdown-toggle"
+                               data-toggle="dropdown"
+                               title="Opções da conta">
+                               <i class="fas fa-user-circle mr-2"></i>@Session["Name"]
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow" style="width: 220px;">
                                 <div class="text-center p-2">
+                                    <i class="fas fa-user-circle fa-2x mb-2"></i>
                                     <div class="dropdown-item-text">@Session["Name"]</div>
                                     <small class="text-muted">@Session["Email"]</small>
                                 </div>
@@ -68,53 +71,29 @@
         </div>
     </nav>
 
-    <!-- content -->
-    @RenderBody()
+    <div class="container">
+        @RenderBody()
+    </div>
 
-    <!-- footer -->
-    <footer class="bg-white text-center py-3 mt-3">
+    <footer class="bg-light text-center py-4 mt-5" style="bottom: 0;">
         <div class="container">
             <div class="row">
                 <div class="col-lg text-muted">
                     <strong>Events &copy; 2020</strong> Todos os direitos reservados.
                 </div>
             </div>
-
         </div>
     </footer>
 
     @Html.Partial("_Profile")
 
-    @Scripts.Render("~/scripts/jquery")
-    @Scripts.Render("~/scripts/popper.js")
-    @Scripts.Render("~/scripts/bootstrap")
-    @Scripts.Render("~/scripts/js")
+    @Scripts.Render("~/jquery")
+    @Scripts.Render("~/popper.js")
+    @Scripts.Render("~/bootstrap/js")
     @Scripts.Render("~/alertify/js")
+    @Scripts.Render("~/scripts/js")
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCC2b-hAIFrKA2C3tvIaJxPoX4ztjv3iM0",
-            authDomain: "events-b795e.firebaseapp.com",
-            databaseURL: "https://events-b795e.firebaseio.com",
-            projectId: "events-b795e",
-            storageBucket: "events-b795e.appspot.com",
-            messagingSenderId: "1011844991404",
-            appId: "1:1011844991404:web:6d048f3529d3bec3dd5209",
-            measurementId: "G-GGRK5PK86W"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
-    @RenderSection("scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
 </body>
 

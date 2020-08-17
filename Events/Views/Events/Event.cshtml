@@ -3,81 +3,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<img class="img-fluid crop-img-size rounded-lg border mb-4"
+     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+     alt="@ViewBag.Title" />
 
-<img class="img-fluid crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="@ViewBag.Title" />
-<div class="container fixed-bottom">
-    <nav class="navbar navbar-expand-sm rounded-top bg-primary">
-        <ul class="navbar-nav float-left">
-            <li class="nav-item">
-                <a href="/eventos" class="btn btn-primary" title="Voltar">
-                    <i class="fas fa-arrow-left fa-lg"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#favorito" id="favToggler" class="btn btn-primary" title="Marcar como favorito">
-                    <i class="fas fa-heart fa-lg"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#shareModal" class="btn btn-primary" data-toggle="modal" title="Compartilhar">
-                    <i class="fas fa-share-alt fa-lg"></i>
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="#authInModal" data-toggle="modal" class="btn btn-primary">Participar</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<div class="row">
+    <div class="col-lg-8 mb-4 mb-sm-0">
+        <div class="border rounded p-4">
+            <h2 class="font-weight-bold mb-3">@ViewBag.Title</h2>
 
-<div class="container-fluid bg-white py-5 mb-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-white p-0">
-                        <li class="breadcrumb-item"><a href="/">Início</a></li>
-                        <li class="breadcrumb-item"><a href="/eventos">Eventos</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
-                    </ol>
-                </nav>
+            <p class="text-muted mb-5">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat.
+            </p>
 
-                <h1 class="font-weight-bold mb-3">
-                    @ViewBag.Title
-                </h1>
+            <iframe class="rounded-lg w-100" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr" 
+                    height="450" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    aria-hidden="false" 
+                    tabindex="0">
+            </iframe>                
+            <hr>
 
-                <!-- informações do evento -->
-                <section class="text-muted mb-3">
-                    <i class="fas fa-calendar-alt text-primary mr-2" title="Data" data-toggle="tooltip"></i>20/09/2020
-                    <i class="fas fa-clock text-primary mx-2" title="Horário" data-toggle="tooltip"></i>20:00
-                    <i class="fas fa-map-marker-alt text-primary mx-2" title="Local" data-toggle="tooltip"></i>Rua João Silva, 16
-                </section>
-
-                <hr />
-
-                <!-- descricao do evento -->
-                <p class="text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
-                <iframe class="rounded-lg w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr" height="450" frameborder="0" allowfullscreen="true" aria-hidden="false" tabindex="0"></iframe>                <hr />
-
-                <!-- categoria -->
-                <span class="fas fa-tags text-primary mr-3" title="Categoria"></span>
-                <span class="text-muted">
-                    Informática &middot; Edificações
-                </span>
-            </div>
+            <span class="fas fa-tags text-primary mr-3" data-toggle="tooltip" title="Categoria"></span>
+            <span class="text-muted">
+                Informática &middot; Edificações
+            </span>
         </div>
-
+       
     </div>
-
+    <div class="col-lg-4">
+        <div class="border rounded p-4 mb-4">
+            <a href="/eventos" class="card-link" title="Voltar">
+                <i class="fas fa-arrow-left fa-lg"></i>
+            </a>
+            <a href="#favorito" class="card-link" id="favToggler" title="Marcar como favorito">
+                <i class="fas fa-heart fa-lg"></i>
+            </a>
+            <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
+                <i class="fas fa-share-alt fa-lg"></i>
+            </a>
+        </div>
+        <div class="border rounded p-4">
+            <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data" data-toggle="tooltip"></i>20/09/2020</p>
+            <p><i class="fas fa-clock text-primary mr-2" title="Horário" data-toggle="tooltip"></i>20:00</p>
+            <p><i class="fas fa-map-marker-alt text-primary mr-2" title="Local" data-toggle="tooltip"></i>Rua João Silva, 16</p>
+            <a href="#authInModal" data-toggle="modal" class="btn btn-primary btn-block">Quero participar</a>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="shareModal" tabindex="-1" role="dialog">
@@ -85,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 Copie e divulgue o link para seus amigos!
-                <button type="button" data-dismiss="modal" class="btn btn-light close">&times;</button>
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">

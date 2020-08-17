@@ -172,24 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\alertifyjs\alertify.css" />
-    <Content Include="Content\alertifyjs\alertify.min.css" />
-    <Content Include="Content\alertifyjs\alertify.rtl.css" />
-    <Content Include="Content\alertifyjs\alertify.rtl.min.css" />
-    <Content Include="Content\alertifyjs\themes\bootstrap.css" />
-    <Content Include="Content\alertifyjs\themes\bootstrap.min.css" />
-    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.css" />
-    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.min.css" />
-    <Content Include="Content\alertifyjs\themes\default.css" />
-    <Content Include="Content\alertifyjs\themes\default.min.css" />
-    <Content Include="Content\alertifyjs\themes\default.rtl.css" />
-    <Content Include="Content\alertifyjs\themes\default.rtl.min.css" />
-    <Content Include="Content\alertifyjs\themes\semantic.css" />
-    <Content Include="Content\alertifyjs\themes\semantic.min.css" />
-    <Content Include="Content\alertifyjs\themes\semantic.rtl.css" />
-    <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\css\custom-forms.css" />
-    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
     <Content Include="Content\img\icons\close.svg" />
     <Content Include="favicon.ico" />
@@ -1848,6 +1831,43 @@
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-brands-400.svg" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-regular-400.svg" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="node_modules\alertifyjs\build\alertify.js" />
+    <Content Include="node_modules\alertifyjs\build\alertify.min.js" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.min.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.css" />
+    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.min.css" />
+    <Content Include="node_modules\alertifyjs\Gruntfile.js" />
+    <Content Include="node_modules\alertifyjs\src\js\alert.js" />
+    <Content Include="node_modules\alertifyjs\src\js\alertify.js" />
+    <Content Include="node_modules\alertifyjs\src\js\confirm.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\actions.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\commands.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\dialog.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\events.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\focus.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\intro.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\move.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\outro.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\resize.js" />
+    <Content Include="node_modules\alertifyjs\src\js\dialog\transition.js" />
+    <Content Include="node_modules\alertifyjs\src\js\event.js" />
+    <Content Include="node_modules\alertifyjs\src\js\intro.js" />
+    <Content Include="node_modules\alertifyjs\src\js\notifier.js" />
+    <Content Include="node_modules\alertifyjs\src\js\outro.js" />
+    <Content Include="node_modules\alertifyjs\src\js\prompt.js" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -2271,9 +2291,7 @@
     <Content Include="node_modules\popper.js\index.js.flow" />
     <Content Include="node_modules\popper.js\package.json" />
     <Content Include="node_modules\popper.js\README.md" />
-    <Content Include="Content\js\scripts.js" />
-    <Content Include="Scripts\alertify.js" />
-    <Content Include="Scripts\alertify.min.js" />
+    <Content Include="Scripts\scripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2311,6 +2329,18 @@
       <DependentUpon>UserDataModel.edmx</DependentUpon>
     </Content>
     <Content Include="Content\scss\style.scss" />
+    <Content Include="node_modules\alertifyjs\.jshintrc" />
+    <Content Include="node_modules\alertifyjs\build\alertifyjs.zip" />
+    <Content Include="node_modules\alertifyjs\CONTRIBUTING.md" />
+    <Content Include="node_modules\alertifyjs\LICENSE" />
+    <Content Include="node_modules\alertifyjs\package.json" />
+    <Content Include="node_modules\alertifyjs\README.md" />
+    <Content Include="node_modules\alertifyjs\RELEASENOTES.md" />
+    <Content Include="node_modules\alertifyjs\src\less\alertify.less" />
+    <Content Include="node_modules\alertifyjs\src\less\themes\bootstrap.less" />
+    <Content Include="node_modules\alertifyjs\src\less\themes\default.less" />
+    <Content Include="node_modules\alertifyjs\src\less\themes\semantic.less" />
+    <Content Include="Content\scss\_variables.scss" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
