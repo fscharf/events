@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EventsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EVENTO">
+          <Key>
+            <PropertyRef Name="COD_EVENTO" />
+          </Key>
+          <Property Name="COD_EVENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DURACAO" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TITULO" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DESCRICAO" Type="varchar" MaxLength="500" />
+          <Property Name="DATA" Type="date" Nullable="false" />
+          <Property Name="HORARIO" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="COD_FEEDBACK" />
+          </Key>
+          <Property Name="COD_FEEDBACK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="500" />
+          <Property Name="NOTA" Type="char" MaxLength="5" />
+          <Property Name="COD_INSCRICAO" Type="int" />
+          <Property Name="COD_EVENTO" Type="int" />
+        </EntityType>
+        <EntityType Name="INSCRICAO">
+          <Key>
+            <PropertyRef Name="COD_INSCRICAO" />
+          </Key>
+          <Property Name="COD_INSCRICAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COD_USUARIO" Type="int" />
+          <Property Name="COD_EVENTO" Type="int" />
+          <Property Name="DATA_HORA_INSC" Type="datetime" Nullable="false" />
+          <Property Name="DATA_HORA_PARTICIPACAO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="COD_PERFIL" />
+          </Key>
+          <Property Name="COD_PERFIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRICAO" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="COD_USUARIO" />
+          </Key>
+          <Property Name="COD_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SENHA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CELULAR" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="COD_PERFIL" Type="int" />
+        </EntityType>
+        <EntityType Name="USUARIO_GERENCIA_EVENTO">
+          <Key>
+            <PropertyRef Name="COD_GERENCIA" />
+          </Key>
+          <Property Name="COD_GERENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COD_USUARIO" Type="int" />
+          <Property Name="COD_EVENTO" Type="int" />
+        </EntityType>
+        <Association Name="FK_EVENTO_FEED">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="FEEDBACK">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENTO_INSC">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="INSCRICAO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEREN_EVENTO">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="USUARIO_GERENCIA_EVENTO" Type="Self.USUARIO_GERENCIA_EVENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="USUARIO_GERENCIA_EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRICAO_FEED">
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="0..1" />
+          <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSCRICAO">
+              <PropertyRef Name="COD_INSCRICAO" />
+            </Principal>
+            <Dependent Role="FEEDBACK">
+              <PropertyRef Name="COD_INSCRICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFIL_U">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="COD_PERFIL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="COD_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_GEREN">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO_GERENCIA_EVENTO" Type="Self.USUARIO_GERENCIA_EVENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_GERENCIA_EVENTO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_INSC">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Principal>
+            <Dependent Role="INSCRICAO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EventsModelStoreContainer">
+          <EntitySet Name="EVENTO" EntityType="Self.EVENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSCRICAO" EntityType="Self.INSCRICAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO_GERENCIA_EVENTO" EntityType="Self.USUARIO_GERENCIA_EVENTO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EVENTO_FEED" Association="Self.FK_EVENTO_FEED">
+            <End Role="EVENTO" EntitySet="EVENTO" />
+            <End Role="FEEDBACK" EntitySet="FEEDBACK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENTO_INSC" Association="Self.FK_EVENTO_INSC">
+            <End Role="EVENTO" EntitySet="EVENTO" />
+            <End Role="INSCRICAO" EntitySet="INSCRICAO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEREN_EVENTO" Association="Self.FK_GEREN_EVENTO">
+            <End Role="EVENTO" EntitySet="EVENTO" />
+            <End Role="USUARIO_GERENCIA_EVENTO" EntitySet="USUARIO_GERENCIA_EVENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRICAO_FEED" Association="Self.FK_INSCRICAO_FEED">
+            <End Role="INSCRICAO" EntitySet="INSCRICAO" />
+            <End Role="FEEDBACK" EntitySet="FEEDBACK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFIL_U" Association="Self.FK_PERFIL_U">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_GEREN" Association="Self.FK_USUARIO_GEREN">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_GERENCIA_EVENTO" EntitySet="USUARIO_GERENCIA_EVENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_INSC" Association="Self.FK_USUARIO_INSC">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="INSCRICAO" EntitySet="INSCRICAO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EVENTO">
+          <Key>
+            <PropertyRef Name="COD_EVENTO" />
+          </Key>
+          <Property Name="COD_EVENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DURACAO" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TITULO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HORARIO" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK_EVENTO_FEED" FromRole="EVENTO" ToRole="FEEDBACK" />
+          <NavigationProperty Name="INSCRICAOs" Relationship="Self.FK_EVENTO_INSC" FromRole="EVENTO" ToRole="INSCRICAO" />
+          <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_GEREN_EVENTO" FromRole="EVENTO" ToRole="USUARIO_GERENCIA_EVENTO" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="COD_FEEDBACK" />
+          </Key>
+          <Property Name="COD_FEEDBACK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NOTA" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="COD_INSCRICAO" Type="Int32" />
+          <Property Name="COD_EVENTO" Type="Int32" />
+          <NavigationProperty Name="EVENTO" Relationship="Self.FK_EVENTO_FEED" FromRole="FEEDBACK" ToRole="EVENTO" />
+          <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_INSCRICAO_FEED" FromRole="FEEDBACK" ToRole="INSCRICAO" />
+        </EntityType>
+        <EntityType Name="INSCRICAO">
+          <Key>
+            <PropertyRef Name="COD_INSCRICAO" />
+          </Key>
+          <Property Name="COD_INSCRICAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COD_USUARIO" Type="Int32" />
+          <Property Name="COD_EVENTO" Type="Int32" />
+          <Property Name="DATA_HORA_INSC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DATA_HORA_PARTICIPACAO" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EVENTO" Relationship="Self.FK_EVENTO_INSC" FromRole="INSCRICAO" ToRole="EVENTO" />
+          <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK_INSCRICAO_FEED" FromRole="INSCRICAO" ToRole="FEEDBACK" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_INSC" FromRole="INSCRICAO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="COD_PERFIL" />
+          </Key>
+          <Property Name="COD_PERFIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRICAO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIOs" Relationship="Self.FK_PERFIL_U" FromRole="PERFIL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="COD_USUARIO" />
+          </Key>
+          <Property Name="COD_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SENHA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CELULAR" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="COD_PERFIL" Type="Int32" />
+          <NavigationProperty Name="INSCRICAOs" Relationship="Self.FK_USUARIO_INSC" FromRole="USUARIO" ToRole="INSCRICAO" />
+          <NavigationProperty Name="PERFIL" Relationship="Self.FK_PERFIL_U" FromRole="USUARIO" ToRole="PERFIL" />
+          <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_USUARIO_GEREN" FromRole="USUARIO" ToRole="USUARIO_GERENCIA_EVENTO" />
+        </EntityType>
+        <EntityType Name="USUARIO_GERENCIA_EVENTO">
+          <Key>
+            <PropertyRef Name="COD_GERENCIA" />
+          </Key>
+          <Property Name="COD_GERENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COD_USUARIO" Type="Int32" />
+          <Property Name="COD_EVENTO" Type="Int32" />
+          <NavigationProperty Name="EVENTO" Relationship="Self.FK_GEREN_EVENTO" FromRole="USUARIO_GERENCIA_EVENTO" ToRole="EVENTO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_GEREN" FromRole="USUARIO_GERENCIA_EVENTO" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_EVENTO_FEED">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="FEEDBACK">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENTO_INSC">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="INSCRICAO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEREN_EVENTO">
+          <End Role="EVENTO" Type="Self.EVENTO" Multiplicity="0..1" />
+          <End Role="USUARIO_GERENCIA_EVENTO" Type="Self.USUARIO_GERENCIA_EVENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Principal>
+            <Dependent Role="USUARIO_GERENCIA_EVENTO">
+              <PropertyRef Name="COD_EVENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INSCRICAO_FEED">
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="0..1" />
+          <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSCRICAO">
+              <PropertyRef Name="COD_INSCRICAO" />
+            </Principal>
+            <Dependent Role="FEEDBACK">
+              <PropertyRef Name="COD_INSCRICAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_INSC">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="INSCRICAO" Type="Self.INSCRICAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Principal>
+            <Dependent Role="INSCRICAO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFIL_U">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="COD_PERFIL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="COD_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_GEREN">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="USUARIO_GERENCIA_EVENTO" Type="Self.USUARIO_GERENCIA_EVENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Principal>
+            <Dependent Role="USUARIO_GERENCIA_EVENTO">
+              <PropertyRef Name="COD_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EventsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EVENTOes" EntityType="Self.EVENTO" />
+          <EntitySet Name="FEEDBACKs" EntityType="Self.FEEDBACK" />
+          <EntitySet Name="INSCRICAOs" EntityType="Self.INSCRICAO" />
+          <EntitySet Name="PERFILs" EntityType="Self.PERFIL" />
+          <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
+          <EntitySet Name="USUARIO_GERENCIA_EVENTO" EntityType="Self.USUARIO_GERENCIA_EVENTO" />
+          <AssociationSet Name="FK_EVENTO_FEED" Association="Self.FK_EVENTO_FEED">
+            <End Role="EVENTO" EntitySet="EVENTOes" />
+            <End Role="FEEDBACK" EntitySet="FEEDBACKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENTO_INSC" Association="Self.FK_EVENTO_INSC">
+            <End Role="EVENTO" EntitySet="EVENTOes" />
+            <End Role="INSCRICAO" EntitySet="INSCRICAOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEREN_EVENTO" Association="Self.FK_GEREN_EVENTO">
+            <End Role="EVENTO" EntitySet="EVENTOes" />
+            <End Role="USUARIO_GERENCIA_EVENTO" EntitySet="USUARIO_GERENCIA_EVENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INSCRICAO_FEED" Association="Self.FK_INSCRICAO_FEED">
+            <End Role="INSCRICAO" EntitySet="INSCRICAOs" />
+            <End Role="FEEDBACK" EntitySet="FEEDBACKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_INSC" Association="Self.FK_USUARIO_INSC">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="INSCRICAO" EntitySet="INSCRICAOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFIL_U" Association="Self.FK_PERFIL_U">
+            <End Role="PERFIL" EntitySet="PERFILs" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_GEREN" Association="Self.FK_USUARIO_GEREN">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="USUARIO_GERENCIA_EVENTO" EntitySet="USUARIO_GERENCIA_EVENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventsModelStoreContainer" CdmEntityContainer="EventsEntities">
+          <EntitySetMapping Name="EVENTOes">
+            <EntityTypeMapping TypeName="EventsModel.EVENTO">
+              <MappingFragment StoreEntitySet="EVENTO">
+                <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
+                <ScalarProperty Name="DURACAO" ColumnName="DURACAO" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEEDBACKs">
+            <EntityTypeMapping TypeName="EventsModel.FEEDBACK">
+              <MappingFragment StoreEntitySet="FEEDBACK">
+                <ScalarProperty Name="COD_FEEDBACK" ColumnName="COD_FEEDBACK" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="NOTA" ColumnName="NOTA" />
+                <ScalarProperty Name="COD_INSCRICAO" ColumnName="COD_INSCRICAO" />
+                <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSCRICAOs">
+            <EntityTypeMapping TypeName="EventsModel.INSCRICAO">
+              <MappingFragment StoreEntitySet="INSCRICAO">
+                <ScalarProperty Name="COD_INSCRICAO" ColumnName="COD_INSCRICAO" />
+                <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
+                <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
+                <ScalarProperty Name="DATA_HORA_INSC" ColumnName="DATA_HORA_INSC" />
+                <ScalarProperty Name="DATA_HORA_PARTICIPACAO" ColumnName="DATA_HORA_PARTICIPACAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERFILs">
+            <EntityTypeMapping TypeName="EventsModel.PERFIL">
+              <MappingFragment StoreEntitySet="PERFIL">
+                <ScalarProperty Name="COD_PERFIL" ColumnName="COD_PERFIL" />
+                <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOs">
+            <EntityTypeMapping TypeName="EventsModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="COD_PERFIL" ColumnName="COD_PERFIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_GERENCIA_EVENTO">
+            <EntityTypeMapping TypeName="EventsModel.USUARIO_GERENCIA_EVENTO">
+              <MappingFragment StoreEntitySet="USUARIO_GERENCIA_EVENTO">
+                <ScalarProperty Name="COD_GERENCIA" ColumnName="COD_GERENCIA" />
+                <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
+                <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

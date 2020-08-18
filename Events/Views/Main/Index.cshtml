@@ -3,10 +3,6 @@
     Response.Redirect("/admin");
 }
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 @if (Session["UserID"] == null)
 {
     <div class="row text-center text-sm-left mb-5">

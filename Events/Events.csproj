@@ -2313,6 +2313,7 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
