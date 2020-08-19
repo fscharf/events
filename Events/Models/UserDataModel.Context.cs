@@ -27,5 +27,9 @@ namespace Events.Models
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+
+        public System.Data.Entity.DbSet<Events.Models.USUARIO> USUARIOs { get; set; }
+
+        public System.Data.Entity.DbSet<Events.Models.PERFIL> PERFILs { get; set; }
     }
 }

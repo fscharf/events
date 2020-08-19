@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="42da83f0f5fa43aabc9bd31ad9749356" Name="Diagram1">
+      <Diagram DiagramId="42da83f0f5fa43aabc9bd31ad9749356" Name="Diagram1" ZoomLevel="47">
         <EntityTypeShape EntityType="EventsModel.EVENTO" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EventsModel.FEEDBACK" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EventsModel.INSCRICAO" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
