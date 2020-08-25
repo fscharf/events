@@ -26,25 +26,25 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult GetUSUARIO(int id)
         {
-            USUARIO uSUARIO = db.USUARIOs.Find(id);
-            if (uSUARIO == null)
+            USUARIO user = db.USUARIOs.Find(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(uSUARIO);
+            return Ok(user);
         }
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUSUARIO(int id, USUARIO uSUARIO)
+        public IHttpActionResult PutUSUARIO(int id, USUARIO user)
         {
-            if (id != uSUARIO.COD_USUARIO)
+            if (id != user.COD_USUARIO)
             {
                 return BadRequest();
             }
 
-            db.Entry(uSUARIO).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -67,28 +67,32 @@ namespace WebAPI.Controllers
 
         // POST: api/Users
         [ResponseType(typeof(USUARIO))]
-        public IHttpActionResult PostUSUARIO(USUARIO uSUARIO)
+        public IHttpActionResult PostUSUARIO(USUARIO user)
         {
-            db.USUARIOs.Add(uSUARIO);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                user.SENHA = Encrypt.GetHash(user.SENHA);
+                db.USUARIOs.Add(user);
+                db.SaveChanges();
+            }
 
-            return CreatedAtRoute("DefaultApi", new { id = uSUARIO.COD_USUARIO }, uSUARIO);
+            return CreatedAtRoute("DefaultApi", new { id = user.COD_USUARIO }, user);
         }
 
         // DELETE: api/Users/5
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult DeleteUSUARIO(int id)
         {
-            USUARIO uSUARIO = db.USUARIOs.Find(id);
-            if (uSUARIO == null)
+            USUARIO user = db.USUARIOs.Find(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            db.USUARIOs.Remove(uSUARIO);
+            db.USUARIOs.Remove(user);
             db.SaveChanges();
 
-            return Ok(uSUARIO);
+            return Ok(user);
         }
 
         protected override void Dispose(bool disposing)

@@ -14,9 +14,24 @@ namespace Events.Controllers
         public ActionResult Index()
         {
             IEnumerable<USUARIO> userList;
-            HttpResponseMessage res = GlobalVariables.WebApiClient.GetAsync("Users").Result;
-            userList = res.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Users").Result;
+            userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
             return View(userList);
+        }
+
+        public ActionResult Register(int id = 0)
+        {
+            ViewBag.Title = "Crie sua conta grátis";
+            return View(new USUARIO());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(USUARIO user)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", user).Result;
+            TempData["Success"] = "Salvo com sucesso.";
+            return RedirectToAction("Index");
         }
     }
 }

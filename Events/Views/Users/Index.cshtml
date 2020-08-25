@@ -1,34 +1,37 @@
 ﻿@model IEnumerable<Events.Models.USUARIO>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PERFIL.DESCRICAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NOME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SENHA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CELULAR)
-        </th>
-        <th></th>
-    </tr>
+@Html.ActionLink("Criar cadastro", "Register", "Users")
+
+@if (TempData["Success"] != null) {
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SENHA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CELULAR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COD_PERFIL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PERFIL.DESCRICAO)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NOME)
             </td>
@@ -40,6 +43,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CELULAR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COD_PERFIL)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.COD_USUARIO }) |

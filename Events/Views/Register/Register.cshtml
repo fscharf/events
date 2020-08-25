@@ -1,10 +1,5 @@
 ﻿@model Events.Models.User
 
-@{
-    ViewBag.Title = "Faça seu cadastro";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 @if (Session["UserID"] != null)
 {
     Response.Redirect("/");

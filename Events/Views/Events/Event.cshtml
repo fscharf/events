@@ -30,9 +30,8 @@
             </iframe>                
             <hr>
 
-            <span class="fas fa-tags text-primary mr-3" data-toggle="tooltip" title="Categoria"></span>
             <span class="text-muted">
-                Informática &middot; Edificações
+                <i class="fas fa-tags text-primary mr-3" data-toggle="tooltip" title="Categoria"></i>Informática &middot; Edificações
             </span>
         </div>
        
@@ -67,7 +66,7 @@
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <input id="shareLink" class="form-control" type="text" value="@Request.FilePath" />
+                    <input id="shareLink" class="form-control" type="text" value="@($"http://events.com.br/{Request.FilePath}")" />
                     <div class="input-group-append">
                         <button id="shareLinkBtn" type="button" class="btn btn-primary">
                             <i class="fas fa-copy"></i>

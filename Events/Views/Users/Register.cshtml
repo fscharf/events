@@ -1,0 +1,140 @@
+﻿@model Events.Models.USUARIO
+
+@Styles.Render("~/forms/css")
+
+@using (Html.BeginForm(new { htmlAttributes = new { @class = "needs-validation", @novalidate = "novalidate" } }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-5 mx-auto rounded bg-white shadow p-5">
+            <a href="/" class="main-font text-center mr-3" style="font-size: 3rem">Events</a>
+
+            <h2 class="text-center mb-3">@ViewBag.Title</h2>
+
+            @Html.DisplayFor(m => m.COD_PERFIL, new { htmlAttributes = new { @class = "custom-select" } })
+
+            <div class="form-group">
+                @Html.EditorFor(m => m.NOME, new
+                {
+                    htmlAttributes = new
+                    {
+                @class = "form-control",
+                placeholder = "Nome completo",
+                minlength = "3",
+                        maxlength = "50",
+                required = "required",
+                pattern = @"[A-Za-zÀ-ú ']{4,}"
+                    }
+                })
+                <div class="invalid-feedback">Nome inválido.</div>
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(m => m.EMAIL, new
+                {
+                    htmlAttributes = new
+                    {
+                @class = "form-control",
+                name = "email",
+                placeholder = "Email",
+                type = "email",
+                minlength = "3",
+                maxlength = "35",
+                required = "required"
+                    }
+                })
+                <div class="invalid-feedback">Email inválido.</div>
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(m => m.SENHA, new
+                {
+                    htmlAttributes = new
+                    {
+                @class = "form-control",
+                type = "password",
+                name = "senha",
+                id = "senha",
+                placeholder = "Escolha uma senha",
+                minlength = "6",
+                maxlength = "20",
+                pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$",
+                required = "required"
+                    }
+                })
+
+                <div class="invalid-feedback">Senha inválida.</div>
+                <small class="text-muted">Escolha entre 6-20 caracteres.</small>
+                <a href="#"
+                   tabindex="0"
+                   class="mr-2"
+                   data-toggle="popover"
+                   title="Dica"
+                   data-content="Sua senha deve conter ao menos uma letra maiúscula, uma letra minúscula e um número."
+                   data-trigger="focus">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" />
+                <div class="invalid-feedback">Senhas não conferem.</div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">CRIAR CONTA</button>
+                <span class="text-muted">
+                    Já possui uma conta?
+                    <a href="/entrar">Iniciar sessão</a>
+                </span>
+            </div>
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="form-group">
+                    <div class="alert alert-danger alert-dismissible show" role="alert">
+                        @TempData["Error"]
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<script>
+    var senha = document.getElementById("senha"),
+        confirmaSenha = document.getElementById("confirmaSenha");
+
+    function validarSenha() {
+        if (senha.value != confirmaSenha.value) {
+            confirmaSenha.setCustomValidity("Senhas não conferem.");
+        } else {
+            confirmaSenha.setCustomValidity('');
+        }
+    }
+
+    senha.onchange = validarSenha;
+    confirmaSenha.onkeyup = validarSenha;
+</script>
+
+<script>
+    // form-validate bootstrap
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

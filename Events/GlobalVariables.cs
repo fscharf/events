@@ -13,10 +13,9 @@ namespace Events
 
         static GlobalVariables()
         {
-            WebApiClient.BaseAddress = new Uri("https://localhost:44390/api");
+            WebApiClient.BaseAddress = new Uri("https://localhost:44390/api/");
             WebApiClient.DefaultRequestHeaders.Clear();
             WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
     }
 }
