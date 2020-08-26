@@ -17,16 +17,16 @@ namespace WebAPI.Controllers
         private EventsEntities db = new EventsEntities();
 
         // GET: api/Users
-        public IQueryable<USUARIO> GetUSUARIOs()
+        public IQueryable<USUARIO> GetUSUARIO()
         {
-            return db.USUARIOs;
+            return db.USUARIO;
         }
 
         // GET: api/Users/5
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult GetUSUARIO(int id)
         {
-            USUARIO uSUARIO = db.USUARIOs.Find(id);
+            USUARIO uSUARIO = db.USUARIO.Find(id);
             if (uSUARIO == null)
             {
                 return NotFound();
@@ -67,9 +67,9 @@ namespace WebAPI.Controllers
 
         // POST: api/Users
         [ResponseType(typeof(USUARIO))]
-        public IHttpActionResult PostUSUARIO([FromBody] USUARIO uSUARIO)
+        public IHttpActionResult PostUSUARIO(USUARIO uSUARIO)
         {
-            db.USUARIOs.Add(uSUARIO);
+            db.USUARIO.Add(uSUARIO);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = uSUARIO.COD_USUARIO }, uSUARIO);
@@ -79,13 +79,13 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult DeleteUSUARIO(int id)
         {
-            USUARIO uSUARIO = db.USUARIOs.Find(id);
+            USUARIO uSUARIO = db.USUARIO.Find(id);
             if (uSUARIO == null)
             {
                 return NotFound();
             }
 
-            db.USUARIOs.Remove(uSUARIO);
+            db.USUARIO.Remove(uSUARIO);
             db.SaveChanges();
 
             return Ok(uSUARIO);
@@ -102,7 +102,7 @@ namespace WebAPI.Controllers
 
         private bool USUARIOExists(int id)
         {
-            return db.USUARIOs.Count(e => e.COD_USUARIO == id) > 0;
+            return db.USUARIO.Count(e => e.COD_USUARIO == id) > 0;
         }
     }
 }

@@ -17,8 +17,8 @@ namespace WebAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EVENTO()
         {
-            this.FEEDBACKs = new HashSet<FEEDBACK>();
-            this.INSCRICAOs = new HashSet<INSCRICAO>();
+            this.FEEDBACK = new HashSet<FEEDBACK>();
+            this.INSCRICAO = new HashSet<INSCRICAO>();
             this.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
         }
     
@@ -30,9 +30,9 @@ namespace WebAPI.Models
         public System.TimeSpan HORARIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FEEDBACK> FEEDBACKs { get; set; }
+        public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCRICAO> INSCRICAOs { get; set; }
+        public virtual ICollection<INSCRICAO> INSCRICAO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_GERENCIA_EVENTO> USUARIO_GERENCIA_EVENTO { get; set; }
     }

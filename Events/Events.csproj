@@ -2315,6 +2315,9 @@
     <Content Include="node_modules\alertifyjs\src\less\themes\semantic.less" />
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="package-lock.json" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
