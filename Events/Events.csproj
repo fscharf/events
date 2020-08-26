@@ -151,31 +151,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
-    <Compile Include="Models\Event.cs">
-      <DependentUpon>UserDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\EVENTO.cs" />
     <Compile Include="Models\FEEDBACK.cs" />
     <Compile Include="Models\INSCRICAO.cs" />
     <Compile Include="Models\PERFIL.cs" />
-    <Compile Include="Models\User.cs">
-      <DependentUpon>UserDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserDataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\USUARIO.cs" />
     <Compile Include="Models\USUARIO_GERENCIA_EVENTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,16 +183,6 @@
     <Content Include="Content\img\undraw\undraw_sign_in_e6hj.svg" />
     <Content Include="Content\img\undraw\undraw_social_friends_nsbv.svg" />
     <Content Include="Content\img\undraw\undraw_traveling_t8y2.svg" />
-    <Content Include="Models\UserDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserDataModel.edmx</DependentUpon>
-      <LastGenOutput>UserDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\UserDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserDataModel.edmx</DependentUpon>
-      <LastGenOutput>UserDataModel.cs</LastGenOutput>
-    </Content>
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.css" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\all.min.css" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\css\brands.css" />
@@ -2283,7 +2252,6 @@
     <Content Include="node_modules\jquery\external\sizzle\dist\sizzle.min.map" />
     <Content Include="node_modules\jquery\package.json" />
     <Content Include="node_modules\jquery\README.md" />
-    <None Include=".bin\node.cmd" />
     <Content Include="node_modules\popper.js\dist\esm\popper-utils.js.map" />
     <Content Include="node_modules\popper.js\dist\esm\popper-utils.min.js.map" />
     <Content Include="node_modules\popper.js\dist\esm\popper.js.map" />
@@ -2333,13 +2301,6 @@
   <ItemGroup>
     <Content Include="Fonts\cabin-rg.ttf" />
     <Content Include="Fonts\product-sans-rg.ttf" />
-    <EntityDeploy Include="Models\UserDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\UserDataModel.edmx.diagram">
-      <DependentUpon>UserDataModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\scss\style.scss" />
     <Content Include="node_modules\alertifyjs\.jshintrc" />
     <Content Include="node_modules\alertifyjs\build\alertifyjs.zip" />
@@ -2383,8 +2344,6 @@
           <DevelopmentServerPort>50742</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44322/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>https://localhost:44322/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -13,10 +13,11 @@ namespace Events.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            using (UsersEntities userModel = new UsersEntities())
-            {
-                return View(userModel.Users.ToList());
-            }
+            //using (UsersEntities userModel = new UsersEntities())
+            //{
+            //    return View(userModel.Users.ToList());
+            //}
+            return View();
         }
 
         // GET: Admin/Create
@@ -26,85 +27,85 @@ namespace Events.Controllers
         }
 
         // POST: Admin/Create
-        [HttpPost]
-        public ActionResult Create(User user)
-        {
-            try
-            {
-                using (UsersEntities userModel = new UsersEntities())
-                {
-                    userModel.Users.Add(user);
-                    userModel.SaveChanges();
-                }
-                TempData["Success"] = "Cadastro criado com sucesso!";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
-                return View();
-            }
-        }
+        //[HttpPost]
+        //public ActionResult Create(User user)
+        //{
+        //    try
+        //    {
+        //        using (UsersEntities userModel = new UsersEntities())
+        //        {
+        //            userModel.Users.Add(user);
+        //            userModel.SaveChanges();
+        //        }
+        //        TempData["Success"] = "Cadastro criado com sucesso!";
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+        //        return View();
+        //    }
+        //}
 
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            using (UsersEntities userModel = new UsersEntities())
-            {
-                return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
-            }
-        }
+        //// GET: Admin/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    using (UsersEntities userModel = new UsersEntities())
+        //    {
+        //        return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
+        //    }
+        //}
 
-        // POST: Admin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, User user)
-        {
-            try
-            {
-                using (UsersEntities userModel = new UsersEntities())
-                {
-                    userModel.Entry(user).State = EntityState.Modified;
-                    userModel.SaveChanges();
-                }
-                TempData["Success"] = "Cadastro alterado com sucesso!";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
-                return View();
-            }
-        }
+        //// POST: Admin/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(int id, User user)
+        //{
+        //    try
+        //    {
+        //        using (UsersEntities userModel = new UsersEntities())
+        //        {
+        //            userModel.Entry(user).State = EntityState.Modified;
+        //            userModel.SaveChanges();
+        //        }
+        //        TempData["Success"] = "Cadastro alterado com sucesso!";
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+        //        return View();
+        //    }
+        //}
 
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            using (UsersEntities userModel = new UsersEntities())
-            {
-                return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
-            }
-        }
+        //// GET: Admin/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    using (UsersEntities userModel = new UsersEntities())
+        //    {
+        //        return View(userModel.Users.Where(x => x.ID == id).FirstOrDefault());
+        //    }
+        //}
 
-        // POST: Admin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormatException exception)
-        {
-            try
-            {
-                using (UsersEntities userModel = new UsersEntities())
-                {
-                    User user = userModel.Users.Where(x => x.ID == id).FirstOrDefault();
-                    userModel.Users.Remove(user);
-                    userModel.SaveChanges();
-                }
-                TempData["Success"] = "Cadastro excluído com sucesso!";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
-                return View();
-            }
-        }
+        //// POST: Admin/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormatException exception)
+        //{
+        //    try
+        //    {
+        //        using (UsersEntities userModel = new UsersEntities())
+        //        {
+        //            User user = userModel.Users.Where(x => x.ID == id).FirstOrDefault();
+        //            userModel.Users.Remove(user);
+        //            userModel.SaveChanges();
+        //        }
+        //        TempData["Success"] = "Cadastro excluído com sucesso!";
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        TempData["Error"] = "Ocorreu um erro inesperado. Tente novamente.";
+        //        return View();
+        //    }
+        //}
     }
 }

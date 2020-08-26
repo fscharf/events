@@ -22,7 +22,7 @@ namespace Events.Models
         public string EMAIL { get; set; }
         public string SENHA { get; set; }
         public string CELULAR { get; set; }
-        public Nullable<int> COD_PERFIL { get; set; }
+        public int COD_PERFIL { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCRICAO> INSCRICAOs { get; set; }

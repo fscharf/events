@@ -22,14 +22,17 @@ namespace Events.Controllers
         public ActionResult Register(int id = 0)
         {
             ViewBag.Title = "Crie sua conta grátis";
-            return View(new USUARIO());
+            var usrModel = new USUARIO();
+            return View(usrModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(USUARIO user)
+        public ActionResult Register(USUARIO usrModel)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", user).Result;
+            //usrModel.SENHA = GlobalVariables.GetHash(usrModel.SENHA);
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", usrModel).Result;
+
             TempData["Success"] = "Salvo com sucesso.";
             return RedirectToAction("Index");
         }

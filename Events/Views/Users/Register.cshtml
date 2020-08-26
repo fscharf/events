@@ -2,26 +2,35 @@
 
 @Styles.Render("~/forms/css")
 
-@using (Html.BeginForm(new { htmlAttributes = new { @class = "needs-validation", @novalidate = "novalidate" } }))
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-lg-5 mx-auto rounded bg-white shadow p-5">
-            <a href="/" class="main-font text-center mr-3" style="font-size: 3rem">Events</a>
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(model => model.COD_USUARIO)
 
-            <h2 class="text-center mb-3">@ViewBag.Title</h2>
-
-            @Html.DisplayFor(m => m.COD_PERFIL, new { htmlAttributes = new { @class = "custom-select" } })
+    <div class="row mt-3">
+        <div class="col-lg-5 mx-sm-auto mx-3 rounded bg-white shadow p-sm-5 p-3">
+            <div class="text-center mb-4">
+                <a href="/" class="main-font mb-3" style="font-size: 3rem">Events</a>
+                <p class="text-muted">@ViewBag.Title</p>
+            </div>
 
             <div class="form-group">
-                @Html.EditorFor(m => m.NOME, new
+                @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
+                         new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
+                         new SelectListItem { Text = "Sou aluno", Value = "1" },
+                         new SelectListItem { Text = "Sou visitante", Value = "2" }
+                }, htmlAttributes: new { @class = "custom-select font-weight-bold", @required = "required" })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.NOME, new
                 {
                     htmlAttributes = new
                     {
                 @class = "form-control",
                 placeholder = "Nome completo",
                 minlength = "3",
-                        maxlength = "50",
+                maxlength = "50",
                 required = "required",
                 pattern = @"[A-Za-zÀ-ú ']{4,}"
                     }
@@ -30,12 +39,11 @@
             </div>
 
             <div class="form-group">
-                @Html.EditorFor(m => m.EMAIL, new
+                @Html.EditorFor(model => model.EMAIL, new
                 {
                     htmlAttributes = new
                     {
                 @class = "form-control",
-                name = "email",
                 placeholder = "Email",
                 type = "email",
                 minlength = "3",
@@ -47,13 +55,12 @@
             </div>
 
             <div class="form-group">
-                @Html.EditorFor(m => m.SENHA, new
+                @Html.EditorFor(model => model.SENHA, new
                 {
                     htmlAttributes = new
                     {
                 @class = "form-control",
                 type = "password",
-                name = "senha",
                 id = "senha",
                 placeholder = "Escolha uma senha",
                 minlength = "6",
@@ -64,39 +71,33 @@
                 })
 
                 <div class="invalid-feedback">Senha inválida.</div>
-                <small class="text-muted">Escolha entre 6-20 caracteres.</small>
+                <small class="text-muted ml-2">Escolha entre 6-20 caracteres.</small>
                 <a href="#"
                    tabindex="0"
-                   class="mr-2"
-                   data-toggle="popover"
-                   title="Dica"
-                   data-content="Sua senha deve conter ao menos uma letra maiúscula, uma letra minúscula e um número."
-                   data-trigger="focus">
+                   data-toggle="tooltip"
+                   title="Sua senha deve conter ao menos uma letra maiúscula, uma letra minúscula e um número.">
                     <i class="fas fa-info-circle"></i>
                 </a>
             </div>
 
             <div class="form-group">
-                <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" />
+                <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
                 <div class="invalid-feedback">Senhas não conferem.</div>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">CRIAR CONTA</button>
-                <span class="text-muted">
-                    Já possui uma conta?
+                <button type="submit" class="btn btn-primary btn-block mb-2">CRIAR CONTA</button>
+                <div class="text-muted text-center">
+                    <span>Já tem conta?</span>
                     <a href="/entrar">Iniciar sessão</a>
-                </span>
+                </div>
             </div>
 
             @if (TempData["Error"] != null)
             {
                 <div class="form-group">
-                    <div class="alert alert-danger alert-dismissible show" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         @TempData["Error"]
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
             }
@@ -104,37 +105,20 @@
     </div>
 }
 
-<script>
-    var senha = document.getElementById("senha"),
-        confirmaSenha = document.getElementById("confirmaSenha");
+@section scripts {
+    <script>
+        var senha = document.getElementById("senha"),
+            confirmaSenha = document.getElementById("confirmaSenha");
 
-    function validarSenha() {
-        if (senha.value != confirmaSenha.value) {
-            confirmaSenha.setCustomValidity("Senhas não conferem.");
-        } else {
-            confirmaSenha.setCustomValidity('');
+        function validarSenha() {
+            if (senha.value != confirmaSenha.value) {
+                confirmaSenha.setCustomValidity("Senhas não conferem.");
+            } else {
+                confirmaSenha.setCustomValidity('');
+            }
         }
-    }
 
-    senha.onchange = validarSenha;
-    confirmaSenha.onkeyup = validarSenha;
-</script>
-
-<script>
-    // form-validate bootstrap
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            var forms = document.getElementsByClassName('needs-validation');
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
+        senha.onchange = validarSenha;
+        confirmaSenha.onkeyup = validarSenha;
+    </script>
+}
