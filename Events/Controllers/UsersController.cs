@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -30,11 +31,24 @@ namespace Events.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(USUARIO usrModel)
         {
-            //usrModel.SENHA = GlobalVariables.GetHash(usrModel.SENHA);
-            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", usrModel).Result;
+            usrModel.SENHA = GlobalVariables.GetHash(usrModel.SENHA);
 
-            TempData["Success"] = "Salvo com sucesso.";
-            return RedirectToAction("Index");
+            // Código não funcionando
+            var client = GlobalVariables.WebApiClient;
+            string inputJson = Newtonsoft.Json.JsonConvert.SerializeObject(usrModel);
+            HttpContent content = new StringContent(inputJson, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PostAsync("https://localhost:44390/api/Users", content).Result;
+                
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Salvo com sucesso.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado.";
+                return View("Register");
+            }
         }
     }
 }

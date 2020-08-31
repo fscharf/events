@@ -15,9 +15,9 @@ namespace WebAPI.Models
     
     public partial class EventsEntities : DbContext
     {
-        public EventsEntities()
-            : base("name=EventsEntities")
+        public EventsEntities() : base("name=EventsEntities")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
