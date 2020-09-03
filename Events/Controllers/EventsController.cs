@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Events.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 //samuel teste commit okay
@@ -26,5 +28,13 @@ namespace Events.Controllers
             return View();
         }
 
-    }
+        public ActionResult ListEvent()
+        {
+            IEnumerable<EVENTO> EventoList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Evento").Result;
+            EventoList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+            return View(EventoList);
+        }
+
+  }
 }
