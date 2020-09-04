@@ -69,6 +69,12 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult PostUSUARIO(USUARIO uSUARIO)
         {
+            uSUARIO.INSCRICAO = new HashSet<INSCRICAO>();
+            uSUARIO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
+            uSUARIO.CELULAR = "1234";
+            uSUARIO.PERFIL = null;
+            uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+
             db.USUARIO.Add(uSUARIO);
             db.SaveChanges();
 

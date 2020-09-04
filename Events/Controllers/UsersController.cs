@@ -31,24 +31,9 @@ namespace Events.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(USUARIO usrModel)
         {
-            usrModel.SENHA = GlobalVariables.GetHash(usrModel.SENHA);
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", usrModel).Result;
 
-            // Código não funcionando
-            var client = GlobalVariables.WebApiClient;
-            string inputJson = Newtonsoft.Json.JsonConvert.SerializeObject(usrModel);
-            HttpContent content = new StringContent(inputJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PostAsync("https://localhost:44390/api/Users", content).Result;
-                
-            if (response.IsSuccessStatusCode)
-            {
-                TempData["Success"] = "Salvo com sucesso.";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                TempData["Error"] = "Ocorreu um erro inesperado.";
-                return View("Register");
-            }
+            return RedirectToAction("Index");
         }
     }
 }
