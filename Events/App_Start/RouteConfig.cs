@@ -20,12 +20,6 @@ namespace Events
             );
 
             routes.MapRoute(
-                "autenticar",
-                "autenticar",
-                new { controller = "Login", action = "Auth" }
-            );
-
-            routes.MapRoute(
                 "sair",
                 "sair",
                 new { controller = "Login", action = "Logout" }
@@ -34,13 +28,7 @@ namespace Events
             routes.MapRoute(
                 "cadastro",
                 "cadastro",
-                new { controller = "Register", action = "Register" }
-            );
-
-            routes.MapRoute(
-                "cadastro_criar",
-                "cadastro/criar",
-                new { controller = "Register", action = "Create" }
+                new { controller = "Users", action = "Register" }
             );
 
             routes.MapRoute(

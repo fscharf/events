@@ -17,23 +17,23 @@
     @Styles.Render("~/styles/css")
 </head>
 
-<body>
+<body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg bg-white mb-4" id="mainNavbar">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top shadow-sm py-3 mb-5" id="mainNavbar">
         <div class="container">
             <a class="main-font text-primary" href="/">Events</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
-                <i class="fas fa-bars fa-lg text-primary"></i>
+                <i class="fas fa-bars fa-lg"></i>
             </button>
             <div class="collapse navbar-collapse mt-3 mt-sm-0" id="navCollapse">
                 <ul class="navbar-nav ml-auto">
                     @if (Session["UserID"] == null)
                     {
                         <li class="nav-item">
-                            <a class="btn btn-primary mr-0 mr-sm-2" href="/cadastro">Cadastro</a>
+                            <a class="nav-link" href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/entrar">Entrar</a>
+                            <a class="nav-link" href="/entrar"><i class="fas fa-sign-in-alt"></i> Entrar</a>
                         </li>
                     }
                     else
@@ -43,7 +43,7 @@
                                class="nav-link dropdown-toggle"
                                data-toggle="dropdown"
                                title="Opções da conta">
-                               <i class="fas fa-user-circle mr-2"></i>@Session["Name"]
+                                <i class="fas fa-user-circle mr-2"></i>@Session["Name"]
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow" style="width: 220px;">
                                 <div class="text-center p-2">
@@ -71,11 +71,9 @@
         </div>
     </nav>
 
-    <div class="container">
-        @RenderBody()
-    </div>
+    @RenderBody()
 
-    <footer class="bg-light text-center py-4 mt-5" style="bottom: 0;">
+    <footer class="bg-dark text-center py-4 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg text-muted">

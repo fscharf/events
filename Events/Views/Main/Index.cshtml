@@ -1,106 +1,65 @@
-﻿@if (Session["IsAdmin"] != null)
-{
-    Response.Redirect("/admin");
-}
-
-@if (Session["UserID"] == null)
-{
-    <div class="row text-center text-sm-left mb-5">
-        <div class="col-lg-6 my-auto">
-            <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
-        </div>
-        <div class="col-lg-6 my-auto px-5">
-            <h2 class="font-weight-bold">Conecte-se ao Events</h2>
-            <h4 class="text-muted">Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
-            <a class="btn btn-primary btn-lg mt-3" href="/cadastro">
-                Começar agora<i class="fas fa-angle-right ml-3"></i>
-            </a>
-        </div>
-    </div>
-}
-
-@if (TempData["Success"] != null)
-{
-    <div class="row mb-5">
-        <div class="col-lg text-center">
-            <h2 class="font-weight-bold">Bem-vindo, @Session["Name"]</h2>
-            <h4 class="text-muted">@TempData["Success"]</h4>
-            <a class="btn btn-primary btn-lg" href="/eventos">
-                Explorar eventos<i class="fas fa-angle-double-right ml-2"></i>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 mx-auto">
-            <img class="img-fluid" src="~/Content/img/undraw/undraw_i_can_fly_7egl.svg" />
-        </div>
-    </div>
-}
-
-<div class="row mb-3">
-    <div class="col-lg">
-        <h2><strong>Em alta</strong></h2>
-    </div>
-</div>
-
-<div class="row mb-3">
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
-                </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
+﻿
+<div class="container-fluid bg-main-gradient text-center text-md-left mt-n5 mb-5 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 my-md-auto">
+                <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
             </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
-                </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
-                </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
+            <div class="col-lg-6 my-auto mx-auto text-light">
+                <h2>Conecte-se ao Events</h2>
+                <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
+                <a class="btn btn-primary btn-lg mt-3" href="/cadastro">
+                    Começar agora<i class="fas fa-angle-right ml-3"></i>
+                </a>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row mb-3">
-    <div class="col-lg text-center text-sm-right">
-        <a href="/eventos">
-            Explorar eventos<i class="fas fa-angle-right ml-2"></i>
-        </a>
+<div class="container-fluid bg-white text-center text-md-left py-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg">
+                <h2 class="text-muted">Em alta</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-lg-4 mb-2 mb-sm-0">
+                <div class="card">
+                    <img class="card-img-top img-fluid" style="object-fit: cover; height: 240px"
+                         src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+                         alt="Reunião" />
+                    <div class="card-body">
+                        <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>22/09/20</span>
+                            <span><i class="fas fa-clock mr-2"></i>20:00</span><br />
+                        </div>
+                        <h4 class="card-title">Título do evento</h4>
+                        <p class="card-text text-muted text-truncate">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+
+                        
+                    </div>
+                    <div class="card-footer">
+                        <a href="/eventos/titulo-evento" class="stretched-link card-link text-center">
+                            <i class="fas fa-info-circle mr-2"></i><strong>Mais informações</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-lg text-center text-sm-right">
+                <a href="/eventos">
+                    Explorar eventos<i class="fas fa-angle-right ml-2"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
+
 

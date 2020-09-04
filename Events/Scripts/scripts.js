@@ -1,5 +1,5 @@
 ﻿// custom bootstrap patterns
-$('.card').addClass('bg-white border-0');
+$('.card').addClass('bg-white');
 
 $(".card").hover(function () {
     $(this).toggleClass("text-primary shadow");
