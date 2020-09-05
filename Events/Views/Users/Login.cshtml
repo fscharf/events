@@ -1,0 +1,77 @@
+﻿@model Events.Models.USUARIO
+
+@Styles.Render("~/forms/css")
+
+<div class="row">
+    <div class="col-lg-5 mx-auto rounded border bg-white my-5 p-5">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.HiddenFor(model => model.COD_USUARIO)
+
+            <div class="text-center mb-4">
+                <a href="/" class="main-font h1">Events</a>
+                <p class="text-muted">@ViewBag.Title</p>
+            </div>
+
+            if (TempData["Error"] != null)
+            {
+                <div class="form-group">
+                    <div class="alert alert-danger alert-auto-hide" role="alert">
+                        @TempData["Error"]
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+
+                    @Html.EditorFor(model => model.EMAIL, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Email",
+                            type = "text",
+                            required = "required"
+                        }
+                    })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                    </div>
+
+                    @Html.EditorFor(model => model.SENHA, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Senha",
+                            type = "password",
+                            required = "required"
+                        }
+                    })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">ENTRAR</button>
+                <div class="text-muted text-center">
+                    <span>Novo por aqui?</span>
+                    <a href="/cadastro">Cadastre-se grátis</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

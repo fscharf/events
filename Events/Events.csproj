@@ -58,8 +58,23 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,11 +156,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,6 +169,7 @@
     <Compile Include="Models\PERFIL.cs" />
     <Compile Include="Models\USUARIO.cs" />
     <Compile Include="Models\USUARIO_GERENCIA_EVENTO.cs" />
+    <Compile Include="OwinStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1809,43 +1822,6 @@
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-brands-400.svg" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-regular-400.svg" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\webfonts\fa-solid-900.svg" />
-    <Content Include="node_modules\alertifyjs\build\alertify.js" />
-    <Content Include="node_modules\alertifyjs\build\alertify.min.js" />
-    <Content Include="node_modules\alertifyjs\build\css\alertify.css" />
-    <Content Include="node_modules\alertifyjs\build\css\alertify.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.css" />
-    <Content Include="node_modules\alertifyjs\build\css\alertify.rtl.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\bootstrap.rtl.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\default.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\default.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\default.rtl.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.min.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.css" />
-    <Content Include="node_modules\alertifyjs\build\css\themes\semantic.rtl.min.css" />
-    <Content Include="node_modules\alertifyjs\Gruntfile.js" />
-    <Content Include="node_modules\alertifyjs\src\js\alert.js" />
-    <Content Include="node_modules\alertifyjs\src\js\alertify.js" />
-    <Content Include="node_modules\alertifyjs\src\js\confirm.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\actions.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\commands.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\dialog.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\events.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\focus.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\intro.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\move.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\outro.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\resize.js" />
-    <Content Include="node_modules\alertifyjs\src\js\dialog\transition.js" />
-    <Content Include="node_modules\alertifyjs\src\js\event.js" />
-    <Content Include="node_modules\alertifyjs\src\js\intro.js" />
-    <Content Include="node_modules\alertifyjs\src\js\notifier.js" />
-    <Content Include="node_modules\alertifyjs\src\js\outro.js" />
-    <Content Include="node_modules\alertifyjs\src\js\prompt.js" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -2279,19 +2255,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Events\Event.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Events\_AuthInEvent.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
-    <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2302,17 +2271,6 @@
     <Content Include="Fonts\cabin-rg.ttf" />
     <Content Include="Fonts\product-sans-rg.ttf" />
     <Content Include="Content\scss\style.scss" />
-    <Content Include="node_modules\alertifyjs\.jshintrc" />
-    <Content Include="node_modules\alertifyjs\build\alertifyjs.zip" />
-    <Content Include="node_modules\alertifyjs\CONTRIBUTING.md" />
-    <Content Include="node_modules\alertifyjs\LICENSE" />
-    <Content Include="node_modules\alertifyjs\package.json" />
-    <Content Include="node_modules\alertifyjs\README.md" />
-    <Content Include="node_modules\alertifyjs\RELEASENOTES.md" />
-    <Content Include="node_modules\alertifyjs\src\less\alertify.less" />
-    <Content Include="node_modules\alertifyjs\src\less\themes\bootstrap.less" />
-    <Content Include="node_modules\alertifyjs\src\less\themes\default.less" />
-    <Content Include="node_modules\alertifyjs\src\less\themes\semantic.less" />
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="package-lock.json" />
     <Content Include="..\.editorconfig">
@@ -2320,6 +2278,7 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Events\ListEvent.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

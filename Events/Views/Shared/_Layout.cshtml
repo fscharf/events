@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -17,7 +19,7 @@
     @Styles.Render("~/styles/css")
 </head>
 
-<body class="bg-light">
+<body>
 
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top shadow-sm py-3 mb-5" id="mainNavbar">
         <div class="container">
@@ -27,53 +29,63 @@
             </button>
             <div class="collapse navbar-collapse mt-3 mt-sm-0" id="navCollapse">
                 <ul class="navbar-nav ml-auto">
-                    @if (Session["UserID"] == null)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/entrar"><i class="fas fa-sign-in-alt"></i> Entrar</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item dropdown">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown"
-                               title="Opções da conta">
-                                <i class="fas fa-user-circle mr-2"></i>@Session["Name"]
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow" style="width: 220px;">
-                                <div class="text-center p-2">
-                                    <i class="fas fa-user-circle fa-2x mb-2"></i>
-                                    <div class="dropdown-item-text">@Session["Name"]</div>
-                                    <small class="text-muted">@Session["Email"]</small>
+                    @{
+                        var userAuth = (ClaimsIdentity)User.Identity;
+
+                        if (userAuth.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a href="#"
+                                   class="nav-link dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   title="Opções da conta">
+                                    <i class="fas fa-user-circle mr-2"></i>@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow" style="width: 220px;">
+                                    <div class="text-center p-2">
+                                        <i class="fas fa-user-circle fa-2x mb-2"></i>
+                                        <div class="dropdown-item-text">
+                                            @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
+                                        </div>
+                                        <small class="text-muted">
+                                            @userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value
+                                        </small>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item profile" href="#profileModal" data-toggle="modal">
+                                        <i class="fas fa-user-circle mr-2"></i>Conta
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item disabled" href="#">
+                                        <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/sair">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Sair
+                                    </a>
                                 </div>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item profile" href="#profileModal" data-toggle="modal">
-                                    <i class="fas fa-user-circle mr-2"></i>Conta
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item disabled" href="#">
-                                    <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/sair">
-                                    <i class="fas fa-sign-out-alt mr-2"></i>Sair
-                                </a>
-                            </div>
-                        </li>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/entrar"><i class="fas fa-sign-in-alt"></i> Entrar</a>
+                            </li>
+                        }
                     }
                 </ul>
             </div>
         </div>
     </nav>
 
-    @RenderBody()
+    <div class="container text-center text-sm-left">
+        @RenderBody()
+    </div>
 
-    <footer class="bg-dark text-center py-4 mt-5">
+    <footer class="border-top bg-light text-center py-4 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg text-muted">
@@ -92,7 +104,6 @@
     @Scripts.Render("~/scripts/js")
 
     @RenderSection("Scripts", required: false)
-
 </body>
 
 </html>

@@ -295,3 +295,12 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.cspro
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.pdb
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Owin.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml

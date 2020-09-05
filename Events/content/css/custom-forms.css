@@ -3,5 +3,6 @@
 }
 
 body {
-    background: linear-gradient(to right bottom, #7e4de5, #6930ee);
+    background: #6930ee;
+    height: 100%;
 }

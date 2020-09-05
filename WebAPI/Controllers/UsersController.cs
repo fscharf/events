@@ -71,12 +71,18 @@ namespace WebAPI.Controllers
         {
             uSUARIO.INSCRICAO = new HashSet<INSCRICAO>();
             uSUARIO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
-            uSUARIO.CELULAR = "1234";
             uSUARIO.PERFIL = null;
             uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
 
-            db.USUARIO.Add(uSUARIO);
-            db.SaveChanges();
+            if (db.USUARIO.Any(x => x.EMAIL == uSUARIO.EMAIL))
+            {
+                return BadRequest();
+            }
+            else
+            {
+                db.USUARIO.Add(uSUARIO);
+                db.SaveChanges();
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = uSUARIO.COD_USUARIO }, uSUARIO);
         }
