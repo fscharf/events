@@ -261,8 +261,13 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Antlr3.Runtime.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\EntityFramework.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\EntityFramework.SqlServer.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Newtonsoft.Json.dll
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Owin.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\System.Net.Http.Formatting.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\System.Web.Helpers.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\System.Web.Http.dll
@@ -278,6 +283,10 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\WebGrease.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\EntityFramework.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\EntityFramework.SqlServer.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.xml
+C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Newtonsoft.Json.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\System.Net.Http.Formatting.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\System.Web.Http.xml
@@ -295,12 +304,3 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.cspro
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.pdb
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.dll
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.dll
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Owin.dll
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.xml
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.xml
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml

@@ -1,10 +1,13 @@
 ﻿using Events.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,7 +45,7 @@ namespace Events.Controllers
             }
             else
             {
-                TempData["Error"] = "E-mail já cadastrado.";
+                TempData["Error"] = "Email já cadastrado.";
                 return View(userModel);
             }
         }
@@ -60,28 +63,50 @@ namespace Events.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(USUARIO userModel)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Users").Result;
+            var tokenBased = string.Empty;
+            HttpResponseMessage response = GlobalVariables
+                .WebApiClient.GetAsync("Login/ValidLogin?email=" + userModel.EMAIL + "&password=" + userModel.SENHA).Result;
 
-            if (response.IsSuccessStatusCode && userModel.EMAIL != null && userModel.SENHA == GlobalVariables.CalculateMD5Hash(userModel.SENHA))
+            if (response.IsSuccessStatusCode)
             {
-                var identity = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Email, userModel.EMAIL),
-                    new Claim(ClaimTypes.GivenName, userModel.NOME),
-                    new Claim(ClaimTypes.Sid, userModel.COD_USUARIO + "")
-                }, "ApplicationCookie");
+                var resultMessage = response.Content.ReadAsStringAsync().Result;
+                tokenBased = JsonConvert.DeserializeObject<string>(resultMessage);
+                Session["TokenNumber"] = tokenBased;
+                Session["Email"] = userModel.EMAIL;
 
-                var context = Request.GetOwinContext();
-                var authManager = context.Authentication;
-                authManager.SignIn(identity);
-                return Redirect("/");
+                return Content(tokenBased);
+                //var identity = new ClaimsIdentity(new[]
+                //                {
+                //    new Claim(ClaimTypes.Email, userModel.EMAIL),
+                //    new Claim(ClaimTypes.GivenName, userModel.NOME),
+                //    new Claim(ClaimTypes.Sid, userModel.COD_USUARIO + "")
+                //}, "ApplicationCookie");
+
+                //Request.GetOwinContext().Authentication.SignIn(identity);
+                //return Redirect("/");
             }
             else
             {
                 TempData["Error"] = "Email ou senha inválidos.";
                 return View(userModel);
             }
+        }
 
+        public async Task<ActionResult> GetUSUARIO()
+        {
+            string ReturnMessage = String.Empty;
+
+            var client = GlobalVariables.WebApiClient;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
+                Session["TokenNumber"].ToString() + ":" + Session["Email"]);
+
+            var response = await client.GetAsync("Login/GetUSUARIO");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                ReturnMessage = JsonConvert.DeserializeObject<string>(result);
+            }
+            return Content(ReturnMessage);
         }
 
         public ActionResult Logout()
