@@ -1,63 +1,3 @@
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.dll.config
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.pdb
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.exe
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.exe.config
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.rsp
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.exe
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.exe.config
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.rsp
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.exe
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.exe.config
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.rsp
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Antlr3.Runtime.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Newtonsoft.Json.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Helpers.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Mvc.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Optimization.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Razor.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Razor.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebGrease.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Helpers.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Mvc.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Optimization.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Razor.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Razor.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Newtonsoft.Json.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Antlr3.Runtime.pdb
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cache
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csproj.CopyComplete
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.pdb
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebActivatorEx.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.SqlServer.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.SqlServer.xml
 C:\Git\Local\Events\Events\Events\bin\Events.dll.config
 C:\Git\Local\Events\Events\Events\bin\Events.dll
 C:\Git\Local\Events\Events\Events\bin\Events.pdb
@@ -142,17 +82,6 @@ C:\Git\Local\Events\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cach
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.dll
 C:\Git\Local\Events\Events\Events\obj\Debug\Events.pdb
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.xml
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Buffers.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Memory.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Numerics.Vectors.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Events.dll.config
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Events.dll
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Events.pdb
@@ -304,3 +233,73 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.cspro
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.dll
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.dll.config
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Events.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.exe
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.exe.config
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csc.rsp
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.exe
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.exe.config
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\csi.rsp
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Buffers.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Memory.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.exe
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.exe.config
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\vbc.rsp
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Antlr3.Runtime.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.SqlServer.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Newtonsoft.Json.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Helpers.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Mvc.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Optimization.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Razor.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Razor.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebActivatorEx.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\WebGrease.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\EntityFramework.SqlServer.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Newtonsoft.Json.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Net.Http.Formatting.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Http.WebHost.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Helpers.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Mvc.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Optimization.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.Razor.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\System.Web.WebPages.Razor.xml
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\bin\Antlr3.Runtime.pdb
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cache
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.csproj.CopyComplete
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.dll
+C:\Users\Felipe Scharf\Desktop\Dev\Projects\Events\Events\Events\obj\Debug\Events.pdb

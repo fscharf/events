@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EventsDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EventsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="EVENTO">
           <Key>
             <PropertyRef Name="COD_EVENTO" />
@@ -146,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EventsDbModelStoreContainer">
+        <EntityContainer Name="EventsModelStoreContainer">
           <EntitySet Name="EVENTO" EntityType="Self.EVENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INSCRICAO" EntityType="Self.INSCRICAO" Schema="dbo" store:Type="Tables" />
@@ -182,10 +182,11 @@
             <End Role="INSCRICAO" EntitySet="INSCRICAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EventsDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EventsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="EVENTO">
           <Key>
             <PropertyRef Name="COD_EVENTO" />
@@ -382,9 +383,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EventsDbModelStoreContainer" CdmEntityContainer="EventsEntities">
+        <EntityContainerMapping StorageEntityContainer="EventsModelStoreContainer" CdmEntityContainer="EventsEntities">
           <EntitySetMapping Name="EVENTO">
-            <EntityTypeMapping TypeName="EventsDbModel.EVENTO">
+            <EntityTypeMapping TypeName="EventsModel.EVENTO">
               <MappingFragment StoreEntitySet="EVENTO">
                 <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
                 <ScalarProperty Name="DURACAO" ColumnName="DURACAO" />
@@ -396,7 +397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FEEDBACK">
-            <EntityTypeMapping TypeName="EventsDbModel.FEEDBACK">
+            <EntityTypeMapping TypeName="EventsModel.FEEDBACK">
               <MappingFragment StoreEntitySet="FEEDBACK">
                 <ScalarProperty Name="COD_FEEDBACK" ColumnName="COD_FEEDBACK" />
                 <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
@@ -407,7 +408,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INSCRICAO">
-            <EntityTypeMapping TypeName="EventsDbModel.INSCRICAO">
+            <EntityTypeMapping TypeName="EventsModel.INSCRICAO">
               <MappingFragment StoreEntitySet="INSCRICAO">
                 <ScalarProperty Name="COD_INSCRICAO" ColumnName="COD_INSCRICAO" />
                 <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
@@ -418,7 +419,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PERFIL">
-            <EntityTypeMapping TypeName="EventsDbModel.PERFIL">
+            <EntityTypeMapping TypeName="EventsModel.PERFIL">
               <MappingFragment StoreEntitySet="PERFIL">
                 <ScalarProperty Name="COD_PERFIL" ColumnName="COD_PERFIL" />
                 <ScalarProperty Name="DESCRICAO" ColumnName="DESCRICAO" />
@@ -426,7 +427,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
-            <EntityTypeMapping TypeName="EventsDbModel.USUARIO">
+            <EntityTypeMapping TypeName="EventsModel.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
                 <ScalarProperty Name="NOME" ColumnName="NOME" />
@@ -438,7 +439,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO_GERENCIA_EVENTO">
-            <EntityTypeMapping TypeName="EventsDbModel.USUARIO_GERENCIA_EVENTO">
+            <EntityTypeMapping TypeName="EventsModel.USUARIO_GERENCIA_EVENTO">
               <MappingFragment StoreEntitySet="USUARIO_GERENCIA_EVENTO">
                 <ScalarProperty Name="COD_GERENCIA" ColumnName="COD_GERENCIA" />
                 <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />

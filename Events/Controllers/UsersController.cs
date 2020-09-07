@@ -57,67 +57,15 @@ namespace Events.Controllers
             return View();
         }
 
-        // POST:
-        [AllowAnonymous]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(USUARIO userModel)
-        {
-            var tokenBased = string.Empty;
-            HttpResponseMessage response = GlobalVariables
-                .WebApiClient.GetAsync("Login/ValidLogin?email=" + userModel.EMAIL + "&password=" + userModel.SENHA).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                var resultMessage = response.Content.ReadAsStringAsync().Result;
-                tokenBased = JsonConvert.DeserializeObject<string>(resultMessage);
-                Session["TokenNumber"] = tokenBased;
-                Session["Email"] = userModel.EMAIL;
-
-                return Content(tokenBased);
-                //var identity = new ClaimsIdentity(new[]
-                //                {
-                //    new Claim(ClaimTypes.Email, userModel.EMAIL),
-                //    new Claim(ClaimTypes.GivenName, userModel.NOME),
-                //    new Claim(ClaimTypes.Sid, userModel.COD_USUARIO + "")
-                //}, "ApplicationCookie");
-
-                //Request.GetOwinContext().Authentication.SignIn(identity);
-                //return Redirect("/");
-            }
-            else
-            {
-                TempData["Error"] = "Email ou senha inválidos.";
-                return View(userModel);
-            }
-        }
-
-        public async Task<ActionResult> GetUSUARIO()
-        {
-            string ReturnMessage = String.Empty;
-
-            var client = GlobalVariables.WebApiClient;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
-                Session["TokenNumber"].ToString() + ":" + Session["Email"]);
-
-            var response = await client.GetAsync("Login/GetUSUARIO");
-            if (response.IsSuccessStatusCode)
-            {
-                var result = response.Content.ReadAsStringAsync().Result;
-                ReturnMessage = JsonConvert.DeserializeObject<string>(result);
-            }
-            return Content(ReturnMessage);
-        }
-
-        public ActionResult Logout()
-        {
-            var context = Request.GetOwinContext();
-            var authManager = context.Authentication;
-            authManager.SignOut("ApplicationCookie");
-            Session.Abandon();
-            Session.Clear();
-            Session.RemoveAll();
-            return Redirect("/");
-        }
+        //public ActionResult Logout()
+        //{
+        //    var context = Request.GetOwinContext();
+        //    var authManager = context.Authentication;
+        //    authManager.SignOut("ApplicationCookie");
+        //    Session.Abandon();
+        //    Session.Clear();
+        //    Session.RemoveAll();
+        //    return Redirect("/");
+        //}
     }
 }

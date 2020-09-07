@@ -6,7 +6,6 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Models;
@@ -15,7 +14,7 @@ namespace WebAPI.Controllers
 {
     public class UsersController : ApiController
     {
-        private EventsEntities db = new EventsEntities();
+        private readonly EventsEntities db = new EventsEntities();
 
         // GET: api/Users
         public IQueryable<USUARIO> GetUSUARIO()
@@ -59,7 +58,7 @@ namespace WebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    throw new DbUpdateConcurrencyException();
                 }
             }
 
