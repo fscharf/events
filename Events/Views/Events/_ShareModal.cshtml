@@ -1,0 +1,22 @@
+﻿<div class="modal fade" id="shareModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Copie e divulgue a URL para seus amigos!
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <input id="shareLink" class="form-control" type="text" value="@($"https://localhost:44322{Request.FilePath}")" />
+                    <div class="input-group-append">
+                        <button id="shareLinkBtn" type="button" class="btn btn-primary">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="shareLinkAlert" class="alert alert-success">Link copiado para área de transferência.</div>
+            </div>
+        </div>
+    </div>
+</div>
+

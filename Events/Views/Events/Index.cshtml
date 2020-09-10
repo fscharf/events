@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Eventos";
-}
+﻿@model IEnumerable<Events.Models.EVENTO>
 
 <form method="get">
     <div class="form-row mb-3">
@@ -32,10 +30,10 @@
                     </div>
                 </div>
                 <select class="form-control">
-                    <option selected>Status</option>
+                    <option selected value="">Status</option>
                     <option value="1">Disponível</option>
                     <option value="2">Em andamento</option>
-                    <option value="2">Encerrado</option>
+                    <option value="3">Encerrado</option>
                 </select>
             </div>
         </div>
@@ -47,7 +45,7 @@
                     </div>
                 </div>
                 <select class="form-control">
-                    <option selected>Alfabético</option>
+                    <option selected value="">Ordenar</option>
                     <option value="1">A-Z</option>
                     <option value="2">Z-A</option>
                 </select>
@@ -57,60 +55,29 @@
 </form>
 
 <div class="row mb-3">
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" 
-                 src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" 
-                 alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 mb-2 mb-sm-0">
+            <div class="card">
+                <img class="card-img-top img-fluid" style="object-fit: cover; height: 240px"
+                     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+                     alt="Reunião" />
+                <div class="card-body">
+                    <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                        <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
+                        <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
+                    </div>
+                    <h4 class="card-title">Título do evento</h4>
+                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
                 </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
+                <div class="card-footer">
+                    <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">
+                        <i class="fas fa-check-circle mr-2"></i>Participar
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" 
-                 src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&w=1000&q=80" 
-                 alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
-                </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 mb-2 mb-sm-0">
-        <div class="card">
-            <img class="card-img-top img-fluid rounded-lg crop-img-size" 
-                 src="https://i2.wp.com/www.mwcbarcelona.com/wp-content/uploads/2019/09/conference-programmes-featured-wide-2x.jpg?fit=1096%2C644&ssl=1" 
-                 alt="Reunião" />
-            <div class="card-body text-center">
-                <div class="text-muted mb-3">
-                    <i class="fas fa-calendar mr-2"></i>22/09/20
-                    <i class="fas fa-clock mx-2"></i>20:00
-                </div>
-                <h4 class="card-title font-weight-bold">Título do evento</h4>
-                <p class="card-text text-muted text-truncate">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
-            </div>
-        </div>
-    </div>
+    }
 </div>
 
 <div class="row mb-3">

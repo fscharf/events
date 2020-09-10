@@ -1,14 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Feira de tecnologia";
+    ViewBag.Title = "Feira de Tecnologia";
 }
 
-<img class="img-fluid crop-img-size rounded-lg border mb-4"
+<img class="img-fluid crop-img-size shadow-sm rounded mb-4"
      src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
      alt="@ViewBag.Title" />
 
 <div class="row">
     <div class="col-lg-8 mb-4 mb-sm-0">
-        <div class="border rounded p-4">
+        <div class="shadow-sm border rounded p-5">
             <h2 class="font-weight-bold mb-3">@ViewBag.Title</h2>
 
             <p class="text-muted mb-5">
@@ -20,24 +20,24 @@
                 aliquip ex ea commodo consequat.
             </p>
 
-            <iframe class="rounded-lg w-100" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr" 
-                    height="450" 
-                    frameborder="0" 
-                    allowfullscreen="true" 
-                    aria-hidden="false" 
+            <iframe class="rounded w-100"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr"
+                    height="450"
+                    frameborder="0"
+                    allowfullscreen="true"
+                    aria-hidden="false"
                     tabindex="0">
-            </iframe>                
+            </iframe>
             <hr>
 
             <span class="text-muted">
                 <i class="fas fa-tags text-primary mr-3" data-toggle="tooltip" title="Categoria"></i>Informática &middot; Edificações
             </span>
         </div>
-       
+
     </div>
     <div class="col-lg-4">
-        <div class="border rounded p-4 mb-4">
+        <div class="shadow-sm border rounded text-center p-4 mb-4">
             <a href="/eventos" class="card-link" title="Voltar">
                 <i class="fas fa-arrow-left fa-lg"></i>
             </a>
@@ -48,35 +48,15 @@
                 <i class="fas fa-share-alt fa-lg"></i>
             </a>
         </div>
-        <div class="border rounded p-4">
-            <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data" data-toggle="tooltip"></i>20/09/2020</p>
-            <p><i class="fas fa-clock text-primary mr-2" title="Horário" data-toggle="tooltip"></i>20:00</p>
-            <p><i class="fas fa-map-marker-alt text-primary mr-2" title="Local" data-toggle="tooltip"></i>Rua João Silva, 16</p>
-            <a href="#authInModal" data-toggle="modal" class="btn btn-primary btn-block">Quero participar</a>
+        <div class="shadow-sm border rounded p-4">
+            <p class="text-muted">Informações do evento</p>
+            <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data"></i>20/09/2020</p>
+            <p><i class="fas fa-clock text-primary mr-2" title="Horário"></i>20:00</p>
+            <p><i class="fas fa-map-marker-alt text-primary mr-2" title="Local"></i>Rua João Silva, 16</p>
+            <a href="#authInModal" data-toggle="modal" class="btn btn-primary btn-block"><i class="fas fa-check-circle mr-2"></i>Participar</a>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="shareModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                Copie e divulgue o link para seus amigos!
-                <button type="button" data-dismiss="modal" class="close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <input id="shareLink" class="form-control" type="text" value="@($"http://events.com.br/{Request.FilePath}")" />
-                    <div class="input-group-append">
-                        <button id="shareLinkBtn" type="button" class="btn btn-primary">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-                <div id="shareLinkAlert" class="alert alert-success">Link copiado para área de transferência.</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@Html.Partial("_AuthInEvent")
+@Html.Partial("_AuthInModal")
+@Html.Partial("_ShareModal")

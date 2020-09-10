@@ -13,18 +13,9 @@ using System.Web.Mvc;
 
 namespace Events.Controllers
 {
+    [AllowAnonymous]
     public class UsersController : Controller
     {
-        // GET: Users
-        //public ActionResult Index()
-        //{
-        //    IEnumerable<USUARIO> userList;
-        //    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Users").Result;
-        //    userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
-        //    return View(userList);
-        //}
-
-        // GET:
         public ActionResult Register(int id = 0)
         {
             ViewBag.Title = "Crie sua conta grátis";
@@ -35,18 +26,31 @@ namespace Events.Controllers
         // POST: /api/Users
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(USUARIO userModel)
+        public ActionResult Register(USUARIO uSUARIO)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", userModel).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("users", uSUARIO).Result;
             if (response.IsSuccessStatusCode)
             {
+                var identity = new ClaimsIdentity(new[]
+                    {
+                        new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
+                        new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
+                        new Claim(ClaimTypes.GivenName, uSUARIO.CELULAR),
+                        new Claim(ClaimTypes.Role, uSUARIO.COD_PERFIL.ToString()),
+                        new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString())
+                    }, "ApplicationCookie");
+
+                var context = Request.GetOwinContext();
+                var authManager = context.Authentication;
+                authManager.SignIn(identity);
+
                 TempData["Success"] = "Cadastro realizado com sucesso!";
                 return Redirect("/");
             }
             else
             {
                 TempData["Error"] = "Email já cadastrado.";
-                return View(userModel);
+                return View(uSUARIO);
             }
         }
 
@@ -57,15 +61,57 @@ namespace Events.Controllers
             return View();
         }
 
-        //public ActionResult Logout()
-        //{
-        //    var context = Request.GetOwinContext();
-        //    var authManager = context.Authentication;
-        //    authManager.SignOut("ApplicationCookie");
-        //    Session.Abandon();
-        //    Session.Clear();
-        //    Session.RemoveAll();
-        //    return Redirect("/");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(USUARIO uSUARIO)
+        {
+            IEnumerable<USUARIO> userList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("users").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
+                var userDetails = userList.Where(x => x.EMAIL == uSUARIO.EMAIL && x.SENHA == GlobalVariables.CalculateMD5Hash(uSUARIO.SENHA)).FirstOrDefault();
+
+                if (userDetails == null)
+                {
+                    TempData["Error"] = "Email ou senha inválidos.";
+                    return View(uSUARIO);
+                }
+                else
+                {
+                    var identity = new ClaimsIdentity(new[]
+                    {
+                        new Claim(ClaimTypes.Email, userDetails.EMAIL),
+                        new Claim(ClaimTypes.GivenName, userDetails.NOME),
+                        new Claim(ClaimTypes.HomePhone, userDetails.CELULAR),
+                        new Claim(ClaimTypes.Role, userDetails.COD_PERFIL.ToString()),
+                        new Claim(ClaimTypes.Sid, userDetails.COD_USUARIO.ToString())
+                    }, "ApplicationCookie");
+
+                    var context = Request.GetOwinContext();
+                    var authManager = context.Authentication;
+                    authManager.SignIn(identity);
+
+                    return Redirect("/");
+                }
+            }
+            else 
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado. Favor contatar o administrador.";
+                return View();
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            var context = Request.GetOwinContext();
+            var authManager = context.Authentication;
+            authManager.SignOut("ApplicationCookie");
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
+            return Redirect("/");
+        }
     }
 }

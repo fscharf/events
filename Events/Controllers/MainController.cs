@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 
 namespace Events.Controllers
 {
-    //Teste de commit: Miguel
+    [AllowAnonymous]
     public class MainController : Controller
     {
         public ActionResult Index()

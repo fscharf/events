@@ -9,13 +9,17 @@ using System.Web.Mvc;
 //Gabriel Teste commit okas
 namespace Events.Controllers
 {
+    [AllowAnonymous]
     public class EventsController : Controller
     {
-        // exemplo git
-        // teste okay
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Todos eventos";
+
+            IEnumerable<EVENTO> eventList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+            return View(eventList);
         }
 
         public ActionResult Event()
@@ -25,16 +29,17 @@ namespace Events.Controllers
 
         public ActionResult Confirm()
         {
+            ViewBag.Title = "Inscrição realizada com sucesso";
             return View();
         }
 
         public ActionResult ListEvent()
         {
-            IEnumerable<EVENTO> EventoList;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Evento").Result;
-            EventoList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
-            return View(EventoList);
+            IEnumerable<EVENTO> eventList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+            return View(eventList);
         }
 
-  }
+    }
 }

@@ -20,8 +20,7 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top shadow-sm py-3 mb-5" id="mainNavbar">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 mb-5" id="mainNavbar">
         <div class="container">
             <a class="main-font text-primary" href="/">Events</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
@@ -39,13 +38,13 @@
                                    class="nav-link dropdown-toggle"
                                    data-toggle="dropdown"
                                    title="Opções da conta">
-                                    <i class="fas fa-user-circle mr-2"></i>@*@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value*@
+                                    <i class="fas fa-user-circle mr-2"></i>@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-white border-0 shadow" style="width: 220px;">
+                                <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 220px;">
                                     <div class="text-center p-2">
                                         <i class="fas fa-user-circle fa-2x mb-2"></i>
                                         <div class="dropdown-item-text">
-                                            @*@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value*@
+                                            @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                                         </div>
                                         <small class="text-muted">
                                             @userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value
@@ -85,11 +84,12 @@
         @RenderBody()
     </div>
 
-    <footer class="border-top bg-light text-center py-4 mt-5">
+    <footer class="bg-light text-center py-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg text-muted">
-                    <strong>Events &copy; 2020</strong> Todos os direitos reservados.
+                    <h4 class="main-font">Events</h4>
+                    <strong>&copy; 2020</strong> Todos os direitos reservados.
                 </div>
             </div>
         </div>
