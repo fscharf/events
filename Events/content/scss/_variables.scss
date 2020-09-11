@@ -43,8 +43,11 @@ $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: map-merge( ( "primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark ), $theme-colors );
 
-
 $link-hover-decoration: none;
+
+$box-shadow-sm: 0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow: 0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
 
 @font-face {
     font-family: 'Cabin';
@@ -71,16 +74,12 @@ body {
 }
 
 .bg-main-gradient {
-    background: linear-gradient(to right, #a587e4, $primary);
+    background: linear-gradient(to right bottom, #a587e4, $primary);
 }
 
 .btn-dark:hover {
     background: $primary;
     border: 1px solid $primary;
-}
-
-:focus {
-    box-shadow: none !important;
 }
 
 .form-control:focus {
@@ -92,40 +91,54 @@ input[type="search"]::-webkit-search-cancel-button {
     position: relative;
     width: 16px;
     height: 16px;
-    background: url(../img/icons/close.svg) no-repeat;
+    background: url(../../node_modules/@fortawesome/fontawesome-free/svgs/solid/times-circle.svg) no-repeat;
 }
 
 input[type="search"]::-webkit-search-cancel-button:hover {
     cursor: pointer;
 }
 
-.crop-img-size {
+.custom-object-fit-cover {
     object-fit: cover;
     object-position: center;
-    width: 100vw;
-    height: 300px !important;
+    width: 100%;
+    height: 250px !important;
+}
+
+.object-fit-cover {
+    object-fit: cover;
 }
 
 .card {
+    background: $white;
+}
+
+.custom-card {
     transition: all .2s ease;
 }
 
+.custom-card:hover {
+    box-shadow: $box-shadow;
+    color: $primary;
+}
+
 @media (max-width: 700px) {
-    .btn {
+    .dropdown-menu {
         width: 100%;
     }
 }
 
 .night-mode {
-    .bg-white, .modal-content {
-        background: $dark !important;
-    }
-
-    .bg-light {
+    .bg-white, .modal-content, body, .card, footer {
         background: $gray-700 !important;
+        color: $light !important;
     }
 
-    .text-primary, a, h1, h2, h3, h4, h5, h6, strong, p, span, div {
-        color: $light;
+    .bg-light, .navbar {
+        background: $gray-800 !important;
+    }
+
+    a, h1, h2, h3, h4, h5, h6, strong, p, span, div {
+        color: $light !important;
     }
 }

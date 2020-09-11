@@ -36,6 +36,12 @@ namespace Events
                 "eventos",
                 new { controller = "Events", action = "Index" }
             );
+            
+            routes.MapRoute(
+                "eventos_meuseventos",
+                "eventos/meuseventos",
+                new { controller = "Events", action = "MyEvents" }
+            );
 
             routes.MapRoute(
                 "eventos_inscricao",

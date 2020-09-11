@@ -32,6 +32,11 @@ namespace Events.Controllers
             ViewBag.Title = "Inscrição realizada com sucesso";
             return View();
         }
+        public ActionResult MyEvents()
+        {
+            ViewBag.Title = "Meus eventos";
+            return View();
+        }
 
         public ActionResult ListEvent()
         {

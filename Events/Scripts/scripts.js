@@ -1,11 +1,4 @@
-﻿// custom bootstrap patterns
-$('.card').addClass('bg-white');
-
-$(".card").hover(function () {
-    $(this).toggleClass("text-primary shadow");
-});
-
-$("#favToggler").click(function () {
+﻿$("#favToggler").click(function () {
     $(this).toggleClass("text-danger");
 });
 

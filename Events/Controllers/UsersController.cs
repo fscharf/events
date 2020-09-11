@@ -35,7 +35,7 @@ namespace Events.Controllers
                     {
                         new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
                         new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
-                        new Claim(ClaimTypes.GivenName, uSUARIO.CELULAR),
+                        new Claim(ClaimTypes.HomePhone, uSUARIO.CELULAR),
                         new Claim(ClaimTypes.Role, uSUARIO.COD_PERFIL.ToString()),
                         new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString())
                     }, "ApplicationCookie");
