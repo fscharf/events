@@ -5,59 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lista de Eventos</h2>
+<h2>ListEvent</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+  <a href="@Url.Action("AddOrEdit","EVENTO")" class="btn btn-primary"><i class="fa fa-plus"></i> Criar Novo Evento</a>
 </p>
-
-<div class="row mb-3">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-4 mb-2 mb-sm-0">
-            <div class="card">
-                <img class="card-img-top img-fluid rounded-lg crop-img-size" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
-                <div class="card-body text-center">
-                    <div class="text-muted mb-3">
-                        <i class="fas fa-calendar mr-2"></i> @Html.DisplayFor(modelItem => item.DATA)
-                        <i class="fas fa-clock mx-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)
-                    </div>
-                    <h4 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.TITULO)</h4>
-                    <p class="card-text text-muted text-truncate">
-                        @Html.DisplayFor(modelItem => item.DESCRICAO)
-                    </p>
-                    <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">Participar</a>
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-
-@*<table class="table">
+<table class="table table-hover table-striped">
+  <thead class="thead-dark">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.COD_EVENTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DURACAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TITULO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESCRICAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DATA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HORARIO)
-        </th>
-        <th></th>
-    </tr>*@
+      <th>
+        @Html.DisplayNameFor(model => model.COD_EVENTO)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.DURACAO)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.TITULO)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.DESCRICAO)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.DATA)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.HORARIO)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
 
-@*<tr>
+@foreach (var item in Model) {
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.COD_EVENTO)
         </td>
@@ -81,6 +60,7 @@
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
-    </tr>*@
-@*</table>*@
+    </tr>
+}
 
+</table>

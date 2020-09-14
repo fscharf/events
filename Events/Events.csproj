@@ -2277,11 +2277,12 @@
       <Link>.editorconfig</Link>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Views\Events\ListEvent.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Events\_ShareModal.cshtml" />
     <Content Include="Views\Events\MyEvents.cshtml" />
     <Content Include="Views\Events\_QRCodeModal.cshtml" />
+    <Content Include="Views\Events\ListEvent.cshtml" />
+    <Content Include="Views\Events\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

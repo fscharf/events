@@ -148,7 +148,6 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Web.WebPag
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Web.WebPages.Deployment.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Web.WebPages.Razor.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Antlr3.Runtime.pdb
-C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cache
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.dll
@@ -303,3 +302,12 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Hos
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Owin.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml

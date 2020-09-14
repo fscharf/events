@@ -45,6 +45,14 @@ namespace Events.Controllers
             eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
             return View(eventList);
         }
+        public ActionResult AddOrEdit( int id = 0){
+            return View(new EVENTO());
+        }
+        public ActionResult AddOrEdit(EVENTO eVENTO)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
+            return RedirectToAction("eventList") ;
+        }
 
     }
 }
