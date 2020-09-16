@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -19,6 +20,8 @@ namespace Events.Models
         public System.TimeSpan DURACAO { get; set; }
         public string TITULO { get; set; }
         public string DESCRICAO { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0: dddd, dd/MM/yyyy}")]
         public System.DateTime DATA { get; set; }
         public System.TimeSpan HORARIO { get; set; }
 

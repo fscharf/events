@@ -48,6 +48,7 @@ namespace Events.Controllers
         public ActionResult AddOrEdit( int id = 0){
             return View(new EVENTO());
         }
+        [HttpPost]
         public ActionResult AddOrEdit(EVENTO eVENTO)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
@@ -55,4 +56,4 @@ namespace Events.Controllers
         }
 
     }
-}
+} 

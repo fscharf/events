@@ -1,91 +1,90 @@
 ﻿@model IEnumerable<Events.Models.EVENTO>
 
 <form method="get">
-    <div class="form-row mb-3">
-        <div class="form-group col-lg-5">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <a class="btn btn-primary custom-search" href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-                <input class="form-control" type="search" placeholder="Procurar eventos">
-            </div>
+  <div class="form-row mb-3">
+    <div class="form-group col-lg-5">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <a class="btn btn-primary custom-search" href="#">
+            <i class="fas fa-search"></i>
+          </a>
         </div>
-        <div class="form-group col-lg-3 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                </div>
-                <input type="date" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group col-lg-2 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-sort-amount-up-alt"></i>
-                    </div>
-                </div>
-                <select class="form-control">
-                    <option selected value="">Status</option>
-                    <option value="1">Disponível</option>
-                    <option value="2">Em andamento</option>
-                    <option value="3">Encerrado</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-lg-2 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </div>
-                </div>
-                <select class="form-control">
-                    <option selected value="">Ordenar</option>
-                    <option value="1">A-Z</option>
-                    <option value="2">Z-A</option>
-                </select>
-            </div>
-        </div>
+        <input class="form-control" type="search" placeholder="Procurar eventos">
+      </div>
     </div>
+    <div class="form-group col-lg-3 mb-2 mb-sm-0">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+        </div>
+        <input type="date" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group col-lg-2 mb-2 mb-sm-0">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-sort-amount-up-alt"></i>
+          </div>
+        </div>
+        <select class="form-control">
+          <option selected value="">Status</option>
+          <option value="1">Disponível</option>
+          <option value="2">Em andamento</option>
+          <option value="3">Encerrado</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group col-lg-2 mb-2 mb-sm-0">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-sort-alpha-up"></i>
+          </div>
+        </div>
+        <select class="form-control">
+          <option selected value="">Ordenar</option>
+          <option value="1">A-Z</option>
+          <option value="2">Z-A</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </form>
 
 <div class="row mb-3">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-4 mb-2 mb-sm-0">
-            <div class="card">
-                <img class="card-img-top img-fluid custom-card"
-                     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
-                     alt="Reunião" />
-                <div class="card-body">
-                    <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
-                        <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
-                        <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
-                    </div>
-                    <h4 class="card-title">Título do evento</h4>
-                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
-                </div>
-                <div class="card-footer">
-                    <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">
-                        <i class="fas fa-check-circle mr-2"></i>Participar
-                    </a>
-                </div>
-            </div>
+  @foreach (var item in Model)
+  {
+    <div class="col-lg-4 mb-2 mb-sm-0">
+      <div class="card">
+        <img class="card-img-top img-fluid custom-card"
+             src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80" alt="Reunião" />
+        <div class="card-body">
+          <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
+            <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
+          </div>
+          <h4 class="card-title">@Html.DisplayFor(modelItem => item.TITULO)</h4>
+          <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
         </div>
-    }
+        <div class="card-footer">
+          <a href="/eventos/titulo-evento" class="stretched-link btn btn-primary btn-block">
+            <i class="fas fa-check-circle mr-2"></i>Participar
+          </a>
+        </div>
+      </div>
+    </div>
+  }
 </div>
 
 <div class="row mb-3">
-    <div class="col-lg text-right">
-        <div class="btn-group">
-            <a class="btn btn-outline-primary active" href="#page1">1</a>
-            <a class="btn btn-outline-primary" href="#page2">2</a>
-            <a class="btn btn-outline-primary" href="#page3">3</a>
-        </div>
+  <div class="col-lg text-right">
+    <div class="btn-group">
+      <a class="btn btn-outline-primary active" href="#page1">1</a>
+      <a class="btn btn-outline-primary" href="#page2">2</a>
+      <a class="btn btn-outline-primary" href="#page3">3</a>
     </div>
+  </div>
 </div>
