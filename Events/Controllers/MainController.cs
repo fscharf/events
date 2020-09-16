@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Events.Models;
 using System.Web.UI.HtmlControls;
+using System.Net.Http;
 
 namespace Events.Controllers
 {
@@ -13,7 +14,10 @@ namespace Events.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<EVENTO> eventList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+            return View(eventList);
         }
     }
 }

@@ -27,7 +27,8 @@
                 @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
                          new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
                          new SelectListItem { Text = "Sou aluno", Value = "1" },
-                         new SelectListItem { Text = "Sou visitante", Value = "2" }
+                         new SelectListItem { Text = "Sou visitante", Value = "2" },
+                         new SelectListItem { Text = "Master", Value = "3" }
                 }, htmlAttributes: new { @class = "custom-select", @required = "required" })
             </div>
 

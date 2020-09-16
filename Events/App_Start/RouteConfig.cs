@@ -36,7 +36,7 @@ namespace Events
                 "eventos",
                 new { controller = "Events", action = "Index" }
             );
-            
+         
             routes.MapRoute(
                 "eventos_meuseventos",
                 "eventos/meuseventos",
@@ -50,9 +50,21 @@ namespace Events
             );
             
             routes.MapRoute(
-                "eventos_tituloevento",
-                "eventos/titulo-evento",
-                new { controller = "Events", action = "Event" }
+                "admin",
+                "admin",
+                new { controller = "Admin", action = "Index" }
+            );
+            
+            routes.MapRoute(
+                "admin_events",
+                "admin/events",
+                new { controller = "Admin", action = "EventsList" }
+            );
+            
+            routes.MapRoute(
+                "admin_users",
+                "admin/users",
+                new { controller = "Admin", action = "UsersList" }
             );
 
             routes.MapRoute(

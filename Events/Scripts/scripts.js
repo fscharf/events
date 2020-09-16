@@ -25,6 +25,9 @@ $('#shareLinkBtn').click(function () {
     }
 });
 
+// acionar toasts
+$('.toast').toast(option)
+
 // acionar todos tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()

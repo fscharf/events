@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Events.Models.EVENTO>
+@using System.Security.Claims;
+
+@{
+    ViewBag.Title = "Gerenciar eventos";
+
+    var userAuth = (ClaimsIdentity)User.Identity;
+
+    if (userAuth.IsAuthenticated &&
+        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
+        && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+    {
+        <h4 class="mb-3">@ViewBag.Title</h4>
+
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <form action="#" method="get">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-dark" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Pesquisar..." />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <a class="btn btn-primary disabled" href="@Url.Action("EventCreate", "Admin")"><i class="fas fa-calendar-plus"></i> Novo Evento</a>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Título</th>
+                    <th scope="col" class="text-truncate">Descrição</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Horário</th>
+                    <th scope="col">Duração</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => item.COD_EVENTO)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITULO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESCRICAO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HORARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DURACAO)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a class="btn btn-danger disabled" href="@Url.Action("EventDelete", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-trash-alt"></i> Apagar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        Response.Redirect("/");
+    }
+}

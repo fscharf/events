@@ -11,8 +11,8 @@ namespace Events
             filters.Add(new HandleErrorAttribute());
             filters.Add(new OutputCacheAttribute
             {
+                Duration = 60,
                 VaryByParam = "*",
-                Duration = 0,
                 NoStore = true
             });
         }

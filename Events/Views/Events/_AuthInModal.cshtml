@@ -1,4 +1,6 @@
-﻿<div id="authInModal" class="modal fade" role="dialog" tabindex="-1">
+﻿@model Events.Models.EVENTO
+
+<div id="authInModal" class="modal fade" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,10 +19,9 @@
                                     </div>
                                 </div>
                                 <select class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option value="1" disabled>19/09/2020 (Esgotado)</option>
-                                    <option value="2">20/09/2020</option>
-                                </select>
+                                    <option value="">Selecione uma data</option>
+                                    <option value="@Html.DisplayFor(x => x.DATA)">@Html.DisplayFor(x => x.DATA)</option>
+                                </select> 
                             </div>
                         </div>
                         <div class="form-group col-sm-6">
@@ -31,9 +32,8 @@
                                     </div>
                                 </div>
                                 <select class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option value="1" disabled>15:00 (Esgotado)</option>
-                                    <option value="2">17:00</option>
+                                    <option selected>Selecione um horário</option>
+                                    <option value="@Html.DisplayFor(x => x.HORARIO)">@Html.DisplayFor(x => x.HORARIO)</option>
                                 </select>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                 </div>
-                                <input readonly type="text" class="form-control" value="Rua João Silva, 16">
+                                <input readonly type="text" class="form-control" value="R. Interna Grupo Bandeirante, 138 - Jardim Belval, Barueri - SP, 06420-150">
                             </div>
                         </div>
                     </div>

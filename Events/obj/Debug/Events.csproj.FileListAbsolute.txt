@@ -301,7 +301,6 @@ C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.xml
 C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\felipe.scharf\Desktop\Dev\projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.dll
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.dll
@@ -312,3 +311,4 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Ho
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
+C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache

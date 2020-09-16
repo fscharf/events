@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-5 mx-auto rounded border bg-white my-5 p-5">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Login", "Users"))
         {
             @Html.AntiForgeryToken();
             @Html.HiddenFor(model => model.COD_USUARIO)

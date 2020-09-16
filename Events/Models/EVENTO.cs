@@ -21,8 +21,11 @@ namespace Events.Models
         public string TITULO { get; set; }
         public string DESCRICAO { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0: dddd, dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public System.DateTime DATA { get; set; }
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan HORARIO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

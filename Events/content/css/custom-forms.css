@@ -3,6 +3,6 @@
 }
 
 body {
-    background: #6930ee;
-    height: 100%;
+    background: linear-gradient(to right bottom, #a587e4, #6930ee);
+    height: 100vh;
 }

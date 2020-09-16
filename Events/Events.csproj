@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -2255,7 +2256,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Events\Event.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Events\_AuthInModal.cshtml" />
     <Content Include="Views\Events\Confirm.cshtml" />
@@ -2281,8 +2282,8 @@
     <Content Include="Views\Events\_ShareModal.cshtml" />
     <Content Include="Views\Events\MyEvents.cshtml" />
     <Content Include="Views\Events\_QRCodeModal.cshtml" />
-    <Content Include="Views\Events\ListEvent.cshtml" />
-    <Content Include="Views\Events\AddOrEdit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\EventsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
