@@ -1,8 +1,0 @@
-﻿.navbar, footer {
-    display: none;
-}
-
-body {
-    background: linear-gradient(to right bottom, #a587e4, #6930ee);
-    height: 100vh;
-}

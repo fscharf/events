@@ -19,27 +19,21 @@
     @Styles.Render("~/styles/css")
 </head>
 
-<body>
+<body class="bg-light">
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 mb-5" id="mainNavbar">
         <div class="container">
             <a class="main-font text-primary" href="/">Events</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapse">
-                <i class="fas fa-bars fa-lg"></i>
+
+            <button class="btn btn-light d-block d-lg-none" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse mt-3 mt-sm-0" id="navCollapse">
+            <div class="collapse navbar-collapse mt-3 mt-sm-0">
                 <ul class="navbar-nav ml-auto">
                     @{
                         var userAuth = (ClaimsIdentity)User.Identity;
 
                         if (userAuth.IsAuthenticated)
                         {
-                            if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
-                                </li>
-                            }
-
                             <li class="nav-item dropdown">
                                 <a href="#"
                                    class="nav-link dropdown-toggle"
@@ -59,7 +53,7 @@
                                         </small>
                                     </div>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#profileModal" data-toggle="modal">
+                                    <a class="dropdown-item" href="@Url.Action("Profile", "Users")">
                                         <i class="fas fa-user-circle mr-2"></i>Conta
                                     </a>
                                     @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1") || (c.Value == "2")))
@@ -67,6 +61,10 @@
                                         <a class="dropdown-item" href="/eventos/meuseventos">
                                             <i class="fas fa-calendar-day mr-2"></i>Meus eventos
                                         </a>
+                                    }
+                                    else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+                                    {
+                                        <a class="dropdown-item" href="/admin"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                     }
                                     <div class="dropdown-divider">
                                     </div>
@@ -98,8 +96,6 @@
     <div class="container text-center text-sm-left pb-5">
         @RenderBody()
     </div>
-
-    @Html.Partial("_Profile")
 
     @Scripts.Render("~/jquery")
     @Scripts.Render("~/popper.js")

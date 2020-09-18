@@ -3,7 +3,7 @@
 });
 
 // autohide alerts
-$(".alert-auto-hide").show().delay(8000).slideUp(200, function () {
+$(".alert-auto-hide").show().delay(8000).slideToggle(200, function () {
     $(this).addClass('close');
 });
 
@@ -24,9 +24,6 @@ $('#shareLinkBtn').click(function () {
         });
     }
 });
-
-// acionar toasts
-$('.toast').toast(option)
 
 // acionar todos tooltips
 $(function () {

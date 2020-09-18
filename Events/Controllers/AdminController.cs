@@ -58,5 +58,30 @@ namespace Events.Controllers
                 return View(response.Content.ReadAsAsync<USUARIO>().Result);
             }
         }
+
+        [HttpPost]
+        public ActionResult UserDetails(USUARIO uSUARIO)
+        {
+            if (uSUARIO.COD_USUARIO != 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + uSUARIO.COD_USUARIO, uSUARIO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Dados atualizados com sucesso!";
+                    return Redirect("/admin/users");
+                }
+                else
+                {
+                    TempData["Error"] = "Ocorreu um erro inesperado. Contate o administrador.";
+                    return View(uSUARIO);
+                }
+            }
+            else
+            {
+                TempData["Error"] = "Usuário não localizado.";
+                return View();
+            }
+        }
+
     }
 }

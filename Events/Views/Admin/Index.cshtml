@@ -10,19 +10,23 @@
         && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
     {
         <div class="row mb-3">
-            <div class="col-lg-6">
+            <div class="col-lg">
                 <h4>Olá, @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value</h4>
                 <p class="text-muted">O que deseja fazer agora?</p>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-lg-3">
-                <a class="btn btn-primary btn-block p-5" href="/admin/events"><i class="fas fa-calendar-alt fa-2x"></i><br /> Gerenciar Eventos</a>
-
+            <div class="col-lg-3 mb-3 mb-sm-0">
+                <a class="btn btn-primary btn-block p-5" href="/admin/events">
+                    <i class="fas fa-calendar-alt fa-2x mb-2"></i>
+                    <h4 class="font-weight-bold">Painel de Eventos</h4>
+                </a>
             </div>
-            <div class="col-lg-3">
-                <a class="btn btn-dark btn-block disabled p-5" href="/admin/users"><i class="fas fa-users fa-2x"></i><br /> Gerenciar Usuários</a>
-
+            <div class="col-lg-3 mb-3 mb-sm-0">
+                <a class="btn btn-dark btn-block p-5" href="/admin/users">
+                    <i class="fas fa-users fa-2x mb-2"></i>
+                    <h4 class="font-weight-bold">Painel de Usuários</h4>
+                </a>
             </div>
         </div>
     }

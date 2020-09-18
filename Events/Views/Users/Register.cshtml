@@ -1,121 +1,179 @@
 ﻿@model Events.Models.USUARIO
+@using System.Security.Claims;
 
-@Styles.Render("~/forms/css")
+@{
+    ViewBag.Title = "Crie sua conta grátis";
 
-<div class="row">
-    <div class="col-lg-5 mx-auto rounded border bg-white my-5 p-5">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken();
-            @Html.HiddenFor(model => model.COD_USUARIO)
+    var userAuth = (ClaimsIdentity)User.Identity;
 
-            <div class="text-center mb-4">
-                <a href="/" class="main-font h1">Events</a>
-                <p class="text-muted">@ViewBag.Title</p>
-            </div>
+    if (userAuth.IsAuthenticated)
+    {
+        Response.Redirect("/");
 
-            if (TempData["Error"] != null)
-            {
-                <div class="form-group alert-auto-hide">
-                    <div class="alert alert-danger" role="alert">
-                        @TempData["Error"]
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <h4>
+                    <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
+                    @ViewBag.Title
+                </h4>
+                <p class="text-muted">Conta 100% gratuita e fácil de usar.</p>
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="form-group">
+                        <div class="alert alert-danger alert-auto-hide" role="alert">
+                            @TempData["Error"]
+                        </div>
                     </div>
-                </div>
-            }
-
-            <div class="form-group">
-                @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
-                         new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
-                         new SelectListItem { Text = "Sou aluno", Value = "1" },
-                         new SelectListItem { Text = "Sou visitante", Value = "2" },
-                         new SelectListItem { Text = "Master", Value = "3" }
-                }, htmlAttributes: new { @class = "custom-select", @required = "required" })
+                }
             </div>
-
-            <div class="form-group">
-                @Html.EditorFor(model => model.NOME, new
+        </div>
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                @using (Html.BeginForm())
                 {
-                    htmlAttributes = new
-                    {
-                @class = "form-control",
-                placeholder = "Nome completo",
-                minlength = "3",
-                maxlength = "50",
-                required = "required",
-                pattern = @"[A-Za-zÀ-ú ']{4,}"
-                    }
-                })
+                    @Html.AntiForgeryToken();
+                    @Html.HiddenFor(model => model.COD_USUARIO)
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                            @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
+                                     new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
+                                     new SelectListItem { Text = "Aluno", Value = "1" },
+                                     new SelectListItem { Text = "Visitante", Value = "2" },
+                            }, htmlAttributes: new { @class = "custom-select", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.NOME, new
+                            {
+                                htmlAttributes = new
+                                {
+                                @class = "form-control",
+                                placeholder = "Nome completo",
+                                minlength = "3",
+                                maxlength = "50",
+                                required = "required",
+                                pattern = @"[A-Za-zÀ-ú ']{4,}"
+                                }
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.EMAIL, new
+                            {
+                                htmlAttributes = new
+                                {
+                                @class = "form-control",
+                                placeholder = "Email",
+                                type = "email",
+                                minlength = "3",
+                                maxlength = "35",
+                                required = "required"
+                                }
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-phone-square-alt"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.CELULAR, new
+                            {
+                                htmlAttributes = new
+                                {
+                                @class = "form-control",
+                                placeholder = "Celular",
+                                type = "text",
+                                minlength = "11",
+                                maxlength = "11",
+                                required = "required",
+                                pattern = "[0-9]+"
+                                }
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.SENHA, new
+                            {
+                                htmlAttributes = new
+                                {
+                                @class = "form-control",
+                                type = "password",
+                                id = "senha",
+                                placeholder = "Escolha uma senha",
+                                minlength = "6",
+                                maxlength = "20",
+                                pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$",
+                                required = "required"
+                                }
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-lock-open"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Criar Conta</button>
+                        <p class="text-muted">Já tem conta?<a href="/entrar"> Iniciar sessão</a></p>
+                    </div>
+                }
             </div>
 
-            <div class="form-group">
-                @Html.EditorFor(model => model.EMAIL, new
-                {
-                    htmlAttributes = new
-                    {
-                @class = "form-control",
-                placeholder = "Email",
-                type = "email",
-                minlength = "3",
-                maxlength = "35",
-                required = "required"
-                    }
-                })
+            <div class="col-lg-4 text-muted">
+                <p>Sua senha deve conter:</p>
+                <ul>
+                    <li>Entre 6-20 caracteres.</li>
+                    <li>Ao menos uma letra maíscula.</li>
+                    <li>Ao menos uma letra minúscula.</li>
+                    <li>Ao menos um número.</li>
+                </ul>
             </div>
-
-            <div class="form-group">
-                @Html.EditorFor(model => model.CELULAR, new
-                {
-                    htmlAttributes = new
-                    {
-                @class = "form-control",
-                placeholder = "Celular",
-                type = "text",
-                minlength = "11",
-                maxlength = "11",
-                required = "required",
-                pattern = "[0-9]+"
-                    }
-                })
-            </div>
-
-            <div class="form-group">
-                @Html.EditorFor(model => model.SENHA, new
-                {
-                    htmlAttributes = new
-                    {
-                @class = "form-control",
-                type = "password",
-                id = "senha",
-                placeholder = "Escolha uma senha",
-                minlength = "6",
-                maxlength = "20",
-                pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$",
-                required = "required"
-                    }
-                })
-                <small class="text-muted ml-2">Escolha entre 6-20 caracteres.</small>
-                <a href="#">
-                    <i class="fas fa-info-circle"
-                       title="Sua senha deve conter ao menos uma letra maiúscula, uma letra minúscula e um número."
-                       data-toggle="tooltip">
-                    </i>
-                </a>
-            </div>
-
-            <div class="form-group">
-                <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">CRIAR CONTA</button>
-                <div class="text-muted text-center">
-                    <span>Já tem conta?</span>
-                    <a href="/entrar">Iniciar sessão</a>
-                </div>
-            </div>
-        }
-    </div>
-</div>
+        </div>
+    }
+}
 
 @section scripts {
     <script>

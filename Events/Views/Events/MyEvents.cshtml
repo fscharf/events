@@ -4,7 +4,9 @@
 @{
     var userAuth = (ClaimsIdentity)User.Identity;
 
-    if (userAuth.IsAuthenticated)
+    if (userAuth.IsAuthenticated &&
+        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
+        && (c.Value == "1") || (c.Value == "2")))
     {
         <div class="row mb-3">
             <div class="col-lg">

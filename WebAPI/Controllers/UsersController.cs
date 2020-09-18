@@ -36,9 +36,11 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/Users/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(USUARIO))]
         public IHttpActionResult PutUSUARIO(int id, USUARIO uSUARIO)
         {
+            uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+
             if (id != uSUARIO.COD_USUARIO)
             {
                 return BadRequest();

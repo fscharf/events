@@ -113,5 +113,10 @@ namespace Events.Controllers
             Session.RemoveAll();
             return Redirect("/");
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
     }
 }

@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Events.Models.EVENTO>
+﻿@model IEnumerable<Events.Models.USUARIO>
 @using System.Security.Claims;
 
 @{
-    ViewBag.Title = "Painel de Eventos";
+    ViewBag.Title = "Painel de Usuários";
 
     var userAuth = (ClaimsIdentity)User.Identity;
 
@@ -17,7 +17,6 @@
                     @ViewBag.Title
                 </h4>
                 <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
-
                 @if (TempData["Success"] != null)
                 {
                     <div class="alert alert-success alert-auto-hide">@TempData["Success"]</div>
@@ -27,7 +26,9 @@
 
         <div class="row mb-3">
             <div class="col-lg-4">
+                
                 <form action="#" method="get">
+                    
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -41,7 +42,7 @@
                 </form>
             </div>
             <div class="col-lg-4">
-                <a class="btn btn-primary disabled" href="@Url.Action("EventCreate", "Admin")"><i class="fas fa-calendar-plus"></i> Novo Evento</a>
+                <a class="btn btn-primary disabled" href="@Url.Action("UserCreate", "Admin")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
             </div>
         </div>
 
@@ -50,43 +51,47 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Horário</th>
-                        <th scope="col">Duração</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Senha</th>
+                        <th scope="col">Celular</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th scope="row">
-                                @Html.DisplayFor(modelItem => item.COD_EVENTO)
-                            </th>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TITULO)
+                            <td scope="row">
+                                @Html.DisplayFor(modelItem => item.COD_USUARIO)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DATA)
+                                @Html.DisplayFor(modelItem => item.COD_PERFIL)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HORARIO)
+                                @Html.DisplayFor(modelItem => item.NOME)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DURACAO)
+                                @Html.DisplayFor(modelItem => item.EMAIL)
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                <a class="btn btn-danger disabled" href="@Url.Action("EventDelete", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-trash-alt"></i> Apagar</a>
+                                &middot;&middot;&middot;&middot;&middot;&middot;
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CELULAR)
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn btn-danger disabled" href="@Url.Action("UserDelete", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-trash-alt"></i> Apagar</a>
                             </td>
                         </tr>
                     }
+
                 </tbody>
             </table>
-
         </div>
-
     }
     else
     {
