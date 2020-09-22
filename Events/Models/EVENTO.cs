@@ -17,16 +17,20 @@ namespace Events.Models
         }
 
         public int COD_EVENTO { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan DURACAO { get; set; }
         public string TITULO { get; set; }
         public string DESCRICAO { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public System.DateTime DATA { get; set; }
-
         [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan HORARIO { get; set; }
+        public string IMAGEM_URL { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
+        public string SALA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }

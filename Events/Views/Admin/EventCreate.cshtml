@@ -1,0 +1,79 @@
+﻿@model Events.Models.EVENTO
+@using System.Security.Claims;
+
+@{
+    ViewBag.Title = "Novo Evento";
+
+    var userAuth = (ClaimsIdentity)User.Identity;
+
+    if (userAuth.IsAuthenticated &&
+        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
+        && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+    {
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <h4>
+                    <a class="text-dark mr-2" href="@Url.Action("Index", "Admin")"><i class="fas fa-arrow-left"></i></a>
+                    @ViewBag.Title
+                </h4>
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-auto-hide">@TempData["Error"]</div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                @using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.COD_EVENTO)
+
+                    <div class="form-group">
+                        <label>Título</label>
+                        @Html.EditorFor(model => model.TITULO, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        @Html.EditorFor(model => model.DESCRICAO, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data</label>
+                        @Html.EditorFor(model => model.DATA, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Horário</label>
+                        @Html.EditorFor(model => model.HORARIO, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Duração</label>
+                        @Html.EditorFor(model => model.DURACAO, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imagem</label>
+                        <input type="file" name="ImageFile" class="form-control-file">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sala</label>
+                        @Html.EditorFor(model => model.SALA, new { htmlAttributes = new { @type = "text", @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Criar" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        Response.Redirect("/");
+    }
+}

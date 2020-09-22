@@ -37,6 +37,28 @@ namespace Events.Controllers
             }
         }
 
+        public ActionResult EventCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EventCreate(EVENTO eVENTO)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Evento criado com sucesso.";
+                return RedirectToAction("EventsList", "Admin");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado.";
+                return View(eVENTO);
+            }
+        }
+
         // Admin for Users
         public ActionResult UsersList()
         {
@@ -60,11 +82,16 @@ namespace Events.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserDetails(USUARIO uSUARIO)
+        public ActionResult UserDetails(USUARIO uSUARIO, int id = 0)
         {
-            if (uSUARIO.COD_USUARIO != 0)
+            if (id == 0)
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + uSUARIO.COD_USUARIO, uSUARIO).Result;
+                TempData["Error"] = "Usuário não localizado.";
+                return View(uSUARIO);
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + id.ToString(), uSUARIO).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["Success"] = "Dados atualizados com sucesso!";
@@ -72,14 +99,9 @@ namespace Events.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Ocorreu um erro inesperado. Contate o administrador.";
+                    TempData["Error"] = "Ocorreu um erro inesperado.";
                     return View(uSUARIO);
                 }
-            }
-            else
-            {
-                TempData["Error"] = "Usuário não localizado.";
-                return View();
             }
         }
 

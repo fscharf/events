@@ -13,7 +13,7 @@
         <div class="row mb-3">
             <div class="col-lg">
                 <h4>
-                    <a class="text-dark mr-2" href="/admin"><i class="fas fa-arrow-left"></i></a>
+                    <a class="text-dark mr-2" href="@Url.Action("Index", "Admin")"><i class="fas fa-arrow-left"></i></a>
                     @ViewBag.Title
                 </h4>
                 <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="col-lg-4">
-                <a class="btn btn-primary disabled" href="@Url.Action("EventCreate", "Admin")"><i class="fas fa-calendar-plus"></i> Novo Evento</a>
+                <a class="btn btn-primary" href="@Url.Action("EventCreate", "Admin")"><i class="fas fa-calendar-plus"></i> Novo Evento</a>
             </div>
         </div>
 

@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
+using System.Web.Helpers;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Models;
@@ -69,6 +73,17 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(EVENTO))]
         public IHttpActionResult PostEVENTO(EVENTO eVENTO)
         {
+            eVENTO.FEEDBACK = new HashSet<FEEDBACK>();
+            eVENTO.INSCRICAO = new HashSet<INSCRICAO>();
+            eVENTO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
+
+            //string fileName = Path.GetFileNameWithoutExtension(eVENTO.ImageFile.FileName);
+            //string extension = Path.GetExtension(eVENTO.ImageFile.FileName);
+            //fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            //eVENTO.IMAGEM_URL = "~/Image/" + fileName;
+            //fileName = Path.Combine(HttpContext.Current.Server.MapPath("~/Image/"), fileName);
+            //eVENTO.ImageFile.SaveAs(fileName);
+
             db.EVENTO.Add(eVENTO);
             db.SaveChanges();
 
