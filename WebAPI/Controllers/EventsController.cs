@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -77,12 +79,17 @@ namespace WebAPI.Controllers
             eVENTO.INSCRICAO = new HashSet<INSCRICAO>();
             eVENTO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
 
-            //string fileName = Path.GetFileNameWithoutExtension(eVENTO.ImageFile.FileName);
-            //string extension = Path.GetExtension(eVENTO.ImageFile.FileName);
-            //fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            //eVENTO.IMAGEM_URL = "~/Image/" + fileName;
-            //fileName = Path.Combine(HttpContext.Current.Server.MapPath("~/Image/"), fileName);
-            //eVENTO.ImageFile.SaveAs(fileName);
+            //if (HttpContext.Current.Request.Files.Count > 0)
+            //{
+            //    var file = HttpContext.Current.Request.Files[0];
+            //    if (file != null && file.ContentLength > 0)
+            //    {
+            //        var fileName = Path.GetFileName(file.FileName);
+            //        var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Image/"), fileName);
+            //        file.SaveAs(path);
+            //        eVENTO.IMAGEM_URL = path;
+            //    }
+            //}
 
             db.EVENTO.Add(eVENTO);
             db.SaveChanges();

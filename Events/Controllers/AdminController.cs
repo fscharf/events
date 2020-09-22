@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -44,7 +45,7 @@ namespace Events.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EventCreate(EVENTO eVENTO)
+        public ActionResult EventCreate(EVENTO eVENTO, HttpPostedFileBase file)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
             if (response.IsSuccessStatusCode)

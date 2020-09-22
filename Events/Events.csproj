@@ -2051,8 +2051,6 @@
     <Content Include="node_modules\popper.js\src\utils\setAttributes.js" />
     <Content Include="node_modules\popper.js\src\utils\setStyles.js" />
     <Content Include="node_modules\popper.js\src\utils\setupEventListeners.js" />
-    <Content Include="Fonts\expressway-rg.ttf" />
-    <Content Include="Fonts\nature-beauty-rg.ttf" />
     <Content Include="package.json" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\less\brands.less" />
     <Content Include="node_modules\%40fortawesome\fontawesome-free\less\fontawesome.less" />
@@ -2268,13 +2266,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fonts\cabin-rg.ttf" />
-    <Content Include="Fonts\product-sans-rg.ttf" />
     <Content Include="Content\scss\style.scss" />
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="package-lock.json" />
-    <Content Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </Content>
+    <Content Include="Fonts\nature-beauty.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Events\_ShareModal.cshtml" />

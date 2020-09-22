@@ -8,7 +8,6 @@ namespace Events.Models
 {
     public class EVENTO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EVENTO()
         {
             this.FEEDBACK = new HashSet<FEEDBACK>();
@@ -29,14 +28,10 @@ namespace Events.Models
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public System.TimeSpan HORARIO { get; set; }
         public string IMAGEM_URL { get; set; }
-        public HttpPostedFileBase ImageFile { get; set; }
         public string SALA { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCRICAO> INSCRICAO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_GERENCIA_EVENTO> USUARIO_GERENCIA_EVENTO { get; set; }
     }
 }

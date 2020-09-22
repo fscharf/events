@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EventsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="EVENTO">
           <Key>
             <PropertyRef Name="COD_EVENTO" />
@@ -15,6 +15,8 @@
           <Property Name="DESCRICAO" Type="varchar" MaxLength="500" />
           <Property Name="DATA" Type="date" Nullable="false" />
           <Property Name="HORARIO" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IMAGEM_URL" Type="varchar(max)" />
+          <Property Name="SALA" Type="varchar" MaxLength="80" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -49,8 +51,8 @@
           </Key>
           <Property Name="COD_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOME" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SENHA" Type="varchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="SENHA" Type="varchar(max)" Nullable="false" />
           <Property Name="CELULAR" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="COD_PERFIL" Type="int" />
         </EntityType>
@@ -182,8 +184,7 @@
             <End Role="INSCRICAO" EntitySet="INSCRICAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EventsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -200,6 +201,8 @@
           <NavigationProperty Name="FEEDBACK" Relationship="Self.FK_EVENTO_FEED" FromRole="EVENTO" ToRole="FEEDBACK" />
           <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_EVENTO_INSC" FromRole="EVENTO" ToRole="INSCRICAO" />
           <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_GEREN_EVENTO" FromRole="EVENTO" ToRole="USUARIO_GERENCIA_EVENTO" />
+          <Property Name="IMAGEM_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SALA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -240,8 +243,8 @@
           </Key>
           <Property Name="COD_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SENHA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SENHA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CELULAR" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="COD_PERFIL" Type="Int32" />
           <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_USUARIO_INSC" FromRole="USUARIO" ToRole="INSCRICAO" />
@@ -387,6 +390,8 @@
           <EntitySetMapping Name="EVENTO">
             <EntityTypeMapping TypeName="EventsModel.EVENTO">
               <MappingFragment StoreEntitySet="EVENTO">
+                <ScalarProperty Name="SALA" ColumnName="SALA" />
+                <ScalarProperty Name="IMAGEM_URL" ColumnName="IMAGEM_URL" />
                 <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
                 <ScalarProperty Name="DURACAO" ColumnName="DURACAO" />
                 <ScalarProperty Name="TITULO" ColumnName="TITULO" />
