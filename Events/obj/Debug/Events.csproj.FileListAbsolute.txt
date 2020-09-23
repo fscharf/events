@@ -311,7 +311,6 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Ho
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
-C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.dll.config
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.pdb

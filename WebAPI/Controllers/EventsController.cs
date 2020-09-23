@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/Events/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(EVENTO))]
         public IHttpActionResult PutEVENTO(int id, EVENTO eVENTO)
         {
             if (id != eVENTO.COD_EVENTO)
@@ -78,18 +78,6 @@ namespace WebAPI.Controllers
             eVENTO.FEEDBACK = new HashSet<FEEDBACK>();
             eVENTO.INSCRICAO = new HashSet<INSCRICAO>();
             eVENTO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
-
-            //if (HttpContext.Current.Request.Files.Count > 0)
-            //{
-            //    var file = HttpContext.Current.Request.Files[0];
-            //    if (file != null && file.ContentLength > 0)
-            //    {
-            //        var fileName = Path.GetFileName(file.FileName);
-            //        var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Image/"), fileName);
-            //        file.SaveAs(path);
-            //        eVENTO.IMAGEM_URL = path;
-            //    }
-            //}
 
             db.EVENTO.Add(eVENTO);
             db.SaveChanges();

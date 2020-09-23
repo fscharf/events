@@ -1,7 +1,7 @@
 ﻿@model Events.Models.USUARIO
 
 @{
-    ViewBag.Title = Html.DisplayFor(x => x.NOME);
+    ViewBag.Title = "Novo usuário";
 }
 <div class="row mb-3">
     <div class="col-lg">
@@ -19,8 +19,9 @@
     <div class="col-lg-4">
         @using (Html.BeginForm())
         {
-            @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.COD_USUARIO)
+            @Html.AntiForgeryToken()
+
             <div class="form-group">
                 <label>Nome</label>
                 @Html.EditorFor(model => model.NOME, new
@@ -98,3 +99,4 @@
         }
     </div>
 </div>
+

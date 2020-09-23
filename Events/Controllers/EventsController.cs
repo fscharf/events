@@ -13,8 +13,6 @@ namespace Events.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Todos eventos";
-
             IEnumerable<EVENTO> eventList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
             eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
@@ -34,12 +32,14 @@ namespace Events.Controllers
             }
         }
 
+        [Authorize(Roles = "1, 2")]
         public ActionResult Confirm()
         {
             ViewBag.Title = "Inscrição realizada com sucesso";
             return View();
         }
 
+        [Authorize(Roles = "1, 2")]
         public ActionResult MyEvents()
         {
             ViewBag.Title = "Meus eventos";

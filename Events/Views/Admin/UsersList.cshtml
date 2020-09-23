@@ -1,100 +1,85 @@
 ﻿@model IEnumerable<Events.Models.USUARIO>
-@using System.Security.Claims;
 
 @{
     ViewBag.Title = "Painel de Usuários";
-
-    var userAuth = (ClaimsIdentity)User.Identity;
-
-    if (userAuth.IsAuthenticated &&
-        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
-        && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
-    {
-        <div class="row mb-3">
-            <div class="col-lg">
-                <h4>
-                    <a class="text-dark mr-2" href="/admin"><i class="fas fa-arrow-left"></i></a>
-                    @ViewBag.Title
-                </h4>
-                <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
-                @if (TempData["Success"] != null)
-                {
-                    <div class="alert alert-success alert-auto-hide">@TempData["Success"]</div>
-                }
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                
-                <form action="#" method="get">
-                    
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-dark" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                            <input class="form-control" type="text" placeholder="Pesquisar..." />
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-4">
-                <a class="btn btn-primary disabled" href="@Url.Action("UserCreate", "Admin")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
-            </div>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table text-truncate table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Perfil</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Senha</th>
-                        <th scope="col">Celular</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td scope="row">
-                                @Html.DisplayFor(modelItem => item.COD_USUARIO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.COD_PERFIL)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NOME)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EMAIL)
-                            </td>
-                            <td>
-                                &middot;&middot;&middot;&middot;&middot;&middot;
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CELULAR)
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                <a class="btn btn-danger disabled" href="@Url.Action("UserDelete", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-trash-alt"></i> Apagar</a>
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-            </table>
-        </div>
-    }
-    else
-    {
-        Response.Redirect("/");
-    }
 }
+<div class="row mb-3">
+    <div class="col-lg">
+        <h4>
+            <a class="text-dark mr-2" href="@Url.Action("Index", "Admin")"><i class="fas fa-arrow-left"></i></a>
+            @ViewBag.Title
+        </h4>
+        <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-auto-hide">@TempData["Success"]</div>
+        }
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-lg-4">
+        <form action="#" method="get">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-dark" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <input class="form-control" type="text" placeholder="Pesquisar..." />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4">
+        <a class="btn btn-primary" href="@Url.Action("UserCreate", "Admin")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table text-truncate table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody class="bg-white">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="row">
+                        @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td>
+                        &middot;&middot;&middot;&middot;&middot;&middot;
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CELULAR)
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                        <a class="btn btn-danger disabled" href="@Url.Action("UserDelete", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-trash-alt"></i> Apagar</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

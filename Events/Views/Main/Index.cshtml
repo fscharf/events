@@ -7,6 +7,7 @@
         @TempData["Success"]
     </div>
 }
+
 @{
     var userAuth = (ClaimsIdentity)User.Identity;
 
@@ -23,7 +24,7 @@
                 <div class="col-lg-6 my-auto mx-auto">
                     <h2>Conecte-se ao Events</h2>
                     <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
-                    <a class="btn btn-primary btn-lg mt-3" href="/cadastro">
+                    <a class="btn btn-primary btn-lg mt-3" href="@Url.Action("Register", "Users")">
                         Cadastre-se grátis<i class="fas fa-angle-right ml-3"></i>
                     </a>
                 </div>
@@ -37,7 +38,7 @@
         <h5 class="text-muted">Eventos em alta</h5>
     </div>
     <div class="col-lg-6 text-right my-auto">
-        <a href="/eventos">Explorar eventos<i class="fas fa-arrow-right ml-2"></i></a>
+        <a href="@Url.Action("Index", "Events")">Explorar eventos<i class="fas fa-arrow-right ml-2"></i></a>
     </div>
 </div>
 
@@ -46,7 +47,7 @@
     {
         <div class="col-lg-4 mb-2 mb-sm-0">
             <div class="card custom-card">
-                <img class="card-img-top img-fluid  custom-object-fit-cover"
+                <img class="card-img-top img-fluid custom-object-fit-cover"
                      src="@Url.Content(item.IMAGEM_URL)"
                      alt="Foto do evento" />
                 <div class="card-body">

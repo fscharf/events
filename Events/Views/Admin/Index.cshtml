@@ -4,35 +4,28 @@
     ViewBag.Title = "Meu Painel";
 
     var userAuth = (ClaimsIdentity)User.Identity;
-
-    if (userAuth.IsAuthenticated &&
-        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
-        && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+    if (userAuth.IsAuthenticated)
     {
         <div class="row mb-3">
             <div class="col-lg">
-                <h4>Olá, @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value</h4>
+                <h4 class="font-weight-bold">Olá, @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value</h4>
                 <p class="text-muted">O que deseja fazer agora?</p>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-lg-3 mb-3 mb-sm-0">
-                <a class="btn btn-primary btn-block p-5" href="/admin/events">
+                <a class="btn btn-primary btn-block p-5" href="@Url.Action("EventsList", "Admin")">
                     <i class="fas fa-calendar-alt fa-2x mb-2"></i>
                     <h4 class="font-weight-bold">Painel de Eventos</h4>
                 </a>
             </div>
             <div class="col-lg-3 mb-3 mb-sm-0">
-                <a class="btn btn-dark btn-block p-5" href="/admin/users">
+                <a class="btn btn-dark btn-block p-5" href="@Url.Action("UsersList", "Admin")">
                     <i class="fas fa-users fa-2x mb-2"></i>
                     <h4 class="font-weight-bold">Painel de Usuários</h4>
                 </a>
             </div>
         </div>
-    }
-    else
-    {
-        Response.Redirect("/");
     }
 }
 

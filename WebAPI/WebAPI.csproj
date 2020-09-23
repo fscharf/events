@@ -429,7 +429,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

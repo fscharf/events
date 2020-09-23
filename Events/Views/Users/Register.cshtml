@@ -19,7 +19,7 @@
                     <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
                     @ViewBag.Title
                 </h4>
-                <p class="text-muted">Conta 100% gratuita e fácil de usar.</p>
+                <p class="text-muted">Sua melhor experiência com eventos.</p>
 
                 @if (TempData["Error"] != null)
                 {
@@ -137,11 +137,11 @@
                                 placeholder = "Escolha uma senha",
                                 minlength = "6",
                                 maxlength = "20",
-                                pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$",
                                 required = "required"
                                 }
                             })
                         </div>
+                        <small class="text-muted">Sua senha deve conter ao menos 6 caracteres.</small>
                     </div>
 
                     <div class="form-group">
@@ -157,38 +157,20 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Criar Conta</button>
-                        <p class="text-muted">Já tem conta?<a href="/entrar"> Iniciar sessão</a></p>
+                        <p class="text-muted">Já tem conta?<a href="@Url.Action("Login", "Admin")"> Iniciar sessão</a></p>
                     </div>
                 }
             </div>
 
-            <div class="col-lg-4 text-muted">
-                <p>Sua senha deve conter:</p>
-                <ul>
-                    <li>Entre 6-20 caracteres.</li>
-                    <li>Ao menos uma letra maíscula.</li>
-                    <li>Ao menos uma letra minúscula.</li>
-                    <li>Ao menos um número.</li>
+            <div class="col-lg-4">
+                <p class="text-muted">Só no Events, você vai poder:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check"></i> Consultar seus eventos na Fieb</li>
+                    <li><i class="fas fa-check"></i> Inscrever-se nos eventos da sua disciplina</li>
+                    <li><i class="fas fa-check"></i> Cancelar sua inscrição a qualquer momento</li>
                 </ul>
+                <p>E o melhor, tudo 100% gratuito.</p>
             </div>
         </div>
     }
-}
-
-@section scripts {
-    <script>
-        var senha = document.getElementById("senha"),
-            confirmaSenha = document.getElementById("confirmaSenha");
-
-        function validarSenha() {
-            if (senha.value != confirmaSenha.value) {
-                confirmaSenha.setCustomValidity("Senhas não conferem.");
-            } else {
-                confirmaSenha.setCustomValidity('');
-            }
-        }
-
-        senha.onchange = validarSenha;
-        confirmaSenha.onkeyup = validarSenha;
-    </script>
 }

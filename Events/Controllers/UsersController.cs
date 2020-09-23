@@ -118,5 +118,44 @@ namespace Events.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "1, 2")]
+        public ActionResult UpdatePassword(int id = 0)
+        {
+            if (id == 0)
+            {
+                return View(new USUARIO());
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("users/" + id.ToString()).Result;
+                return View(response.Content.ReadAsAsync<USUARIO>().Result);
+            }
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdatePassword(USUARIO uSUARIO, int id = 0)
+        {
+            if (id == 0)
+            {
+                TempData["Error"] = "Ocorreu um erro inesperado.";
+                return View(uSUARIO);
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + id.ToString(), uSUARIO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Senha atualizada com sucesso!";
+                    return RedirectToAction("Profile", "Users");
+                }
+                else
+                {
+                    TempData["Error"] = "Ocorreu um erro inesperado.";
+                    return View(uSUARIO);
+                }
+            }
+        }
     }
 }

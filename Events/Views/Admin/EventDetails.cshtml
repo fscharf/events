@@ -1,7 +1,7 @@
 ﻿@model Events.Models.EVENTO
 
 @{
-    ViewBag.Title = "Novo evento";
+    ViewBag.Title = Html.DisplayFor(x => x.TITULO);
 }
 
 <div class="row mb-3">
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("EventCreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("EventDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.COD_EVENTO)
@@ -61,9 +61,10 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Criar <i class="fas fa-check-circle"></i></button>
+                <button type="submit" class="btn btn-primary btn-block">Atualizar <i class="fas fa-check-circle"></i></button>
             </div>
         </div>
     </div>
 }
+
 

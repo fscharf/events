@@ -10,7 +10,6 @@
     if (userAuth.IsAuthenticated)
     {
         Response.Redirect("/");
-
     }
     else
     {
@@ -85,10 +84,9 @@
                         <a href="#">Esqueci minha senha</a>
                     </div>
 
-
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Entrar</button>
-                        <p class="text-muted">Novo por aqui?<a href="/cadastro"> Cadastre-se agora</a></p>
+                        <p class="text-muted">Novo por aqui?<a href="@Url.Action("Register", "Admin")"> Cadastre-se agora</a></p>
                     </div>
                 }
             </div>

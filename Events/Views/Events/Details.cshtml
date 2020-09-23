@@ -7,7 +7,7 @@
 @Html.HiddenFor(x => x.COD_EVENTO)
 
 <img class="img-fluid custom-object-fit-cover rounded mb-4"
-     src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+     src="@Url.Content(Model.IMAGEM_URL)"
      alt="@Html.DisplayFor(x => x.TITULO)" />
 
 <div class="row">

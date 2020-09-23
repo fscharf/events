@@ -1,5 +1,6 @@
 ﻿@using System.Security.Claims;
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,6 +35,7 @@
 
                         if (userAuth.IsAuthenticated)
                         {
+
                             <li class="nav-item dropdown">
                                 <a href="#"
                                    class="nav-link dropdown-toggle"
@@ -58,21 +60,20 @@
                                     </a>
                                     @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1") || (c.Value == "2")))
                                     {
-                                        <a class="dropdown-item" href="/eventos/meuseventos">
+                                        <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
                                             <i class="fas fa-calendar-day mr-2"></i>Meus eventos
                                         </a>
                                     }
                                     else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
                                     {
-                                        <a class="dropdown-item" href="/admin"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                     }
-                                    <div class="dropdown-divider">
-                                    </div>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item disabled" href="#">
                                         <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/sair">
+                                    <a class="dropdown-item" href="@Url.Action("Logout", "Users")">
                                         <i class="fas fa-sign-out-alt mr-2"></i>Sair
                                     </a>
                                 </div>
@@ -81,10 +82,10 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
+                                <a class="nav-link" href="@Url.Action("Register", "Users")"><i class="fas fa-user-plus"></i> Cadastro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/entrar"><i class="fas fa-sign-in-alt"></i> Entrar</a>
+                                <a class="nav-link" href="@Url.Action("Login", "Users")"><i class="fas fa-sign-in-alt"></i> Entrar</a>
                             </li>
                         }
                     }

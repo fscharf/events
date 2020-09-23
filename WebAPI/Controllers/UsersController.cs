@@ -39,7 +39,14 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult PutUSUARIO(int id, USUARIO uSUARIO)
         {
-            uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+            if (uSUARIO.SENHA == Encrypt.CalculateMD5Hash(uSUARIO.SENHA))
+            {
+                db.Entry(uSUARIO).State = EntityState.Unchanged;
+            }
+            else if (uSUARIO.SENHA != Encrypt.CalculateMD5Hash(uSUARIO.SENHA))
+            {
+                uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+            }
 
             if (id != uSUARIO.COD_USUARIO)
             {

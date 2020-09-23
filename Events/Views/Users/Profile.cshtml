@@ -2,81 +2,47 @@
 @using System.Security.Claims;
 
 @{
-    ViewBag.Title = "Meu Perfil";
+    ViewBag.Title = "Meu perfil";
 
     var userAuth = (ClaimsIdentity)User.Identity;
 
-    if (userAuth.IsAuthenticated)
-    {
-        <div class="row mb-3">
-            <div class="col-lg">
-                <h4>
-                    <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
-                    @ViewBag.Title
-                </h4>
-            </div>
+    <div class="row mb-3">
+        <div class="col-lg">
+            <h4>
+                <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
+                @ViewBag.Title
+            </h4>
         </div>
-        <div class="row mb-3">
-            <div class="col-lg-3 mb-4">
-                <div class="nav flex-column nav-pills sticky-top"
-                     id="accountTab"
-                     role="tablist"
-                     aria-orientation="vertical">
-
-                    <a class="nav-link active" id="profileTab" data-toggle="pill" href="#profile" role="tab">
-                        <i class="fas fa-user-circle mr-2"></i>Conta
-                    </a>
-                    <a class="nav-link" id="settingsTab" data-toggle="pill" href="#settings" role="tab">
-                        <i class="fas fa-cog mr-2"></i>Configurações
-                    </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <form method="get">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value">
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="tab-content" id="tabContent">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value">
+                    <a href="#" class="btn btn-primary btn-sm mt-2">Alterar email</a>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input class="form-control" type="password" readonly value="&middot;&middot;&middot;&middot;&middot;">
+                    <a href="@Url.Action("UpdatePassword", "Users")" class="btn btn-primary btn-sm mt-2">Alterar senha</a>
+                </div>
 
-                    <!-- profile tab -->
-                    <div class="tab-pane fade show active" id="profile" role="tabpanel">
-                        <form>
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value">
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value">
-                                <button class="btn btn-primary btn-sm mt-2" disabled>Alterar email</button>
-                            </div>
-                            <div class="form-group">
-                                <label>Senha</label>
-                                <input class="form-control" type="password" readonly value="&middot;&middot;&middot;&middot;&middot;">
-                                <button class="btn btn-primary btn-sm mt-2" disabled>Alterar senha</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- settings tab -->
-                    <div class="tab-pane fade" id="settings" role="tabpanel">
-                        <form>
-                            <div class="form-group">
-                                <!-- Default switch -->
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="night-mode">
-                                    <label class="custom-control-label" for="night-mode">Modo Escuro (beta)</label>
-                                </div>
-                            </div>
-                        </form>
+                <div class="form-group">
+                    <label>Configurações</label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="night-mode">
+                        <label class="custom-control-label" for="night-mode">Modo Escuro (beta)</label>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    }
-    else
-    {
-
-
-        Response.Redirect("/");
-
-    }
+    </div>
 }
+
 
 

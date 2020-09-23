@@ -9,6 +9,7 @@ using Events.Models;
 
 namespace Events.Controllers
 {
+    [Authorize(Roles = "3, 4, 5")]
     public class AdminController : Controller
     {
         public ActionResult Index()
@@ -38,6 +39,44 @@ namespace Events.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EventDetails(EVENTO eVENTO, int id = 0)
+        {
+            if (id == 0)
+            {
+                TempData["Error"] = "Evento não localizado.";
+                return View(eVENTO);
+            }
+            else
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var docfiles = new List<string>();
+                    foreach (string file in Request.Files)
+                    {
+                        var postedFile = Request.Files[file];
+                        eVENTO.IMAGEM_URL = "~/Image/" + postedFile.FileName;
+                        var filePath = Path.Combine(Server.MapPath("~/Image/"), postedFile.FileName);
+                        postedFile.SaveAs(filePath);
+                        docfiles.Add(filePath);
+                    }
+                }
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("events/" + id.ToString(), eVENTO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Dados atualizados com sucesso!";
+                    return RedirectToAction("EventsList", "Admin");
+                }
+                else
+                {
+                    TempData["Error"] = "Ocorreu um erro inesperado.";
+                    return View(eVENTO);
+                }
+            }
+        }
+
         public ActionResult EventCreate()
         {
             return View();
@@ -45,18 +84,36 @@ namespace Events.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EventCreate(EVENTO eVENTO, HttpPostedFileBase file)
+        public ActionResult EventCreate(EVENTO eVENTO)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
-            if (response.IsSuccessStatusCode)
+            if (Request.Files.Count > 0)
             {
-                TempData["Success"] = "Evento criado com sucesso.";
-                return RedirectToAction("EventsList", "Admin");
+                var docfiles = new List<string>();
+                foreach (string file in Request.Files)
+                {
+                    var postedFile = Request.Files[file];
+                    eVENTO.IMAGEM_URL = "~/Image/" + postedFile.FileName;
+                    var filePath = Path.Combine(Server.MapPath("~/Image/"), postedFile.FileName);
+                    postedFile.SaveAs(filePath);
+                    docfiles.Add(filePath);
+                }
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("events", eVENTO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Evento criado com sucesso.";
+                    return RedirectToAction("EventsList", "Admin");
+                }
+                else
+                {
+                    TempData["Error"] = "Ocorreu um erro ao enviar os dados para WebAPI.";
+                    return View("EventCreate", eVENTO);
+                }
             }
             else
             {
-                TempData["Error"] = "Ocorreu um erro inesperado.";
-                return View(eVENTO);
+                TempData["Error"] = "Por favor, faça upload de uma imagem.";
+                return View("EventCreate", eVENTO);
             }
         }
 
@@ -83,6 +140,7 @@ namespace Events.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UserDetails(USUARIO uSUARIO, int id = 0)
         {
             if (id == 0)
@@ -96,7 +154,7 @@ namespace Events.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["Success"] = "Dados atualizados com sucesso!";
-                    return Redirect("/admin/users");
+                    return RedirectToAction("UsersList", "Admin");
                 }
                 else
                 {
@@ -106,5 +164,26 @@ namespace Events.Controllers
             }
         }
 
+        public ActionResult UserCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserCreate(USUARIO uSUARIO)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("users", uSUARIO).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Usuário criado com sucesso.";
+                return RedirectToAction("EventsList", "Admin");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao enviar os dados para WebAPI.";
+                return View("EventCreate", uSUARIO);
+            }
+        }
     }
 }
