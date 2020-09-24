@@ -10,11 +10,6 @@
             @ViewBag.Title
         </h4>
         <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
-
-        @if (TempData["Success"] != null)
-        {
-            <div class="alert alert-success alert-auto-hide">@TempData["Success"]</div>
-        }
     </div>
 </div>
 
@@ -80,4 +75,19 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            var successMsg = '@TempData["Success"]';
+
+            if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
+                });
+            }
+        })
+    </script>
+}
 

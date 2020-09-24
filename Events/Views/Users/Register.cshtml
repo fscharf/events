@@ -20,15 +20,6 @@
                     @ViewBag.Title
                 </h4>
                 <p class="text-muted">Sua melhor experiência com eventos.</p>
-
-                @if (TempData["Error"] != null)
-                {
-                    <div class="form-group">
-                        <div class="alert alert-danger alert-auto-hide" role="alert">
-                            @TempData["Error"]
-                        </div>
-                    </div>
-                }
             </div>
         </div>
         <div class="row mb-3">
@@ -39,120 +30,78 @@
                     @Html.HiddenFor(model => model.COD_USUARIO)
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                            </div>
-                            @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
-                                     new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
-                                     new SelectListItem { Text = "Aluno", Value = "1" },
-                                     new SelectListItem { Text = "Visitante", Value = "2" },
-                            }, htmlAttributes: new { @class = "custom-select", @required = "required" })
-                        </div>
+                        @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
+                                 new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
+                                 new SelectListItem { Text = "Aluno", Value = "1" },
+                                 new SelectListItem { Text = "Visitante", Value = "2" },
+                        }, htmlAttributes: new { @class = "custom-select", @required = "required" })
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
-                            @Html.EditorFor(model => model.NOME, new
+                        @Html.EditorFor(model => model.NOME, new
+                        {
+                            htmlAttributes = new
                             {
-                                htmlAttributes = new
-                                {
-                                @class = "form-control",
-                                placeholder = "Nome completo",
-                                minlength = "3",
-                                maxlength = "50",
-                                required = "required",
-                                pattern = @"[A-Za-zÀ-ú ']{4,}"
-                                }
-                            })
-                        </div>
+                            @class = "form-control",
+                            placeholder = "Nome completo",
+                            minlength = "3",
+                            maxlength = "50",
+                            required = "required",
+                            pattern = @"[A-Za-zÀ-ú ']{4,}"
+                            }
+                        })
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                            </div>
-                            @Html.EditorFor(model => model.EMAIL, new
+                        @Html.EditorFor(model => model.EMAIL, new
+                        {
+                            htmlAttributes = new
                             {
-                                htmlAttributes = new
-                                {
-                                @class = "form-control",
-                                placeholder = "Email",
-                                type = "email",
-                                minlength = "3",
-                                maxlength = "35",
-                                required = "required"
-                                }
-                            })
-                        </div>
+                            @class = "form-control",
+                            placeholder = "Email",
+                            type = "email",
+                            minlength = "3",
+                            maxlength = "35",
+                            required = "required"
+                            }
+                        })
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-phone-square-alt"></i>
-                                </div>
-                            </div>
-                            @Html.EditorFor(model => model.CELULAR, new
+                        @Html.EditorFor(model => model.CELULAR, new
+                        {
+                            htmlAttributes = new
                             {
-                                htmlAttributes = new
-                                {
-                                @class = "form-control",
-                                placeholder = "Celular",
-                                type = "text",
-                                minlength = "11",
-                                maxlength = "11",
-                                required = "required",
-                                pattern = "[0-9]+"
-                                }
-                            })
-                        </div>
+                            @class = "form-control",
+                            placeholder = "Celular",
+                            type = "text",
+                            minlength = "11",
+                            maxlength = "11",
+                            required = "required",
+                            pattern = "[0-9]+"
+                            }
+                        })
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </div>
-                            </div>
-                            @Html.EditorFor(model => model.SENHA, new
+                        @Html.EditorFor(model => model.SENHA, new
+                        {
+                            htmlAttributes = new
                             {
-                                htmlAttributes = new
-                                {
-                                @class = "form-control",
-                                type = "password",
-                                id = "senha",
-                                placeholder = "Escolha uma senha",
-                                minlength = "6",
-                                maxlength = "20",
-                                required = "required"
-                                }
-                            })
-                        </div>
+                            @class = "form-control",
+                            type = "password",
+                            id = "senha",
+                            placeholder = "Escolha uma senha",
+                            minlength = "6",
+                            maxlength = "20",
+                            required = "required"
+                            }
+                        })
                         <small class="text-muted">Sua senha deve conter ao menos 6 caracteres.</small>
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock-open"></i>
-                                </div>
-                            </div>
-                            <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
-                        </div>
+                        <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
                     </div>
 
                     <div class="form-group">
@@ -165,12 +114,41 @@
             <div class="col-lg-4">
                 <p class="text-muted">Só no Events, você vai poder:</p>
                 <ul class="list-unstyled">
-                    <li><i class="fas fa-check"></i> Consultar seus eventos na Fieb</li>
-                    <li><i class="fas fa-check"></i> Inscrever-se nos eventos da sua disciplina</li>
-                    <li><i class="fas fa-check"></i> Cancelar sua inscrição a qualquer momento</li>
+                    <li><i class="fas fa-check text-primary"></i> Consultar seus eventos na Fieb</li>
+                    <li><i class="fas fa-check text-primary"></i> Inscrever-se nos eventos da sua disciplina</li>
+                    <li><i class="fas fa-check text-primary"></i> Cancelar sua inscrição a qualquer momento</li>
                 </ul>
-                <p>E o melhor, tudo 100% gratuito.</p>
             </div>
         </div>
     }
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
+                });
+            }
+        })
+    </script>
+    <script>
+        var senha = document.getElementById("senha"),
+            confirmaSenha = document.getElementById("confirmaSenha");
+
+        function validarSenha() {
+            if (senha.value != confirmaSenha.value) {
+                confirmaSenha.setCustomValidity("Senhas não conferem.");
+            } else {
+                confirmaSenha.setCustomValidity('');
+            }
+        }
+
+        senha.onchange = validarSenha;
+        confirmaSenha.onkeyup = validarSenha;
+    </script>
 }

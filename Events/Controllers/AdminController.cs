@@ -177,11 +177,11 @@ namespace Events.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["Success"] = "Usuário criado com sucesso.";
-                return RedirectToAction("EventsList", "Admin");
+                return RedirectToAction("UsersList", "Admin");
             }
             else
             {
-                TempData["Error"] = "Ocorreu um erro ao enviar os dados para WebAPI.";
+                TempData["Error"] = "Ocorreu um erro ao enviar os dados para API.";
                 return View("EventCreate", uSUARIO);
             }
         }

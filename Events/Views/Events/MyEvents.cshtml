@@ -1,46 +1,33 @@
 ﻿@model Events.Models.INSCRICAO
-@using System.Security.Claims;
 
-@{
-    var userAuth = (ClaimsIdentity)User.Identity;
-
-    if (userAuth.IsAuthenticated &&
-        userAuth.Claims.Any(c => c.Type == ClaimTypes.Role
-        && (c.Value == "1") || (c.Value == "2")))
-    {
-        <div class="row mb-3">
-            <div class="col-lg">
-                <h5 class="text-muted">@ViewBag.Title</h5>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
-                                 alt="Evento"
-                                 class="card-img h-100 object-fit-cover" />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body text-left">
-                                <h5 class="card-title">Título do evento</h5>
-                                <p class="card-text text-muted text-truncate">Descrição do evento</p>
-                                <hr />
-                                <p>Código de inscrição: <span class="text-muted">123456789</span></p>
-                                <a class="card-link" href="#qrcodeModal" data-toggle="modal"><i class="fas fa-qrcode"></i> QR Code</a>
-                                <a class="card-link" href="#"><i class="fas fa-print"></i> Imprimir</a>
-                            </div>
-                        </div>
+<div class="row mb-3">
+    <div class="col-lg">
+        <h5 class="text-muted">@ViewBag.Title</h5>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=890&q=80"
+                         alt="Evento"
+                         class="card-img h-100 object-fit-cover" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body text-left">
+                        <h5 class="card-title">Título do evento</h5>
+                        <p class="card-text text-muted text-truncate">Descrição do evento</p>
+                        <hr />
+                        <p>Código de inscrição: <span class="text-muted">123456789</span></p>
+                        <a class="card-link" href="#qrcodeModal" data-toggle="modal"><i class="fas fa-qrcode"></i> QR Code</a>
+                        <a class="card-link" href="#"><i class="fas fa-print"></i> Imprimir</a>
                     </div>
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        Response.Redirect("/entrar");
-    }
-}
+    </div>
+</div>
+
 
 @Html.Partial("_QRCodeModal")

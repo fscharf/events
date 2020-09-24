@@ -1,0 +1,62 @@
+﻿@using System.Security.Claims;
+
+@{
+    ViewBag.Title = "Meu perfil";
+
+    var userAuth = (ClaimsIdentity)User.Identity;
+
+    <div class="row mb-3">
+        <div class="col-lg">
+            <h4>
+                <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
+                @ViewBag.Title
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input class="form-control" type="password" readonly value="&middot;&middot;&middot;&middot;&middot;">
+            </div>
+            <div class="form-group">
+                <a href="@Url.Action("UpdateProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })"
+                   class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Editar meu cadastro</a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Configurações</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="night-mode">
+                    <label class="custom-control-label" for="night-mode">Modo Escuro (beta)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            var successMsg = '@TempData["Success"]';
+
+            if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
+                });
+            }
+        })
+    </script>
+}
+
+

@@ -1858,6 +1858,12 @@
     <Content Include="node_modules\bootstrap\js\src\tools\sanitizer.js" />
     <Content Include="node_modules\bootstrap\js\src\tooltip.js" />
     <Content Include="node_modules\bootstrap\js\src\util.js" />
+    <Content Include="node_modules\izitoast\dist\css\iziToast.css" />
+    <Content Include="node_modules\izitoast\dist\css\iziToast.min.css" />
+    <Content Include="node_modules\izitoast\dist\js\iziToast.js" />
+    <Content Include="node_modules\izitoast\dist\js\iziToast.min.js" />
+    <Content Include="node_modules\izitoast\gulpfile.js" />
+    <Content Include="node_modules\izitoast\src\js\iziToast.js" />
     <Content Include="node_modules\jquery\AUTHORS.txt" />
     <Content Include="node_modules\jquery\dist\jquery.js" />
     <Content Include="node_modules\jquery\dist\jquery.min.js" />
@@ -2270,6 +2276,15 @@
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="package-lock.json" />
     <Content Include="Fonts\nature-beauty.ttf" />
+    <Content Include="node_modules\izitoast\bower.json" />
+    <Content Include="node_modules\izitoast\LICENSE" />
+    <Content Include="node_modules\izitoast\package.json" />
+    <Content Include="node_modules\izitoast\README.md" />
+    <Content Include="node_modules\izitoast\src\css\animations.styl" />
+    <Content Include="node_modules\izitoast\src\css\layouts.styl" />
+    <Content Include="node_modules\izitoast\src\css\style.styl" />
+    <Content Include="node_modules\izitoast\src\css\themes.styl" />
+    <Content Include="node_modules\izitoast\src\css\toast.styl" />
     <None Include="packages.config" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Events\_ShareModal.cshtml" />
@@ -2279,17 +2294,18 @@
     <Content Include="Views\Admin\EventsList.cshtml" />
     <Content Include="Views\Admin\UsersList.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
-    <Content Include="Views\Users\Profile.cshtml" />
+    <Content Include="Views\Users\MyProfile.cshtml" />
     <Content Include="Views\Admin\EventCreate.cshtml" />
     <Content Include="Views\Admin\EventDetails.cshtml" />
     <Content Include="Views\Admin\UserCreate.cshtml" />
-    <Content Include="Views\Users\UpdatePassword.cshtml" />
+    <Content Include="Views\Users\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="node_modules\izitoast\types\index.d.ts" />
     <TypeScriptCompile Include="node_modules\popper.js\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>

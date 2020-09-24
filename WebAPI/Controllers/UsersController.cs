@@ -43,9 +43,17 @@ namespace WebAPI.Controllers
             {
                 db.Entry(uSUARIO).State = EntityState.Unchanged;
             }
-            else if (uSUARIO.SENHA != Encrypt.CalculateMD5Hash(uSUARIO.SENHA))
+            else 
             {
                 uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+            }
+            if (uSUARIO.COD_PERFIL == uSUARIO.COD_PERFIL)
+            {
+                db.Entry(uSUARIO).State = EntityState.Unchanged;
+            }
+            else 
+            {
+                uSUARIO.COD_PERFIL = uSUARIO.COD_PERFIL;
             }
 
             if (id != uSUARIO.COD_USUARIO)

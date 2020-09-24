@@ -1,5 +1,7 @@
 ﻿@using System.Security.Claims;
-
+@{
+    var userAuth = (ClaimsIdentity)User.Identity;
+}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,74 +22,69 @@
     @Styles.Render("~/styles/css")
 </head>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 mb-5" id="mainNavbar">
+<body>
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm sticky-top py-3 mb-5">
         <div class="container">
-            <a class="main-font text-primary" href="/">Events</a>
+            <a class="main-font text-primary mr-0 mr-sm-3" href="@Url.Action("Index", "Main")">Events</a>
 
-            <button class="btn btn-light d-block d-lg-none" data-toggle="collapse" data-target=".navbar-collapse">
+            <button class="btn btn-outline-primary border-0 fa-lg d-block d-lg-none" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse mt-3 mt-sm-0">
                 <ul class="navbar-nav ml-auto">
-                    @{
-                        var userAuth = (ClaimsIdentity)User.Identity;
-
-                        if (userAuth.IsAuthenticated)
-                        {
-
-                            <li class="nav-item dropdown">
-                                <a href="#"
-                                   class="nav-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   title="Opções da conta">
-                                    <i class="fas fa-user-circle mr-2"></i>
-                                    @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 220px;">
-                                    <div class="text-center p-2">
-                                        <i class="fas fa-user-circle fa-2x mb-2"></i>
-                                        <div class="dropdown-item-text">
-                                            @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
-                                        </div>
-                                        <small class="text-muted">
-                                            @userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value
-                                        </small>
+                    @if (userAuth.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a href="#"
+                               class="nav-link dropdown-toggle"
+                               data-toggle="dropdown"
+                               title="Opções da conta">
+                                <i class="fas fa-user-circle mr-2"></i>
+                                @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 220px;">
+                                <div class="text-center p-2">
+                                    <i class="fas fa-user-circle fa-2x mb-2"></i>
+                                    <div class="dropdown-item-text">
+                                        @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                                     </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="@Url.Action("Profile", "Users")">
-                                        <i class="fas fa-user-circle mr-2"></i>Conta
-                                    </a>
-                                    @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1") || (c.Value == "2")))
-                                    {
-                                        <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
-                                            <i class="fas fa-calendar-day mr-2"></i>Meus eventos
-                                        </a>
-                                    }
-                                    else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
-                                    {
-                                        <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
-                                    }
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item disabled" href="#">
-                                        <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="@Url.Action("Logout", "Users")">
-                                        <i class="fas fa-sign-out-alt mr-2"></i>Sair
-                                    </a>
+                                    <small class="text-muted">
+                                        @userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value
+                                    </small>
                                 </div>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Register", "Users")"><i class="fas fa-user-plus"></i> Cadastro</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Login", "Users")"><i class="fas fa-sign-in-alt"></i> Entrar</a>
-                            </li>
-                        }
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("MyProfile", "Users")">
+                                    <i class="fas fa-user-circle mr-2"></i>Conta
+                                </a>
+                                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1") || (c.Value == "2")))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
+                                        <i class="fas fa-calendar-day mr-2"></i>Meus eventos
+                                    </a>
+                                }
+                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
+                                }
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item disabled" href="#">
+                                    <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Users")">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Sair
+                                </a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Users")"><i class="fas fa-sign-in-alt"></i> Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary ml-0 ml-sm-2" href="@Url.Action("Register", "Users")"><i class="fas fa-user-plus"></i> Cadastro</a>
+                        </li>
                     }
                 </ul>
             </div>
@@ -101,6 +98,7 @@
     @Scripts.Render("~/jquery")
     @Scripts.Render("~/popper.js")
     @Scripts.Render("~/bootstrap/js")
+    @Scripts.Render("~/iziToast/js")
     @Scripts.Render("~/scripts/js")
 
     @RenderSection("Scripts", required: false)

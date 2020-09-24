@@ -12,5 +12,7 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "izitoast": "^1.4.0"
+  }
 }

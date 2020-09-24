@@ -1,37 +1,31 @@
 ﻿@model IEnumerable<Events.Models.EVENTO>
 @using System.Security.Claims;
 
-@if (TempData["Success"] != null)
+@{
+    var userAuth = (ClaimsIdentity)User.Identity;
+}
+
+@if (userAuth.IsAuthenticated)
 {
-    <div class="alert alert-success text-center">
-        @TempData["Success"]
+}
+else
+{
+    <div class="jumbotron bg-main-gradient text-light mb-5">
+        <div class="row">
+            <div class="col-lg-6 mb-5 my-md-auto">
+                <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
+            </div>
+            <div class="col-lg-6 my-auto mx-auto">
+                <h2>Conecte-se ao Events</h2>
+                <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
+                <a class="btn btn-primary btn-lg mt-3" href="@Url.Action("Register", "Users")">
+                    Cadastre-se grátis<i class="fas fa-angle-right ml-3"></i>
+                </a>
+            </div>
+        </div>
     </div>
 }
 
-@{
-    var userAuth = (ClaimsIdentity)User.Identity;
-
-    if (userAuth.IsAuthenticated)
-    {
-    }
-    else
-    {
-        <div class="jumbotron bg-main-gradient text-light mb-5">
-            <div class="row">
-                <div class="col-lg-6 mb-5 my-md-auto">
-                    <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
-                </div>
-                <div class="col-lg-6 my-auto mx-auto">
-                    <h2>Conecte-se ao Events</h2>
-                    <h4>Tenha as melhores experiências com eventos, reserve sua vaga e receba certificados online</h4>
-                    <a class="btn btn-primary btn-lg mt-3" href="@Url.Action("Register", "Users")">
-                        Cadastre-se grátis<i class="fas fa-angle-right ml-3"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    }
-}
 
 <div class="row mb-3">
     <div class="col-lg-6">
@@ -66,3 +60,18 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            var successMsg = '@TempData["Success"]';
+
+            if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
+                });
+            }
+        })
+    </script>
+}

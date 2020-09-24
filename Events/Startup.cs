@@ -15,8 +15,10 @@ namespace Events
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new PathString("/entrar"),
-                ExpireTimeSpan = TimeSpan.FromMinutes(30)
+                LoginPath = new PathString("/Users/Login"),
+                ExpireTimeSpan = TimeSpan.FromMinutes(30),
+                CookieName = "ApplicationCookie",
+                LogoutPath = new PathString("/Users/Logout")
             });
         }
     }

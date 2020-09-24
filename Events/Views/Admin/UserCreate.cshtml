@@ -6,13 +6,9 @@
 <div class="row mb-3">
     <div class="col-lg">
         <h4>
-            <a class="text-dark mr-2" href="@Url.Action("UsersList", "Users")"><i class="fas fa-arrow-left"></i></a>
+            <a class="text-dark mr-2" href="@Url.Action("UsersList", "Admin")"><i class="fas fa-arrow-left"></i></a>
             @ViewBag.Title
         </h4>
-        @if (TempData["Error"] != null)
-        {
-            <div class="alert alert-danger alert-auto-hide">@TempData["Error"]</div>
-        }
     </div>
 </div>
 <div class="row mb-3">
@@ -99,4 +95,19 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
+                });
+            }
+        })
+    </script>
+}
 

@@ -391,3 +391,4 @@ C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csproj.CopyCompl
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.pdb
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
+C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache

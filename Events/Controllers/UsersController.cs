@@ -16,14 +16,8 @@ namespace Events.Controllers
     [AllowAnonymous]
     public class UsersController : Controller
     {
-        public ActionResult Register(int id = 0)
-        {
-            ViewBag.Title = "Crie sua conta grátis";
-            var userModel = new USUARIO();
-            return View(userModel);
-        }
+        public ActionResult Register() => View();
 
-        // POST: /api/Users
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(USUARIO uSUARIO)
@@ -54,12 +48,7 @@ namespace Events.Controllers
             }
         }
 
-        // GET:
-        public ActionResult Login()
-        {
-            ViewBag.Title = "Iniciar sessão";
-            return View();
-        }
+        public ActionResult Login() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -96,9 +85,9 @@ namespace Events.Controllers
                     return Redirect("/");
                 }
             }
-            else 
+            else
             {
-                TempData["Error"] = "Ocorreu um erro inesperado. Favor contatar o administrador.";
+                TempData["Error"] = "Operação ilegal.";
                 return View();
             }
         }
@@ -114,13 +103,14 @@ namespace Events.Controllers
             return Redirect("/");
         }
 
-        public ActionResult Profile()
+        [Authorize]
+        public ActionResult MyProfile()
         {
             return View();
         }
 
-        [Authorize(Roles = "1, 2")]
-        public ActionResult UpdatePassword(int id = 0)
+        [Authorize]
+        public ActionResult UpdateProfile(int id = 0)
         {
             if (id == 0)
             {
@@ -132,14 +122,14 @@ namespace Events.Controllers
                 return View(response.Content.ReadAsAsync<USUARIO>().Result);
             }
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdatePassword(USUARIO uSUARIO, int id = 0)
+        public ActionResult UpdateProfile(USUARIO uSUARIO, int id = 0)
         {
             if (id == 0)
             {
-                TempData["Error"] = "Ocorreu um erro inesperado.";
+                TempData["Error"] = "Usuário não localizado.";
                 return View(uSUARIO);
             }
             else
@@ -147,12 +137,12 @@ namespace Events.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + id.ToString(), uSUARIO).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["Success"] = "Senha atualizada com sucesso!";
-                    return RedirectToAction("Profile", "Users");
+                    TempData["Success"] = "Dados atualizads com sucesso!";
+                    return RedirectToAction("MyProfile", "Users");
                 }
                 else
                 {
-                    TempData["Error"] = "Ocorreu um erro inesperado.";
+                    TempData["Error"] = "Operação ilegal.";
                     return View(uSUARIO);
                 }
             }
