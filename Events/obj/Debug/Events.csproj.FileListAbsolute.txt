@@ -390,3 +390,4 @@ C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csproj.CoreCompi
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.pdb
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache

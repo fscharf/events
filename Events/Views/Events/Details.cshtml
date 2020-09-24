@@ -13,12 +13,26 @@
 <div class="row">
     <div class="col-lg-8 mb-4 mb-sm-0">
         <div class="border rounded p-5">
+
+
             <h2 class="font-weight-bold mb-3">@Html.DisplayFor(x => x.TITULO)</h2>
+            <a href="/eventos" class="card-link" title="Voltar">
+                <i class="fas fa-arrow-left fa-lg"></i>
+            </a>
+            <a href="#favorito" class="card-link" id="favToggler" title="Marcar como favorito">
+                <i class="fas fa-heart fa-lg"></i>
+            </a>
+            <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
+                <i class="fas fa-share-alt fa-lg"></i>
+            </a>
+
+            <hr />
             <p class="text-muted mb-5">@Html.DisplayFor(x => x.DESCRICAO)</p>
 
-            <iframe class="rounded w-100"
+            <iframe class="rounded"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr"
-                    height="450"
+                    height="250"
+                    width="500"
                     frameborder="0"
                     allowfullscreen="true"
                     aria-hidden="false"
@@ -33,17 +47,6 @@
 
     </div>
     <div class="col-lg-4">
-        <div class="border rounded text-center p-4 mb-4">
-            <a href="/eventos" class="card-link" title="Voltar">
-                <i class="fas fa-arrow-left fa-lg"></i>
-            </a>
-            <a href="#favorito" class="card-link" id="favToggler" title="Marcar como favorito">
-                <i class="fas fa-heart fa-lg"></i>
-            </a>
-            <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
-                <i class="fas fa-share-alt fa-lg"></i>
-            </a>
-        </div>
         <div class="shadow-sm border rounded p-4">
             <p class="text-muted">Informações do evento</p>
             <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data"></i>@Html.DisplayFor(x => x.DATA)</p>

@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label>Senha</label>
                     <input class="form-control" type="password" readonly value="&middot;&middot;&middot;&middot;&middot;">
-                    <a href="@Url.Action("UpdatePassword", "Users")" class="btn btn-primary btn-sm mt-2">Alterar senha</a>
+                    <a href="@Url.Action("UpdatePassword", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })" class="btn btn-primary btn-sm mt-2">Alterar senha</a>
                 </div>
 
                 <div class="form-group">
