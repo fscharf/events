@@ -43,6 +43,7 @@
                 <th scope="col">Data</th>
                 <th scope="col">Horário</th>
                 <th scope="col">Duração</th>
+                <th scope="col">Ativo</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -66,9 +67,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DURACAO)
                     </td>
+                    <td>
+                        @Html.DropDownListFor(modelItem => item.ATIVO, new List<SelectListItem> {
+                             new SelectListItem { Text = "Ativo", Value = "1" },
+                             new SelectListItem { Text = "Inativo", Value = "0" },
+                        }, new { @class = "custom-select" })
+                    </td>
                     <td class="text-center">
                         <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                        <a class="btn btn-danger disabled" href="@Url.Action("EventDelete", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-trash-alt"></i> Apagar</a>
+                        <a class="btn btn-danger" onclick="Delete(@item.COD_EVENTO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
                     </td>
                 </tr>
             }
@@ -85,6 +92,49 @@
                 iziToast.success({
                     title: 'Sucesso',
                     message: successMsg
+                });
+            }
+        })
+        function Delete(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                timeout: false,
+                progressBar: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 999,
+                title: 'Aviso',
+                message: 'Tem certeza que quer apagar o registro?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("EventDelete", "Admin")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+        $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
                 });
             }
         })

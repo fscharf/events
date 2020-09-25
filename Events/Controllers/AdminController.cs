@@ -9,13 +9,10 @@ using Events.Models;
 
 namespace Events.Controllers
 {
-    [Authorize(Roles = "3, 4, 5")]
+    [Authorize(Roles = "3,4,5")]
     public class AdminController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
         // Admin for Events
         public ActionResult EventsList()
@@ -77,10 +74,7 @@ namespace Events.Controllers
             }
         }
 
-        public ActionResult EventCreate()
-        {
-            return View();
-        }
+        public ActionResult EventCreate() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,6 +108,21 @@ namespace Events.Controllers
             {
                 TempData["Error"] = "Por favor, faça upload de uma imagem.";
                 return View("EventCreate", eVENTO);
+            }
+        }
+
+        public ActionResult EventDelete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("events/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Evento excluído com sucesso.";
+                return RedirectToAction("EventsList", "Admin");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao enviar sua requisição.";
+                return View();
             }
         }
 
@@ -164,10 +173,7 @@ namespace Events.Controllers
             }
         }
 
-        public ActionResult UserCreate()
-        {
-            return View();
-        }
+        public ActionResult UserCreate() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -182,7 +188,22 @@ namespace Events.Controllers
             else
             {
                 TempData["Error"] = "Ocorreu um erro ao enviar os dados para API.";
-                return View("EventCreate", uSUARIO);
+                return View("UserCreate", uSUARIO);
+            }
+        }
+
+        public ActionResult UserDelete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("users/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Usuário excluído com sucesso.";
+                return RedirectToAction("UsersList", "Admin");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao enviar sua requisição.";
+                return View();
             }
         }
     }

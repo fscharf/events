@@ -32,14 +32,14 @@ namespace Events.Controllers
             }
         }
 
-        [Authorize(Roles = "1, 2")]
+        [Authorize(Roles = "1,2")]
         public ActionResult Confirm()
         {
             ViewBag.Title = "Inscrição realizada com sucesso";
             return View();
         }
 
-        [Authorize(Roles = "1, 2")]
+        [Authorize(Roles = "1,2")]
         public ActionResult MyEvents()
         {
             ViewBag.Title = "Meus eventos";

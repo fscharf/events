@@ -56,13 +56,13 @@
                                 <a class="dropdown-item" href="@Url.Action("MyProfile", "Users")">
                                     <i class="fas fa-user-circle mr-2"></i>Conta
                                 </a>
-                                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1") || (c.Value == "2")))
+                                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
                                         <i class="fas fa-calendar-day mr-2"></i>Meus eventos
                                     </a>
                                 }
-                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3") || (c.Value == "4") || (c.Value == "5")))
+                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                 }
@@ -91,7 +91,7 @@
         </div>
     </nav>
 
-    <div class="container text-center text-sm-left pb-5">
+    <div class="container text-center text-sm-left">
         @RenderBody()
     </div>
 

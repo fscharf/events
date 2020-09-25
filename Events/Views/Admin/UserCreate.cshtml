@@ -76,18 +76,18 @@
             <div class="form-group">
                 <label>Perfil</label>
                 @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
-    {
-        new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
-        new SelectListItem { Text = "Aluno", Value = "1" },
-        new SelectListItem { Text = "Visitante", Value = "2" },
-        new SelectListItem { Text = "Master", Value = "3" },
-        new SelectListItem { Text = "Administrador", Value = "4" },
-        new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
-    }, htmlAttributes: new
-{
-    @class = "custom-select",
-    @required = "required"
-    })
+                {
+                    new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
+                    new SelectListItem { Text = "Aluno", Value = "1" },
+                    new SelectListItem { Text = "Visitante", Value = "2" },
+                    new SelectListItem { Text = "Master", Value = "3" },
+                    new SelectListItem { Text = "Administrador", Value = "4" },
+                    new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
+                }, htmlAttributes: new
+                {
+                @class = "custom-select",
+                @required = "required"
+                })
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Atualizar <i class="fas fa-check-circle mr-2"></i></button>

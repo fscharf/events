@@ -104,10 +104,7 @@ namespace Events.Controllers
         }
 
         [Authorize]
-        public ActionResult MyProfile()
-        {
-            return View();
-        }
+        public ActionResult MyProfile() => View();
 
         [Authorize]
         public ActionResult UpdateProfile(int id = 0)

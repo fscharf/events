@@ -5,85 +5,85 @@
     ViewBag.Title = "Iniciar sessão";
 
     var userAuth = (ClaimsIdentity)User.Identity;
-
-
-    if (userAuth.IsAuthenticated)
-    {
-        Response.Redirect("/");
-    }
-    else
-    {
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                <h4>
-                    <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
-                    @ViewBag.Title
-                </h4>
-                <p class="text-muted">Entre com seus dados de acesso.</p>
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken();
-                    @Html.HiddenFor(model => model.COD_USUARIO)
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                            </div>
-
-                            @Html.EditorFor(model => model.EMAIL, new
-                            {
-                                htmlAttributes = new
-                                {
-                                    @class = "form-control",
-                                    placeholder = "Email",
-                                    type = "text",
-                                    required = "required"
-                                }
-                            })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </div>
-                            </div>
-
-                            @Html.EditorFor(model => model.SENHA, new
-                            {
-                                htmlAttributes = new
-                                {
-                                    @class = "form-control",
-                                    placeholder = "Senha",
-                                    type = "password",
-                                    required = "required"
-                                }
-                            })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <a href="#">Esqueci minha senha</a>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Entrar</button>
-                        <p class="text-muted">Novo por aqui?<a href="@Url.Action("Register", "Admin")"> Cadastre-se agora</a></p>
-                    </div>
-                }
-            </div>
-        </div>
-    }
 }
+
+@if (userAuth.IsAuthenticated)
+{
+    Response.Redirect("/");
+}
+else
+{
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            <h4>
+                <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
+                @ViewBag.Title
+            </h4>
+            <p class="text-muted">Entre com seus dados de acesso.</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(model => model.COD_USUARIO)
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+
+                        @Html.EditorFor(model => model.EMAIL, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                placeholder = "Email",
+                                type = "text",
+                                required = "required"
+                            }
+                        })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        @Html.EditorFor(model => model.SENHA, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                placeholder = "Senha",
+                                type = "password",
+                                required = "required"
+                            }
+                        })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a href="#">Esqueci minha senha</a>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Entrar</button>
+                    <p class="text-muted">Novo por aqui?<a href="@Url.Action("Register", "Users")"> Cadastre-se agora</a></p>
+                </div>
+            }
+        </div>
+    </div>
+}
+
 
 @section Scripts {
     <script>
@@ -96,6 +96,21 @@
                     message: errorMsg
                 });
             }
+        })
+        $(function () {
+            var senha = document.getElementById("senha"),
+                confirmaSenha = document.getElementById("confirmaSenha");
+
+            function validarSenha() {
+                if (senha.value != confirmaSenha.value) {
+                    confirmaSenha.setCustomValidity("Senhas não conferem.");
+                } else {
+                    confirmaSenha.setCustomValidity('');
+                }
+            }
+
+            senha.onchange = validarSenha;
+            confirmaSenha.onkeyup = validarSenha;
         })
     </script>
 }

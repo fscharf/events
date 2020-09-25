@@ -43,6 +43,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Senha</th>
                 <th scope="col">Celular</th>
+                <th scope="col">Ativo</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -50,30 +51,36 @@
         <tbody class="bg-white">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td scope="row">
-                        @Html.DisplayFor(modelItem => item.COD_USUARIO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.COD_PERFIL)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NOME)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EMAIL)
-                    </td>
-                    <td>
-                        &middot;&middot;&middot;&middot;&middot;&middot;
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CELULAR)
-                    </td>
-                    <td class="text-center">
-                        <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                        <a class="btn btn-danger disabled" href="@Url.Action("UserDelete", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-trash-alt"></i> Apagar</a>
-                    </td>
-                </tr>
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                <td>
+                    &middot;&middot;&middot;&middot;&middot;&middot;
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CELULAR)
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.ATIVO, new List<SelectListItem> {
+                         new SelectListItem { Text = "Ativo", Value = "1" },
+                         new SelectListItem { Text = "Inativo", Value = "0" },
+                    }, new { @class = "custom-select" })
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                    <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
+                </td>
+            </tr>
             }
 
         </tbody>
@@ -89,6 +96,50 @@
                 iziToast.success({
                     title: 'Sucesso',
                     message: successMsg
+                });
+            }
+        })
+
+        function Delete(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                progressBar: false,
+                timeout: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 999,
+                title: 'Aviso',
+                message: 'Tem certeza que quer apagar o registro?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("UserDelete", "Admin")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+        $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
                 });
             }
         })

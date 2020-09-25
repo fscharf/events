@@ -1,5 +1,10 @@
 ﻿@model Events.Models.USUARIO
-@{ ViewBag.Title = "Editar meu cadastro"; }
+@using System.Security.Claims;
+
+@{
+    ViewBag.Title = "Editar meu cadastro";
+    var userAuth = (ClaimsIdentity)User.Identity;
+}
 
 <div class="row mb-3">
     <div class="col-lg-4">
@@ -27,8 +32,7 @@
                            minlength = "3",
                            maxlength = "50",
                            required = "required",
-                           pattern = @"[A-Za-zÀ-ú ']{4,}",
-                           @readonly = "readonly"
+                           pattern = @"[A-Za-zÀ-ú ']{4,}"
 
                        }
                    })
@@ -43,22 +47,25 @@
                            type = "email",
                            minlength = "3",
                            maxlength = "35",
-                           required = "required",
-                           @readonly = "readonly"
+                           required = "required"
                        }
                    })
             </div>
             <div class="form-group">
-                <label>Senha</label>
+                <label>Senha atual</label>
                 @Html.EditorFor(model => model.SENHA, new
                    {
                        htmlAttributes = new
                        {
                            @class = "form-control",
                            type = "password",
-                           required = "required"
+                           required = "required",
+                           id = "senha"
                        }
                    })
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
             </div>
             <div class="form-group">
                 <label>Celular</label>
@@ -77,14 +84,31 @@
             </div>
             <div class="form-group">
                 <label>Perfil</label>
-                @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1")))
                 {
-                    new SelectListItem { Text = "Aluno", Value = "1" },
-                    new SelectListItem { Text = "Visitante", Value = "2" },
-                    new SelectListItem { Text = "Master", Value = "3" },
-                    new SelectListItem { Text = "Administrador", Value = "4" },
-                    new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
-                }, htmlAttributes: new { @class = "custom-select", required = "required", @disabled = "disabled" })
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Aluno", Value = "1", Selected = true },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required" })
+                }
+                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "2")))
+                {
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Visitante", Value = "2", Selected = true },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required" })
+                }
+                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                {
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Aluno", Value = "1" },
+                        new SelectListItem { Text = "Visitante", Value = "2" },
+                        new SelectListItem { Text = "Master", Value = "3" },
+                        new SelectListItem { Text = "Administrador", Value = "4" },
+                        new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required" })
+                }
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Atualizar dados <i class="fas fa-check-circle mr-2"></i></button>
@@ -105,6 +129,21 @@
                     message: errorMsg
                 });
             }
+        })
+        $(function () {
+            var senha = document.getElementById("senha"),
+                confirmaSenha = document.getElementById("confirmaSenha");
+
+            function validarSenha() {
+                if (senha.value != confirmaSenha.value) {
+                    confirmaSenha.setCustomValidity("Senhas não conferem.");
+                } else {
+                    confirmaSenha.setCustomValidity('');
+                }
+            }
+
+            senha.onchange = validarSenha;
+            confirmaSenha.onkeyup = validarSenha;
         })
     </script>
 }

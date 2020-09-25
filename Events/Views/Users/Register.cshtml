@@ -5,122 +5,122 @@
     ViewBag.Title = "Crie sua conta grátis";
 
     var userAuth = (ClaimsIdentity)User.Identity;
+}
+@if (userAuth.IsAuthenticated)
+{
+    Response.Redirect("/");
 
-    if (userAuth.IsAuthenticated)
-    {
-        Response.Redirect("/");
-
-    }
-    else
-    {
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                <h4>
-                    <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
-                    @ViewBag.Title
-                </h4>
-                <p class="text-muted">Sua melhor experiência com eventos.</p>
-            </div>
+}
+else
+{
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            <h4>
+                <a class="text-dark mr-2" href="/"><i class="fas fa-arrow-left"></i></a>
+                @ViewBag.Title
+            </h4>
+            <p class="text-muted">Sua melhor experiência com eventos.</p>
         </div>
-        <div class="row mb-3">
-            <div class="col-lg-4">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken();
-                    @Html.HiddenFor(model => model.COD_USUARIO)
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(model => model.COD_USUARIO)
 
-                    <div class="form-group">
-                        @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
-                                 new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
-                                 new SelectListItem { Text = "Aluno", Value = "1" },
-                                 new SelectListItem { Text = "Visitante", Value = "2" },
-                        }, htmlAttributes: new { @class = "custom-select", @required = "required" })
-                    </div>
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem> {
+                             new SelectListItem { Text = "Tipo de cadastro", Value = "", Selected = true },
+                             new SelectListItem { Text = "Aluno", Value = "1" },
+                             new SelectListItem { Text = "Visitante", Value = "2" },
+                    }, htmlAttributes: new { @class = "custom-select", @required = "required" })
+                </div>
 
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.NOME, new
+                <div class="form-group">
+                    @Html.EditorFor(model => model.NOME, new
+                    {
+                        htmlAttributes = new
                         {
-                            htmlAttributes = new
-                            {
-                            @class = "form-control",
-                            placeholder = "Nome completo",
-                            minlength = "3",
-                            maxlength = "50",
-                            required = "required",
-                            pattern = @"[A-Za-zÀ-ú ']{4,}"
-                            }
-                        })
-                    </div>
+                        @class = "form-control",
+                        placeholder = "Nome completo",
+                        minlength = "3",
+                        maxlength = "50",
+                        required = "required",
+                        pattern = @"[A-Za-zÀ-ú ']{4,}"
+                        }
+                    })
+                </div>
 
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.EMAIL, new
+                <div class="form-group">
+                    @Html.EditorFor(model => model.EMAIL, new
+                    {
+                        htmlAttributes = new
                         {
-                            htmlAttributes = new
-                            {
-                            @class = "form-control",
-                            placeholder = "Email",
-                            type = "email",
-                            minlength = "3",
-                            maxlength = "35",
-                            required = "required"
-                            }
-                        })
-                    </div>
+                        @class = "form-control",
+                        placeholder = "Email",
+                        type = "email",
+                        minlength = "3",
+                        maxlength = "35",
+                        required = "required"
+                        }
+                    })
+                </div>
 
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.CELULAR, new
+                <div class="form-group">
+                    @Html.EditorFor(model => model.CELULAR, new
+                    {
+                        htmlAttributes = new
                         {
-                            htmlAttributes = new
-                            {
-                            @class = "form-control",
-                            placeholder = "Celular",
-                            type = "text",
-                            minlength = "11",
-                            maxlength = "11",
-                            required = "required",
-                            pattern = "[0-9]+"
-                            }
-                        })
-                    </div>
+                        @class = "form-control",
+                        placeholder = "Celular",
+                        type = "text",
+                        minlength = "11",
+                        maxlength = "11",
+                        required = "required",
+                        pattern = "[0-9]+"
+                        }
+                    })
+                </div>
 
-                    <div class="form-group">
-                        @Html.EditorFor(model => model.SENHA, new
+                <div class="form-group">
+                    @Html.EditorFor(model => model.SENHA, new
+                    {
+                        htmlAttributes = new
                         {
-                            htmlAttributes = new
-                            {
-                            @class = "form-control",
-                            type = "password",
-                            id = "senha",
-                            placeholder = "Escolha uma senha",
-                            minlength = "6",
-                            maxlength = "20",
-                            required = "required"
-                            }
-                        })
-                        <small class="text-muted">Sua senha deve conter ao menos 6 caracteres.</small>
-                    </div>
+                        @class = "form-control",
+                        type = "password",
+                        id = "senha",
+                        placeholder = "Escolha uma senha",
+                        minlength = "6",
+                        maxlength = "20",
+                        required = "required"
+                        }
+                    })
+                    <small class="text-muted">Sua senha deve conter ao menos 6 caracteres.</small>
+                </div>
 
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
-                    </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Confirme a senha" type="password" id="confirmaSenha" required />
+                </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Criar Conta</button>
-                        <p class="text-muted">Já tem conta?<a href="@Url.Action("Login", "Admin")"> Iniciar sessão</a></p>
-                    </div>
-                }
-            </div>
-
-            <div class="col-lg-4">
-                <p class="text-muted">Só no Events, você vai poder:</p>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-primary"></i> Consultar seus eventos na Fieb</li>
-                    <li><i class="fas fa-check text-primary"></i> Inscrever-se nos eventos da sua disciplina</li>
-                    <li><i class="fas fa-check text-primary"></i> Cancelar sua inscrição a qualquer momento</li>
-                </ul>
-            </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-preload mb-2">Criar Conta</button>
+                    <p class="text-muted">Já tem conta?<a href="@Url.Action("Login", "Users")"> Iniciar sessão</a></p>
+                </div>
+            }
         </div>
-    }
+
+        <div class="col-lg-4">
+            <p class="text-muted">Só no Events, você vai poder:</p>
+            <ul class="list-unstyled">
+                <li><i class="fas fa-check text-primary"></i> Consultar seus eventos na Fieb</li>
+                <li><i class="fas fa-check text-primary"></i> Inscrever-se nos eventos da sua disciplina</li>
+                <li><i class="fas fa-check text-primary"></i> Cancelar sua inscrição a qualquer momento</li>
+            </ul>
+        </div>
+    </div>
+}
 }
 
 @section Scripts {
@@ -135,20 +135,20 @@
                 });
             }
         })
-    </script>
-    <script>
-        var senha = document.getElementById("senha"),
-            confirmaSenha = document.getElementById("confirmaSenha");
+        $(function () {
+            var senha = document.getElementById("senha"),
+                confirmaSenha = document.getElementById("confirmaSenha");
 
-        function validarSenha() {
-            if (senha.value != confirmaSenha.value) {
-                confirmaSenha.setCustomValidity("Senhas não conferem.");
-            } else {
-                confirmaSenha.setCustomValidity('');
+            function validarSenha() {
+                if (senha.value != confirmaSenha.value) {
+                    confirmaSenha.setCustomValidity("Senhas não conferem.");
+                } else {
+                    confirmaSenha.setCustomValidity('');
+                }
             }
-        }
 
-        senha.onchange = validarSenha;
-        confirmaSenha.onkeyup = validarSenha;
+            senha.onchange = validarSenha;
+            confirmaSenha.onkeyup = validarSenha;
+        })
     </script>
 }
