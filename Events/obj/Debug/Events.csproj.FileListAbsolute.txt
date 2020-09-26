@@ -386,8 +386,8 @@ C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\bin\System.Web.WebPage
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\bin\System.Web.WebPages.Deployment.xml
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\bin\System.Web.WebPages.Razor.xml
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\bin\Antlr3.Runtime.pdb
-C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csproj.CoreCompileInputs.cache
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.dll
 C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.pdb
+C:\Users\felipe.scharf\Desktop\Dev\Projects\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache

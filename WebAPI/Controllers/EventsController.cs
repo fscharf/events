@@ -78,6 +78,7 @@ namespace WebAPI.Controllers
             eVENTO.FEEDBACK = new HashSet<FEEDBACK>();
             eVENTO.INSCRICAO = new HashSet<INSCRICAO>();
             eVENTO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
+            eVENTO.ATIVO = 1;
 
             db.EVENTO.Add(eVENTO);
             db.SaveChanges();
@@ -95,7 +96,8 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
 
-            db.EVENTO.Remove(eVENTO);
+            eVENTO.ATIVO = 0;
+            db.Entry(eVENTO).State = EntityState.Modified;
             db.SaveChanges();
 
             return Ok(eVENTO);

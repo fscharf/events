@@ -116,7 +116,7 @@ namespace Events.Controllers
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("events/" + id.ToString()).Result;
             if (response.IsSuccessStatusCode)
             {
-                TempData["Success"] = "Evento excluído com sucesso.";
+                TempData["Success"] = "Evento desativado com sucesso.";
                 return RedirectToAction("EventsList", "Admin");
             }
             else
@@ -197,13 +197,32 @@ namespace Events.Controllers
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("users/" + id.ToString()).Result;
             if (response.IsSuccessStatusCode)
             {
-                TempData["Success"] = "Usuário excluído com sucesso.";
+                TempData["Success"] = "Usuário desativado com sucesso.";
                 return RedirectToAction("UsersList", "Admin");
             }
             else
             {
                 TempData["Error"] = "Ocorreu um erro ao enviar sua requisição.";
                 return View();
+            }
+        }
+
+        // Necessário revisar código, pois não está funcionando.
+        public ActionResult UserActivate(int id)
+        {
+            var uSUARIO = new USUARIO();
+            uSUARIO.ATIVO = 1;
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + id.ToString(), uSUARIO).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Usuário ativado com sucesso!";
+                return RedirectToAction("UsersList", "Admin");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao enviar sua requisição.";
+                return RedirectToAction("UsersList", "Admin");
             }
         }
     }

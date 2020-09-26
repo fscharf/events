@@ -1,4 +1,5 @@
-﻿@using System.Security.Claims;
+﻿@model Events.Models.USUARIO
+@using System.Security.Claims;
 
 @{
     ViewBag.Title = "Meu perfil";
@@ -15,22 +16,113 @@
 </div>
 <div class="row">
     <div class="col-lg-4">
-        <div class="form-group">
-            <label>Nome</label>
-            <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value">
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input class="form-control" type="text" readonly value="@userAuth.Claims.Where(c => c.Type == ClaimTypes.Email).FirstOrDefault().Value">
-        </div>
-        <div class="form-group">
-            <label>Senha</label>
-            <input class="form-control" type="password" readonly value="&middot;&middot;&middot;&middot;&middot;">
-        </div>
-        <div class="form-group">
-            <a href="@Url.Action("UpdateProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })"
-               class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Editar meu cadastro</a>
-        </div>
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.COD_USUARIO)
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label>Nome</label>
+                @Html.EditorFor(model => model.NOME, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "form-control",
+                           minlength = "3",
+                           maxlength = "50",
+                           required = "required",
+                           @readonly = "readonly",
+                           pattern = @"[A-Za-zÀ-ú ']{4,}"
+
+                       }
+                   })
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.EditorFor(model => model.EMAIL, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   type = "email",
+                   minlength = "3",
+                   maxlength = "35",
+                   @readonly = "readonly",
+                   required = "required"
+               }
+           })
+            </div>
+            <div class="form-group">
+                <label>Senha atual</label>
+                @Html.EditorFor(model => model.SENHA, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   type = "password",
+                   required = "required",
+                   @readonly = "readonly",
+
+                   id = "senha"
+               }
+           })
+            </div>
+            <div class="form-group">
+                <label>Celular</label>
+                @Html.EditorFor(model => model.CELULAR, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   type = "text",
+                   minlength = "11",
+                   maxlength = "11",
+                   required = "required",
+                   @readonly = "readonly",
+
+                   pattern = "[0-9]+"
+               }
+           })
+            </div>
+            <div class="form-group">
+                <label>Perfil</label>
+                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1")))
+                {
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Aluno", Value = "1", Selected = true },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required", @disabled = "disabled" })
+                }
+                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "2")))
+                {
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Visitante", Value = "2", Selected = true },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required", @disabled = "disabled" })
+                }
+                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                {
+                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Aluno", Value = "1" },
+                        new SelectListItem { Text = "Visitante", Value = "2" },
+                        new SelectListItem { Text = "Master", Value = "3" },
+                        new SelectListItem { Text = "Administrador", Value = "4" },
+                        new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
+                    }, htmlAttributes: new { @class = "custom-select", required = "required" })
+                }
+            </div>
+            <div class="form-group">
+                <div class="btn-group w-100" role="group">
+                    <a href="#" onclick="EditFields()" class="btn btn-primary">
+                        <i class="fas fa-pencil-alt"></i> Editar
+                    </a>
+                    <button type="submit" class="btn btn-primary form-submit" disabled>
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                </div>         
+            </div>
+        }
     </div>
     <div class="col-lg-4">
         <div class="form-group">
@@ -39,6 +131,12 @@
                 <input type="checkbox" class="custom-control-input" id="night-mode">
                 <label class="custom-control-label" for="night-mode">Modo Escuro (beta)</label>
             </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <label>Opções da conta</label>
+        <div class="form-group">
+            <a class="btn btn-danger btn-sm disabled" href="#"><i class="fas fa-user-slash"></i> Desativar minha conta</a>
         </div>
     </div>
 </div>
@@ -55,6 +153,12 @@
                 });
             }
         })
+
+        function EditFields() {
+            $('.form-control').removeAttr('readonly');
+            $('.custom-select').removeAttr('disabled');
+            $('.form-submit').removeAttr('disabled');
+        }
     </script>
 }
 

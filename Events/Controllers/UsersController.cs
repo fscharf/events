@@ -1,4 +1,5 @@
 ﻿using Events.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,26 @@ namespace Events.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(USUARIO uSUARIO)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("users", uSUARIO).Result;
+            IEnumerable<USUARIO> userList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("users").Result;
+
             if (response.IsSuccessStatusCode)
             {
-                var identity = new ClaimsIdentity(new[]
-                    {
+                userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
+                var emailExists = userList.Any(x => x.EMAIL == uSUARIO.EMAIL);
+                var userDetails = userList.Where(x => x.EMAIL == uSUARIO.EMAIL && x.SENHA == GlobalVariables.CalculateMD5Hash(uSUARIO.SENHA)).FirstOrDefault();
+
+                if (emailExists)
+                {
+                    TempData["Error"] = "Email já cadastrado.";
+                    return View(uSUARIO);
+                }
+                else
+                {
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("users", uSUARIO).Result;
+
+                    var identity = new ClaimsIdentity(new[]
+                        {
                         new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
                         new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
                         new Claim(ClaimTypes.HomePhone, uSUARIO.CELULAR),
@@ -34,16 +50,17 @@ namespace Events.Controllers
                         new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString())
                     }, "ApplicationCookie");
 
-                var context = Request.GetOwinContext();
-                var authManager = context.Authentication;
-                authManager.SignIn(identity);
+                    var context = Request.GetOwinContext();
+                    var authManager = context.Authentication;
+                    authManager.SignIn(identity);
 
-                TempData["Success"] = "Cadastro realizado com sucesso!";
-                return Redirect("/");
+                    TempData["Success"] = "Cadastro realizado com sucesso!";
+                    return Redirect("/");
+                }
             }
             else
             {
-                TempData["Error"] = "Email já cadastrado.";
+                TempData["Error"] = "Ocorreu um erro ao solicitar sua requisição.";
                 return View(uSUARIO);
             }
         }
@@ -82,7 +99,14 @@ namespace Events.Controllers
                     var authManager = context.Authentication;
                     authManager.SignIn(identity);
 
-                    return Redirect("/");
+                    if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return Redirect("/");
+                    }
                 }
             }
             else
@@ -104,10 +128,7 @@ namespace Events.Controllers
         }
 
         [Authorize]
-        public ActionResult MyProfile() => View();
-
-        [Authorize]
-        public ActionResult UpdateProfile(int id = 0)
+        public ActionResult MyProfile(int id = 0)
         {
             if (id == 0)
             {
@@ -122,7 +143,7 @@ namespace Events.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateProfile(USUARIO uSUARIO, int id = 0)
+        public ActionResult MyProfile(USUARIO uSUARIO, int id = 0)
         {
             if (id == 0)
             {
@@ -134,7 +155,7 @@ namespace Events.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("users/" + id.ToString(), uSUARIO).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["Success"] = "Dados atualizads com sucesso!";
+                    TempData["Success"] = "Dados atualizados com sucesso!";
                     return RedirectToAction("MyProfile", "Users");
                 }
                 else

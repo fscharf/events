@@ -26,6 +26,12 @@
                     <input class="form-control" type="text" placeholder="Pesquisar..." />
                 </div>
             </div>
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="showActive" class="custom-control-input" onclick="ShowInactive()">
+                    <label class="custom-control-label" for="showActive">Mostrar Inativos</label>
+                </div>
+            </div>
         </form>
     </div>
     <div class="col-lg-4">
@@ -51,36 +57,67 @@
         <tbody class="bg-white">
             @foreach (var item in Model)
             {
-            <tr>
-                <td scope="row">
-                    @Html.DisplayFor(modelItem => item.COD_USUARIO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.COD_PERFIL)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NOME)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EMAIL)
-                </td>
-                <td>
-                    &middot;&middot;&middot;&middot;&middot;&middot;
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CELULAR)
-                </td>
-                <td>
-                    @Html.DropDownListFor(modelItem => item.ATIVO, new List<SelectListItem> {
-                         new SelectListItem { Text = "Ativo", Value = "1" },
-                         new SelectListItem { Text = "Inativo", Value = "0" },
-                    }, new { @class = "custom-select" })
-                </td>
-                <td class="text-center">
-                    <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                    <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
-                </td>
-            </tr>
+                if (item.ATIVO == 0)
+                {
+                    <tr class="d-none inactive-list">
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMAIL)
+                        </td>
+                        <td>
+                            &middot;&middot;&middot;&middot;&middot;&middot;
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CELULAR)
+                        </td>
+                        <td>
+                            <div class="badge badge-danger">Inativo</div>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a class="btn btn-success" onclick="Activate(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMAIL)
+                        </td>
+                        <td>
+                            &middot;&middot;&middot;&middot;&middot;&middot;
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CELULAR)
+                        </td>
+                        <td>
+                            <div class="badge badge-success">Ativo</div>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
+                        </td>
+                    </tr>
+
+                }
             }
 
         </tbody>
@@ -133,6 +170,41 @@
                 }
             });
         }
+
+        function Activate(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                progressBar: false,
+                timeout: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 999,
+                title: 'Aviso',
+                message: 'Tem certeza que quer ativar o registro?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("UserActivate", "Admin")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+
         $(function () {
             var errorMsg = '@TempData["Error"]';
 
@@ -143,5 +215,9 @@
                 });
             }
         })
+
+        function ShowInactive() {
+            $('.inactive-list').toggleClass('d-none');
+        }
     </script>
 }

@@ -39,29 +39,15 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult PutUSUARIO(int id, USUARIO uSUARIO)
         {
-            if (uSUARIO.SENHA == Encrypt.CalculateMD5Hash(uSUARIO.SENHA))
-            {
-                db.Entry(uSUARIO).State = EntityState.Unchanged;
-            }
-            else 
-            {
-                uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
-            }
-            if (uSUARIO.COD_PERFIL == uSUARIO.COD_PERFIL)
-            {
-                db.Entry(uSUARIO).State = EntityState.Unchanged;
-            }
-            else 
-            {
-                uSUARIO.COD_PERFIL = uSUARIO.COD_PERFIL;
-            }
-
             if (id != uSUARIO.COD_USUARIO)
             {
                 return BadRequest();
             }
 
+            uSUARIO.ATIVO = 1;
+            uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
             db.Entry(uSUARIO).State = EntityState.Modified;
+
 
             try
             {
@@ -90,16 +76,10 @@ namespace WebAPI.Controllers
             uSUARIO.USUARIO_GERENCIA_EVENTO = new HashSet<USUARIO_GERENCIA_EVENTO>();
             uSUARIO.PERFIL = null;
             uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+            uSUARIO.ATIVO = 1;
 
-            if (db.USUARIO.Any(x => x.EMAIL == uSUARIO.EMAIL))
-            {
-                return BadRequest();
-            }
-            else
-            {
-                db.USUARIO.Add(uSUARIO);
-                db.SaveChanges();
-            }
+            db.USUARIO.Add(uSUARIO);
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = uSUARIO.COD_USUARIO }, uSUARIO);
         }
@@ -109,12 +89,14 @@ namespace WebAPI.Controllers
         public IHttpActionResult DeleteUSUARIO(int id)
         {
             USUARIO uSUARIO = db.USUARIO.Find(id);
+
             if (uSUARIO == null)
             {
                 return NotFound();
             }
 
-            db.USUARIO.Remove(uSUARIO);
+            uSUARIO.ATIVO = 0;
+            db.Entry(uSUARIO).State = EntityState.Modified;
             db.SaveChanges();
 
             return Ok(uSUARIO);

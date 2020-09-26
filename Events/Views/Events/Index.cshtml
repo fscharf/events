@@ -60,34 +60,30 @@
 <div class="row mb-3">
     @foreach (var item in Model)
     {
-        <div class="col-lg-4 mb-2 mb-sm-0">
-            <div class="card custom-card">
-                <img class="card-img-top img-fluid custom-object-fit-cover"
-                     src="@Url.Content(item.IMAGEM_URL)"
-                     alt="Foto do evento" />
-                <div class="card-body">
-                    <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
-                        <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
-                        <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
-                    </div>
-                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.TITULO)</h4>
-                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
+        if (item.ATIVO == 0)
+        {
+        }
+        else
+        {
+            <div class="col-lg-4 mb-2 mb-sm-0">
+                <div class="card custom-card">
+                    <img class="card-img-top img-fluid custom-object-fit-cover"
+                         src="@Url.Content(item.IMAGEM_URL)"
+                         alt="Foto do evento" />
+                    <div class="card-body">
+                        <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
+                            <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
+                        </div>
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.TITULO)</h4>
+                        <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
 
-                    <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn btn-primary btn-block">
-                        <i class="fas fa-check-circle mr-2"></i>Participar
-                    </a>
+                        <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn btn-primary btn-block">
+                            <i class="fas fa-check-circle mr-2"></i>Participar
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
-</div>
-
-<div class="row mb-3">
-    <div class="col-lg text-right">
-        <div class="btn-group">
-            <a class="btn btn-outline-primary active" href="#page1">1</a>
-            <a class="btn btn-outline-primary" href="#page2">2</a>
-            <a class="btn btn-outline-primary" href="#page3">3</a>
-        </div>
-    </div>
 </div>

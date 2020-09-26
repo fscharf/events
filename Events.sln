@@ -7,12 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "Events\Events.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{E7E6732C-B2A5-465F-AF17-49A0D48D7845}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLDocs", "SQLDocs", "{672CC590-F57A-4A08-BAC2-C10BAFE7A0AF}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Events.sql = ..\..\Events.sql
-		..\..\Updates.sql = ..\..\Updates.sql
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

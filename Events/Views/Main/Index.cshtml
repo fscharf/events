@@ -39,6 +39,11 @@ else
 <div class="row mb-3">
     @foreach (var item in Model)
     {
+        if (item.ATIVO == 0)
+        {
+        }
+        else
+        {
         <div class="col-lg-4 mb-2 mb-sm-0">
             <div class="card custom-card">
                 <img class="card-img-top img-fluid custom-object-fit-cover"
@@ -58,6 +63,7 @@ else
                 </div>
             </div>
         </div>
+        }
     }
 </div>
 

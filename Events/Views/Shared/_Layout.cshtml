@@ -53,7 +53,7 @@
                                     </small>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("MyProfile", "Users")">
+                                <a class="dropdown-item" href="@Url.Action("MyProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })">
                                     <i class="fas fa-user-circle mr-2"></i>Conta
                                 </a>
                                 @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))

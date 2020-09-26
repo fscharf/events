@@ -26,6 +26,10 @@
                     <input class="form-control" type="text" placeholder="Pesquisar..." />
                 </div>
             </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" id="showActive" class="custom-control-input" onclick="ShowInactive()">
+                <label class="custom-control-label" for="showActive">Mostrar Inativos</label>
+            </div>
         </form>
     </div>
     <div class="col-lg-4">
@@ -51,33 +55,60 @@
         <tbody class="bg-white">
             @foreach (var item in Model)
             {
-                <tr>
-                    <th scope="row">
-                        @Html.DisplayFor(modelItem => item.COD_EVENTO)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TITULO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DATA)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HORARIO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DURACAO)
-                    </td>
-                    <td>
-                        @Html.DropDownListFor(modelItem => item.ATIVO, new List<SelectListItem> {
-                             new SelectListItem { Text = "Ativo", Value = "1" },
-                             new SelectListItem { Text = "Inativo", Value = "0" },
-                        }, new { @class = "custom-select" })
-                    </td>
-                    <td class="text-center">
-                        <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                        <a class="btn btn-danger" onclick="Delete(@item.COD_EVENTO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
-                    </td>
-                </tr>
+                if (item.ATIVO == 0)
+                {
+                    <tr class="d-none inactive-list">
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => item.COD_EVENTO)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITULO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HORARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DURACAO)
+                        </td>
+                        <td>
+                            <div class="badge badge-danger">Inativo</div>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a class="btn btn-danger" onclick="Delete(@item.COD_EVENTO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => item.COD_EVENTO)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITULO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HORARIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DURACAO)
+                        </td>
+                        <td>
+                            <div class="badge badge-success">Ativo</div>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a class="btn btn-danger" onclick="Delete(@item.COD_EVENTO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
@@ -138,6 +169,10 @@
                 });
             }
         })
+
+        function ShowInactive() {
+            $('.inactive-list').toggleClass('d-none');
+        }
     </script>
 }
 
