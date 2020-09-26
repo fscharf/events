@@ -17,6 +17,7 @@
           <Property Name="HORARIO" Type="time" Precision="7" Nullable="false" />
           <Property Name="IMAGEM_URL" Type="varchar(max)" />
           <Property Name="SALA" Type="varchar" MaxLength="80" />
+          <Property Name="ATIVO" Type="int" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -55,6 +56,7 @@
           <Property Name="SENHA" Type="varchar(max)" Nullable="false" />
           <Property Name="CELULAR" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="COD_PERFIL" Type="int" />
+          <Property Name="ATIVO" Type="int" />
         </EntityType>
         <EntityType Name="USUARIO_GERENCIA_EVENTO">
           <Key>
@@ -203,6 +205,7 @@
           <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_GEREN_EVENTO" FromRole="EVENTO" ToRole="USUARIO_GERENCIA_EVENTO" />
           <Property Name="IMAGEM_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SALA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ATIVO" Type="Int32" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -250,6 +253,7 @@
           <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_USUARIO_INSC" FromRole="USUARIO" ToRole="INSCRICAO" />
           <NavigationProperty Name="PERFIL" Relationship="Self.FK_PERFIL_U" FromRole="USUARIO" ToRole="PERFIL" />
           <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_USUARIO_GEREN" FromRole="USUARIO" ToRole="USUARIO_GERENCIA_EVENTO" />
+          <Property Name="ATIVO" Type="Int32" />
         </EntityType>
         <EntityType Name="USUARIO_GERENCIA_EVENTO">
           <Key>
@@ -390,6 +394,7 @@
           <EntitySetMapping Name="EVENTO">
             <EntityTypeMapping TypeName="EventsModel.EVENTO">
               <MappingFragment StoreEntitySet="EVENTO">
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
                 <ScalarProperty Name="SALA" ColumnName="SALA" />
                 <ScalarProperty Name="IMAGEM_URL" ColumnName="IMAGEM_URL" />
                 <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />
@@ -434,6 +439,7 @@
           <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="EventsModel.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
                 <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
                 <ScalarProperty Name="NOME" ColumnName="NOME" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />

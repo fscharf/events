@@ -100,7 +100,7 @@ namespace Events.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Ocorreu um erro ao enviar os dados para WebAPI.";
+                    TempData["Error"] = "Ocorreu um erro ao enviar os dados para API.";
                     return View("EventCreate", eVENTO);
                 }
             }

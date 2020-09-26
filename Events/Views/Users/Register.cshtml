@@ -3,13 +3,11 @@
 
 @{
     ViewBag.Title = "Crie sua conta grátis";
-
     var userAuth = (ClaimsIdentity)User.Identity;
 }
 @if (userAuth.IsAuthenticated)
 {
     Response.Redirect("/");
-
 }
 else
 {
@@ -120,7 +118,6 @@ else
             </ul>
         </div>
     </div>
-}
 }
 
 @section Scripts {

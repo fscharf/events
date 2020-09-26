@@ -30,6 +30,7 @@ namespace WebAPI.Models
         public System.TimeSpan HORARIO { get; set; }
         public string IMAGEM_URL { get; set; }
         public string SALA { get; set; }
+        public Nullable<int> ATIVO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }

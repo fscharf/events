@@ -29,7 +29,7 @@ namespace Events.Models
         public System.TimeSpan HORARIO { get; set; }
         public string IMAGEM_URL { get; set; }
         public string SALA { get; set; }
-        public int ATIVO { get; set; }
+        public Nullable<int> ATIVO { get; set; }
 
         public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }
         public virtual ICollection<INSCRICAO> INSCRICAO { get; set; }
