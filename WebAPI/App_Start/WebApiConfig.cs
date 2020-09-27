@@ -16,6 +16,8 @@ namespace WebAPI
             // Web API routes
             config.MapHttpAttributeRoutes();
             config.Formatters.XmlFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("multipart/form-data"));
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
