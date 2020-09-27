@@ -30,7 +30,6 @@ namespace Events.Controllers
             {
                 userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
                 var emailExists = userList.Any(x => x.EMAIL == uSUARIO.EMAIL);
-                var userDetails = userList.Where(x => x.EMAIL == uSUARIO.EMAIL && x.SENHA == GlobalVariables.CalculateMD5Hash(uSUARIO.SENHA)).FirstOrDefault();
 
                 if (emailExists)
                 {
@@ -43,11 +42,11 @@ namespace Events.Controllers
 
                     var identity = new ClaimsIdentity(new[]
                     {
-                        new Claim(ClaimTypes.Email, userList.Where(x => x.EMAIL == uSUARIO.EMAIL).FirstOrDefault().ToString()),
-                        new Claim(ClaimTypes.GivenName, userList.Where(x => x.NOME == uSUARIO.NOME).FirstOrDefault().ToString()),
-                        new Claim(ClaimTypes.HomePhone, userList.Where(x => x.CELULAR == uSUARIO.CELULAR).FirstOrDefault().ToString()),
-                        new Claim(ClaimTypes.Role, userList.Where(x => x.COD_PERFIL == uSUARIO.COD_PERFIL).FirstOrDefault().ToString()),
-                        new Claim(ClaimTypes.Sid, userList.Where(x => x.COD_USUARIO == uSUARIO.COD_USUARIO).FirstOrDefault().ToString())
+                        new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
+                        new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
+                        new Claim(ClaimTypes.HomePhone, uSUARIO.CELULAR),
+                        new Claim(ClaimTypes.Role, uSUARIO.COD_PERFIL.ToString()),
+                        new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString()),
                     }, "ApplicationCookie");
 
                     var context = Request.GetOwinContext();

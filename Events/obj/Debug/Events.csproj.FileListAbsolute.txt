@@ -405,4 +405,3 @@ C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.Mvc.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.Mvc.xml
-C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
