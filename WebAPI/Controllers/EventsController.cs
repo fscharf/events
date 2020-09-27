@@ -91,15 +91,23 @@ namespace WebAPI.Controllers
         public IHttpActionResult DeleteEVENTO(int id)
         {
             EVENTO eVENTO = db.EVENTO.Find(id);
+
             if (eVENTO == null)
             {
                 return NotFound();
             }
-
-            eVENTO.ATIVO = 0;
-            db.Entry(eVENTO).State = EntityState.Modified;
-            db.SaveChanges();
-
+            else if (eVENTO.ATIVO == 0)
+            {
+                eVENTO.ATIVO = 1;
+                db.Entry(eVENTO).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                eVENTO.ATIVO = 0;
+                db.Entry(eVENTO).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             return Ok(eVENTO);
         }
 

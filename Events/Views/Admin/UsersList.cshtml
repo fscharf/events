@@ -83,7 +83,7 @@
                         </td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                            <a class="btn btn-success" onclick="Activate(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
+                            <a class="btn btn-success" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
                         </td>
                     </tr>
                 }
@@ -182,12 +182,12 @@
                 displayMode: 'once',
                 zindex: 999,
                 title: 'Aviso',
-                message: 'Tem certeza que quer ativar o registro?',
+                message: 'Tem certeza que quer ativar esse registro?',
                 position: 'center',
                 buttons: [
                     ['<button><strong>Sim</strong></button>', function () {
 
-                        location.href = '@Url.Action("UserActivate", "Admin")/' + id;
+                        location.href = '@Url.Action("UserDelete", "Admin")/' + id;
 
                     }, null],
                     ['<button>Não</button>', function (instance, toast) {

@@ -46,8 +46,9 @@ namespace WebAPI.Controllers
 
             uSUARIO.ATIVO = 1;
             uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
-            db.Entry(uSUARIO).State = EntityState.Modified;
 
+            db.Entry(uSUARIO).State = EntityState.Modified;
+            //db.Entry(uSUARIO).Property(x => x.SENHA).IsModified = false;
 
             try
             {
@@ -94,10 +95,18 @@ namespace WebAPI.Controllers
             {
                 return NotFound();
             }
-
-            uSUARIO.ATIVO = 0;
-            db.Entry(uSUARIO).State = EntityState.Modified;
-            db.SaveChanges();
+            else if (uSUARIO.ATIVO == 0)
+            {
+                uSUARIO.ATIVO = 1;
+                db.Entry(uSUARIO).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                uSUARIO.ATIVO = 0;
+                db.Entry(uSUARIO).State = EntityState.Modified;
+                db.SaveChanges();
+            }
 
             return Ok(uSUARIO);
         }

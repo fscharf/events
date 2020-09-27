@@ -78,7 +78,7 @@
                         </td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="@Url.Action("EventDetails", "Admin", new { id = item.COD_EVENTO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                            <a class="btn btn-danger" onclick="Delete(@item.COD_EVENTO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
+                            <a class="btn btn-success" onclick="Activate(@item.COD_EVENTO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
                         </td>
                     </tr>
                 }
@@ -126,6 +126,7 @@
                 });
             }
         })
+
         function Delete(id) {
             iziToast.warning({
                 backgroundColor: '#6930EE',
@@ -159,6 +160,41 @@
                 }
             });
         }
+
+        function Activate(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                timeout: false,
+                progressBar: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 999,
+                title: 'Aviso',
+                message: 'Tem certeza que quer ativar esse registro?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("EventDelete", "Admin")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+
         $(function () {
             var errorMsg = '@TempData["Error"]';
 
