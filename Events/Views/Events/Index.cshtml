@@ -1,61 +1,51 @@
-﻿@model IEnumerable<Events.Models.EVENTO>
-@{ 
+﻿@model PagedList.IPagedList<Events.Models.EVENTO>
+@using PagedList.Mvc;
+@{
     ViewBag.Title = "Explorar eventos";
 }
-
-<form method="get">
-    <div class="form-row mb-3">
-        <div class="form-group col-lg-5">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <a class="btn btn-primary custom-search" href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-                <input class="form-control" type="search" placeholder="Procurar eventos">
-            </div>
-        </div>
-        <div class="form-group col-lg-3 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                </div>
-                <input type="date" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group col-lg-2 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-sort-amount-up-alt"></i>
-                    </div>
-                </div>
-                <select class="form-control">
-                    <option selected value="">Status</option>
-                    <option value="1">Disponível</option>
-                    <option value="2">Em andamento</option>
-                    <option value="3">Encerrado</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group col-lg-2 mb-2 mb-sm-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </div>
-                </div>
-                <select class="form-control">
-                    <option selected value="">Ordenar</option>
-                    <option value="1">A-Z</option>
-                    <option value="2">Z-A</option>
-                </select>
-            </div>
-        </div>
+<div class="row mb-3">
+    <div class="col-lg">
+        <h4>
+            <a class="text-dark mr-2" href="@Url.Action("Index", "Main")"><i class="fas fa-arrow-left"></i></a>
+            @ViewBag.Title
+        </h4>
+        <p class="text-muted">Explore os melhores eventos no Events!</p>
     </div>
-</form>
+</div>
+
+<div class="row mb-3">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("Index", "Events", FormMethod.Get))
+        {
+            <div class="form-group">
+                <div class="input-group">
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "search" })
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-3">
+        @using (Html.BeginForm("Index", "Events", FormMethod.Get))
+        {
+            <div class="form-group">
+                <div class="input-group">
+                    @Html.TextBox("searchDate", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "date" })
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
 
 <div class="row mb-3">
     @foreach (var item in Model)
@@ -86,4 +76,15 @@
             </div>
         }
     }
+</div>
+<div class="row">
+    <div class="col-lg">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }),
+        new PagedListRenderOptions
+        {
+            DisplayPageCountAndCurrentLocation = false,
+            MaximumPageNumbersToDisplay = 10
+        })
+    </div>
 </div>

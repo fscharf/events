@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using Events.Models;
+using PagedList;
 
 namespace Events.Controllers
 {
@@ -15,12 +16,31 @@ namespace Events.Controllers
         public ActionResult Index() => View();
 
         // Admin for Events
-        public ActionResult EventsList()
+        public ActionResult EventsList(int? page, string currentFilter, string searchString)
         {
             IEnumerable<EVENTO> eventList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
             eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
-            return View(eventList);
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                eventList = eventList.Where(x => x.TITULO.Contains(searchString)
+                                          || x.DESCRICAO.Contains(searchString));
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(eventList.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult EventDetails(int id = 0)
@@ -131,12 +151,33 @@ namespace Events.Controllers
         }
 
         // Admin for Users
-        public ActionResult UsersList()
+        public ActionResult UsersList(int? page, string currentFilter, string searchString)
         {
             IEnumerable<USUARIO> userList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("users").Result;
             userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
-            return View(userList);
+            
+            if(searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                userList = userList.Where(x => x.NOME.Contains(searchString)
+                                          || x.EMAIL.Contains(searchString)
+                                          || x.CELULAR.Contains(searchString));
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(userList.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult UserDetails(int id = 0)

@@ -25,7 +25,8 @@ namespace Events
             bundles.Add(new StyleBundle("~/styles/css").Include(
                       "~/node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                       "~/node_modules/izitoast/dist/css/iziToast.min.css",
-                      "~/content/css/style.min.css"));
+                      "~/content/css/style.min.css",
+                      "~/content/PagedList.css"));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Events.Models.USUARIO>
-
+﻿@model PagedList.IPagedList<Events.Models.USUARIO>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Painel de Usuários";
 }
@@ -14,114 +14,125 @@
 </div>
 
 <div class="row mb-3">
-    <div class="col-lg-4">
-        <form action="#" method="get">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("UsersList", "Admin", FormMethod.Get))
+        {
             <div class="form-group">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-dark" type="submit">
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "search" })
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                    <input class="form-control" type="text" placeholder="Pesquisar..." />
                 </div>
             </div>
-            <div class="form-group">
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" id="showActive" class="custom-control-input" onclick="ShowInactive()">
-                    <label class="custom-control-label" for="showActive">Mostrar Inativos</label>
-                </div>
-            </div>
-        </form>
+        }
     </div>
     <div class="col-lg-4">
         <a class="btn btn-primary" href="@Url.Action("UserCreate", "Admin")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
     </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" id="showActive" class="custom-control-input" onclick="ShowInactive()">
+                <label class="custom-control-label" for="showActive">Mostrar Inativos</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="table-responsive">
+        <table class="table text-truncate">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Perfil</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+
+            <tbody class="bg-white">
+                @foreach (var item in Model)
+                {
+                    if (item.ATIVO == 0)
+                    {
+                        <tr class="d-none inactive-list">
+                            <td scope="row">
+                                @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NOME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EMAIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CELULAR)
+                            </td>
+                            <td>
+                                <div class="badge badge-danger">Inativo</div>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn btn-success" onclick="Activate(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td scope="row">
+                                @Html.DisplayFor(modelItem => item.COD_USUARIO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COD_PERFIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NOME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EMAIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CELULAR)
+                            </td>
+                            <td>
+                                <div class="badge badge-success">Ativo</div>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<div class="table-responsive">
-    <table class="table text-truncate table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Perfil</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Senha</th>
-                <th scope="col">Celular</th>
-                <th scope="col">Ativo</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-
-        <tbody class="bg-white">
-            @foreach (var item in Model)
-            {
-                if (item.ATIVO == 0)
-                {
-                    <tr class="d-none inactive-list">
-                        <td scope="row">
-                            @Html.DisplayFor(modelItem => item.COD_USUARIO)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.COD_PERFIL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NOME)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EMAIL)
-                        </td>
-                        <td>
-                            &middot;&middot;&middot;&middot;&middot;&middot;
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CELULAR)
-                        </td>
-                        <td>
-                            <div class="badge badge-danger">Inativo</div>
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                            <a class="btn btn-success" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
-                        </td>
-                    </tr>
-                }
-                else
-                {
-                    <tr>
-                        <td scope="row">
-                            @Html.DisplayFor(modelItem => item.COD_USUARIO)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.COD_PERFIL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NOME)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EMAIL)
-                        </td>
-                        <td>
-                            &middot;&middot;&middot;&middot;&middot;&middot;
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CELULAR)
-                        </td>
-                        <td>
-                            <div class="badge badge-success">Ativo</div>
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
-                            <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
-                        </td>
-                    </tr>
-
-                }
-            }
-
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-lg-6">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }),
+        new PagedListRenderOptions
+        {
+            DisplayPageCountAndCurrentLocation = false,
+            MaximumPageNumbersToDisplay = 10
+        })
+    </div>
+    <div class="col-lg-6 text-right">
+        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    </div>
 </div>
 
 @section Scripts {

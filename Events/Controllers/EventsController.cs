@@ -1,23 +1,46 @@
 ﻿using Events.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
-using X.PagedList;
 
 namespace Events.Controllers
 {
     [AllowAnonymous]
     public class EventsController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int? page, string currentFilter, string searchString, string searchDate)
         {
             IEnumerable<EVENTO> eventList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
             eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
-            return View(eventList);
+            if (searchString != null || searchDate != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                eventList = eventList.Where(x => x.TITULO.Contains(searchString)
+                                            || x.DESCRICAO.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(searchDate))
+            {
+                eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));         
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(eventList.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Details(int id = 0)
@@ -47,4 +70,4 @@ namespace Events.Controllers
             return View();
         }
     }
-} 
+}

@@ -396,10 +396,13 @@ C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Memory.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Numerics.Vectors.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Text.Encodings.Web.dll
-C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\X.PagedList.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Buffers.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Memory.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Numerics.Vectors.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\System.Text.Encodings.Web.xml
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.dll
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.Mvc.dll
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.xml
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\PagedList.Mvc.xml
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
