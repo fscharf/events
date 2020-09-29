@@ -39,16 +39,27 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(USUARIO))]
         public IHttpActionResult PutUSUARIO(int id, USUARIO uSUARIO)
         {
-            if (id != uSUARIO.COD_USUARIO)
+            var existingEntity = db.USUARIO.First(x => x.COD_USUARIO == uSUARIO.COD_USUARIO);
+
+            existingEntity.ATIVO = 1;
+            existingEntity.NOME = uSUARIO.NOME;
+            existingEntity.EMAIL = uSUARIO.EMAIL;
+            existingEntity.CELULAR = uSUARIO.CELULAR;
+            existingEntity.COD_PERFIL = uSUARIO.COD_PERFIL;
+
+            if (id != existingEntity.COD_USUARIO)
             {
                 return BadRequest();
             }
-
-            uSUARIO.ATIVO = 1;
-            uSUARIO.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
-
-            db.Entry(uSUARIO).State = EntityState.Modified;
-            //db.Entry(uSUARIO).Property(x => x.SENHA).IsModified = false;
+            else if (existingEntity.SENHA == uSUARIO.SENHA)
+            {
+                db.Entry(existingEntity).Property(x => x.SENHA).IsModified = false;
+            }
+            else
+            {
+                existingEntity.SENHA = Encrypt.CalculateMD5Hash(uSUARIO.SENHA);
+                db.Entry(existingEntity).State = EntityState.Modified;
+            }
 
             try
             {
