@@ -123,7 +123,11 @@
 </div>
 
 <div class="row">
+
     <div class="col-lg-6">
+        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    </div>
+    <div class="col-lg-6 text-right">
         @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }),
         new PagedListRenderOptions
@@ -131,9 +135,6 @@
             DisplayPageCountAndCurrentLocation = false,
             MaximumPageNumbersToDisplay = 10
         })
-    </div>
-    <div class="col-lg-6 text-right">
-        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
     </div>
 </div>
 
@@ -193,7 +194,7 @@
                 close: false,
                 overlay: true,
                 displayMode: 'once',
-                zindex: 999,
+                zindex: 9999,
                 title: 'Aviso',
                 message: 'Tem certeza que quer ativar esse registro?',
                 position: 'center',

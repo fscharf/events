@@ -29,6 +29,7 @@ namespace Events.Controllers
             if (response.IsSuccessStatusCode)
             {
                 userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
+                var userDetails = userList.First(x => x.COD_PERFIL == uSUARIO.COD_PERFIL);
                 var emailExists = userList.Any(x => x.EMAIL == uSUARIO.EMAIL);
 
                 if (emailExists)
@@ -81,6 +82,11 @@ namespace Events.Controllers
                 if (userDetails == null)
                 {
                     TempData["Error"] = "Email ou senha inválidos.";
+                    return View(uSUARIO);
+                }
+                else if (userDetails.ATIVO == 0)
+                {
+                    TempData["Error"] = "Usuário não está ativo.";
                     return View(uSUARIO);
                 }
                 else

@@ -56,12 +56,13 @@ namespace Events.Controllers
             }
         }
 
-        [Authorize(Roles = "1,2")]
-        public ActionResult Confirm()
+        public ActionResult Subscribe()
         {
-            ViewBag.Title = "Inscrição realizada com sucesso";
             return View();
         }
+
+        [Authorize(Roles = "1,2")]
+        public ActionResult Subscription() => View();
 
         [Authorize(Roles = "1,2")]
         public ActionResult MyEvents()
