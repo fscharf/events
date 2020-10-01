@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -35,7 +36,7 @@ namespace Events.Controllers
             }
             if (!String.IsNullOrEmpty(searchDate))
             {
-                eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));         
+                eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));
             }
             int pageSize = 3;
             int pageNumber = (page ?? 1);
@@ -56,19 +57,53 @@ namespace Events.Controllers
             }
         }
 
-        public ActionResult Subscribe()
+        public ActionResult Subscribe(INSCRICAO iNSCRICAO, int id = 0)
         {
-            return View();
+            USUARIO uSUARIO = new USUARIO();
+            EVENTO eVENTO = new EVENTO();
+
+            var userAuth = (ClaimsIdentity)User.Identity;
+            if (userAuth.IsAuthenticated)
+            {
+                var identity = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value;
+
+                iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
+                iNSCRICAO.COD_EVENTO = id;
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Inscrição realizada com sucesso!";
+                    return Redirect("/Events/SubDetails/" + iNSCRICAO.COD_INSCRICAO.ToString());
+                }
+                else
+                {
+                    TempData["Error"] = "Ocorreu um erro ao efetuar sua requisição.";
+                    return RedirectToAction("Details");
+                }
+            }
+            else
+            {
+                TempData["Error"] = "Inicie a sessão para continuar.";
+                return RedirectToAction("Login", "Users");
+            }
         }
 
-        [Authorize(Roles = "1,2")]
-        public ActionResult Subscription() => View();
-
-        [Authorize(Roles = "1,2")]
-        public ActionResult MyEvents()
+        public ActionResult SubDetails(int id = 0)
         {
-            ViewBag.Title = "Meus eventos";
-            return View();
+            if (id == 0)
+            {
+                return View(new INSCRICAO());
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs/" + id.ToString()).Result;
+                return View(response.Content.ReadAsAsync<INSCRICAO>().Result);
+            }
         }
+
+        //Not working yet, needs to be verified: Controller + View
+        [Authorize(Roles = "1,2")]
+        public ActionResult MyEvents() => View();
     }
 }
