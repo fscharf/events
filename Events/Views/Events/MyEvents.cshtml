@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Events.Models.INSCRICAO>
+﻿@using Events.Models
+@model SubsViewModel
 @using System.Security.Claims
 @{
     ViewBag.Title = "Meus eventos";
     var userAuth = (ClaimsIdentity)User.Identity;
-    Events.Models.EVENTO eVENTO = new Events.Models.EVENTO();
 }
 
 <div class="row mb-3">
@@ -14,26 +14,30 @@
 
 @if (userAuth.IsAuthenticated)
 {
-    <div class="row mb-3">
-        @foreach (var item in Model)
+<div class="row mb-3">
+    @foreach (var item in Model.InscricaoVM)
+    {
+        foreach (var eventItem in Model.EventoVM)
         {
             if (item.COD_USUARIO != Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value))
             {
             }
             else
             {
+                @Html.HiddenFor(modelItem => item.COD_EVENTO)
                 <div class="col-lg-6 mb-3">
                     <div class="card">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="#"
+                                <img src="@Url.Content(eventItem.IMAGEM_URL)"
                                      alt="Evento"
                                      class="card-img h-100 object-fit-cover" />
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body text-left">
-                                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.TITULO)</h5>
-                                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
+
+                                    <h5 class="card-title">@Html.DisplayFor(modelItem => eventItem.TITULO)</h5>
+                                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => eventItem.DESCRICAO)</p>
                                     <hr />
                                     <p>Código de inscrição: <span class="text-muted">@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</span></p>
                                     <a class="card-link" href="#qrcodeModal" data-toggle="modal"><i class="fas fa-qrcode"></i> QR Code</a>
@@ -43,10 +47,10 @@
                         </div>
                     </div>
                 </div>
-
             }
         }
-    </div>
+    }
+</div>
 }
 
 

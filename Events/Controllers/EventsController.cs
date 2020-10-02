@@ -59,9 +59,6 @@ namespace Events.Controllers
 
         public ActionResult Subscribe(INSCRICAO iNSCRICAO, int id = 0)
         {
-            USUARIO uSUARIO = new USUARIO();
-            EVENTO eVENTO = new EVENTO();
-
             var userAuth = (ClaimsIdentity)User.Identity;
             if (userAuth.IsAuthenticated)
             {
@@ -70,19 +67,11 @@ namespace Events.Controllers
                 iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
                 iNSCRICAO.COD_EVENTO = id;
 
-                //HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events/" + id.ToString()).Result;
-                //var eventDetails = response.Content.ReadAsAsync<EVENTO>().Result;
-
-                //iNSCRICAO.TITULO = eventDetails.TITULO;
-                //iNSCRICAO.DESCRICAO = eventDetails.DESCRICAO;
-                //iNSCRICAO.DATA = eventDetails.DATA;
-                //iNSCRICAO.IMAGEM_URL = eventDetails.IMAGEM_URL;
-
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["Success"] = "Inscrição realizada com sucesso!";
-                    return RedirectToAction("MyEvents", iNSCRICAO);
+                    return RedirectToAction("MyEvents");
                 }
                 else
                 {
@@ -114,10 +103,19 @@ namespace Events.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult MyEvents()
         {
-            IEnumerable<INSCRICAO> subsList;
+            List<INSCRICAO> subsList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
-            subsList = response.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
-            return View(subsList);
+            subsList = response.Content.ReadAsAsync<List<INSCRICAO>>().Result;
+            
+            List<EVENTO> eventsList;
+            response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventsList = response.Content.ReadAsAsync<List<EVENTO>>().Result;
+
+            SubsViewModel subsViewModel = new SubsViewModel();
+            subsViewModel.InscricaoVM = subsList;
+            subsViewModel.EventoVM = eventsList;
+
+            return View(subsViewModel);
         }
     }
 }

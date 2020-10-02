@@ -190,6 +190,7 @@
     <Compile Include="Models\FEEDBACK.cs" />
     <Compile Include="Models\INSCRICAO.cs" />
     <Compile Include="Models\PERFIL.cs" />
+    <Compile Include="Models\SubsViewModel.cs" />
     <Compile Include="Models\USUARIO.cs" />
     <Compile Include="Models\USUARIO_GERENCIA_EVENTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
