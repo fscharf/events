@@ -70,11 +70,19 @@ namespace Events.Controllers
                 iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
                 iNSCRICAO.COD_EVENTO = id;
 
+                //HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events/" + id.ToString()).Result;
+                //var eventDetails = response.Content.ReadAsAsync<EVENTO>().Result;
+
+                //iNSCRICAO.TITULO = eventDetails.TITULO;
+                //iNSCRICAO.DESCRICAO = eventDetails.DESCRICAO;
+                //iNSCRICAO.DATA = eventDetails.DATA;
+                //iNSCRICAO.IMAGEM_URL = eventDetails.IMAGEM_URL;
+
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["Success"] = "Inscrição realizada com sucesso!";
-                    return Redirect("/Events/SubDetails/" + iNSCRICAO.COD_INSCRICAO.ToString());
+                    return RedirectToAction("MyEvents", iNSCRICAO);
                 }
                 else
                 {
@@ -104,6 +112,12 @@ namespace Events.Controllers
 
         //Not working yet, needs to be verified: Controller + View
         [Authorize(Roles = "1,2")]
-        public ActionResult MyEvents() => View();
+        public ActionResult MyEvents()
+        {
+            IEnumerable<INSCRICAO> subsList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
+            subsList = response.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
+            return View(subsList);
+        }
     }
 }
