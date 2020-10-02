@@ -14,44 +14,63 @@
 
 @if (userAuth.IsAuthenticated)
 {
-<div class="row mb-3">
-    @foreach (var item in Model.InscricaoVM)
-    {
-        foreach (var eventItem in Model.EventoVM)
+    <div class="row mb-3">
+        @foreach (var item in Model.InscricaoVM)
         {
-            if (item.COD_USUARIO != Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value))
+            foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO))
             {
-            }
-            else
-            {
-                @Html.HiddenFor(modelItem => item.COD_EVENTO)
-                <div class="col-lg-6 mb-3">
-                    <div class="card">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="@Url.Content(eventItem.IMAGEM_URL)"
-                                     alt="Evento"
-                                     class="card-img h-100 object-fit-cover" />
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body text-left">
+                if (item.COD_USUARIO != Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value))
+                {
+                }
+                else
+                {
+                    @Html.HiddenFor(modelItem => item.COD_EVENTO)
+                    @Html.HiddenFor(modelItem => eventItem.COD_EVENTO)
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="@Url.Content(eventItem.IMAGEM_URL)"
+                                         alt="Evento"
+                                         class="card-img h-100 object-fit-cover" />
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body text-left">
+                                        <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                                            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => eventItem.DATA)</span>
+                                            <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => eventItem.HORARIO)</span><br />
+                                        </div>
+                                        <h5 class="card-title">@Html.DisplayFor(modelItem => eventItem.TITULO)</h5>
 
-                                    <h5 class="card-title">@Html.DisplayFor(modelItem => eventItem.TITULO)</h5>
-                                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => eventItem.DESCRICAO)</p>
-                                    <hr />
-                                    <p>Código de inscrição: <span class="text-muted">@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</span></p>
-                                    <a class="card-link" href="#qrcodeModal" data-toggle="modal"><i class="fas fa-qrcode"></i> QR Code</a>
-                                    <a class="card-link" href="#"><i class="fas fa-print"></i> Imprimir</a>
+                                        <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => eventItem.DESCRICAO)</p>
+                                        <hr />
+                                        <p>Código de inscrição: <span class="text-muted">@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</span></p>
+                                        <a class="card-link" href="#qrcodeModal" data-toggle="modal"><i class="fas fa-qrcode"></i> QR Code</a>
+                                        <a class="card-link" href="#"><i class="fas fa-print"></i> Imprimir</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         }
-    }
-</div>
+    </div>
 }
 
-
 @Html.Partial("_QRCodeModal")
+
+@section scripts {
+    <script>
+        $(function () {
+            var successMsg = '@TempData["Success"]';
+
+            if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
+                });
+            }
+        })
+    </script>
+}

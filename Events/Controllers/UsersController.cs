@@ -29,7 +29,6 @@ namespace Events.Controllers
             if (response.IsSuccessStatusCode)
             {
                 userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
-                var userDetails = userList.First(x => x.COD_USUARIO == uSUARIO.COD_USUARIO);
                 var emailExists = userList.Any(x => x.EMAIL == uSUARIO.EMAIL);
 
                 if (emailExists)
@@ -43,11 +42,11 @@ namespace Events.Controllers
 
                     var identity = new ClaimsIdentity(new[]
                     {
-                        new Claim(ClaimTypes.Email, userDetails.EMAIL),
-                        new Claim(ClaimTypes.GivenName, userDetails.NOME),
-                        new Claim(ClaimTypes.HomePhone, userDetails.CELULAR),
-                        new Claim(ClaimTypes.Role, userDetails.COD_PERFIL.ToString()),
-                        new Claim(ClaimTypes.Sid, userDetails.COD_USUARIO.ToString()),
+                        new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
+                        new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
+                        new Claim(ClaimTypes.HomePhone, uSUARIO.CELULAR),
+                        new Claim(ClaimTypes.Role, uSUARIO.COD_PERFIL.ToString()),
+                        new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString()),
                     }, "ApplicationCookie");
 
                     var context = Request.GetOwinContext();

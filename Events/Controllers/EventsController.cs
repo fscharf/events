@@ -64,19 +64,33 @@ namespace Events.Controllers
             {
                 var identity = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value;
 
-                iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
-                iNSCRICAO.COD_EVENTO = id;
-
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
+                IEnumerable<INSCRICAO> subsList;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
                 if (response.IsSuccessStatusCode)
-                {
-                    TempData["Success"] = "Inscrição realizada com sucesso!";
-                    return RedirectToAction("MyEvents");
+                {                   
+                    subsList = response.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
+                    var subExists = subsList.Where(x => x.COD_USUARIO == Convert.ToInt32(identity) && x.COD_EVENTO == id)
+                                            .Any(x => x.COD_EVENTO == id && x.COD_USUARIO == Convert.ToInt32(identity));
+
+                    if (subExists)
+                    {
+                        TempData["Error"] = "Você já está cadastrado nesse evento.";
+                        return Redirect("/Events/Details/" + id);
+                    }
+                    else
+                    {
+                        iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
+                        iNSCRICAO.COD_EVENTO = id;
+
+                        response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
+                        TempData["Success"] = "Inscrição realizada com sucesso!";
+                        return RedirectToAction("MyEvents");
+                    }
                 }
                 else
                 {
                     TempData["Error"] = "Ocorreu um erro ao efetuar sua requisição.";
-                    return RedirectToAction("Details");
+                    return Redirect("/Events/Details/" + id);
                 }
             }
             else
