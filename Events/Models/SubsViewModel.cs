@@ -9,5 +9,6 @@ namespace Events.Models
     {
         public IEnumerable<INSCRICAO> InscricaoVM { get; set; }
         public IEnumerable<EVENTO> EventoVM { get; set; }
+        public IEnumerable<USUARIO> UsuarioVM { get; set; }
     }
 }

@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="card mb-3">
+<div class="card">
     <div class="table-responsive">
         <table class="table text-truncate">
 
@@ -123,12 +123,11 @@
 </div>
 
 <div class="row">
-
-    <div class="col-lg-6">
+    <div class="col-lg-6 my-auto">
         Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
     </div>
     <div class="col-lg-6 text-right">
-        @Html.PagedListPager(Model, page => Url.Action("Index",
+        @Html.PagedListPager(Model, page => Url.Action("EventsList",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }),
         new PagedListRenderOptions
         {

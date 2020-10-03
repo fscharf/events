@@ -2321,7 +2321,6 @@
     <Content Include="Views\Admin\EventDetails.cshtml" />
     <Content Include="Views\Admin\UserCreate.cshtml" />
     <Content Include="Views\Users\UpdateProfile.cshtml" />
-    <Content Include="Views\Events\SubDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -100,19 +100,6 @@ namespace Events.Controllers
             }
         }
 
-        public ActionResult SubDetails(int id = 0)
-        {
-            if (id == 0)
-            {
-                return View(new INSCRICAO());
-            }
-            else
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs/" + id.ToString()).Result;
-                return View(response.Content.ReadAsAsync<INSCRICAO>().Result);
-            }
-        }
-
         //Not working yet, needs to be verified: Controller + View
         [Authorize(Roles = "1,2")]
         public ActionResult MyEvents()
@@ -130,6 +117,21 @@ namespace Events.Controllers
             subsViewModel.EventoVM = eventsList;
 
             return View(subsViewModel);
+        }
+        
+        public ActionResult DeleteSub(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("subs/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Success"] = "Inscrição cancelada com sucesso.";
+                return RedirectToAction("MyEvents", "Events");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao enviar sua requisição.";
+                return RedirectToAction("MyEvents", "Events");
+            }
         }
     }
 }

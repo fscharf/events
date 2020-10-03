@@ -14,11 +14,12 @@ using System.Web.Mvc;
 
 namespace Events.Controllers
 {
-    [AllowAnonymous]
     public class UsersController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Register() => View();
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(USUARIO uSUARIO)
@@ -64,8 +65,10 @@ namespace Events.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Login() => View();
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(USUARIO uSUARIO)
@@ -145,6 +148,7 @@ namespace Events.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult MyProfile(USUARIO uSUARIO, int id = 0)
@@ -167,6 +171,30 @@ namespace Events.Controllers
                     TempData["Error"] = "Operação ilegal.";
                     return View(uSUARIO);
                 }
+            }
+        }
+
+        [Authorize]
+        public ActionResult DesactivateAccount(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("users/" + id.ToString()).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var context = Request.GetOwinContext();
+                var authManager = context.Authentication;
+                authManager.SignOut("ApplicationCookie");
+                Session.Abandon();
+                Session.Clear();
+                Session.RemoveAll();
+
+                TempData["Success"] = "Sua conta foi desativada com êxito.";
+                return RedirectToAction("Index", "Main");
+            }
+            else
+            {
+                TempData["Error"] = "Ocorreu um erro ao efetuar sua requisição.";
+                return View("MyProfile");
             }
         }
     }

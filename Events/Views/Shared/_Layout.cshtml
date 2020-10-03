@@ -44,7 +44,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 220px;">
                                 <div class="text-center p-2">
-                                    <i class="fas fa-user-circle fa-2x mb-2"></i>
+                                    <i class="fa fa-user-circle fa-2x mb-2"></i>
                                     <div class="dropdown-item-text">
                                         @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                                     </div>
@@ -59,7 +59,7 @@
                                 @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
-                                        <i class="fas fa-calendar-day mr-2"></i>Meus eventos
+                                        <i class="fas fa-calendar-alt mr-2"></i>Meus eventos
                                     </a>
                                 }
                                 else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))

@@ -61,7 +61,6 @@
                    type = "password",
                    required = "required",
                    @readonly = "readonly",
-
                    id = "senha"
                }
            })
@@ -115,6 +114,9 @@
                 <div class="btn-group w-100" role="group">
                     <a href="#" onclick="EditFields()" class="btn btn-primary">
                         <i class="fas fa-pencil-alt"></i> Editar
+                    </a> 
+                    <a href="#" onclick="CancelEdit()" class="btn btn-dark form-cancel-edit d-none">
+                        <i class="fas fa-times-circle"></i> Cancelar
                     </a>
                     <button type="submit" class="btn btn-primary form-submit" disabled>
                         <i class="fas fa-save"></i> Salvar
@@ -135,8 +137,12 @@
     <div class="col-lg-4">
         <label>Opções da conta</label>
         <div class="form-group">
-            <a class="btn btn-danger btn-sm disabled" href="#"><i class="fas fa-user-slash"></i> Desativar minha conta</a>
+            <a onclick="Desactivate(@Model.COD_USUARIO)" class="btn btn-danger btn-sm" href="#"><i class="fas fa-user-slash"></i> Desativar minha conta</a>
         </div>
+        <ul class="list-unstyled text-muted" style="font-size: 0.8rem">
+            <li class="mb-3"><i class="fas fa-arrow-circle-right"></i> Caso opte por desativar a conta, certifique-se que não esteja inscrito em quaisquer eventos ativos.</li>
+            <li><i class="fas fa-arrow-circle-right"></i> Se você tiver intenções de reativá-la, terá que entrar em contato com a Fieb nos meios de contato disponíveis no site: <a href="https://fieb.edu.br/#_contato" target="_blank">Clique aqui</a> para ver os contatos.</li>
+        </ul>
     </div>
 </div>
 
@@ -153,10 +159,64 @@
             }
         })
 
+        $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
+                });
+            }
+        })
+
+        function Desactivate(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                progressBar: false,
+                timeout: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 9999,
+                title: 'Aviso',
+                message: 'Tem certeza que quer desativar sua conta?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("DesactivateAccount", "Users")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+
+
         function EditFields() {
             $('.form-control').removeAttr('readonly');
             $('.custom-select').removeAttr('disabled');
             $('.form-submit').removeAttr('disabled');
+            $('.form-cancel-edit').addClass('d-block');
+        }
+
+        function CancelEdit() {
+            $('.form-control').prop('readonly', true);
+            $('.custom-select').prop('disabled', true);
+            $('.form-submit').prop('disabled', true);
+            $('.form-cancel-edit').removeClass('d-block');
         }
     </script>
 }
