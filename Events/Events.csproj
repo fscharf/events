@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2314,12 +2315,12 @@
     <Content Include="Views\Events\_QRCodeModal.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\EventsList.cshtml" />
-    <Content Include="Views\Admin\UsersList.cshtml" />
-    <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Master\UsersList.cshtml" />
+    <Content Include="Views\Master\UserDetails.cshtml" />
     <Content Include="Views\Users\MyProfile.cshtml" />
     <Content Include="Views\Admin\EventCreate.cshtml" />
     <Content Include="Views\Admin\EventDetails.cshtml" />
-    <Content Include="Views\Admin\UserCreate.cshtml" />
+    <Content Include="Views\Master\UserCreate.cshtml" />
     <Content Include="Views\Users\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>

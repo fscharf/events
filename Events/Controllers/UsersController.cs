@@ -106,9 +106,13 @@ namespace Events.Controllers
                     var authManager = context.Authentication;
                     authManager.SignIn(identity);
 
-                    if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                    if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
                     {
                         return RedirectToAction("Index", "Admin");
+                    }
+                    else if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
+                    {
+                        return RedirectToAction("UsersList", "Master");
                     }
                     else
                     {

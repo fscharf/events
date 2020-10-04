@@ -6,7 +6,7 @@
 <div class="row mb-3">
     <div class="col-lg">
         <h4>
-            <a class="text-dark mr-2" href="@Url.Action("Index", "Admin")"><i class="fas fa-arrow-left"></i></a>
+            <a class="text-dark mr-2" href="@Url.Action("Index", "Master")"><i class="fas fa-arrow-left"></i></a>
             @ViewBag.Title
         </h4>
         <p class="text-muted">Crie, edite ou desative os registros no @ViewBag.Title.</p>
@@ -15,7 +15,7 @@
 
 <div class="row mb-3">
     <div class="col-lg-6">
-        @using (Html.BeginForm("UsersList", "Admin", FormMethod.Get))
+        @using (Html.BeginForm("UsersList", "Master", FormMethod.Get))
         {
             <div class="form-group">
                 <div class="input-group">
@@ -30,7 +30,7 @@
         }
     </div>
     <div class="col-lg-4">
-        <a class="btn btn-primary" href="@Url.Action("UserCreate", "Admin")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
+        <a class="btn btn-primary" href="@Url.Action("UserCreate", "Master")"><i class="fas fa-user-plus"></i> Novo Usuário</a>
     </div>
     <div class="col-lg-2">
         <div class="form-group">
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="card">
-    <div class="table-responsive">
+    <div class="table-responsive table-hover">
         <table class="table text-truncate">
             <thead class="thead-light">
                 <tr>
@@ -81,7 +81,7 @@
                                 <div class="badge badge-danger">Inativo</div>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Master", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
                                 <a class="btn btn-success" onclick="Activate(@item.COD_USUARIO)" href="#"><i class="fas fa-check-circle"></i> Ativar</a>
                             </td>
                         </tr>
@@ -108,7 +108,7 @@
                                 <div class="badge badge-success">Ativo</div>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Admin", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                <a class="btn btn-primary" href="@Url.Action("UserDetails", "Master", new { id = item.COD_USUARIO })"><i class="fas fa-pencil-alt"></i> Editar</a>
                                 <a class="btn btn-danger" onclick="Delete(@item.COD_USUARIO)" href="#"><i class="fas fa-trash-alt"></i> Apagar</a>
                             </td>
                         </tr>
@@ -164,7 +164,7 @@
                 buttons: [
                     ['<button><strong>Sim</strong></button>', function () {
 
-                        location.href = '@Url.Action("UserDelete", "Admin")/' + id;
+                        location.href = '@Url.Action("UserDelete", "Master")/' + id;
 
                     }, null],
                     ['<button>Não</button>', function (instance, toast) {
@@ -198,7 +198,7 @@
                 buttons: [
                     ['<button><strong>Sim</strong></button>', function () {
 
-                        location.href = '@Url.Action("UserDelete", "Admin")/' + id;
+                        location.href = '@Url.Action("UserDelete", "Master")/' + id;
 
                     }, null],
                     ['<button>Não</button>', function (instance, toast) {

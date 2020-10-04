@@ -235,7 +235,6 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.xm
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.dll.config
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.dll
 C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Events.pdb
@@ -500,3 +499,18 @@ C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csproj.C
 C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.csproj.CopyComplete
 C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.dll
 C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\obj\Debug\Events.pdb
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\PagedList.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\PagedList.Mvc.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Buffers.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Memory.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Numerics.Vectors.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Text.Encodings.Web.dll
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\PagedList.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\PagedList.Mvc.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Buffers.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Memory.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Numerics.Vectors.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Text.Encodings.Web.xml
+C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache

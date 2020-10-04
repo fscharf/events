@@ -10,7 +10,7 @@ using PagedList;
 
 namespace Events.Controllers
 {
-    [Authorize(Roles = "3,4,5")]
+    [Authorize(Roles = "4")]
     public class AdminController : Controller
     {
         public ActionResult Index() => View();
