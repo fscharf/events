@@ -53,16 +53,20 @@
                                     </small>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Action("MyProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value.ToString() })">
+                                <a class="dropdown-item" href="@Url.Action("MyProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })">
                                     <i class="fas fa-user-circle mr-2"></i>Conta
                                 </a>
                                 @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
-                                        <i class="fas fa-calendar-alt mr-2"></i>Meus eventos
+                                        <i class="fas fa-calendar mr-2"></i>Meus eventos
                                     </a>
                                 }
-                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Master")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
+                                }
+                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                 }
@@ -91,7 +95,7 @@
         </div>
     </nav>
 
-    <div class="container text-center text-sm-left">
+    <div class="container">
         @RenderBody()
     </div>
 
