@@ -13,14 +13,15 @@
 
 <img class="img-fluid custom-object-fit-cover rounded mb-4"
      src="@Url.Content(Model.IMAGEM_URL)"
-     alt="@Html.DisplayFor(x => x.TITULO)" />
+     alt="@Html.DisplayFor(x => x.TITULO)"
+     title="@Html.DisplayFor(x => x.TITULO)"/>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-lg-8 mb-4 mb-sm-0">
         <div class="border rounded p-5">
             <div class="row mb-3">
                 <div class="col-lg-6">
-                    <h2 class="font-weight-bold mb-3">@Html.DisplayFor(x => x.TITULO)</h2>
+                    <h4 class="font-weight-bold mb-3">@Html.DisplayFor(x => x.TITULO)</h4>
                 </div>
                 <div class="col-lg-6 text-center text-sm-right">
                     <a href="/eventos" class="card-link" title="Voltar">
@@ -34,6 +35,7 @@
                     </a>
                 </div>
             </div>
+            <hr />
             <p class="text-muted mb-5">@Html.DisplayFor(x => x.DESCRICAO)</p>
 
             <iframe class="rounded w-100"
@@ -49,11 +51,20 @@
     </div>
     <div class="col-lg-4">
         <div class="shadow-sm border rounded p-4">
-            <p class="text-muted">Informações do evento</p>
+            <p class="text-muted">Detalhes do evento</p><hr />
+            <p><small><span class="font-weight-bold">@Html.DisplayFor(x => x.VAGAS)</span> vagas restantes</small></p>
             <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data"></i>@Html.DisplayFor(x => x.DATA)</p>
-            <p><i class="fas fa-clock text-primary mr-2" title="Horário"></i>@Html.DisplayFor(x => x.HORARIO)</p>
+            <p><i class="fas fa-clock text-primary mr-2" title="Horário"></i>@Html.DisplayFor(x => x.HORARIO) <small class="text-muted">início</small></p>
+            <p><i class="fas fa-stopwatch text-primary mr-2" title="Duração"></i>@Html.DisplayFor(x => x.DURACAO) <small class="text-muted">duração</small></p>
             <p><i class="fas fa-map-marker-alt text-primary mr-2" title="Local"></i>R. Interna Grupo Bandeirante, 138 - Jardim Belval, Barueri - SP, 06420-150</p>
-            <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-check-circle mr-2"></i>Participar</a>
+            @if (Model.VAGAS == 0)
+            {
+                <a href="#" class="btn btn-danger btn-block disabled"><i class="fas fa-ban mr-2"></i>Esgotado</a>
+            }
+            else
+            {
+                <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-check-circle mr-2"></i>Participar</a>
+            }
         </div>
     </div>
 </div>
@@ -63,9 +74,9 @@
 @section scripts {
     <script>
         function Confirm(id) {
-            iziToast.warning({
-                backgroundColor: '#FFFFFF',
-                theme: 'light',
+            iziToast.show({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
                 timeout: false,
                 progressBar: false,
                 close: false,

@@ -18,6 +18,7 @@
           <Property Name="IMAGEM_URL" Type="varchar(max)" />
           <Property Name="SALA" Type="varchar" MaxLength="80" />
           <Property Name="ATIVO" Type="int" />
+          <Property Name="VAGAS" Type="int" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -206,6 +207,7 @@
           <Property Name="IMAGEM_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SALA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="ATIVO" Type="Int32" />
+          <Property Name="VAGAS" Type="Int32" />
         </EntityType>
         <EntityType Name="FEEDBACK">
           <Key>
@@ -394,6 +396,7 @@
           <EntitySetMapping Name="EVENTO">
             <EntityTypeMapping TypeName="EventsModel.EVENTO">
               <MappingFragment StoreEntitySet="EVENTO">
+                <ScalarProperty Name="VAGAS" ColumnName="VAGAS" />
                 <ScalarProperty Name="ATIVO" ColumnName="ATIVO" />
                 <ScalarProperty Name="SALA" ColumnName="SALA" />
                 <ScalarProperty Name="IMAGEM_URL" ColumnName="IMAGEM_URL" />

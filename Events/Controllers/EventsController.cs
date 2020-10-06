@@ -59,16 +59,22 @@ namespace Events.Controllers
 
         public ActionResult Subscribe(INSCRICAO iNSCRICAO, int id = 0)
         {
+            IEnumerable<EVENTO> eventsList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventsList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+
+            var eventDetails = eventsList.Where(x => x.COD_EVENTO == id).FirstOrDefault();
+
             var userAuth = (ClaimsIdentity)User.Identity;
             if (userAuth.IsAuthenticated)
             {
                 var identity = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value;
 
                 IEnumerable<INSCRICAO> subsList;
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
-                if (response.IsSuccessStatusCode)
+                HttpResponseMessage responseMessage = GlobalVariables.WebApiClient.GetAsync("subs").Result;
+                if (responseMessage.IsSuccessStatusCode)
                 {                   
-                    subsList = response.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
+                    subsList = responseMessage.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
                     var subExists = subsList.Where(x => x.COD_USUARIO == Convert.ToInt32(identity) && x.COD_EVENTO == id)
                                             .Any(x => x.COD_EVENTO == id && x.COD_USUARIO == Convert.ToInt32(identity));
 
@@ -81,8 +87,10 @@ namespace Events.Controllers
                     {
                         iNSCRICAO.COD_USUARIO = Convert.ToInt32(identity);
                         iNSCRICAO.COD_EVENTO = id;
+                        eventDetails.VAGAS -= 1;
 
-                        response = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
+                        response = GlobalVariables.WebApiClient.PutAsJsonAsync("events/" + id.ToString(), eventDetails).Result;
+                        responseMessage = GlobalVariables.WebApiClient.PostAsJsonAsync("subs", iNSCRICAO).Result;
                         TempData["Success"] = "Inscrição realizada com sucesso!";
                         return RedirectToAction("MyEvents");
                     }
@@ -121,9 +129,23 @@ namespace Events.Controllers
         
         public ActionResult DeleteSub(int id)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("subs/" + id.ToString()).Result;
-            if (response.IsSuccessStatusCode)
+
+            IEnumerable<INSCRICAO> subsList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
+            subsList = response.Content.ReadAsAsync<IEnumerable<INSCRICAO>>().Result;
+            var subDetails = subsList.Where(x => x.COD_INSCRICAO == id).FirstOrDefault();
+
+            IEnumerable<EVENTO> eventsList;
+            HttpResponseMessage responseMessage = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventsList = responseMessage.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
+            var eventDetails = eventsList.Where(x => x.COD_EVENTO == subDetails.COD_EVENTO).FirstOrDefault();
+
+            responseMessage = GlobalVariables.WebApiClient.DeleteAsync("subs/" + id.ToString()).Result;
+            if (responseMessage.IsSuccessStatusCode)
             {
+                eventDetails.VAGAS += 1;
+
+                response = GlobalVariables.WebApiClient.PutAsJsonAsync("events/" + eventDetails.COD_EVENTO.ToString(), eventDetails).Result;
                 TempData["Success"] = "Inscrição cancelada com sucesso.";
                 return RedirectToAction("MyEvents", "Events");
             }

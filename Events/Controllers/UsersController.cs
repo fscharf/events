@@ -112,7 +112,7 @@ namespace Events.Controllers
                     }
                     else if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
                     {
-                        return RedirectToAction("UsersList", "Master");
+                        return RedirectToAction("Index", "Master");
                     }
                     else
                     {
