@@ -41,21 +41,33 @@ namespace Events.Controllers
                 {
                     response = GlobalVariables.WebApiClient.PostAsJsonAsync("users", uSUARIO).Result;
 
-                    var identity = new ClaimsIdentity(new[]
+                    if (response.IsSuccessStatusCode)
                     {
-                        new Claim(ClaimTypes.Email, uSUARIO.EMAIL),
-                        new Claim(ClaimTypes.GivenName, uSUARIO.NOME),
-                        new Claim(ClaimTypes.HomePhone, uSUARIO.CELULAR),
-                        new Claim(ClaimTypes.Role, uSUARIO.COD_PERFIL.ToString()),
-                        new Claim(ClaimTypes.Sid, uSUARIO.COD_USUARIO.ToString())
-                    }, "ApplicationCookie");
+                        response = GlobalVariables.WebApiClient.GetAsync("users").Result;
+                        userList = response.Content.ReadAsAsync<IEnumerable<USUARIO>>().Result;
+                        var userDetails = userList.Where(x => x.EMAIL == uSUARIO.EMAIL).FirstOrDefault();
 
-                    var context = Request.GetOwinContext();
-                    var authManager = context.Authentication;
-                    authManager.SignIn(identity);
+                        var identity = new ClaimsIdentity(new[]
+                        {
+                            new Claim(ClaimTypes.Email, userDetails.EMAIL),
+                            new Claim(ClaimTypes.GivenName, userDetails.NOME),
+                            new Claim(ClaimTypes.HomePhone, userDetails.CELULAR),
+                            new Claim(ClaimTypes.Role, userDetails.COD_PERFIL.ToString()),
+                            new Claim(ClaimTypes.Sid, userDetails.COD_USUARIO.ToString())
+                        }, "ApplicationCookie");
 
-                    TempData["Success"] = "Cadastro realizado com sucesso!";
-                    return Redirect("/");
+                        var context = Request.GetOwinContext();
+                        var authManager = context.Authentication;
+                        authManager.SignIn(identity);
+
+                        TempData["Success"] = "Cadastro realizado com sucesso!";
+                        return Redirect("/");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Ocorreu um erro ao solicitar sua requisição.";
+                        return View(uSUARIO);
+                    }
                 }
             }
             else
