@@ -19,6 +19,7 @@
         @using (Html.BeginForm(FormMethod.Post))
         {
             @Html.HiddenFor(x => x.COD_USUARIO)
+            @Html.HiddenFor(x => x.COD_PERFIL)
             @Html.AntiForgeryToken()
 
             <div class="form-group">
@@ -81,34 +82,6 @@
                    pattern = "[0-9]+"
                }
            })
-            </div>
-            <div class="form-group">
-                <label>Perfil</label>
-                @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1")))
-                {
-                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
-                    {
-                        new SelectListItem { Text = "Aluno", Value = "1", Selected = true },
-                    }, htmlAttributes: new { @class = "custom-select", required = "required", @disabled = "disabled" })
-                }
-                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "2")))
-                {
-                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
-                    {
-                        new SelectListItem { Text = "Visitante", Value = "2", Selected = true },
-                    }, htmlAttributes: new { @class = "custom-select", required = "required", @disabled = "disabled" })
-                }
-                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
-                {
-                    @Html.DropDownListFor(model => model.COD_PERFIL, new List<SelectListItem>
-                    {
-                        new SelectListItem { Text = "Aluno", Value = "1" },
-                        new SelectListItem { Text = "Visitante", Value = "2" },
-                        new SelectListItem { Text = "Master", Value = "3" },
-                        new SelectListItem { Text = "Administrador", Value = "4" },
-                        new SelectListItem { Text = "Auxiliar de Eventos", Value = "5" },
-                    }, htmlAttributes: new { @class = "custom-select", required = "required" })
-                }
             </div>
             <div class="form-group">
                 <div class="btn-group w-100" role="group">

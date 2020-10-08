@@ -45,12 +45,27 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(EVENTO))]
         public IHttpActionResult PutEVENTO(int id, EVENTO eVENTO)
         {
-            if (id != eVENTO.COD_EVENTO)
+            var existingEntity = db.EVENTO.First(x => x.COD_EVENTO == eVENTO.COD_EVENTO);
+
+            existingEntity.TITULO = eVENTO.TITULO;
+            existingEntity.DESCRICAO = eVENTO.DESCRICAO;
+            existingEntity.DATA = eVENTO.DATA;
+            existingEntity.HORARIO = eVENTO.HORARIO;
+            existingEntity.DURACAO = eVENTO.DURACAO;
+            existingEntity.VAGAS = eVENTO.VAGAS;
+            existingEntity.IMAGEM_URL = eVENTO.IMAGEM_URL;
+            existingEntity.ATIVO = 1;
+
+            if (id != existingEntity.COD_EVENTO)
             {
                 return BadRequest();
             }
+            else
+            {
+                db.Entry(existingEntity).State = EntityState.Modified;
+            }
 
-            db.Entry(eVENTO).State = EntityState.Modified;
+            db.Entry(existingEntity).State = EntityState.Modified;
 
             try
             {

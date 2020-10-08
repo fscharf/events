@@ -1,7 +1,7 @@
 ﻿@model Events.Models.EVENTO
 
 @{
-    ViewBag.Title = "Editar evento";
+    ViewBag.Title = "Editar: " + Model.TITULO;
 }
 
 <div class="row mb-3">
@@ -13,59 +13,100 @@
     </div>
 </div>
 
-@using (Html.BeginForm("EventDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.COD_EVENTO)
+<div class="row mb-3">
+    <div class="col-lg">
 
-    <div class="form-row">
-        <div class="col-lg-4">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        @using (Html.BeginForm("EventDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.COD_EVENTO)
+            @Html.HiddenFor(model => model.IMAGEM_URL)
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Título</label>
+                        @Html.EditorFor(model => model.TITULO, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "30" } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        @Html.TextAreaFor(model => model.DESCRICAO, new { @class = "form-control", required = "required", rows = "10" })
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Data</label>
+                        @Html.TextBoxFor(m => m.DATA, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Horário</label>
+                                @Html.EditorFor(model => model.HORARIO, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Duração</label>
+                                @Html.EditorFor(model => model.DURACAO, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sala</label>
+                        @Html.EditorFor(model => model.SALA, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Ex: Auditório, Sala 20, etc." } })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qtde. Vagas</label>
+                        @Html.EditorFor(model => model.VAGAS, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Ex: 200", @type = "number" } })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-4">
+        @using (Html.BeginForm("EventDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.COD_EVENTO)
+            @Html.HiddenFor(model => model.TITULO)
+            @Html.HiddenFor(model => model.DESCRICAO)
+            @Html.HiddenFor(model => model.DATA)
+            @Html.HiddenFor(model => model.HORARIO)
+            @Html.HiddenFor(model => model.DURACAO)
+            @Html.HiddenFor(model => model.SALA)
+            @Html.HiddenFor(model => model.VAGAS)
+
             <div class="form-group">
-                <label>Título</label>
-                @Html.EditorFor(model => model.TITULO, new { htmlAttributes = new { @class = "form-control", required = "required", maxlength = "30" } })
+                <img src="@Url.Content(Model.IMAGEM_URL)"
+                     alt="Model.TITULO"
+                     class="img-fluid rounded custom-object-fit-cover" />
             </div>
 
             <div class="form-group">
-                <label>Descrição</label>
-                @Html.TextAreaFor(model => model.DESCRICAO, new { @class = "form-control", required = "required" })
-            </div>
-
-            <div class="form-group">
-                <label>Data</label>
-                @Html.EditorFor(model => model.DATA, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-            </div>
-
-            <div class="form-group">
-                <label>Horário</label>
-                @Html.EditorFor(model => model.HORARIO, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-            </div>
-
-            <div class="form-group">
-                <label>Duração</label>
-                @Html.EditorFor(model => model.DURACAO, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-            </div>
-
-            <div class="form-group">
-                <label>Imagem</label>
                 @Html.EditorFor(model => model.IMAGEM_URL, new { htmlAttributes = new { @type = "file", @class = "form-control-file", required = "required" } })
             </div>
 
             <div class="form-group">
-                <label>Sala</label>
-                @Html.EditorFor(model => model.SALA, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Ex: Auditório, Sala 20, etc." } })
+                <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Alterar</button>
             </div>
 
-            <div class="form-group">
-                <label>Qtde. Vagas</label>
-                @Html.EditorFor(model => model.VAGAS, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Ex: 200", @type = "number" } })
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Salvar</button>
-            </div>
-        </div>
+        }
     </div>
-}
+</div>
+
 
 @section Scripts {
     <script>
@@ -76,6 +117,17 @@
                 iziToast.error({
                     title: 'Erro',
                     message: errorMsg
+                });
+            }
+        })
+
+         $(function () {
+            var successMsg = '@TempData["Success"]';
+
+             if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
                 });
             }
         })

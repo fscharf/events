@@ -78,21 +78,17 @@ namespace Events.Controllers
                         postedFile.SaveAs(filePath);
                         docfiles.Add(filePath);
                     }
-                    HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("events/" + id.ToString(), eVENTO).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        TempData["Success"] = "Dados atualizados com sucesso!";
-                        return RedirectToAction("EventsList", "Admin");
-                    }
-                    else
-                    {
-                        TempData["Error"] = "Ocorreu um erro inesperado.";
-                        return View(eVENTO);
-                    }
+                }
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("events/" + id.ToString(), eVENTO).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Success"] = "Dados atualizados com sucesso!";
+                    return RedirectToAction("EventDetails", "Admin");
                 }
                 else
                 {
-                    TempData["Error"] = "Por favor, faça upload de uma imagem.";
+                    TempData["Error"] = "Ocorreu um erro inesperado.";
                     return View(eVENTO);
                 }
             }

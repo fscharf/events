@@ -54,6 +54,7 @@
                     <th scope="col">Data</th>
                     <th scope="col">Horário</th>
                     <th scope="col">Duração</th>
+                    <th scope="col">Total Vagas</th>
                     <th scope="col">Ativo</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -81,6 +82,9 @@
                                 @Html.DisplayFor(modelItem => item.DURACAO)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.VAGAS)
+                            </td>
+                            <td>
                                 <div class="badge badge-danger">Inativo</div>
                             </td>
                             <td>
@@ -106,6 +110,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DURACAO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VAGAS)
                             </td>
                             <td>
                                 <div class="badge badge-success">Ativo</div>
