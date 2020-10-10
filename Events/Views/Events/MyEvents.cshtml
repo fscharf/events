@@ -40,7 +40,8 @@
                                         <i class="fas fa-ellipsis-h"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm">
-                                        <a class="dropdown-item" href="#"><i class="fas fa-print"></i> Imprimir</a>
+                                        <a class="dropdown-item" target="_blank" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-print"></i> Imprimir</a>
+                                        <a class="dropdown-item" download="inscricao-@item.COD_INSCRICAO" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-file-download"></i> Download PDF</a>
                                         <a href="#" onclick="Delete(@item.COD_INSCRICAO)" class="dropdown-item"><i class="fas fa-times-circle"></i> Cancelar inscrição</a>
                                     </div>
                                     <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">

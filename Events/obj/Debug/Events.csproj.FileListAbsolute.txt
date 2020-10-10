@@ -514,3 +514,4 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Numerics.V
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Text.Encodings.Web.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
+C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\bin\Rotativa.dll
