@@ -160,5 +160,18 @@ namespace Events.Controllers
                 return RedirectToAction("MyEvents", "Events");
             }
         }
+
+        public ActionResult SubPDF(int? id)
+        {
+            SubsViewModel subsViewModel = new SubsViewModel();
+            subsViewModel.COD_INSCRICAO = id;
+
+            return View(subsViewModel);
+        }
+
+        public ActionResult GeneratePDF(int? id)
+        {
+            return new Rotativa.ActionAsPdf("SubPDF/" + id.ToString());
+        }
     }
 }

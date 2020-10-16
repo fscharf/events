@@ -1,0 +1,23 @@
+﻿@using Events.Models
+@model SubsViewModel
+@using System.Security.Claims
+
+@{
+    var userAuth = (ClaimsIdentity)User.Identity;
+    ViewBag.Title = "Inscrição" + Model.COD_INSCRICAO; 
+}
+
+<style>
+    .navbar {
+        display: none;
+    }
+</style>
+
+<div class="text-center">
+    <p class="main-font text-primary">Events</p>
+    <h4>Código de inscrição: <strong>@Model.COD_INSCRICAO</strong></h4>
+    <img src="https://chart.googleapis.com/chart?cht=qr&chl=@Model.COD_INSCRICAO.ToString()&chs=200x200&choe=UTF-8&chld=L|2" alt="QR Code" title="@Model.COD_INSCRICAO" class="img-fluid my-4" />
+    <p class="text-muted">Apresente o código QR quando estiver no evento para validar sua presença.</p>
+</div>
+
+
