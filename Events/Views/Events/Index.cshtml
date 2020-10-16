@@ -14,32 +14,35 @@
 </div>
 
 <div class="row mb-3">
-    <div class="col-lg-6">
+    <div class="col-lg">
         @using (Html.BeginForm("Index", "Events", FormMethod.Get))
         {
-            <div class="form-group">
-                <div class="input-group">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "search" })
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "search" })
                     </div>
                 </div>
-            </div>
-        }
-    </div>
-    <div class="col-lg-3">
-        @using (Html.BeginForm("Index", "Events", FormMethod.Get))
-        {
-            <div class="form-group">
-                <div class="input-group">
-                    @Html.TextBox("searchDate", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "date" })
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+                <div class="form-group col-lg-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                        @Html.TextBox("searchDate", ViewBag.CurrentFilter as string, null, new { @class = "form-control", placeholder = "Digite para pesquisar...", @type = "date" })
                     </div>
+                </div>
+                <div class="form-group col-lg-3">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i> Pesquisar 
+                    </button>
+                    <a href="/eventos" class="ml-2">Limpar buscas</a>
                 </div>
             </div>
         }
@@ -55,21 +58,29 @@
         }
         else
         {
-            <div class="col-lg-4 mb-2 mb-sm-0">
+            <div class="col-lg-4 mb-3">
                 <div class="card custom-card">
                     <img class="card-img-top img-fluid custom-object-fit-cover"
                          src="@Url.Content(item.IMAGEM_URL)"
                          alt="Foto do evento" />
                     <div class="card-body">
+                        @if (item.VAGAS <= 5 && item.VAGAS != 0)
+                        {
+                            <div class="badge badge-info float-right">Últimas vagas</div>
+                        }
+                        else if (item.VAGAS == 0)
+                        {
+                            <div class="badge badge-danger float-right">Esgotado</div>
+                        }
                         <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
                             <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
                             <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
                         </div>
-                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.TITULO)</h4>
+                        <h4 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.TITULO)</h4>
                         <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
 
                         <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn btn-primary btn-block">
-                            <i class="fas fa-check-circle mr-2"></i>Participar
+                            Inscrever-se <i class="fas fa-chevron-right"></i>
                         </a>
                     </div>
                 </div>

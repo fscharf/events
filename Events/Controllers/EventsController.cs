@@ -38,7 +38,7 @@ namespace Events.Controllers
             {
                 eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));
             }
-            int pageSize = 3;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(eventList.ToPagedList(pageNumber, pageSize));
@@ -78,7 +78,12 @@ namespace Events.Controllers
                     var subExists = subsList.Where(x => x.COD_USUARIO == Convert.ToInt32(identity) && x.COD_EVENTO == id)
                                             .Any(x => x.COD_EVENTO == id && x.COD_USUARIO == Convert.ToInt32(identity));
 
-                    if (subExists)
+                    if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3" || c.Value == "4" || c.Value == "5")))
+                    {
+                        TempData["Error"] = "Seu nível de acesso não permite participar de eventos.";
+                        return Redirect("/Events/Details/" + id);
+                    }
+                    else if (subExists)
                     {
                         TempData["Error"] = "Você já está cadastrado nesse evento.";
                         return Redirect("/Events/Details/" + id);
