@@ -515,3 +515,4 @@ C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Runtime.Co
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\bin\System.Text.Encodings.Web.xml
 C:\Users\gfbri\Documents\AsCoisaTudo\TCC\Web\Events\Events\obj\Debug\Events.csprojAssemblyReference.cache
 C:\Users\felipe.scharf\Desktop\Dev\Repos\Events\Events\bin\Rotativa.dll
+C:\Users\a3xob\Desktop\Dev\Repos\Events\Events\bin\Rotativa.dll

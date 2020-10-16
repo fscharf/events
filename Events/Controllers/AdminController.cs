@@ -15,13 +15,12 @@ namespace Events.Controllers
     {
         public ActionResult Index() => View();
 
-        // Admin for Events
-        public ActionResult EventsList(int? page, string currentFilter, string searchString)
+        public ActionResult EventsList(int? page, string currentFilter, string searchString, string searchDate)
         {
             IEnumerable<EVENTO> eventList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("events").Result;
             eventList = response.Content.ReadAsAsync<IEnumerable<EVENTO>>().Result;
-            if (searchString != null)
+            if (searchString != null || searchDate != null)
             {
                 page = 1;
             }
@@ -35,9 +34,13 @@ namespace Events.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 eventList = eventList.Where(x => x.TITULO.Contains(searchString)
-                                          || x.DESCRICAO.Contains(searchString));
+                                            || x.DESCRICAO.Contains(searchString));
             }
-            int pageSize = 10;
+            if (!String.IsNullOrEmpty(searchDate))
+            {
+                eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));
+            }
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(eventList.ToPagedList(pageNumber, pageSize));

@@ -113,7 +113,6 @@ namespace Events.Controllers
             }
         }
 
-        //Not working yet, needs to be verified: Controller + View
         [Authorize(Roles = "1,2")]
         public ActionResult MyEvents()
         {
