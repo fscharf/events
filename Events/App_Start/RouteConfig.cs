@@ -14,15 +14,33 @@ namespace Events
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "eventos",
-                "eventos",
+                "Eventos",
+                "Eventos",
                 new { controller = "Events", action = "Index" }
             );
 
             routes.MapRoute(
-                "eventos_inscricao",
-                "eventos/inscricao",
-                new { controller = "Events", action = "Confirm" }
+                "MeusEventos",
+                "MeusEventos",
+                new { controller = "Events", action = "MyEvents" }
+            );
+
+            routes.MapRoute(
+                "Conta",
+                "Conta",
+                new { controller = "Users", action = "MyProfile" }
+            );
+            
+            routes.MapRoute(
+                "Entrar",
+                "Entrar",
+                new { controller = "Users", action = "Login" }
+            );
+            
+            routes.MapRoute(
+                "Cadastro",
+                "Cadastro",
+                new { controller = "Users", action = "Register" }
             );
 
             routes.MapRoute(

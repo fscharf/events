@@ -4,65 +4,72 @@
 @{
     ViewBag.Title = "Meus eventos";
     var userAuth = (ClaimsIdentity)User.Identity;
+    int userId = Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value);
 }
 
 <div class="row mb-3">
     <div class="col-lg">
-        <h5 class="text-muted">@ViewBag.Title</h5>
+        <h4>@ViewBag.Title</h4>
     </div>
 </div>
 
 @if (userAuth.IsAuthenticated)
 {
-<div class="row mb-3">
-    @foreach (var item in Model.InscricaoVM)
-    {
-        foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO))
+    <div class="row mb-3">
+        @foreach (var item in Model.InscricaoVM)
         {
-            if (item.COD_USUARIO != Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value))
+            foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO))
             {
-            }
-            else
-            {
-                @Html.HiddenFor(modelItem => item.COD_EVENTO)
-                @Html.HiddenFor(modelItem => eventItem.COD_EVENTO)
-                <div class="col-lg-6 mb-3">
-                    <div class="card">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="@Url.Content(eventItem.IMAGEM_URL)"
-                                     alt="Evento"
-                                     class="card-img h-100 object-fit-cover" />
-                            </div>
-                            <div class="col-md-8 my-auto">
-                                <div class="card-body text-left">
-                                    <a href="#" class="card-link float-right" data-toggle="dropdown" title="Opções">
-                                        <i class="fas fa-ellipsis-h"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm">
-                                        <a class="dropdown-item" target="_blank" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-print"></i> Imprimir</a>
-                                        <a class="dropdown-item" download="inscricao-@item.COD_INSCRICAO" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-file-download"></i> Download PDF</a>
-                                        <a href="#" onclick="Delete(@item.COD_INSCRICAO)" class="dropdown-item"><i class="fas fa-times-circle"></i> Cancelar inscrição</a>
-                                    </div>
-                                    <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
-                                        <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => eventItem.DATA)</span>
-                                        <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => eventItem.HORARIO)</span><br />
-                                    </div>
-                                    <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="card-title h5 text-truncate" title="@Html.DisplayFor(modelItem => eventItem.TITULO)">@Html.DisplayFor(modelItem => eventItem.TITULO)</a>
+                if (Model.InscricaoVM.Where(x => x.COD_USUARIO == userId).Count() == 0)
+                {
+                    <div class="col-lg-6">
+                        <p class="text-muted">Você ainda não se inscreveu em nenhum evento.</p>
+                    </div>
+                }
+                else if (item.COD_USUARIO != userId)
+                {
+                }
+                else
+                {
+                    @Html.HiddenFor(modelItem => item.COD_EVENTO)
+                    @Html.HiddenFor(modelItem => eventItem.COD_EVENTO)
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="@Url.Content(eventItem.IMAGEM_URL)"
+                                         alt="Evento"
+                                         class="card-img h-100 object-fit-cover" />
+                                </div>
+                                <div class="col-md-8 my-auto">
+                                    <div class="card-body text-left">
+                                        <a href="#" class="card-link float-right" data-toggle="dropdown" title="Opções">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm">
+                                            <a class="dropdown-item" target="_blank" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-print"></i> Imprimir</a>
+                                            <a class="dropdown-item" download="inscricao-@item.COD_INSCRICAO" href="@Url.Action("GeneratePDF", "Events", new { id = item.COD_INSCRICAO })"><i class="fas fa-file-download"></i> Download PDF</a>
+                                            <a href="#" onclick="Delete(@item.COD_INSCRICAO)" class="dropdown-item"><i class="fas fa-times-circle"></i> Cancelar inscrição</a>
+                                        </div>
+                                        <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                                            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => eventItem.DATA)</span>
+                                            <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => eventItem.HORARIO)</span><br />
+                                        </div>
+                                        <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="card-title h5 text-truncate" title="@Html.DisplayFor(modelItem => eventItem.TITULO)">@Html.DisplayFor(modelItem => eventItem.TITULO)</a>
 
-                                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => eventItem.DESCRICAO)</p>
-                                    <hr />
-                                    <p>Código de inscrição: <span class="text-muted">@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</span></p>
-                                    <a href="#" onclick="QRCode(@item.COD_INSCRICAO)" class="card-link"><i class="fas fa-qrcode"></i> QR Code</a>
+                                        <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => eventItem.DESCRICAO)</p>
+                                        <hr />
+                                        <p>Código de inscrição: <span class="text-muted">@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</span></p>
+                                        <a href="#" onclick="QRCode(@item.COD_INSCRICAO)" class="card-link"><i class="fas fa-qrcode"></i> QR Code</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         }
-    }
-</div>
+    </div>
 }
 
 @section scripts {

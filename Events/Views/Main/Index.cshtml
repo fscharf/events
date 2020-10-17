@@ -3,14 +3,34 @@
 
 @{
     var userAuth = (ClaimsIdentity)User.Identity;
+    if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
+    {
+        Response.Redirect("/Master/Index");
+    }
+    else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
+    {
+        Response.Redirect("/Admin/Index");
+    }
 }
 
 @if (userAuth.IsAuthenticated)
 {
+    <div class="row mb-5">
+        <div class="col-lg">
+            <h4>Olá, @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value</h4>
+            <p class="text-muted">Separamos alguns atalhos para você</p>
+            <div class="row">
+                <div class="col-lg-4 mb-2"><a class="btn btn-primary btn-block" href="@Url.Action("MyEvents", "Events")"><i class="fas fa-calendar-alt"></i> Meus eventos</a></div>
+                <div class="col-lg-4 mb-2"><a class="btn btn-primary btn-block" href="@Url.Action("MyProfile", "Users", new { id = userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value })"><i class="fas fa-user-circle"></i> Minha conta</a></div>
+                <div class="col-lg-4"><a class="btn btn-primary btn-block" href="@Url.Action("Index", "Events")"><i class="fas fa-calendar-plus"></i> Explorar eventos</a></div>
+            </div>
+        </div>
+    </div>
+
 }
 else
 {
-    <div class="jumbotron bg-main-gradient text-light mb-5">
+    <div class="jumbotron bg-main-gradient text-light text-center text-sm-left mb-5">
         <div class="row">
             <div class="col-lg-6 mb-5 my-md-auto">
                 <img class="img-fluid" src="~/Content/img/undraw/undraw_celebration_0jvk.svg" />
@@ -27,11 +47,12 @@ else
 }
 
 
+
 <div class="row mb-3">
-    <div class="col-lg-6">
-        <h5 class="text-muted">Eventos em alta</h5>
+    <div class="col-lg-6 text-center text-sm-left">
+        <h4>Eventos em alta</h4>
     </div>
-    <div class="col-lg-6 text-right my-auto">
+    <div class="col-lg-6 text-center text-sm-right my-auto">
         <a href="@Url.Action("Index", "Events")">Explorar eventos<i class="fas fa-arrow-right ml-2"></i></a>
     </div>
 </div>
@@ -65,8 +86,8 @@ else
                         <h4 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.TITULO)</h4>
                         <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
 
-                        <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn btn-primary btn-block">
-                            Inscrever-se <i class="fas fa-chevron-right"></i>
+                        <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn-block btn btn-primary">
+                            <i class="fas fa-calendar-plus"></i> Participar
                         </a>
                     </div>
                 </div>

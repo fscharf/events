@@ -23,6 +23,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 mb-5">
         <div class="container">
             <a class="main-font text-primary mr-0 mr-sm-3" href="@Url.Action("Index", "Main")">Events</a>
@@ -34,15 +35,14 @@
                 <ul class="navbar-nav ml-auto">
                     @if (userAuth.IsAuthenticated)
                     {
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" id="myDropdown">
                             <a href="#"
                                class="nav-link dropdown-toggle"
                                data-toggle="dropdown"
                                title="Opções da conta">
-                                <i class="fas fa-user-circle mr-2"></i>
                                 @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 220px;">
+                            <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm"style="width: 250px;">
                                 <div class="text-center p-2">
                                     <i class="fa fa-user-circle fa-2x mb-2"></i>
                                     <div class="dropdown-item-text">
@@ -59,7 +59,7 @@
                                 @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
-                                        <i class="fas fa-calendar mr-2"></i>Meus eventos
+                                        <i class="fas fa-calendar-alt mr-2"></i>Meus eventos
                                     </a>
                                 }
                                 else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
@@ -70,6 +70,15 @@
                                 {
                                     <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                 }
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item-text">
+                                    <div class="form-group my-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="night-mode">
+                                            <label class="custom-control-label" for="night-mode">Modo escuro <span class="badge badge-primary">Beta</span></label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item disabled" href="#">
                                     <i class="fas fa-arrow-circle-down mr-2"></i>Baixar app

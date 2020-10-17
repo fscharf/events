@@ -16,9 +16,9 @@
      alt="@Html.DisplayFor(x => x.TITULO)"
      title="@Html.DisplayFor(x => x.TITULO)"/>
 
-<div class="row mb-3">
+<div class="row mb-3 text-center text-sm-left">
     <div class="col-lg-8 mb-4 mb-sm-0">
-        <div class="border rounded p-5">
+        <div class="border rounded p-4 p-sm-5">
             <div class="row mb-3">
                 <div class="col-lg-8">
                     <h4 class="font-weight-bold mb-3">@Html.DisplayFor(x => x.TITULO)</h4>
@@ -26,9 +26,6 @@
                 <div class="col-lg-4 text-center text-sm-right">
                     <a href="/eventos" class="card-link" title="Voltar">
                         <i class="fas fa-arrow-left fa-lg"></i>
-                    </a>
-                    <a href="#favorito" class="card-link" id="favToggler" title="Marcar como favorito">
-                        <i class="fas fa-heart fa-lg"></i>
                     </a>
                     <a href="#shareModal" class="card-link" data-toggle="modal" title="Compartilhar">
                         <i class="fas fa-share-alt fa-lg"></i>
@@ -61,7 +58,7 @@
             }
             else
             {
-                <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-check-circle mr-2"></i>Participar</a>
+        <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-calendar-plus"></i> Participar</a>
             }
         </div>
     </div>

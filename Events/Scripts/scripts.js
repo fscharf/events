@@ -12,6 +12,12 @@ $('.btn-preload').click(function () {
     $(this).html('<span class="spinner-border" role="status" aria-hidden="true"></span>').addClass('disabled');
 });
 
+$('#myDropdown').on('hide.bs.dropdown', function (e) {
+    if (e.clickEvent) {
+        e.preventDefault();
+    }
+});
+
 // compartilhar evento
 $('#shareLinkAlert').hide();
 $('#shareLinkBtn').click(function () {

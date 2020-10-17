@@ -10,9 +10,9 @@ using System.Web.Mvc;
 
 namespace Events.Controllers
 {
-    [AllowAnonymous]
     public class EventsController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index(int? page, string currentFilter, string searchString, string searchDate)
         {
             IEnumerable<EVENTO> eventList;
@@ -44,6 +44,7 @@ namespace Events.Controllers
             return View(eventList.ToPagedList(pageNumber, pageSize));
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int id = 0)
         {
             if (id == 0)
@@ -57,6 +58,7 @@ namespace Events.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Subscribe(INSCRICAO iNSCRICAO, int id = 0)
         {
             IEnumerable<EVENTO> eventsList;
@@ -130,7 +132,8 @@ namespace Events.Controllers
 
             return View(subsViewModel);
         }
-        
+
+        [Authorize]
         public ActionResult DeleteSub(int id)
         {
 
@@ -160,6 +163,7 @@ namespace Events.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult SubPDF(int? id)
         {
             SubsViewModel subsViewModel = new SubsViewModel();
@@ -168,6 +172,7 @@ namespace Events.Controllers
             return View(subsViewModel);
         }
 
+        [Authorize]
         public ActionResult GeneratePDF(int? id)
         {
             return new Rotativa.ActionAsPdf("SubPDF/" + id.ToString());
