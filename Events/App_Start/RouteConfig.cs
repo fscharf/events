@@ -27,7 +27,7 @@ namespace Events
 
             routes.MapRoute(
                 "Conta",
-                "Conta",
+                "Conta/{id}",
                 new { controller = "Users", action = "MyProfile" }
             );
             

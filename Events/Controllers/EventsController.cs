@@ -163,7 +163,7 @@ namespace Events.Controllers
             }
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult SubPDF(int? id)
         {
             SubsViewModel subsViewModel = new SubsViewModel();
@@ -172,7 +172,7 @@ namespace Events.Controllers
             return View(subsViewModel);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult GeneratePDF(int? id)
         {
             return new Rotativa.ActionAsPdf("SubPDF/" + id.ToString());
