@@ -153,9 +153,17 @@ namespace Events.Controllers
         [Authorize]
         public ActionResult MyProfile(int id = 0)
         {
+            var userAuth = (ClaimsIdentity)User.Identity;
+            var identity = Convert.ToInt32(userAuth.Claims.Where(c => c.Type == ClaimTypes.Sid).FirstOrDefault().Value);
+
             if (id == 0)
             {
                 return View(new USUARIO());
+            }
+            else if (id != identity)
+            {
+                TempData["Error"] = "Você não tem permissão para acessar essa página.";
+                return Redirect("/Conta/" + identity.ToString());
             }
             else
             {
