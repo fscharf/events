@@ -42,7 +42,7 @@
                                title="Opções da conta">
                                 @userAuth.Claims.Where(c => c.Type == ClaimTypes.GivenName).FirstOrDefault().Value
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm"style="width: 250px;">
+                            <div class="dropdown-menu dropdown-menu-right bg-white shadow-sm" style="width: 250px;">
                                 <div class="text-center p-2">
                                     <i class="fa fa-user-circle fa-2x mb-2"></i>
                                     <div class="dropdown-item-text">
@@ -59,7 +59,7 @@
                                 @if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "1" || c.Value == "2")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("MyEvents", "Events")">
-                                        <i class="fas fa-calendar-alt mr-2"></i>Meus eventos
+                                        <i class="fas fa-calendar mr-2"></i>Meus eventos
                                     </a>
                                 }
                                 else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "3")))
