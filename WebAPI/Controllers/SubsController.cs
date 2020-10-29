@@ -76,7 +76,8 @@ namespace WebAPI.Controllers
 
             iNSCRICAO.FEEDBACK = new HashSet<FEEDBACK>();
             iNSCRICAO.DATA_HORA_INSC = DateTime.Now;
-            iNSCRICAO.DATA_HORA_PARTICIPACAO = DateTime.Now;
+            iNSCRICAO.DATA_HORA_PARTICIPACAO = null;
+            iNSCRICAO.COD_VALIDADO = 0;
 
             db.INSCRICAO.Add(iNSCRICAO);
             db.SaveChanges();

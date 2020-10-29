@@ -182,6 +182,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
@@ -2330,6 +2331,9 @@
     <Content Include="Views\Master\UserCreate.cshtml" />
     <Content Include="Views\Master\Index.cshtml" />
     <Content Include="Views\Events\SubPDF.cshtml" />
+    <Content Include="Views\Assistant\Index.cshtml" />
+    <Content Include="Views\Assistant\Validate.cshtml" />
+    <Content Include="Views\Assistant\SubsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

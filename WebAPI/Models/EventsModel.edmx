@@ -16,8 +16,8 @@
           <Property Name="DATA" Type="date" Nullable="false" />
           <Property Name="HORARIO" Type="time" Precision="7" Nullable="false" />
           <Property Name="IMAGEM_URL" Type="varchar(max)" />
-          <Property Name="SALA" Type="varchar" MaxLength="80" />
-          <Property Name="ATIVO" Type="int" />
+          <Property Name="SALA" Type="varchar" MaxLength="20" />
+          <Property Name="ATIVO" Type="int" Nullable="false" />
           <Property Name="VAGAS" Type="int" />
         </EntityType>
         <EntityType Name="FEEDBACK">
@@ -38,7 +38,8 @@
           <Property Name="COD_USUARIO" Type="int" />
           <Property Name="COD_EVENTO" Type="int" />
           <Property Name="DATA_HORA_INSC" Type="datetime" Nullable="false" />
-          <Property Name="DATA_HORA_PARTICIPACAO" Type="datetime" Nullable="false" />
+          <Property Name="DATA_HORA_PARTICIPACAO" Type="datetime" />
+          <Property Name="COD_VALIDADO" Type="int" />
         </EntityType>
         <EntityType Name="PERFIL">
           <Key>
@@ -53,11 +54,11 @@
           </Key>
           <Property Name="COD_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOME" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="SENHA" Type="varchar(max)" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SENHA" Type="varchar(max)" />
           <Property Name="CELULAR" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="COD_PERFIL" Type="int" />
-          <Property Name="ATIVO" Type="int" />
+          <Property Name="ATIVO" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO_GERENCIA_EVENTO">
           <Key>
@@ -205,8 +206,8 @@
           <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_EVENTO_INSC" FromRole="EVENTO" ToRole="INSCRICAO" />
           <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_GEREN_EVENTO" FromRole="EVENTO" ToRole="USUARIO_GERENCIA_EVENTO" />
           <Property Name="IMAGEM_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SALA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="ATIVO" Type="Int32" />
+          <Property Name="SALA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ATIVO" Type="Int32" Nullable="false" />
           <Property Name="VAGAS" Type="Int32" />
         </EntityType>
         <EntityType Name="FEEDBACK">
@@ -229,10 +230,11 @@
           <Property Name="COD_USUARIO" Type="Int32" />
           <Property Name="COD_EVENTO" Type="Int32" />
           <Property Name="DATA_HORA_INSC" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DATA_HORA_PARTICIPACAO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DATA_HORA_PARTICIPACAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="EVENTO" Relationship="Self.FK_EVENTO_INSC" FromRole="INSCRICAO" ToRole="EVENTO" />
           <NavigationProperty Name="FEEDBACK" Relationship="Self.FK_INSCRICAO_FEED" FromRole="INSCRICAO" ToRole="FEEDBACK" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_INSC" FromRole="INSCRICAO" ToRole="USUARIO" />
+          <Property Name="COD_VALIDADO" Type="Int32" />
         </EntityType>
         <EntityType Name="PERFIL">
           <Key>
@@ -248,14 +250,14 @@
           </Key>
           <Property Name="COD_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SENHA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SENHA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CELULAR" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="COD_PERFIL" Type="Int32" />
           <NavigationProperty Name="INSCRICAO" Relationship="Self.FK_USUARIO_INSC" FromRole="USUARIO" ToRole="INSCRICAO" />
           <NavigationProperty Name="PERFIL" Relationship="Self.FK_PERFIL_U" FromRole="USUARIO" ToRole="PERFIL" />
           <NavigationProperty Name="USUARIO_GERENCIA_EVENTO" Relationship="Self.FK_USUARIO_GEREN" FromRole="USUARIO" ToRole="USUARIO_GERENCIA_EVENTO" />
-          <Property Name="ATIVO" Type="Int32" />
+          <Property Name="ATIVO" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO_GERENCIA_EVENTO">
           <Key>
@@ -423,6 +425,7 @@
           <EntitySetMapping Name="INSCRICAO">
             <EntityTypeMapping TypeName="EventsModel.INSCRICAO">
               <MappingFragment StoreEntitySet="INSCRICAO">
+                <ScalarProperty Name="COD_VALIDADO" ColumnName="COD_VALIDADO" />
                 <ScalarProperty Name="COD_INSCRICAO" ColumnName="COD_INSCRICAO" />
                 <ScalarProperty Name="COD_USUARIO" ColumnName="COD_USUARIO" />
                 <ScalarProperty Name="COD_EVENTO" ColumnName="COD_EVENTO" />

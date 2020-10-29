@@ -1,0 +1,138 @@
+﻿@using Events.Models
+@model SubsViewModel
+@using System.Security.Claims
+@{
+    ViewBag.Title = "Validação Manual";
+}
+
+<div class="row mb-3">
+    <div class="col-lg">
+        <h4>
+            <a class="text-dark mr-2" href="@Url.Action("Index", "Assistant")"><i class="fas fa-arrow-left"></i></a>
+            @ViewBag.Title
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        @using (Html.BeginForm("Validate", "Assistant", FormMethod.Get))
+        {
+            <div class="form-group">
+                <label class="text-muted">Digite o código de inscrição:</label>
+                <div class="input-group">
+                    @Html.TextBox("search", null, new { @class = "form-control", placeholder = "Ex: 123456", @type = "search" })
+
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" title="Enviar" type="submit">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-4">
+        @foreach (var item in Model.InscricaoVM)
+        {
+            foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO && x.DATA == DateTime.Today))
+            {
+                foreach (var userItem in Model.UsuarioVM.Where(x => x.COD_USUARIO == item.COD_USUARIO))
+                {
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    Código de Inscrição: <strong>@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</strong>
+                                </li>
+                                <li>
+                                    Nome: <strong>@Html.DisplayFor(modelItem => userItem.NOME)</strong>
+                                </li>
+                                <li class="text-truncate">
+                                    Título do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.TITULO)</strong>
+                                </li>
+                                <li>
+                                    Data do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.DATA)</strong>
+                                </li>
+                                <li class="mb-3">
+                                    Hora do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.HORARIO)</strong>
+                                </li>
+                                <li>
+                                    @if (item.COD_VALIDADO == 0)
+                                    {
+                                        <a href="#" onclick="Validate(@item.COD_INSCRICAO)" class="btn btn-primary btn-block">Validar</a>
+                                    }
+                                    else if (item.COD_VALIDADO == 1)
+                                    {
+                                        <a href="#" class="btn btn-success btn-block disabled"><i class="fas fa-check"></i> Validado</a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+         $(function () {
+            var errorMsg = '@TempData["Error"]';
+
+            if (errorMsg != '') {
+                iziToast.error({
+                    title: 'Erro',
+                    message: errorMsg
+                });
+            }
+         })
+
+        $(function () {
+            var successMsg = '@TempData["Success"]';
+
+            if (successMsg != '') {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: successMsg
+                });
+            }
+        })
+
+        function Validate(id) {
+            iziToast.warning({
+                backgroundColor: '#6930EE',
+                theme: 'dark',
+                timeout: false,
+                progressBar: false,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                zindex: 9999,
+                title: 'Aviso',
+                message: 'Validar presença do aluno?',
+                position: 'center',
+                buttons: [
+                    ['<button><strong>Sim</strong></button>', function () {
+
+                        location.href = '@Url.Action("ValidateSub", "Assistant")/' + id;
+
+                    }, null],
+                    ['<button>Não</button>', function (instance, toast) {
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                    }],
+                ],
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('Closing | closedBy: ' + closedBy);
+                },
+                onClosed: function (instance, toast, closedBy) {
+                    console.info('Closed | closedBy: ' + closedBy);
+                }
+            });
+        }
+    </script>
+}
+
+

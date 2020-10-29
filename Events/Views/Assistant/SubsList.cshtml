@@ -1,0 +1,75 @@
+﻿@using Events.Models
+@model SubsViewModel
+@using System.Security.Claims
+@{
+    ViewBag.Title = "Inscrições";
+}
+<div class="row mb-3">
+    <div class="col-lg">
+        <h4>
+            <a class="text-dark mr-2" href="@Url.Action("Index", "Assistant")"><i class="fas fa-arrow-left"></i></a>
+            @ViewBag.Title
+        </h4>
+        <p class="text-muted">Gerencie os registros de inscrições.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table text-truncate">
+
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Cód. Inscrição</th>
+                    <th scope="col">Cód. Usuário</th>
+                    <th scope="col">Cód. Evento</th>
+                    <th scope="col">Nome Usuário</th>
+                    <th scope="col">Título Evento</th>
+                    <th scope="col">Data Evento</th>
+                    <th scope="col">Hora Início</th>
+                    <th scope="col">Duração</th>
+                </tr>
+            </thead>
+
+            <tbody class="bg-white">
+                @foreach (var item in Model.InscricaoVM)
+                {
+                    foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO))
+                    {
+                        foreach (var userItem in Model.UsuarioVM.Where(x => x.COD_USUARIO == item.COD_USUARIO))
+                        {
+                            <tr>
+                                <th scope="row">
+                                    @Html.DisplayFor(modelItem => item.COD_INSCRICAO)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => userItem.COD_USUARIO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => eventItem.COD_EVENTO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => userItem.NOME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => eventItem.TITULO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => eventItem.DATA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => eventItem.HORARIO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => eventItem.DURACAO)
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

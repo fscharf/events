@@ -17,8 +17,8 @@ namespace Events.Models
         public Nullable<int> COD_USUARIO { get; set; }
         public Nullable<int> COD_EVENTO { get; set; }
         public System.DateTime DATA_HORA_INSC { get; set; }
-        public System.DateTime DATA_HORA_PARTICIPACAO { get; set; }
-        public virtual EVENTO EVENTO { get; set; }
+        public Nullable<System.DateTime> DATA_HORA_PARTICIPACAO { get; set; }
+        public Nullable<int> COD_VALIDADO { get; set; }
         public virtual ICollection<FEEDBACK> FEEDBACK { get; set; }
         public virtual USUARIO USUARIO { get; set; }
     }

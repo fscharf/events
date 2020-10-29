@@ -126,6 +126,10 @@ namespace Events.Controllers
                     {
                         return RedirectToAction("Index", "Master");
                     }
+                    else if (identity.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "5")))
+                    {
+                        return RedirectToAction("Index", "Assistant");
+                    }
                     else
                     {
                         return Redirect("/");

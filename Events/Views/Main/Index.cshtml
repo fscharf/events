@@ -10,6 +10,10 @@
     else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
     {
         Response.Redirect("/Admin/Index");
+    } 
+    else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "5")))
+    {
+        Response.Redirect("/Assistant/Index");
     }
 }
 
