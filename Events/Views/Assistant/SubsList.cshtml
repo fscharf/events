@@ -14,20 +14,18 @@
     </div>
 </div>
 
-<div class="card">
+<div class="card mb-3">
     <div class="table-responsive">
         <table class="table text-truncate">
 
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Cód. Inscrição</th>
-                    <th scope="col">Cód. Usuário</th>
-                    <th scope="col">Cód. Evento</th>
                     <th scope="col">Nome Usuário</th>
                     <th scope="col">Título Evento</th>
-                    <th scope="col">Data Evento</th>
-                    <th scope="col">Hora Início</th>
-                    <th scope="col">Duração</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
 
@@ -43,12 +41,6 @@
                                     @Html.DisplayFor(modelItem => item.COD_INSCRICAO)
                                 </th>
                                 <td>
-                                    @Html.DisplayFor(modelItem => userItem.COD_USUARIO)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => eventItem.COD_EVENTO)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => userItem.NOME)
                                 </td>
                                 <td>
@@ -60,9 +52,18 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => eventItem.HORARIO)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => eventItem.DURACAO)
-                                </td>
+                                @if (item.COD_VALIDADO == 0)
+                                {
+                                    <td>
+                                        <div class="badge badge-warning">Pendente</div>
+                                    </td>
+                                }
+                                else if (item.COD_VALIDADO == 1)
+                                {
+                                    <td>
+                                        <div class="badge badge-success">Validado</div>
+                                    </td>
+                                }
                             </tr>
                         }
                     }

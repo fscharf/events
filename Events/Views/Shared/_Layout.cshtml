@@ -26,11 +26,11 @@
 
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 mb-5">
         <div class="container">
-            <a class="main-font text-primary mr-0 mr-sm-3" href="@Url.Action("Index", "Main")">Events</a>
+            <a class="main-font text-primary" href="@Url.Action("Index", "Main")">Events</a>
 
-            <button class="btn btn-outline-primary border-0 fa-lg d-block d-lg-none" data-toggle="collapse" data-target=".navbar-collapse">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href=".navbar-collapse" class="nav-link d-block d-lg-none" data-toggle="collapse">
+                <i class="fas fa-ellipsis-h fa-lg"></i>
+            </a>
             <div class="collapse navbar-collapse mt-3 mt-sm-0">
                 <ul class="navbar-nav ml-auto">
                     @if (userAuth.IsAuthenticated)
@@ -69,6 +69,10 @@
                                 else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("Index", "Admin")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
+                                }
+                                else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "5")))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Assistant")"><i class="fas fa-tools mr-2"></i>Meu Painel</a>
                                 }
                                 <div class="dropdown-divider"></div>
                                 <div class="dropdown-item-text">

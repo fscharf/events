@@ -10,7 +10,7 @@
     else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "4")))
     {
         Response.Redirect("/Admin/Index");
-    } 
+    }
     else if (userAuth.Claims.Any(c => c.Type == ClaimTypes.Role && (c.Value == "5")))
     {
         Response.Redirect("/Assistant/Index");
@@ -62,41 +62,35 @@ else
 </div>
 
 <div class="row mb-3">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Where(x => x.ATIVO == 1))
     {
-        if (item.ATIVO == 0)
-        {
-        }
-        else
-        {
-            <div class="col-lg-4 mb-3">
-                <div class="card custom-card">
-                    <img class="card-img-top img-fluid custom-object-fit-cover"
-                         src="@Url.Content(item.IMAGEM_URL)"
-                         alt="Foto do evento" />
-                    <div class="card-body">
-                        @if (item.VAGAS <= 5 && item.VAGAS != 0)
-                        {
-                            <div class="badge badge-info float-right">Últimas vagas</div>
-                        }
-                        else if (item.VAGAS == 0)
-                        {
-                            <div class="badge badge-danger float-right">Esgotado</div>
-                        }
-                        <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
-                            <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
-                            <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
-                        </div>
-                        <h4 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.TITULO)</h4>
-                        <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
-
-                        <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn-block btn btn-primary">
-                            <i class="fas fa-calendar-plus"></i> Participar
-                        </a>
+        <div class="col-lg-4 mb-3">
+            <div class="card custom-card">
+                <img class="card-img-top img-fluid custom-object-fit-cover"
+                     src="@Url.Content(item.IMAGEM_URL)"
+                     alt="Foto do evento" />
+                <div class="card-body">
+                    @if (item.VAGAS <= 5 && item.VAGAS != 0)
+                    {
+                        <div class="badge badge-info float-right">Últimas vagas</div>
+                    }
+                    else if (item.VAGAS == 0)
+                    {
+                        <div class="badge badge-danger float-right">Esgotado</div>
+                    }
+                    <div class="text-muted font-weight-bold mb-3" style="font-size: 0.8rem">
+                        <span class="mr-2"><i class="fas fa-calendar mr-2"></i>@Html.DisplayFor(modelItem => item.DATA)</span>
+                        <span><i class="fas fa-clock mr-2"></i>@Html.DisplayFor(modelItem => item.HORARIO)</span><br />
                     </div>
+                    <h4 class="card-title text-truncate">@Html.DisplayFor(modelItem => item.TITULO)</h4>
+                    <p class="card-text text-muted text-truncate">@Html.DisplayFor(modelItem => item.DESCRICAO)</p>
+
+                    <a href="@Url.Action("Details", "Events", new { id = item.COD_EVENTO })" class="stretched-link btn-block btn btn-primary">
+                        <i class="fas fa-calendar-plus"></i> Participar
+                    </a>
                 </div>
             </div>
-        }
+        </div>
     }
 </div>
 
