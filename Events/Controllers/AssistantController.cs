@@ -52,7 +52,7 @@ namespace Events.Controllers
             response = GlobalVariables.WebApiClient.GetAsync("events").Result;
             eventsList = response.Content.ReadAsAsync<List<EVENTO>>().Result;
 
-            var eventDetails = eventsList.Where(x => x.COD_EVENTO == id).FirstOrDefault();
+            var eventDetails = eventsList.Where(x => x.COD_EVENTO == subDetails.COD_EVENTO).FirstOrDefault();
 
             subDetails.DATA_HORA_PARTICIPACAO = DateTime.Now;
             subDetails.COD_VALIDADO = 1;

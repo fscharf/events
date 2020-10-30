@@ -1,0 +1,38 @@
+﻿@using Events.Models
+@model SubsViewModel
+@using System.Security.Claims
+
+@{
+    var userAuth = (ClaimsIdentity)User.Identity;
+    ViewBag.Title = "Certificado " + Model.NOME;
+}
+
+<style>
+    .navbar {
+        display: none;
+    }
+</style>
+
+<div class="row border border-primary p-5">
+    <div class="col-lg-6 mx-auto text-center" style="max-width: 720px;">
+        <h2 class="main-font text-primary">Events</h2>
+        <h1 class="font-weight-bold">Certificado</h1>
+        <br />
+        <h4>
+            Certificamos que o <strong>@Model.NOME</strong>,
+            participou regurlamente do evento <strong>@Model.TITULO</strong>
+            que aconteceu no dia <strong>@Model.DATA.Day/@Model.DATA.Month/@Model.DATA.Year</strong>
+            às <strong>@Model.DATA_HORA_PARTICIPACAO.Value.Hour:@Model.DATA_HORA_PARTICIPACAO.Value.Minute</strong>
+        </h4>
+        <br />
+
+        <p class="mb-5">Código de Inscrição: <strong>@Model.COD_INSCRICAO</strong></p>
+
+        <img src="~/Image/assinatura-exemplo.png" width="150" />
+        <div class="mx-auto" style="width: 220px">
+            <p class="border-top">João da Silva, Diretor</p>
+        </div>
+        <p class="text-muted">ITB Brasílio Flores de Azevedo &middot; @DateTime.Now.Year</p>
+    </div>
+</div>
+

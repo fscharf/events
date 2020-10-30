@@ -57,13 +57,17 @@
                                     Hora do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.HORARIO)</strong>
                                 </li>
                                 <li>
-                                    @if (item.COD_VALIDADO == 0)
+                                    @if (item.COD_VALIDADO == 0 && eventItem.ATIVO == 1)
                                     {
                                         <a href="#" onclick="Validate(@item.COD_INSCRICAO)" class="btn btn-primary btn-block">Validar</a>
                                     }
-                                    else if (item.COD_VALIDADO == 1)
+                                    else if (eventItem.ATIVO == 1 || eventItem.ATIVO == 0 && item.COD_VALIDADO == 1)
                                     {
                                         <a href="#" class="btn btn-success btn-block disabled"><i class="fas fa-check"></i> Validado</a>
+                                    }
+                                    else if (eventItem.ATIVO == 0 && item.COD_VALIDADO == 0)
+                                    {
+                                        <a href="#" class="btn btn-danger btn-block disabled"><i class="fas fa-times"></i> Evento Cancelado</a>
                                     }
                                 </li>
                             </ul>

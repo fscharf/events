@@ -164,7 +164,7 @@ namespace Events.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult SubPDF(int? id)
+        public ActionResult Subscription(int? id)
         {
             SubsViewModel subsViewModel = new SubsViewModel();
             subsViewModel.COD_INSCRICAO = id;
@@ -175,7 +175,50 @@ namespace Events.Controllers
         [AllowAnonymous]
         public ActionResult GeneratePDF(int? id)
         {
-            return new Rotativa.ActionAsPdf("SubPDF/" + id.ToString());
+            return new Rotativa.ActionAsPdf("Subscription/" + id.ToString());
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult Certificate(int? id)
+        {
+            List<INSCRICAO> subsList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("subs").Result;
+            subsList = response.Content.ReadAsAsync<List<INSCRICAO>>().Result;
+
+            var subDetails = subsList.Where(x => x.COD_INSCRICAO == id).FirstOrDefault();
+
+            List<EVENTO> eventsList;
+            response = GlobalVariables.WebApiClient.GetAsync("events").Result;
+            eventsList = response.Content.ReadAsAsync<List<EVENTO>>().Result;
+
+            var eventDetails = eventsList.Where(x => x.COD_EVENTO == subDetails.COD_EVENTO).FirstOrDefault();
+
+            List<USUARIO> usersList;
+            response = GlobalVariables.WebApiClient.GetAsync("users").Result;
+            usersList = response.Content.ReadAsAsync<List<USUARIO>>().Result;
+
+            var userDetails = usersList.Where(x => x.COD_USUARIO == subDetails.COD_USUARIO).FirstOrDefault();
+
+            SubsViewModel subsViewModel = new SubsViewModel();
+            subsViewModel.NOME = userDetails.NOME;
+            subsViewModel.TITULO = eventDetails.TITULO;
+            subsViewModel.DATA = eventDetails.DATA;
+            subsViewModel.DATA_HORA_PARTICIPACAO = subDetails.DATA_HORA_PARTICIPACAO;
+            subsViewModel.COD_INSCRICAO = id;
+
+            return View(subsViewModel);
+        }
+
+        [AllowAnonymous]
+        public ActionResult NewPDF(int? id)
+        {
+            var newPDF = new Rotativa.ActionAsPdf("Certificate/" + id.ToString())
+            {
+                PageOrientation = 0,
+                PageSize = Rotativa.Options.Size.A5             
+            };
+            return newPDF;
         }
     }
 }
