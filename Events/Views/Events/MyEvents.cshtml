@@ -31,7 +31,7 @@
                 @Html.HiddenFor(modelItem => item.COD_EVENTO)
                 @Html.HiddenFor(modelItem => eventItem.COD_EVENTO)
                 <div class="col-lg-6 mb-3">
-                    @if (eventItem.ATIVO == 0)
+                    @if (eventItem.ATIVO == 0 && item.COD_VALIDADO == 0)
                     {
                         <div class="card border-danger">
                             <div class="row no-gutters">
