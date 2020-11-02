@@ -32,49 +32,57 @@
         }
     </div>
     <div class="col-lg-4">
-        @foreach (var item in Model.InscricaoVM)
+        @if (Model.InscricaoVM.Any(x => x.COD_INSCRICAO.ToString() == ViewBag.CurrentFilter))
         {
-            foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO && x.DATA == DateTime.Today))
+            foreach (var item in Model.InscricaoVM)
             {
-                foreach (var userItem in Model.UsuarioVM.Where(x => x.COD_USUARIO == item.COD_USUARIO))
+                foreach (var eventItem in Model.EventoVM.Where(x => x.COD_EVENTO == item.COD_EVENTO))
                 {
-                    <div class="card shadow-sm mb-3">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li>
-                                    Código de Inscrição: <strong>@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</strong>
-                                </li>
-                                <li>
-                                    Nome: <strong>@Html.DisplayFor(modelItem => userItem.NOME)</strong>
-                                </li>
-                                <li class="text-truncate">
-                                    Título do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.TITULO)</strong>
-                                </li>
-                                <li>
-                                    Data do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.DATA)</strong>
-                                </li>
-                                <li class="mb-3">
-                                    Hora do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.HORARIO)</strong>
-                                </li>
-                                <li>
-                                    @if (item.COD_VALIDADO == 0 && eventItem.ATIVO == 1)
-                                    {
-                                        <a href="#" onclick="Validate(@item.COD_INSCRICAO)" class="btn btn-primary btn-block">Validar</a>
-                                    }
-                                    else if (eventItem.ATIVO == 1 || eventItem.ATIVO == 0 && item.COD_VALIDADO == 1)
-                                    {
-                                        <a href="#" class="btn btn-success btn-block disabled"><i class="fas fa-check"></i> Validado</a>
-                                    }
-                                    else if (eventItem.ATIVO == 0 && item.COD_VALIDADO == 0)
-                                    {
-                                        <a href="#" class="btn btn-danger btn-block disabled"><i class="fas fa-times"></i> Evento Cancelado</a>
-                                    }
-                                </li>
-                            </ul>
+                    foreach (var userItem in Model.UsuarioVM.Where(x => x.COD_USUARIO == item.COD_USUARIO))
+                    {
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        Código de Inscrição: <strong>@Html.DisplayFor(modelItem => item.COD_INSCRICAO)</strong>
+                                    </li>
+                                    <li>
+                                        Nome: <strong>@Html.DisplayFor(modelItem => userItem.NOME)</strong>
+                                    </li>
+                                    <li class="text-truncate">
+                                        Título do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.TITULO)</strong>
+                                    </li>
+                                    <li>
+                                        Data do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.DATA)</strong>
+                                    </li>
+                                    <li class="mb-3">
+                                        Hora do Evento: <strong>@Html.DisplayFor(modelItem => eventItem.HORARIO)</strong>
+                                    </li>
+                                    <li>
+                                        @if (item.COD_VALIDADO == 0 && eventItem.ATIVO == 1)
+                                        {
+                                            <a href="#" onclick="Validate(@item.COD_INSCRICAO)" class="btn btn-primary btn-block">Validar</a>
+                                        }
+                                        else if (eventItem.ATIVO == 1 || eventItem.ATIVO == 0 && item.COD_VALIDADO == 1)
+                                        {
+                                            <a href="#" class="btn btn-success btn-block disabled"><i class="fas fa-check"></i> Validado</a>
+                                        }
+                                        else if (eventItem.ATIVO == 0 && item.COD_VALIDADO == 0)
+                                        {
+                                            <a href="#" class="btn btn-danger btn-block disabled"><i class="fas fa-times"></i> Evento Cancelado</a>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                        <a class="card-link" href="@Url.Action("Validate")"><i class="fas fa-brush"></i> Limpar buscas</a>
+                    }
                 }
             }
+        }
+        else
+        {
+            <div class="text-muted">Nada encontrado.</div>
         }
     </div>
 </div>

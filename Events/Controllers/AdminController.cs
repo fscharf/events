@@ -40,7 +40,7 @@ namespace Events.Controllers
             {
                 eventList = eventList.Where(x => x.DATA.Equals(Convert.ToDateTime(searchDate)));
             }
-            int pageSize = 6;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
             return View(eventList.ToPagedList(pageNumber, pageSize));

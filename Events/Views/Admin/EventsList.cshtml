@@ -61,7 +61,10 @@
         </div>
     </div>
     <div class="col-lg-2">
-        <a href="@Url.Action("EventsList", "Admin")">Limpar buscas</a>
+        @if (ViewBag.CurrentFilter != null)
+        {
+            <a href="@Url.Action("EventsList")" class="ml-2"><i class="fas fa-brush"></i> Limpar buscas</a>
+        }
     </div>
 </div> 
 

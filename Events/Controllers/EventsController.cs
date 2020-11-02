@@ -41,6 +41,8 @@ namespace Events.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
 
+            eventList = eventList.Where(x => x.ATIVO == 1);
+
             return View(eventList.ToPagedList(pageNumber, pageSize));
         }
 

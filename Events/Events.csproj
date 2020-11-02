@@ -2335,7 +2335,6 @@
     <Content Include="Views\Assistant\Validate.cshtml" />
     <Content Include="Views\Assistant\SubsList.cshtml" />
     <Content Include="Views\Events\Certificate.cshtml" />
-    <Content Include="Views\Events\EventNotifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

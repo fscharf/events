@@ -42,7 +42,10 @@
                     <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search"></i> Pesquisar
                     </button>
-                    <a href="/eventos" class="ml-2">Limpar buscas</a>
+                    @if (ViewBag.CurrentFilter != null)
+                    {
+                        <a href="@Url.Action("Index", "Events")" class="ml-2"><i class="fas fa-brush"></i> Limpar buscas</a>
+                    }
                 </div>
             </div>
         }
@@ -51,7 +54,7 @@
 
 
 <div class="row mb-3">
-    @foreach (var item in Model.Where(x => x.ATIVO == 1))
+    @foreach (var item in Model)
     {
         <div class="col-lg-4 mb-3">
             <div class="card custom-card">

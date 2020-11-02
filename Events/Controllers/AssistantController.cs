@@ -21,8 +21,10 @@ namespace Events.Controllers
 
             if (!String.IsNullOrEmpty(search))
             {
-                subsList = subsList.Where(x => x.COD_INSCRICAO.ToString().Contains(search));
+                subsList = subsList.Where(x => x.COD_INSCRICAO.ToString().Equals(search));
             }
+
+            ViewBag.CurrentFilter = search;
 
             IEnumerable<EVENTO> eventsList;
             response = GlobalVariables.WebApiClient.GetAsync("events").Result;
