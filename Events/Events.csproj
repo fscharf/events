@@ -204,6 +204,7 @@
   <ItemGroup>
     <Content Include="Content\css\style.min.css" />
     <Content Include="Content\img\icons\close.svg" />
+    <Content Include="Content\img\icons\logo-events-calendar.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\img\icons\events-logo.png" />
