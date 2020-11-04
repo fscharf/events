@@ -83,6 +83,7 @@ body {
 }
 
 .form-control:focus {
+    box-shadow: none !important;
     border-bottom: 3px solid $primary !important;
 }
 
@@ -91,7 +92,7 @@ input[type="search"]::-webkit-search-cancel-button {
     position: relative;
     width: 16px;
     height: 16px;
-    background: url(../../node_modules/@fortawesome/fontawesome-free/svgs/solid/times-circle.svg) no-repeat;
+    background: url(../../node_modules/@fortawesome/fontawesome-free/svgs/solid/times.svg) no-repeat;
 }
 
 input[type="search"]::-webkit-search-cancel-button:hover {
@@ -129,16 +130,24 @@ input[type="search"]::-webkit-search-cancel-button:hover {
 }
 
 .night-mode {
-    .bg-white, .modal-content, body, .card, footer {
+    body, .bg-white, .modal-content, .card, footer, .dropdown-menu, .dropdown-divider, .navbar {
         background: $gray-700 !important;
         color: $light !important;
     }
 
-    .bg-light, .navbar {
+    hr, .border, .modal:only-child {
+        border: solid 1px $gray-800 !important;
+    }
+
+    .input-group > .input-group-prepend > .input-group-text {
+        background: $secondary !important;
+    }
+
+    .dropdown-menu > a:hover, .bg-light {
         background: $gray-800 !important;
     }
 
-    a, h1, h2, h3, h4, h5, h6, strong, p, span, div {
+    a, h1, h2, h3, h4, h5, h6, strong, p, span, div, .text-muted {
         color: $light !important;
     }
 }
