@@ -2282,6 +2282,9 @@
     <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\scripts.min.js">
+      <DependentUpon>scripts.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2318,6 +2321,7 @@
     <Content Include="node_modules\izitoast\src\css\themes.styl" />
     <Content Include="node_modules\izitoast\src\css\toast.styl" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="bundleconfig.json" />
     <None Include="packages.config" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Events\_ShareModal.cshtml" />
