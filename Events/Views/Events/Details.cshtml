@@ -14,7 +14,7 @@
 <img class="img-fluid custom-object-fit-cover rounded mb-4"
      src="@Url.Content(Model.IMAGEM_URL)"
      alt="@Html.DisplayFor(x => x.TITULO)"
-     title="@Html.DisplayFor(x => x.TITULO)"/>
+     title="@Html.DisplayFor(x => x.TITULO)" />
 
 <div class="row mb-3 text-center text-sm-left">
     <div class="col-lg-8 mb-4 mb-sm-0">
@@ -31,8 +31,10 @@
                         <i class="fas fa-share-alt fa-lg"></i>
                     </a>
                 </div>
-            </div><hr/>
+            </div>
+            <hr />
             <p class="mb-5">@Html.DisplayFor(x => x.DESCRICAO)</p>
+            <hr />
             <iframe class="rounded w-100"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5604115602814!2d-46.8919696855443!3d-23.51233796566769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf03e63bc7a06d%3A0xc14462a7d6d04032!2sITB%20Bras%C3%ADlio%20Flores%20de%20Azevedo%20(FIEB)!5e0!3m2!1spt-BR!2sbr!4v1594083510603!5m2!1spt-BR!2sbr"
                     height="200"
@@ -46,19 +48,19 @@
     </div>
     <div class="col-lg-4">
         <div class="shadow-sm border rounded p-4">
-            <p class="text-muted">Detalhes do evento</p><hr />
-            <p><small><span class="font-weight-bold">@Html.DisplayFor(x => x.VAGAS)</span> vagas restantes</small></p>
-            <p><i class="fas fa-calendar-alt text-primary mr-2" title="Data"></i>@Html.DisplayFor(x => x.DATA)</p>
-            <p><i class="fas fa-clock text-primary mr-2" title="Horário"></i>@Html.DisplayFor(x => x.HORARIO) <small class="text-muted">início</small></p>
-            <p><i class="fas fa-stopwatch text-primary mr-2" title="Duração"></i>@Html.DisplayFor(x => x.DURACAO) <small class="text-muted">duração</small></p>
-            <p><i class="fas fa-map-marker-alt text-primary mr-2" title="Local"></i>R. Interna Grupo Bandeirante, 138 - Jardim Belval, Barueri - SP, 06420-150</p>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item"><i class="fas fa-calendar-check text-primary mr-3" title="Vagas"></i> <small><span class="font-weight-bold">@Html.DisplayFor(x => x.VAGAS)</span> vagas restantes</small></div>
+                <div class="list-group-item"><i class="fas fa-calendar-alt text-primary mr-3" title="Data"></i> @Html.DisplayFor(x => x.DATA)</div>
+                <div class="list-group-item"><i class="fas fa-clock text-primary mr-3" title="Horário"></i> @Html.DisplayFor(x => x.HORARIO)</div>
+                <div class="list-group-item"><i class="fas fa-map-marker-alt text-primary mr-3" title="Local"></i> <small>R. Interna Grupo Bandeirante, 138 - Jardim Belval, Barueri - SP, 06420-150</small></div>
+            </div>
             @if (Model.VAGAS == 0)
             {
                 <a href="#" class="btn btn-danger btn-block disabled"><i class="fas fa-ban mr-2"></i>Esgotado</a>
             }
             else
             {
-        <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-calendar-plus"></i> Participar</a>
+                <a href="#" onclick="Confirm(@Model.COD_EVENTO)" class="btn btn-primary btn-block"><i class="fas fa-calendar-plus"></i> Participar</a>
             }
         </div>
     </div>

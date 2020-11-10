@@ -41,17 +41,6 @@ $(function () {
     $('[data-toggle="popover"]').popover()
 })
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
-
-function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        $('.navbar').addClass('bg-white shadow-sm fixed-top').css({ transition: '.2s ease' }).removeClass('py-4');
-    } else {
-        $('.navbar').removeClass('bg-white shadow-sm fixed-top').css({ transition: '.2s ease' }).addClass('py-4');
-    }
-}
-
 // pegamos o valor no localStorage
 const nightModeStorage = localStorage.getItem('gmtNightMode')
 const nightMode = document.querySelector('#night-mode')

@@ -130,17 +130,17 @@ input[type="search"]::-webkit-search-cancel-button:hover {
 }
 
 .night-mode {
-    body, .bg-white, .modal-content, .card, footer, .dropdown-menu, .dropdown-divider, .navbar {
-        background: $gray-700 !important;
+    body, .bg-white, .thead-light, .modal-content, .card, footer, .dropdown-menu, .dropdown-divider, .navbar {
+        background: $gray-900 !important;
         color: $light !important;
     }
 
-    hr, .border, .modal:only-child {
+    hr, .border, .modal:only-child, .dropdown-menu > .dropdown-divider {
         border: solid 1px $gray-800 !important;
     }
 
     .input-group > .input-group-prepend > .input-group-text {
-        background: $secondary !important;
+        background: $gray-900 !important;
     }
 
     .dropdown-menu > a:hover, .bg-light {
